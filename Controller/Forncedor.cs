@@ -1,6 +1,6 @@
 /* Módulo Controller Fornecedor
  * Descrição: Classe que representa o controller da entidade Fornecedor
- * Autor: Jussan Igor da Silva
+ * Autor: Lucas José Dias Caetano
  * Data: 23/05/2023
  * Versão: 1.0
 */
