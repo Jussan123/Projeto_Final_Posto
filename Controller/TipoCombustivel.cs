@@ -1,7 +1,7 @@
 /* Módulo Controller do TipoCombustivel
  * Classe TipoCombustivel
  * Descrição: Classe que representa o controlador da entidade TipoCombustivel
- * Autor: Jussan Igor da Silva
+ * Autor: Lucas José Dias Caetano
  * Data: 24/05/2023
  * Versão: 1.0
  */
