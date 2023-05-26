@@ -1,22 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "vHSPCMro/Okannc/bUh7Rfi3CYEspzRZXMlF2ClTFnBTXdBJSjGg9NbMu0yP+ZLQ8UM3RRMMb0bZbQ4fRMahxw==",
+  "dgSpecHash": "a9s42w71ReQ77/YPXRg+bRok4hfGr/LM7zH8cleJOo2B++rRQxbxnwFPRm6sB4wuQSgY31v39CkIef/SsRCNTA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\atend\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Jackson\\PostoCombustivel\\PostoCombustivel.csproj",
+  "projectFilePath": "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto\\PostoCombustivel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\atend\\.nuget\\packages\\amazon.core\\0.30.0\\amazon.core.0.30.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\amazon.rds\\0.18.0\\amazon.rds.0.18.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
-    "C:\\Users\\atend\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\amazon.core\\0.30.0\\amazon.core.0.30.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\amazon.rds\\0.18.0\\amazon.rds.0.18.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\jussan.silva\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

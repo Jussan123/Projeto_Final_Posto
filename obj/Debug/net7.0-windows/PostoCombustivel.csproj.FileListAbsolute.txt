@@ -13,3 +13,11 @@ C:\Users\atend\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final
 C:\Users\atend\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Jackson\PostoCombustivel\obj\Debug\net7.0-windows\PostoCombustivel.pdb
 C:\Users\atend\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Jackson\PostoCombustivel\obj\Debug\net7.0-windows\PostoCombustivel.genruntimeconfig.cache
 C:\Users\atend\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Jackson\PostoCombustivel\obj\Debug\net7.0-windows\ref\PostoCombustivel.dll
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.csproj.AssemblyReference.cache
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.AssemblyInfoInputs.cache
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.AssemblyInfo.cs
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.csproj.CoreCompileInputs.cache
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.dll
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\refint\PostoCombustivel.dll
+C:\Users\jussan.silva\OneDrive - SENAC-SC\3º Semestre\ProgramacaoDesktop\Projeto_Final_Posto\obj\Debug\net7.0-windows\PostoCombustivel.pdb
