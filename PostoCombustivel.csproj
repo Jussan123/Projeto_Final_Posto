@@ -10,7 +10,14 @@
 
   <ItemGroup>
     <PackageReference Include="amazon.RDS" Version="0.18.0" />
+    <PackageReference Include="AWSSDK.core" Version="3.7.106.42" />
+    <PackageReference Include="AWSSDK.RDS" Version="3.7.118.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PrivateAssets>all</PrivateAssets>
   </ItemGroup>
 
 </Project>

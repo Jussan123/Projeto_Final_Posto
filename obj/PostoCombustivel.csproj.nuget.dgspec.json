@@ -45,9 +45,25 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "AWSSDK.RDS": {
+              "target": "Package",
+              "version": "[3.7.118.8, )"
+            },
+            "AWSSDK.core": {
+              "target": "Package",
+              "version": "[3.7.106.42, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.33, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "amazon.RDS": {
               "target": "Package",
