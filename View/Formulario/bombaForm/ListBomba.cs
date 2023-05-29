@@ -120,15 +120,6 @@ namespace ViewListBomba
             nomeColumn.ReadOnly = true;
             bombaDataGridView.Columns.Add(nomeColumn);
 
-/*
-         CAPACIDADE MAX 
-         CAPACIDADE MIN
-         MOV. ID
-         Movimentacao Movimentacao 
-*/
-
-
-
             this.Controls.Add(bombaDataGridView);
         }
 
