@@ -93,6 +93,20 @@ namespace Controller
             }
         }
 
+        private static Model.Funcionario Logar(string email, string senha)
+        {
+            try
+            {
+                Model.Funcionario funcionario = Model.Funcionario.BuscaFuncionarioPorEmail(email);
+                CriptografaSenha(senha);
+                if (funcionario == null) throw new System.Exception("Erro ao logar, funcionário não encontrado");
+                if (funcionario.senha != senha) throw new System.Exception("Erro ao logar, senha incorreta");
+                return funcionario;
+            } catch (System.Exception) {
+                throw new System.Exception("Erro ao logar");
+            }
+        }
+
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
             try
