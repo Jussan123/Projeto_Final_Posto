@@ -93,7 +93,7 @@ namespace Controller
             }
         }
 
-        private static Model.Funcionario Logar(string email, string senha)
+        private static bool Logar(string email, string senha)
         {
             try
             {
@@ -101,9 +101,10 @@ namespace Controller
                 CriptografaSenha(senha);
                 if (funcionario == null) throw new System.Exception("Erro ao logar, funcionário não encontrado");
                 if (funcionario.senha != senha) throw new System.Exception("Erro ao logar, senha incorreta");
-                return funcionario;
+                return true;
             } catch (System.Exception) {
                 throw new System.Exception("Erro ao logar");
+                return false;
             }
         }
 
