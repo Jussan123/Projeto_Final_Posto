@@ -16,16 +16,18 @@ namespace Model
         public string nomeCombustivel { get; set; }
         public string descricao { get; set; }
         public string codigo { get; set; }
+        public decimal preco { get; set; } 
 
         public TipoCombustivel()
         {
         }
 
-        public TipoCombustivel(string nomeCombustivel, string descricao, string codigo)
+        public TipoCombustivel(string nomeCombustivel, string descricao, string codigo, decimal preco)
         {
             this.nomeCombustivel = nomeCombustivel;
             this.descricao = descricao;
             this.codigo = codigo;
+            this.preco = preco;
 
             DataBase db = new DataBase();
             db.TiposCombustivel.Add(this);
@@ -57,7 +59,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.tipoCombustivelId + " - Nome: " + this.nomeCombustivel + " - Descrição: " + this.descricao + " - Código: " + this.codigo + "\n";
+            return "Id: " + this.tipoCombustivelId + " - Nome: " + this.nomeCombustivel + " - Descrição: " + this.descricao + " - Código: " + this.codigo + " - Preço R$" + "\n";
         }
 
         //------------------- CRUD -------------------//
@@ -75,13 +77,14 @@ namespace Model
             return db.TiposCombustivel.Find(tipoCombustivelId);
         }
 
-        public static TipoCombustivel UpdateTipoCombustivel(int tipoCombustivelId, string nomeCombustivel, string descricao, string codigo)
+        public static TipoCombustivel UpdateTipoCombustivel(int tipoCombustivelId, string nomeCombustivel, string descricao, string codigo, decimal preco)
         {
             DataBase db = new DataBase();
             TipoCombustivel tipoCombustivel = db.TiposCombustivel.Find(tipoCombustivelId);
             tipoCombustivel.nomeCombustivel = nomeCombustivel;
             tipoCombustivel.descricao = descricao;
             tipoCombustivel.codigo = codigo;
+            tipoCombustivel.preco = preco;
             db.SaveChanges();
             return tipoCombustivel;
         }
