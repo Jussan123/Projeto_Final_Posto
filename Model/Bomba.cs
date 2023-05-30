@@ -17,19 +17,19 @@ namespace Model
         public TipoCombustivel TipoCombustivel { get; set; }
         public decimal limiteMaximo { get; set; }
         public decimal limiteMinimo { get; set; }
-        public int movimentacaoId { get; set; }
-        public Movimentacao Movimentacao { get; set; }
+       //public int movimentacaoId { get; set; }
+       //public Movimentacao Movimentacao { get; set; }
 
         public Bomba()
         {
         }
 
-        public Bomba(int tipoCombustivelId, decimal limiteMaximo, decimal limiteMinimo, int movimentacaoId)
+        public Bomba(int tipoCombustivelId, decimal limiteMaximo, decimal limiteMinimo)
         {
             this.tipoCombustivelId = tipoCombustivelId;
             this.limiteMaximo = limiteMaximo;
             this.limiteMinimo = limiteMinimo;
-            this.movimentacaoId = movimentacaoId;
+            //this.movimentacaoId = movimentacaoId;
 
             DataBase db = new DataBase();
             db.Bombas.Add(this);
@@ -61,7 +61,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.bombaId + " - Id Tipo Combustivel: " + this.tipoCombustivelId + " - Limite Máximo: " + this.limiteMaximo + " - Limite Mínimo: " + this.limiteMinimo + " - Id Entrada/Saida: " + this.movimentacaoId + "\n" ;
+            return "Id: " + this.bombaId + " - Id Tipo Combustivel: " + this.tipoCombustivelId + " - Limite Máximo: " + this.limiteMaximo + " - Limite Mínimo: " + this.limiteMinimo + " - Id Entrada/Saida: " + "\n" ;
         }
 
         //------------------- CRUD -------------------//
@@ -80,14 +80,14 @@ namespace Model
             return bomba;
         }
 
-        public static Bomba UpdateBomba(int bombaId, int tipoCombustivelId, decimal limiteMaximo, decimal limiteMinimo, int movimentacaoId)
+        public static Bomba UpdateBomba(int bombaId, int tipoCombustivelId, decimal limiteMaximo, decimal limiteMinimo)
         {
             DataBase db = new DataBase();
             Bomba bomba = db.Bombas.Find(bombaId);
             bomba.tipoCombustivelId = tipoCombustivelId;
             bomba.limiteMaximo = limiteMaximo;
             bomba.limiteMinimo = limiteMinimo;
-            bomba.movimentacaoId = movimentacaoId;
+            //bomba.movimentacaoId = movimentacaoId;
             db.SaveChanges();
             return bomba;
         }

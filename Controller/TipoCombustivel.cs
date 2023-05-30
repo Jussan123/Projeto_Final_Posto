@@ -52,11 +52,8 @@ namespace Controller
         public static string EncontraNomeCombustivel(string tipoCombustivelId)
         {
             Model.TipoCombustivel tipo = Model.TipoCombustivel.BuscaTipoCombustivelPorId(int.Parse(tipoCombustivelId));
-            if (tipo == null)
-            {
-                throw new System.Exception("Erro ao encontrar tipo de combustível, tipo de combustível não encontrado");
-            }
-            return tipo.NomeCombustivel;
+            if (tipo == null) throw new System.Exception("Erro ao encontrar tipo de combustível, tipo de combustível não encontrado");
+            return tipo.nomeCombustivel;
         }
 
         public static Model.TipoCombustivel AlteraTipoCombustivel(

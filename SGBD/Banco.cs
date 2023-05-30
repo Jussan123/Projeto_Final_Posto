@@ -65,15 +65,18 @@ namespace Banco
             {
                 entity.HasKey(e => e.movimentacaoId);//chave primária
                 // relacionar entrada/saida com o combustivel / Fornecedor / Loja
-                entity.HasOne(e => e.Combustivel)//relacionamento com a tabela combustivel
+                entity.HasOne(e => e.Bomba)//relacionamento com a tabela combustivel
                 .WithMany()//configurar um relacionamento de "muitos para um" ou "muitos para muitos" entre entidades.
-                .HasForeignKey(e => e.combustivelId);//chave estrangeira
+                .HasForeignKey(e => e.bombaId);//chave estrangeira
                 entity.HasOne(e => e.Fornecedor)
                 .WithMany()
                 .HasForeignKey(e => e.fornecedorId);
                 entity.HasOne(e => e.Loja)
                 .WithMany()
                 .HasForeignKey(e => e.lojaId);
+                entity.HasOne(e => e.Funcionario)
+                .WithMany()
+                .HasForeignKey(e => e.funcionarioId);
             });
 
             modelBuilder.Entity<Bomba>(entity =>

@@ -12,10 +12,13 @@ namespace Controller
 {
     public class Bomba
     {
+        public string tipoCombustivelId { get; set; }
+        public string limiteMaximo { get; set; }
+        public string limiteMinimo { get; set; } 
         public static Model.Bomba CadastrarBomba( // Cadastra uma bomba
-            string TipoCombustivelId, 
-            string LimiteMaximo, 
-            string LimiteMinimo) 
+            string tipoCombustivelId, 
+            string limiteMaximo, 
+            string limiteMinimo) 
             //string MovimentacaoId)
         {
             int tipoCombustivelIdConvert = 0;
@@ -24,9 +27,9 @@ namespace Controller
             //int movimentacaoIdConvert = 0;
             try
             {
-                tipoCombustivelIdConvert = int.Parse(TipoCombustivelId);// identifica o tipo de combustivel
-                limiteMaximoConvert = decimal.Parse(LimiteMaximo);// insere o limite maximo
-                limiteMinimoConvert = decimal.Parse(LimiteMinimo);// insere o limite minimo
+                tipoCombustivelIdConvert = int.Parse(tipoCombustivelId);// identifica o tipo de combustivel
+                limiteMaximoConvert = decimal.Parse(limiteMaximo);// insere o limite maximo
+                limiteMinimoConvert = decimal.Parse(limiteMinimo);// insere o limite minimo
                 //movimentacaoIdConvert = int.Parse(MovimentacaoId);// identifica a movimentação
 
                 Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert);// Cria uma bomba
@@ -61,23 +64,23 @@ namespace Controller
             return bomba;
         }
 
-        public static Model.Bomba AlterarBomba(string bombaId, string TipoCombustivelId, string LimiteMaximo, string LimiteMinimo, string MovimentacaoId)
+        public static Model.Bomba AlterarBomba(string bombaId, string tipoCombustivelId, string limiteMaximo, string limiteMinimo)
         {
             int bombaIdConvert = 0;
             int tipoCombustivelIdConvert = 0;
             decimal limiteMaximoConvert = 0;
             decimal limiteMinimoConvert = 0;
-            int movimentacaoIdConvert = 0;
+            //int movimentacaoIdConvert = 0;
             try
             {
                 bombaIdConvert = int.Parse(bombaId);
-                tipoCombustivelIdConvert = int.Parse(TipoCombustivelId);
-                limiteMaximoConvert = decimal.Parse(LimiteMaximo);
-                limiteMinimoConvert = decimal.Parse(LimiteMinimo);
-                movimentacaoIdConvert = int.Parse(MovimentacaoId);
+                tipoCombustivelIdConvert = int.Parse(tipoCombustivelId);
+                limiteMaximoConvert = decimal.Parse(limiteMaximo);
+                limiteMinimoConvert = decimal.Parse(limiteMinimo);
+                //movimentacaoIdConvert = int.Parse(MovimentacaoId);
 
                 Model.Bomba.BuscaBombaPorId(bombaIdConvert);
-                return Model.Bomba.UpdateBomba(bombaIdConvert, tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, movimentacaoIdConvert);
+                return Model.Bomba.UpdateBomba(bombaIdConvert, tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert);
 
             }
             catch (FormatException ex)

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace View.Fomulario.BombaForm
 {
-    public partial class CadBombaForm : Form
+    public partial class CadBomba : Form
     {
         private Label idLabel;
         private Label capmaxLabel;
@@ -21,7 +21,7 @@ namespace View.Fomulario.BombaForm
         private TextBox capminTextBox;
         private Button gravarButton;
         private Button sairButton;
-        public CadBombaFomr()
+        public CadBomba()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace View.Fomulario.BombaForm
 
             //Configurações do id
             idLabel = new Label();
-            idLabel.Text = "ID: ";
+            idLabel.Text = "ID Combústivel: ";
             idLabel.Location = new Point(20, 30);
             idLabel.Size = new Size(80, 20);
             this.Controls.Add(idLabel);
@@ -91,17 +91,20 @@ namespace View.Fomulario.BombaForm
         }
          private void gravarButton_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            Controller.Bomba bomba = new Controller.Bomba();
-            bomba.bombaId = idTextBox.Text;
-            bomba.capMax = capmaxTextBox.Text;
-            bomba.capMin = capminTextBox.Text;
-            Controller.Bomba.CadastraBomba(bomba.bombaId, bomba.capMax, bomba.capMin);
-            LimpaTela();
-=======
->>>>>>> b2f68549aa4bd42ff393d34cf0920092465bc412
-
-            MessageBox.Show("Criar a função de Gravar!");
+            try
+            {
+                Controller.Bomba bomba = new Controller.Bomba();//Instanciando a classe bomba
+                bomba.tipoCombustivelId = idTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
+                if (bomba.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
+                bomba.limiteMaximo = capmaxTextBox.Text;//Atribuindo o valor do campo capmax ao atributo limiteMaximo
+                bomba.limiteMinimo = capminTextBox.Text;//Atribuindo o valor do campo capmin ao atributo limiteMinimo
+                Controller.Bomba.CadastrarBomba(bomba.tipoCombustivelId, bomba.limiteMaximo, bomba.limiteMinimo);//Chamando o método CadastrarBomba da classe Bomba
+                LimpaTela();//Chamando o método LimpaTela
+            }
+            catch (Exception ex)//Tratamento de exceção
+            {
+                MessageBox.Show(ex.Message);//Exibindo mensagem de erro
+            }
         }
          private void sairButton_Click(object sender, EventArgs e)
         {

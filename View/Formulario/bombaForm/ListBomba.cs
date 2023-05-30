@@ -13,10 +13,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CadBombaForm;
+using View.Fomulario.BombaForm;
+//using CadBombaForm;
 
 
-namespace View.ListBomba
+namespace View.Formulario.bombaForm
 {
     public partial class ListBombaForm : Form
     {
@@ -125,8 +126,8 @@ namespace View.ListBomba
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            CadBombaForm cadbomba = new CadBombaForm();
-            CadBombaForm.Show();
+            CadBomba cadbomba = new CadBomba();
+            cadbomba.ShowDialog();
             //throw new NotImplementedException();
         }
 
