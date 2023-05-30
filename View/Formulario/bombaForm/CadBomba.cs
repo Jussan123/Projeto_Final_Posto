@@ -70,7 +70,7 @@ namespace View.Fomulario.BombaForm
             //Configurando o Campo de texto Capacidade Miníma
             capminTextBox = new TextBox();
             capminTextBox.Location = new Point(100, 60);
-            capminTextBox.Size = new Size(150, 20);
+            capminTextBox.Size = new Size(160, 30 );
             this.Controls.Add(capminTextBox);
 
             //Configurações do botao gravar
