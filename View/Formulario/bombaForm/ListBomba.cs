@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ViewListBomba
+namespace View.Bomba
 {
     public partial class ListBombaForm : Form
     {
@@ -93,40 +93,40 @@ namespace ViewListBomba
 
             //Configuração das colunas do grid
             DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "Bomba";//Lembrar que a exibição é nome + 
+            idColumn.DataPropertyName = "Bomba";//Lembrar que a exibição é o ID 
             idColumn.HeaderText = "Bomba";
             idColumn.Width = 50;
             idColumn.ReadOnly = true;
             bombaDataGridView.Columns.Add(idColumn);
 
-            DataGridViewTextBoxColumn precoColumn = new DataGridViewTextBoxColumn();
-            precoColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            precoColumn.HeaderText = "Nome Combustível";
-            precoColumn.Width = 70;
-            precoColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(precoColumn);
-
-            DataGridViewTextBoxColumn quantidadeColumn = new DataGridViewTextBoxColumn();
-            quantidadeColumn.DataPropertyName = "Cap_Max";
-            quantidadeColumn.HeaderText = "Capacidade Maxima";
-            quantidadeColumn.Width = 80;
-            quantidadeColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(quantidadeColumn);
-
             DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Cap_Min";
-            nomeColumn.HeaderText = "Capacidade Minima";
-            nomeColumn.Width = 90;
+            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
+            nomeColumn.HeaderText = "Nome Combustível";
+            nomeColumn.Width = 70;
             nomeColumn.ReadOnly = true;
             bombaDataGridView.Columns.Add(nomeColumn);
+
+            DataGridViewTextBoxColumn capmaxColumn = new DataGridViewTextBoxColumn();
+            capmaxColumn.DataPropertyName = "Cap_Max";
+            capmaxColumn.HeaderText = "Capacidade Maxima";
+            capmaxColumn.Width = 80;
+            capmaxColumn.ReadOnly = true;
+            bombaDataGridView.Columns.Add(capmaxColumn);
+
+            DataGridViewTextBoxColumn capminColumn = new DataGridViewTextBoxColumn();
+            capminColumn.DataPropertyName = "Cap_Min";
+            capminColumn.HeaderText = "Capacidade Minima";
+            capminColumn.Width = 90;
+            capminColumn.ReadOnly = true;
+            bombaDataGridView.Columns.Add(capminColumn);
 
             this.Controls.Add(bombaDataGridView);
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            FrmNovoAlx alx = new FrmNovoAlx();
-            alx.Show();
+            CadBombaFomr cadbomba = new CadBombaFomr();
+            CadBombaFomr.Show();
             //throw new NotImplementedException();
         }
 
