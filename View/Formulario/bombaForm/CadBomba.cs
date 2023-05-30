@@ -82,7 +82,12 @@ namespace View.Fomulario.BombaForm
 
          private void gravarButton_Click(object sender, EventArgs e)
         {
-            // Autenticar usuário
+            Controller.Bomba bomba = new Controller.Bomba();
+            bomba.bombaId = idTextBox.Text;
+            bomba.capMax = capmaxTextBox.Text;
+            bomba.capMin = capminTextBox.Text;
+            Controller.Bomba.CadastraBomba(bomba.bombaId, bomba.capMax, bomba.capMin);
+            LimpaTela();
 
             MessageBox.Show("Criar a função de Gravar!");
         }
@@ -95,6 +100,13 @@ namespace View.Fomulario.BombaForm
                 this.Close();
                 //Application.Exit();
             }
+        }
+
+        public void LimpaTela()
+        {
+            idTextBox.Text = "";
+            capmaxTextBox.Text = "";
+            capminTextBox.Text = "";
         }
     }
 }

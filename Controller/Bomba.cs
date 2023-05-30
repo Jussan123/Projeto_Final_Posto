@@ -15,21 +15,21 @@ namespace Controller
         public static Model.Bomba CadastrarBomba( // Cadastra uma bomba
             string TipoCombustivelId, 
             string LimiteMaximo, 
-            string LimiteMinimo, 
-            string MovimentacaoId)
+            string LimiteMinimo) 
+            //string MovimentacaoId)
         {
             int tipoCombustivelIdConvert = 0;
             decimal limiteMaximoConvert = 0;
             decimal limiteMinimoConvert = 0;
-            int movimentacaoIdConvert = 0;
+            //int movimentacaoIdConvert = 0;
             try
             {
                 tipoCombustivelIdConvert = int.Parse(TipoCombustivelId);// identifica o tipo de combustivel
                 limiteMaximoConvert = decimal.Parse(LimiteMaximo);// insere o limite maximo
                 limiteMinimoConvert = decimal.Parse(LimiteMinimo);// insere o limite minimo
-                movimentacaoIdConvert = int.Parse(MovimentacaoId);// identifica a movimentação
+                //movimentacaoIdConvert = int.Parse(MovimentacaoId);// identifica a movimentação
 
-                Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, movimentacaoIdConvert);// Cria uma bomba
+                Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert);// Cria uma bomba
                 return bomba;
             }
             catch (FormatException ex)// Erro de formato

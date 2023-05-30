@@ -82,6 +82,16 @@ namespace Controller
             }
         }
 
+        public static Model.Funcionario BuscaFuncionarioPorFuncao(string funcao)
+        {
+            try
+            {
+                return Model.Funcionario.BuscaFuncionarioPorFuncao(funcao);
+            } catch (Exception) {
+                throw new Exception("Erro ao buscar funcionário");
+            }
+        }
+
         public static void ExcluiFuncionario(string funcionarioId)
         {
             try
@@ -107,6 +117,8 @@ namespace Controller
                 return false;
             }
         }
+
+
 
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
