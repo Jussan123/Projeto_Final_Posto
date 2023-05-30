@@ -5,10 +5,9 @@
  * Versão: 1.0
  */
 
- using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using ListarProduto;
 
 namespace View.Fomulario.BombaForm
 {
@@ -22,12 +21,10 @@ namespace View.Fomulario.BombaForm
         private TextBox capminTextBox;
         private Button gravarButton;
         private Button sairButton;
-
         public CadBombaFomr()
         {
             InitializeComponent();
         }
-
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
@@ -57,13 +54,26 @@ namespace View.Fomulario.BombaForm
             capmaxLabel.Size = new Size(80, 20);
             this.Controls.Add(capmaxLabel);
 
-            // Configurando o Campo de texto de nome do Almoxarifado
+            //Configurando o Campo de texto Capacidade Máxima
             capmaxTextBox = new TextBox();
             capmaxTextBox.Location = new Point(100, 60);
             capmaxTextBox.Size = new Size(150, 20);
             this.Controls.Add(capmaxTextBox);
 
-            // Configurações do botao gravar
+            //Configurações de rótulo Capacidade Miníma
+            capminLabel = new Label();
+            capminLabel.Text = "Cap. Miníma: ";
+            capminLabel.Location = new Point(20, 60);
+            capminLabel.Size = new Size(80, 20);
+            this.Controls.Add(capminLabel);
+
+            //Configurando o Campo de texto Capacidade Miníma
+            capminTextBox = new TextBox();
+            capminTextBox.Location = new Point(100, 60);
+            capminTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(capminTextBox);
+
+            //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
             gravarButton.Location = new Point(70, 100);
@@ -71,7 +81,7 @@ namespace View.Fomulario.BombaForm
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
 
-            // Configurações do botão sair
+            //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
             sairButton.Location = new Point(160, 100);
@@ -79,19 +89,20 @@ namespace View.Fomulario.BombaForm
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
         }
-
          private void gravarButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Controller.Bomba bomba = new Controller.Bomba();
             bomba.bombaId = idTextBox.Text;
             bomba.capMax = capmaxTextBox.Text;
             bomba.capMin = capminTextBox.Text;
             Controller.Bomba.CadastraBomba(bomba.bombaId, bomba.capMax, bomba.capMin);
             LimpaTela();
+=======
+>>>>>>> b2f68549aa4bd42ff393d34cf0920092465bc412
 
             MessageBox.Show("Criar a função de Gravar!");
         }
-
          private void sairButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Você realmente deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
