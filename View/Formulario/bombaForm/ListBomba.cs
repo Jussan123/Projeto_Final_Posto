@@ -13,9 +13,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CadBombaForm;
 
 
-namespace View.Bomba
+namespace View.ListBomba
 {
     public partial class ListBombaForm : Form
     {
@@ -30,7 +31,6 @@ namespace View.Bomba
         {
             InitializeComponent();
         }
-
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
@@ -125,8 +125,8 @@ namespace View.Bomba
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            CadBombaFomr cadbomba = new CadBombaFomr();
-            CadBombaFomr.Show();
+            CadBombaForm cadbomba = new CadBombaForm();
+            CadBombaForm.Show();
             //throw new NotImplementedException();
         }
 
