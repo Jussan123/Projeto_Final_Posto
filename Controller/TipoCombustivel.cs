@@ -15,7 +15,8 @@ namespace Controller
         public static Model.TipoCombustivel CadastraTipoCombustivel(
             string nomeCombustivel,
             string descricao,
-            string codigo
+            string codigo,
+            string preco
         )
         {
             try
@@ -23,7 +24,8 @@ namespace Controller
                 Model.TipoCombustivel tipoCombustivel = new Model.TipoCombustivel(
                     nomeCombustivel,
                     descricao,
-                    codigo
+                    codigo,
+                    decimal.Parse(preco)
                 );
                 return tipoCombustivel;
             } catch (Exception) {
@@ -47,11 +49,22 @@ namespace Controller
             return Model.TipoCombustivel.BuscaTipoCombustivelPorId(int.Parse(tipoCombustivelId));
         }
 
+        public static string EncontraNomeCombustivel(string tipoCombustivelId)
+        {
+            Model.TipoCombustivel tipo = Model.TipoCombustivel.BuscaTipoCombustivelPorId(int.Parse(tipoCombustivelId));
+            if (tipo == null)
+            {
+                throw new System.Exception("Erro ao encontrar tipo de combustível, tipo de combustível não encontrado");
+            }
+            return tipo.NomeCombustivel;
+        }
+
         public static Model.TipoCombustivel AlteraTipoCombustivel(
             string tipoCombustivelId,
             string nomeCombustivel,
             string descricao,
-            string codigo
+            string codigo,
+            string preco
         )
         {
             if (Model.TipoCombustivel.BuscaTipoCombustivelPorId(int.Parse(tipoCombustivelId)) == null) throw new System.Exception("Erro ao alterar tipo de combustível, tipo de combustível não encontrado");
@@ -61,7 +74,8 @@ namespace Controller
                     int.Parse(tipoCombustivelId),
                     nomeCombustivel,
                     descricao,
-                    codigo
+                    codigo,
+                    decimal.Parse(preco)
                 );
             } catch (Exception) {
                 throw new System.Exception("Erro ao alterar tipo de combustível");
