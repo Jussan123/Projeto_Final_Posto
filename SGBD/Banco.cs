@@ -86,9 +86,9 @@ namespace Banco
                 entity.HasOne(e => e.TipoCombustivel)
                 .WithMany()
                 .HasForeignKey(e => e.tipoCombustivelId);
-                entity.HasOne(e => e.Movimentacao)
-                .WithMany()
-                .HasForeignKey(e => e.movimentacaoId);
+                //entity.HasOne(e => e.Movimentacao)
+                //.WithMany()
+                //.HasForeignKey(e => e.movimentacaoId);
             });
         }
 

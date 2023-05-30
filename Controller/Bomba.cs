@@ -15,10 +15,12 @@ namespace Controller
         public string tipoCombustivelId { get; set; }
         public string limiteMaximo { get; set; }
         public string limiteMinimo { get; set; } 
+        public string nomeCombustivel { get; set; }
         public static Model.Bomba CadastrarBomba( // Cadastra uma bomba
             string tipoCombustivelId, 
             string limiteMaximo, 
-            string limiteMinimo) 
+            string limiteMinimo,
+            string nomeCombustivel) 
             //string MovimentacaoId)
         {
             int tipoCombustivelIdConvert = 0;
@@ -32,7 +34,7 @@ namespace Controller
                 limiteMinimoConvert = decimal.Parse(limiteMinimo);// insere o limite minimo
                 //movimentacaoIdConvert = int.Parse(MovimentacaoId);// identifica a movimentação
 
-                Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert);// Cria uma bomba
+                Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, nomeCombustivel);// Cria uma bomba
                 return bomba;
             }
             catch (FormatException ex)// Erro de formato
@@ -64,7 +66,7 @@ namespace Controller
             return bomba;
         }
 
-        public static Model.Bomba AlterarBomba(string bombaId, string tipoCombustivelId, string limiteMaximo, string limiteMinimo)
+        public static Model.Bomba AlterarBomba(string bombaId, string tipoCombustivelId, string limiteMaximo, string limiteMinimo, string nomeCombustivel)
         {
             int bombaIdConvert = 0;
             int tipoCombustivelIdConvert = 0;
@@ -80,7 +82,7 @@ namespace Controller
                 //movimentacaoIdConvert = int.Parse(MovimentacaoId);
 
                 Model.Bomba.BuscaBombaPorId(bombaIdConvert);
-                return Model.Bomba.UpdateBomba(bombaIdConvert, tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert);
+                return Model.Bomba.UpdateBomba(bombaIdConvert, tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, nomeCombustivel);
 
             }
             catch (FormatException ex)

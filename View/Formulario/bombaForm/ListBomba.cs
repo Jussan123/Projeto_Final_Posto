@@ -82,6 +82,34 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(sairButton);
 
             //Configurações do grid de Bombas
+            //Data Grid View Jussan
+            DataGridView bombaDataGridView = new DataGridView();
+            bombaDataGridView.Location = new Point(20, 40);
+            bombaDataGridView.Size = new Size(440, 280);
+            //Configura as colunas do grid
+            bombaDataGridView.Columns.Add("bombaId", "Bomba");
+            bombaDataGridView.Columns.Add("nomeCombustivel", "Nome Combustível");
+            bombaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
+            bombaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
+            foreach (var bomba in Controller.Bomba.ListarBombas())
+            {
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nomeCombustivel, bomba.limiteMaximo, bomba.limiteMinimo);
+            }
+            //configura o modo de redimensionamento das linhas e colunas
+            bombaDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //configura a cor das linhas alternadas
+            bombaDataGridView.RowsDefaultCellStyle.BackColor = Color.White;
+            bombaDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Aquamarine;
+            //configura a fonte e o tamanho do texto
+            bombaDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
+            bombaDataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+            //configura a altura das linhas do grid
+            bombaDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            this.Controls.Add(bombaDataGridView);
+
+
+/* DataGridView montado pelo Erich
+            //Configurações do grid de Bombas
             bombaDataGridView = new DataGridView();
             bombaDataGridView.Location = new Point(20, 40);
             bombaDataGridView.Size = new Size(440, 280);
@@ -120,8 +148,9 @@ namespace View.Formulario.bombaForm
             capminColumn.Width = 90;
             capminColumn.ReadOnly = true;
             bombaDataGridView.Columns.Add(capminColumn);
-
             this.Controls.Add(bombaDataGridView);
+*/
+
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
