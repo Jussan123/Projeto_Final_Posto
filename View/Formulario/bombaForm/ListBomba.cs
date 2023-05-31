@@ -24,7 +24,7 @@ namespace View.Formulario.bombaForm
         private Button novoButton;
         private Button alterarButton;
         private Button excluirButton;
-        private Button cancelarButton;
+        private Button refreshButton;
         private Button sairButton;
         private DataGridView bombaDataGridView;
 
@@ -66,12 +66,12 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(excluirButton);
 
             //Configurações do botão de cancelar
-            cancelarButton = new Button();
-            cancelarButton.Text = "Cancelar";
-            cancelarButton.Location = new Point(290, 340);
-            cancelarButton.Size = new Size(80, 30);
-            cancelarButton.Click += new EventHandler(CancelarButton_Click);
-            this.Controls.Add(cancelarButton);
+            refreshButton = new Button();
+            refreshButton.Text = "Cancelar";
+            refreshButton.Location = new Point(290, 340);
+            refreshButton.Size = new Size(80, 30);
+            refreshButton.Click += new EventHandler(RefreshButton_Click);
+            this.Controls.Add(refreshButton);
 
             //Configurações do botão de sair
             sairButton = new Button();
@@ -155,23 +155,28 @@ namespace View.Formulario.bombaForm
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            CadBomba cadbomba = new CadBomba();
-            cadbomba.ShowDialog();
+            AbrirForm(new CadBomba());
+            this.ListaBomba();
             //throw new NotImplementedException();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
+            AbrirForm(new FormEditaBomba());
+            this.ListaBomba();
             //Adicionar Ação/código para alterar uma bomba selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
+            AbrirForm(new FormExcluiBomba());
+            this.ListaBomba();
             //Adicionar Ação/código para excluir uma bomba selecionada
         }
 
-        private void CancelarButton_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
+            this.ListaBomba();
             //Adicionar Ação/código para cancelar a operação atual
         }
 
@@ -182,6 +187,19 @@ namespace View.Formulario.bombaForm
             {
                 this.Close();
                 //Application.Exit();
+            }
+        }
+
+        public void AbrirForm(Form form){
+            form.ShowDialog();
+        }
+
+        public void ListaBomba()
+        {
+            dataGridView.Rows.Clear();
+            foreach (var bomba in Controller.Bomba.ListarBombas())
+            {
+                dataGridView.Rows.Add(bomba.bombaId, bomba.nomeCombustivel, bomba.limiteMaximo, bomba.limiteMinimo);
             }
         }
     }
