@@ -14,12 +14,12 @@ namespace View.Fomulario.BombaForm
     public partial class CadBomba : Form
     {
         private Label tipoCombustivelIdLabel;
-        private Label capmaxLabel;
-        private Label capminLabel;
+        private Label limiteMaximoLabel;
+        private Label limiteMinimoLabel;
         private Label nomeCombustivelLabel;
         private TextBox tipoCombustivelIdTextBox;
-        private TextBox capmaxTextBox;
-        private TextBox capminTextBox;
+        private TextBox limiteMaximoTextBox;
+        private TextBox limiteMinimoTextBox;
         private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
         private Button sairButton;
@@ -50,30 +50,30 @@ namespace View.Fomulario.BombaForm
             this.Controls.Add(tipoCombustivelIdTextBox);
 
             //Configurações de rótulo Capacidade Máxima
-            capmaxLabel = new Label();
-            capmaxLabel.Text = "Cap. Máxima: ";
-            capmaxLabel.Location = new Point(20, 60);
-            capmaxLabel.Size = new Size(80, 20);
-            this.Controls.Add(capmaxLabel);
+            limiteMaximoLabel = new Label();
+            limiteMaximoLabel.Text = "Cap. Máxima: ";
+            limiteMaximoLabel.Location = new Point(20, 60);
+            limiteMaximoLabel.Size = new Size(80, 20);
+            this.Controls.Add(limiteMaximoLabel);
             
             //Configurando o Campo de texto Capacidade Máxima
-            capmaxTextBox = new TextBox();
-            capmaxTextBox.Location = new Point(100, 60);
-            capmaxTextBox.Size = new Size(150, 20);
-            this.Controls.Add(capmaxTextBox);
+            limiteMaximoTextBox = new TextBox();
+            limiteMaximoTextBox.Location = new Point(100, 60);
+            limiteMaximoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(limiteMaximoTextBox);
 
             //Configurações de rótulo Capacidade Miníma
-            capminLabel = new Label();
-            capminLabel.Text = "Cap. Miníma: ";
-            capminLabel.Location = new Point(20, 60);
-            capminLabel.Size = new Size(80, 20);
-            this.Controls.Add(capminLabel);
+            limiteMinimoLabel = new Label();
+            limiteMinimoLabel.Text = "Cap. Miníma: ";
+            limiteMinimoLabel.Location = new Point(20, 60);
+            limiteMinimoLabel.Size = new Size(80, 20);
+            this.Controls.Add(limiteMinimoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
-            capminTextBox = new TextBox();
-            capminTextBox.Location = new Point(100, 60);
-            capminTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(capminTextBox);
+            limiteMinimoTextBox = new TextBox();
+            limiteMinimoTextBox.Location = new Point(100, 60);
+            limiteMinimoTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Nome do Combustivel
             nomeCombustivelLabel = new Label();
@@ -111,8 +111,8 @@ namespace View.Fomulario.BombaForm
                 Controller.Bomba bomba = new Controller.Bomba();//Instanciando a classe bomba
                 bomba.tipoCombustivelId = tipoCombustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
                 if (bomba.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                bomba.limiteMaximo = capmaxTextBox.Text;//Atribuindo o valor do campo capmax ao atributo limiteMaximo
-                bomba.limiteMinimo = capminTextBox.Text;//Atribuindo o valor do campo capmin ao atributo limiteMinimo
+                bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
+                bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
                 Controller.Bomba.CadastrarBomba(bomba.tipoCombustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.nomeCombustivel);//Chamando o método CadastrarBomba da classe Bomba
                 LimpaTela();//Chamando o método LimpaTela
             }
@@ -134,8 +134,8 @@ namespace View.Fomulario.BombaForm
         public void LimpaTela()
         {
             tipoCombustivelIdTextBox.Text = "";
-            capmaxTextBox.Text = "";
-            capminTextBox.Text = "";
+            limiteMaximoTextBox.Text = "";
+            limiteMinimoTextBox.Text = "";
             nomeCombustivelTextBox.Text = "";
         }
     }
@@ -144,13 +144,13 @@ namespace View.Fomulario.BombaForm
     {
         private Label bombaIdLabel;
         private Label tipoCombustivelIdLabel;
-        private Label capmaxLabel;
-        private Label capminLabel;
+        private Label limiteMaximoLabel;
+        private Label limiteMinimoLabel;
         private Label nomeCombustivelLabel;
         private ComboBox bombaIdCb;
         private ComboBox tipoCombustivelIdCb;
-        private TextBox capmaxTextBox;
-        private TextBox capminTextBox;
+        private TextBox limiteMaximoTextBox;
+        private TextBox limiteMinimoTextBox;
         private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
         private Button sairButton;
@@ -172,7 +172,7 @@ namespace View.Fomulario.BombaForm
             this.Controls.Add(bombaIdLabel);
 
             //Configurações do campo texto de id
-            bombaIdCb = new TextBox();
+            bombaIdCb = new ComboBox();
             bombaIdCb.Location = new Point(100, 30);
             bombaIdCb.Size = new Size(150, 20);
             List<Model.Bomba> listaBombas = new  List<Model.Bomba>();
@@ -201,36 +201,36 @@ namespace View.Fomulario.BombaForm
             this.Controls.Add(tipoCombustivelIdLabel);
 
             //Configurações do campo texto de tipoCombustivelId
-            tipoCombustivelIdCb = new TextBox();
+            tipoCombustivelIdCb = new ComboBox();
             tipoCombustivelIdCb.Location = new Point(100, 60);
             tipoCombustivelIdCb.Size = new Size(150, 20);
             this.Controls.Add(tipoCombustivelIdCb);
 
             //Configurações de rótulo Capacidade Máxima
-            capmaxLabel = new Label();
-            capmaxLabel.Text = "Cap. Máxima: ";
-            capmaxLabel.Location = new Point(20, 90);
-            capmaxLabel.Size = new Size(80, 20);
-            this.Controls.Add(capmaxLabel);
+            limiteMaximoLabel = new Label();
+            limiteMaximoLabel.Text = "Cap. Máxima: ";
+            limiteMaximoLabel.Location = new Point(20, 90);
+            limiteMaximoLabel.Size = new Size(80, 20);
+            this.Controls.Add(limiteMaximoLabel);
 
             //Configurando o Campo de texto Capacidade Máxima
-            capmaxTextBox = new TextBox();
-            capmaxTextBox.Location = new Point(100, 90);
-            capmaxTextBox.Size = new Size(150, 20);
-            this.Controls.Add(capmaxTextBox);
+            limiteMaximoTextBox = new TextBox();
+            limiteMaximoTextBox.Location = new Point(100, 90);
+            limiteMaximoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(limiteMaximoTextBox);
 
             //Configurações de rótulo Capacidade Mínima
-            capminLabel = new Label();
-            capminLabel.Text = "Cap. Mínima: ";
-            capminLabel.Location = new Point(20, 120);
-            capminLabel.Size = new Size(80, 20);
-            this.Controls.Add(capminLabel);
+            limiteMinimoLabel = new Label();
+            limiteMinimoLabel.Text = "Cap. Mínima: ";
+            limiteMinimoLabel.Location = new Point(20, 120);
+            limiteMinimoLabel.Size = new Size(80, 20);
+            this.Controls.Add(limiteMinimoLabel);
 
             //Configurando o Campo de texto Capacidade Mínima
-            capminTextBox = new TextBox();
-            capminTextBox.Location = new Point(100, 120);
-            capminTextBox.Size = new Size(150, 20);
-            this.Controls.Add(capminTextBox);
+            limiteMinimoTextBox = new TextBox();
+            limiteMinimoTextBox.Location = new Point(100, 120);
+            limiteMinimoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Nome do Combustível
             nomeCombustivelLabel = new Label();
@@ -281,14 +281,14 @@ namespace View.Fomulario.BombaForm
                     MessageBox.Show("Selecione uma bomba");
                     return;
                 }
-                bomba.bombaId = bombaSelecionada.bombaId.Text;
+                bomba.bombaId = bombaSelecionada.bombaId.ToString();
                 bomba.tipoCombustivelId = tipoCombustivelIdCb.Text;
-                bomba.capmax = capmaxTextBox.Text;
-                bomba.capmin = capminTextBox.Text;
+                bomba.limiteMaximo = limiteMaximoTextBox.Text;
+                bomba.limiteMinimo = limiteMinimoTextBox.Text;
                 bomba.nomeCombustivel = nomeCombustivelTextBox.Text;
 
                 Controller.Bomba controllerBomba = new Controller.Bomba();
-                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.tipoCombustivelId, bomba.capmax, bomba.capmin, bomba.nomeCombustivel);
+                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.tipoCombustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.nomeCombustivel);
                 MessageBox.Show("Bomba alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -300,8 +300,8 @@ namespace View.Fomulario.BombaForm
         {
             bombaIdCb.Text = "";
             tipoCombustivelIdCb.Text = "";
-            capmaxTextBox.Text = "";
-            capminTextBox.Text = "";
+            limiteMaximoTextBox.Text = "";
+            limiteMinimoTextBox.Text = "";
             nomeCombustivelTextBox.Text = "";
         }
     }
@@ -376,15 +376,19 @@ namespace View.Fomulario.BombaForm
                     MessageBox.Show("Selecione uma bomba");
                     return;
                 }
-                bomba.bombaId = bombaSelecionada.bombaId.Text;
+                bomba.bombaId = bombaSelecionada.bombaId.ToString();
 
-                Controller.Bomba controllerBomba = new Controller.Bomba();
-                Controller.Bomba.ExcluirBomba(bomba.bombaId);
+                bomba.DeletaBomba(bomba.bombaId);
                 MessageBox.Show("Bomba excluída com sucesso!");
             } catch (Exception ex)
             {
                 MessageBox.Show("Erro ao excluir bomba: " + ex.Message);
             }
+        }
+
+        public void LimpaTela()
+        {
+            bombaIdCb.Text = "";
         }
     }
 }
