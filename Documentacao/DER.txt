@@ -11,14 +11,15 @@ fornecedorId int [pk]
 nome varchar(255)
 contato varchar(20)
 endereco varchar(255)
+movimentacaoId int [ref: < Movimentacao.movimentacaoId]
+//fornecimentoId int [ref: < Fornecimento.fornecimentoId]
 }
 
-Table tipoCombustivel {
-tipoCombustivelId int [pk]
-nomeCombustivel varchar(255)
-descricao varchar(255)
-codigo varchar(255)
-}
+//Table Fornecimento {
+//fornecimentoId int [pk]
+//combustivelId int [ref: > Combustivel.combustivelId]
+//}
+
 
 Table Funcionario {
 funcionarioId int [pk]
@@ -30,9 +31,11 @@ lojaId int [ref: > Lojas.lojaId]
 
 Table Combustivel {
 combustivelId int [pk]
-quantidadeEstoque decimal(10,3)
-preco decimal(10,2)
-tipoCombustivelId int [ref: > tipoCombustivel.tipoCombustivelId]
+nome varchar(50)
+sigla varchar(04)
+descricao varchar(100)
+precoCompra decimal(10,2)
+precoVenda decimal(10,2)
 }
 
 Table Movimentacao {
@@ -40,15 +43,15 @@ movimentacaoId int [pk]
 quantidade decimal(10,3)
 tipoOperacao enum('entrada', 'saida')
 dataHora datetime
-combustivelId int [ref: > Combustivel.combustivelId]
-fornecedorId int [ref: > Fornecedor.fornecedorId]
+valor decimal(10,2)
 lojaId int [ref: > Lojas.lojaId]
 }
 
 Table Bomba {
 bombaId int [pk]
-tipoCombustivelId int [ref: > tipoCombustivel.tipoCombustivelId]
+combustivelId int [ref: > Combustivel.combustivelId]
 limiteMaximo decimal(10,3)
 limiteMinimo decimal(10,3)
 movimentacaoId int [ref: > Movimentacao.movimentacaoId]
+lojaId int [ref: > Lojas.lojaId]
 }
