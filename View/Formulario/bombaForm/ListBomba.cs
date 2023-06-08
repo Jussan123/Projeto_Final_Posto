@@ -17,7 +17,7 @@ using View.Fomulario.BombaForm;
 //using CadBombaForm;
 
 
-namespace View.Formulario.bombaForm
+namespace View.Formulario.ListBombaForm
 {
     public partial class ListBombaForm : Form
     {

@@ -8,7 +8,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.CombustivelForm
+namespace View.Fomulario.CadCombustivelForm
 {
     public partial class CadCombustivel : Form
     {

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ViewListCombustivel
+namespace View.Fomulario.ListCombustivel
 {
     public partial class ListCombustivelForm : Form
     {

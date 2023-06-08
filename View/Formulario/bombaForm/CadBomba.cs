@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.BombaForm
+namespace View.Fomulario.CadBombaForm
 {
     public partial class CadBomba : Form
     {
