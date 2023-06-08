@@ -1,0 +1,29 @@
+Modelo Entidade-Relacionamento (MER)
+
+Entidades:
+Lojas;
+Funcionário;
+Movimentação;
+Fornecedores;
+Fornecimento;
+Combustivel;
+Bomba;
+
+
+Atributos:
+Lojas: lojaId, nome, endereco, telefone, email;
+Funcionário: funcionarioId, nome, senha, funcao, lojaId;
+Movimentacao: movimentacaoId, quantidade, tipo_operacao, data_hora, forncedorId, lojaId;
+Fornecedores: fornecedorId, nome, contato, endereco, fornecimentoId;
+Combustivel: combustivelId,  nome, sigla, descricao, preco;
+Bomba: bombaId, combustivelId, limiteMaximo, limiteMinimo, movimentacaoId, lojaId;
+
+Relacionamentos:
+Lojas tem Funcionario;
+Lojas tem Bomba;
+Lojas tem Movimentcao;
+Movimentcao tem Bomba;
+Fornecimento tem Fornecedor;
+Fornecimento tem Combustivel;
+Fornecedor tem Movimentacao;
+Bomba tem Combustivel;
