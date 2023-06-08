@@ -107,12 +107,12 @@ namespace View.Fomulario.CombustivelForm
         {
             try
             {
-                Controller.Bomba bomba = new Controller.Bomba();//Instanciando a classe bomba
-                bomba.id = idTextBox.Text;//Atribuindo o valor do campo id ao atributo id
-                if (bomba.id == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                bomba.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome ao atributo nome
-                //bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Bomba.CadastrarBomba(bomba.id, bomba.nome, bomba.limiteMinimo, bomba.nomeCombustivel);//Chamando o método CadastrarBomba da classe Bomba
+                Controller.Combustivel combustivel = new Controller.Combustivel();//Instanciando a classe combustivel
+                combustivel.id = idTextBox.Text;//Atribuindo o valor do campo id ao atributo id
+                if (combustivel.id == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
+                combustivel.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome ao atributo nome
+                //combustivel.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
+                Controller.Combustivel.CadastrarCombustivel(combustivel.id, combustivel.nome, combustivel.limiteMinimo, combustivel.nomeCombustivel);//Chamando o método Cadastrarcombustivel da classe combustivel
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -139,14 +139,14 @@ namespace View.Fomulario.CombustivelForm
         }
     }
 
-    public class FormEditaBomba : Form
+    public class FormEditaCombustivel : Form
     {
-        private Label bombaIdLabel;
+        private Label combustivelIdLabel;
         private Label idLabel;
         //private Label nomeLabel;
         //private Label limiteMinimoLabel;
         private Label nomeCombustivelLabel;
-        private ComboBox bombaIdCb;
+        private ComboBox combustivelIdCb;
         private ComboBox idCb;
         private TextBox nomeTextBox;
         //private TextBox limiteMinimoTextBox;
@@ -158,31 +158,31 @@ namespace View.Fomulario.CombustivelForm
         {
             //Configuração da janela do formulário
             this.ClientSize = new System.Drawing.Size(300,400);
-            this.Text = "Edição de Bomba";
+            this.Text = "Edição de combustivel";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
             //Configurações do id
-            bombaIdLabel = new Label();
-            bombaIdLabel.Text = "ID Bomba: ";
-            bombaIdLabel.Location = new Point(20, 30);
-            bombaIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(bombaIdLabel);
+            combustivelIdLabel = new Label();
+            combustivelIdLabel.Text = "ID combustivel: ";
+            combustivelIdLabel.Location = new Point(20, 30);
+            combustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelIdLabel);
 
             //Configurações do campo texto de id
-            bombaIdCb = new ComboBox();
-            bombaIdCb.Location = new Point(100, 30);
-            bombaIdCb.Size = new Size(150, 20);
-            List<Model.Bomba> listaBombas = new  List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            combustivelIdCb = new ComboBox();
+            combustivelIdCb.Location = new Point(100, 30);
+            combustivelIdCb.Size = new Size(150, 20);
+            List<Model.Combustivel> listaCombustiveis = new  List<Model.Combustivel>();
+            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
             {
-                bombaIdCb.Items.Add(bomba);
+                CombustivelIdCb.Items.Add(combustivel);
             }
-            bombaIdCb.DisplayMember = "Id";
-            bombaIdCb.ValueMember = "Id";
-            bombaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(bombaIdCb);
+            combustivelIdCb.DisplayMember = "Id";
+            combustivelIdCb.ValueMember = "Id";
+            combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(combustivelIdCb);
 
             //Configurações do id
             idLabel = new Label();
@@ -250,7 +250,7 @@ namespace View.Fomulario.CombustivelForm
             gravarButton.Location = new Point(20, 180);
             gravarButton.Size = new Size(80, 20);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
-                SalvaBomba();
+                SalvaCombustivel();
                 LimpaTela();
             };
             this.Controls.Add(gravarButton);
@@ -264,40 +264,40 @@ namespace View.Fomulario.CombustivelForm
             this.Controls.Add(sairButton);
         }
         
-        public FormEditaBomba()
+        public FormEditaCombustivel()
         {
             InitializeComponent();
         }
 
-        public void SalvaBomba()
+        public void SalvaCombustivel()
         {
             try
             {
-                Controller.Bomba bomba = new Controller.Bomba();
-                var bombaSelecionada = (Controller.Bomba) bombaIdCb.SelectedItem;
-                if (bombaSelecionada == null)
+                Controller.Combustivel combustivel = new Controller.Combustivel();
+                var combustivelSelecionada = (Controller.Combustivel) combustivelIdCb.SelectedItem;
+                if (combustivelSelecionada == null)
                 {
-                    MessageBox.Show("Selecione uma bomba");
+                    MessageBox.Show("Selecione uma combustivel");
                     return;
                 }
-                bomba.bombaId = bombaSelecionada.bombaId.ToString();
-                bomba.id = idCb.Text;
-                bomba.nome = nomeTextBox.Text;
-                //bomba.limiteMinimo = limiteMinimoTextBox.Text;
-                bomba.nomeCombustivel = nomeCombustivelTextBox.Text;
+                combustivel.combustivelId = combustivelSelecionada.combustivelId.ToString();
+                combustivel.id = idCb.Text;
+                combustivel.nome = nomeTextBox.Text;
+                //combustivel.limiteMinimo = limiteMinimoTextBox.Text;
+                combustivel.nomeCombustivel = nomeCombustivelTextBox.Text;
 
-                Controller.Bomba controllerBomba = new Controller.Bomba();
-                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.id, bomba.nome, bomba.limiteMinimo, bomba.nomeCombustivel);
-                MessageBox.Show("Bomba alterada com sucesso!");
+                Controller.Combustivel controllerCombustivel = new Controller.Combustivel();
+                Controller.Combustivel.AlterarCombustivel(combustivel.combustivelId, combustivel.id, combustivel.nome, combustivel.limiteMinimo, combustivel.nomeCombustivel);
+                MessageBox.Show("combustivel alterada com sucesso!");
             } catch (Exception ex)
             {
-                MessageBox.Show("Erro ao alterar bomba: " + ex.Message);
+                MessageBox.Show("Erro ao alterar combustivel: " + ex.Message);
             }
         }
         
         public void LimpaTela()
         {
-            bombaIdCb.Text = "";
+            combustivelIdCb.Text = "";
             idCb.Text = "";
             nomeTextBox.Text = "";
             //limiteMinimoTextBox.Text = "";
@@ -305,39 +305,39 @@ namespace View.Fomulario.CombustivelForm
         }
     }
 
-    public class FormExcluiBomba : Form
+    public class FormExcluiCombustivel : Form
     {
-        private Label bombaIdLabel;
-        private ComboBox bombaIdCb;
+        private Label combustivelIdLabel;
+        private ComboBox combustivelIdCb;
         private Button excluirButton;
         private Button sairButton;
 
         private void InitializeComponent()
         {
-            this.Text = "Excluir Bomba";
+            this.Text = "Excluir combustivel";
             this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            //Configurações do rótulo bombaId
-            bombaIdLabel = new Label();
-            bombaIdLabel.Text = "ID Bomba: ";
-            bombaIdLabel.Location = new Point(20, 30);
-            bombaIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(bombaIdLabel);
+            //Configurações do rótulo combustivelId
+            combustivelIdLabel = new Label();
+            combustivelIdLabel.Text = "ID combustivel: ";
+            combustivelIdLabel.Location = new Point(20, 30);
+            combustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelIdLabel);
 
-            //Configurações do campo texto de bombaId
-            bombaIdCb = new ComboBox();
-            bombaIdCb.Location = new Point(100, 30);
-            bombaIdCb.Size = new Size(150, 20);
-            List<Model.Bomba> listaBombas = new  List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            //Configurações do campo texto de combustivelId
+            combustivelIdCb = new ComboBox();
+            combustivelIdCb.Location = new Point(100, 30);
+            combustivelIdCb.Size = new Size(150, 20);
+            List<Model.Combustivel> listaCombustiveis = new  List<Model.Combustivel>();
+            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
             {
-                bombaIdCb.Items.Add(bomba);
+                combustivelIdCb.Items.Add(combustivel);
             }
-            bombaIdCb.DisplayMember = "Id";
-            bombaIdCb.ValueMember = "Id";
-            bombaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(bombaIdCb);
+            combustivelIdCb.DisplayMember = "Id";
+            combustivelIdCb.ValueMember = "Id";
+            combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(combustivelIdCb);
 
             //Configurações do botão Excluir
             excluirButton = new Button();
@@ -345,7 +345,7 @@ namespace View.Fomulario.CombustivelForm
             excluirButton.Location = new Point(20, 60);
             excluirButton.Size = new Size(80, 20);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
-                ExcluiBomba();
+                ExcluiCombustivel();
                 LimpaTela();
             };
             this.Controls.Add(excluirButton);
@@ -359,35 +359,35 @@ namespace View.Fomulario.CombustivelForm
             this.Controls.Add(sairButton);
         }
 
-        public FormExcluiBomba()
+        public FormExcluiCombustivel()
         {
             InitializeComponent();
         }
 
-        public void ExcluiBomba()
+        public void ExcluiCombustivel()
         {
             try
             {
-                Controller.Bomba bomba = new Controller.Bomba();
-                var bombaSelecionada = (Controller.Bomba) bombaIdCb.SelectedItem;
-                if (bombaSelecionada == null)
+                Controller.Combustivel combustivel = new Controller.Combustivel();
+                var combustivelSelecionada = (Controller.Combustivel) combustivelIdCb.SelectedItem;
+                if (combustivelSelecionada == null)
                 {
-                    MessageBox.Show("Selecione uma bomba");
+                    MessageBox.Show("Selecione uma combustivel");
                     return;
                 }
-                bomba.bombaId = bombaSelecionada.bombaId.ToString();
+                combustivel.combustivelId = combustivelSelecionada.combustivelId.ToString();
 
-                bomba.DeletaBomba(bomba.bombaId);
-                MessageBox.Show("Bomba excluída com sucesso!");
+                combustivel.DeletaCombustivel(combustivel.combustivelId);
+                MessageBox.Show("combustivel excluída com sucesso!");
             } catch (Exception ex)
             {
-                MessageBox.Show("Erro ao excluir bomba: " + ex.Message);
+                MessageBox.Show("Erro ao excluir combustivel: " + ex.Message);
             }
         }
 
         public void LimpaTela()
         {
-            bombaIdCb.Text = "";
+            combustivelIdCb.Text = "";
         }
     }
 }

@@ -15,18 +15,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ViewListBomba
+namespace ViewListCombustivel
 {
-    public partial class ListBombaForm : Form
+    public partial class ListCombustivelForm : Form
     {
         private Button novoButton;
         private Button alterarButton;
         private Button excluirButton;
         private Button cancelarButton;
         private Button sairButton;
-        private DataGridView bombaDataGridView;
+        private DataGridView combustivelDataGridView;
 
-        public ListBombaForm()
+        public ListCombustivelForm()
         {
             InitializeComponent();
         }
@@ -35,7 +35,7 @@ namespace ViewListBomba
         {
             // Configurações da janela do formulário
             this.ClientSize = new System.Drawing.Size(500, 400);
-            this.Text = "Listar Bombas";
+            this.Text = "Listar Combustiveis";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -80,47 +80,47 @@ namespace ViewListBomba
             sairButton.Click += new EventHandler(SairButton_Click);
             this.Controls.Add(sairButton);
 
-            //Configurações do grid de Bombas
-            bombaDataGridView = new DataGridView();
-            bombaDataGridView.Location = new Point(20, 40);
-            bombaDataGridView.Size = new Size(440, 280);
-            bombaDataGridView.AllowUserToAddRows = false;
-            bombaDataGridView.AllowUserToDeleteRows = false;
-            bombaDataGridView.ReadOnly = true;
-            bombaDataGridView.MultiSelect = false;
-            bombaDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            bombaDataGridView.AutoGenerateColumns = false;
+            //Configurações do grid de combustivels
+            combustivelDataGridView = new DataGridView();
+            combustivelDataGridView.Location = new Point(20, 40);
+            combustivelDataGridView.Size = new Size(440, 280);
+            combustivelDataGridView.AllowUserToAddRows = false;
+            combustivelDataGridView.AllowUserToDeleteRows = false;
+            combustivelDataGridView.ReadOnly = true;
+            combustivelDataGridView.MultiSelect = false;
+            combustivelDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            combustivelDataGridView.AutoGenerateColumns = false;
 
             //Configuração das colunas do grid
             DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "Bomba";//Lembrar que a exibição é nome + 
-            idColumn.HeaderText = "Bomba";
+            idColumn.DataPropertyName = "combustivel";//Lembrar que a exibição é nome + 
+            idColumn.HeaderText = "combustivel";
             idColumn.Width = 50;
             idColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(idColumn);
+            combustivelDataGridView.Columns.Add(idColumn);
 
             DataGridViewTextBoxColumn precoColumn = new DataGridViewTextBoxColumn();
             precoColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
             precoColumn.HeaderText = "Nome Combustível";
             precoColumn.Width = 70;
             precoColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(precoColumn);
+            combustivelDataGridView.Columns.Add(precoColumn);
 
             DataGridViewTextBoxColumn quantidadeColumn = new DataGridViewTextBoxColumn();
             quantidadeColumn.DataPropertyName = "Cap_Max";
             quantidadeColumn.HeaderText = "Capacidade Maxima";
             quantidadeColumn.Width = 80;
             quantidadeColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(quantidadeColumn);
+            combustivelDataGridView.Columns.Add(quantidadeColumn);
 
             DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
             nomeColumn.DataPropertyName = "Cap_Min";
             nomeColumn.HeaderText = "Capacidade Minima";
             nomeColumn.Width = 90;
             nomeColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(nomeColumn);
+            combustivelDataGridView.Columns.Add(nomeColumn);
 
-            this.Controls.Add(bombaDataGridView);
+            this.Controls.Add(combustivelDataGridView);
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -132,12 +132,12 @@ namespace ViewListBomba
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            //Adicionar Ação/código para alterar uma bomba selecionada
+            //Adicionar Ação/código para alterar uma combustivel selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
-            //Adicionar Ação/código para excluir uma bomba selecionada
+            //Adicionar Ação/código para excluir uma combustivel selecionada
         }
 
         private void CancelarButton_Click(object sender, EventArgs e)
