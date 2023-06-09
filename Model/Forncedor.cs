@@ -16,16 +16,19 @@ namespace Model
         public string nome { get; set; }
         public string contato { get; set; }
         public string endereco { get; set; }
+        public int movimentacaoId { get; set; }
+        public Movimentacao movimentacao { get; set; }
 
         public Fornecedor()
         {
         }
 
-        public Fornecedor(string nome, string contato, string endereco)
+        public Fornecedor(string nome, string contato, string endereco, int movimentacaoId)
         {
             this.nome = nome;
             this.contato = contato;
             this.endereco = endereco;
+            this.movimentacaoId = movimentacaoId;
 
             DataBase db = new DataBase();
             db.Fornecedores.Add(this);
@@ -57,7 +60,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.fornecedorId + " - nome: " + this.nome + " - contato: " + this.contato + " - Endereço: " + this.endereco + "\n";
+            return "Id: " + this.fornecedorId + " - nome: " + this.nome + " - contato: " + this.contato + " - Endereço: " + this.endereco + " - Movimentacao: " + this.movimentacaoId + "\n";
         }
 
         //------------------- CRUD -------------------//
@@ -75,13 +78,14 @@ namespace Model
             return db.Fornecedores.Find(fornecedorId);
         }
 
-        public static Fornecedor UpdateFornecedor(int fornecedorId, string nome, string contato, string endereco)
+        public static Fornecedor UpdateFornecedor(int fornecedorId, string nome, string contato, string endereco, int movimentacaoId)
         {
             DataBase db = new DataBase();
             Fornecedor fornecedor = db.Fornecedores.Find(fornecedorId);
             fornecedor.nome = nome;
             fornecedor.contato = contato;
             fornecedor.endereco = endereco;
+            fornecedor.movimentacaoId = movimentacaoId;
             db.SaveChanges();
             return fornecedor;
         }

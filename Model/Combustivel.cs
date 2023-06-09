@@ -12,20 +12,23 @@ namespace Model
     public class Combustivel
     {
         public int combustivelId { get; set; }
-        public int tipocombustivelId { get; set; }
-        public TipoCombustivel tipoCombustivel { get; set; }
-        public decimal quantidadeEstoque { get; set; }
-        public decimal preco { get; set; }
+        public string nome { get; set; }
+        public string sigla { get; set; }
+        public string descricao { get; set; }
+        public decimal precoCompra { get; set; }
+        public decimal precoVenda { get; set; }
 
         public Combustivel()
         {
         }
 
-        public Combustivel(int tipocombustivelId, decimal quantidadeEstoque, decimal preco)
+    public Combustivel(string nome, string sigla, string descricao, decimal precoCompra, decimal precoVenda)
         {
-            this.tipocombustivelId = tipocombustivelId;
-            this.quantidadeEstoque = quantidadeEstoque;
-            this.preco = preco;
+            this.nome = nome;
+            this.sigla = sigla;
+            this.descricao = descricao;
+            this.precoCompra = precoCompra;
+            this.precoVenda = precoVenda;
 
             DataBase db = new DataBase();
             db.Combustiveis.Add(this);
@@ -57,7 +60,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.combustivelId + " - Id Tipo Combustivel: " + this.tipocombustivelId + " - Quantidade Estoque: " + this.quantidadeEstoque + " - Preço: " + this.preco + "\n";
+            return "Combustivel: " + this.nome + " - sigla: " + this.sigla + " - descricao: " + this.descricao + " - Valor Compra R$ " + this.precoCompra + " - Valor Venda R$ " + this.precoVenda + " \n";
         }
 
         //------------------- CRUD -------------------//
@@ -76,13 +79,15 @@ namespace Model
             return combustivel;
         }
 
-        public static Combustivel UpdateCombustivel(int combustivelId, int tipocombustivelId, decimal quantidadeEstoque, decimal preco)
+        public static Combustivel UpdateCombustivel(int combustivelId, string nome, string sigla, string descricao, decimal precoCompra, decimal precoVenda)
         {
             DataBase db = new DataBase();
             Combustivel combustivel = db.Combustiveis.Find(combustivelId);
-            combustivel.tipocombustivelId = tipocombustivelId;
-            combustivel.quantidadeEstoque = quantidadeEstoque;
-            combustivel.preco = preco;
+            combustivel.nome = nome;
+            combustivel.sigla = sigla;
+            combustivel.descricao = descricao;
+            combustivel.precoCompra = precoCompra;
+            combustivel.precoVenda = precoVenda;
             db.SaveChanges();
             return combustivel;
         }

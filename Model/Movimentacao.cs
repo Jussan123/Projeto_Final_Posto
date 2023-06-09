@@ -18,48 +18,29 @@ namespace Model
         public decimal quantidade { get; set; }
         public string tipoOperacao { get; set; }
         public DateTime dataHora { get; set; }
+        public decimal valor { get; set; }
         public int lojaId { get; set; }
-        public Loja Loja { get; set; }
-        public int fornecedorId { get; set; }
-        public Fornecedor Fornecedor { get; set; }
+        public Loja loja { get; set; }
         public int funcionarioId { get; set; }
-        public Funcionario Funcionario { get; set; }
-        public int bombaId { get; set; }
-        public Bomba Bomba { get; set; }
+        public Funcionario funcionario { get; set; }
 
         public Movimentacao()
         {
         }
 
-        public Movimentacao(decimal quantidade, string tipoOperacao, int lojaId, int fornecedorId, int funcionarioId, int bombaId)
+        public Movimentacao(decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId)
         {
             this.quantidade = quantidade;
             this.tipoOperacao = tipoOperacao;
             this.dataHora = DateTime.Now;
+            this.valor = valor;
             this.lojaId = lojaId;
-            this.fornecedorId = fornecedorId;
             this.funcionarioId = funcionarioId;
-            this.bombaId = bombaId;
 
             DataBase db = new DataBase();
             db.Movimentacoes.Add(this);
             db.SaveChanges();
         }
-
-        public Movimentacao(decimal quantidade, string tipoOperacao, int lojaId, int funcionarioId, int bombaId)
-        {
-            this.quantidade = quantidade;
-            this.tipoOperacao = tipoOperacao;
-            this.dataHora = DateTime.Now;
-            this.lojaId = lojaId;
-            this.funcionarioId = funcionarioId;
-            this.bombaId = bombaId;
-
-            DataBase db = new DataBase();
-            db.Movimentacoes.Add(this);
-            db.SaveChanges();
-        }
-
 
         public override bool Equals(object obj)
         {
@@ -86,7 +67,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.movimentacaoId + " - quantidade: " + this.quantidade + " - Tipo Operação: " + this.tipoOperacao + " - Data/Hora: " + this.dataHora + " - Id Loja: " + this.lojaId + " - Id Fornecedor: " + this.fornecedorId + " - Id Funcionário: " + this.funcionarioId + " - Id Bomba: " + this.bombaId + "\n";
+            return "Id: " + this.movimentacaoId + " Quantidade: " + this.quantidade + " Tipo de Operação: " + this.tipoOperacao + " Data e Hora: " + this.dataHora + " Valor: " + this.valor + " Loja: " + this.lojaId + " Funcionário: " + this.funcionarioId + "\n" ;
         }
 
         //------------------- CRUD -------------------//
@@ -104,7 +85,7 @@ namespace Model
             return db.Movimentacoes.Find(movimentacaoId);
         }
 
-        public static Movimentacao UpdateMovimentacao(int movimentacaoId, decimal quantidade, string tipoOperacao, int lojaId, int fornecedorId, int funcionarioId, int bombaId)
+        public static Movimentacao UpdateMovimentacao(int movimentacaoId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId)
         {
             DataBase db = new DataBase();
             Movimentacao movimentacao = db.Movimentacoes.Find(movimentacaoId);
@@ -112,25 +93,9 @@ namespace Model
             movimentacao.quantidade = quantidade;
             movimentacao.tipoOperacao = tipoOperacao;
             movimentacao.dataHora = DateTime.Now;
-            movimentacao.lojaId = lojaId;
-            movimentacao.fornecedorId = fornecedorId;
-            movimentacao.funcionarioId = funcionarioId;
-            movimentacao.bombaId = bombaId;
-            db.SaveChanges();
-            return movimentacao;
-        }
-
-        public static Movimentacao UpdateMovimentacaoVenda(int movimentacaoId, decimal quantidade, string tipoOperacao, int lojaId, int funcionarioId, int bombaId)
-        {
-            DataBase db = new DataBase();
-            Movimentacao movimentacao = db.Movimentacoes.Find(movimentacaoId);
-            //movimentacao.combustivelId = combustivelId;
-            movimentacao.quantidade = quantidade;
-            movimentacao.tipoOperacao = tipoOperacao;
-            movimentacao.dataHora = DateTime.Now;
+            movimentacao.valor = valor;
             movimentacao.lojaId = lojaId;
             movimentacao.funcionarioId = funcionarioId;
-            movimentacao.bombaId = bombaId;
             db.SaveChanges();
             return movimentacao;
         }
