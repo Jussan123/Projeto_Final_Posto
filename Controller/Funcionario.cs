@@ -13,6 +13,8 @@ namespace Controller
 {
     public class Funcionario
     {
+        public string funcionarioId { get; set; }
+        public string lojaId { get; set; }
         public static Model.Funcionario CadastraFuncionario(
             string nome,
             string senha,

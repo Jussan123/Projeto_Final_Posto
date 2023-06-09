@@ -12,24 +12,33 @@ namespace Controller
 {
     public class Movimentacao
     {
+        public string movimentacaoId { get; set; }
+        public string combustivelId { get; set; }
+        public string quantidade { get; set; }
+        public string lojaId { get; set; }
+        public string valor { get; set; }
+        public string funcionarioId { get; set; }
+
         public static Model.Movimentacao CadastraMovimentacao(
             string combustivelId,
             string quantidade,
             string tipoOperacao,
+            string valor,
             string lojaId,
-            string fornecedorId
+            string funcionarioId
         )
         {
             if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, loja não encontrada");
-            if (Model.Combustivel.BuscaCombustivelPorId(int.Parse(combustivelId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, combustível não encontrado");
-            if (Model.Fornecedor.BuscaFornecedorPorId(int.Parse(fornecedorId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
+            if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
             if (tipoOperacao != "Entrada" && tipoOperacao != "Saida") throw new System.Exception("Erro ao cadastrar movimentação, tipo de operação inválido('Entrada' ou 'Saida')");
+            if (decimal.Parse(quantidade) <= 0) throw new System.Exception("Erro ao cadastrar movimentação, quantidade inválida");
+            if (decimal.Parse(valor) <= 0) throw new System.Exception("Erro ao cadastrar movimentação, valor inválido");
             Model.Movimentacao movimentacao = new  Model.Movimentacao(
-                int.Parse(combustivelId),
                 decimal.Parse(quantidade),
                 tipoOperacao,
+                decimal.Parse(valor),
                 int.Parse(lojaId),
-                int.Parse(fornecedorId)
+                int.Parse(funcionarioId)
             );
             return movimentacao;
         }
@@ -47,25 +56,26 @@ namespace Controller
 
         public static Model.Movimentacao AlteraMovimentacao(
             string movimentacaoId,
-            string combustivelId,
             string quantidade,
             string tipoOperacao,
+            string valor,
             string lojaId,
-            string fornecedorId
+            string funcionarioId
         )
         {
             if (Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)) == null) throw new System.Exception("Erro ao alterar movimentação, movimentação não encontrada");
             if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new System.Exception("Erro ao alterar movimentação, loja não encontrada");
-            if (Model.Combustivel.BuscaCombustivelPorId(int.Parse(combustivelId)) == null) throw new System.Exception("Erro ao alterar movimentação, combustível não encontrado");
-            if (Model.Fornecedor.BuscaFornecedorPorId(int.Parse(fornecedorId)) == null) throw new System.Exception("Erro ao alterar movimentação, fornecedor não encontrado");
+            if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new System.Exception("Erro ao alterar movimentação, fornecedor não encontrado");
             if (tipoOperacao != "Entrada" && tipoOperacao != "Saida") throw new System.Exception("Erro ao alterar movimentação, tipo de operação inválido('Entrada' ou 'Saida')");
+            if (decimal.Parse(quantidade) <= 0) throw new System.Exception("Erro ao alterar movimentação, quantidade inválida");
+            if (decimal.Parse(valor) <= 0) throw new System.Exception("Erro ao alterar movimentação, valor inválido");
             return Model.Movimentacao.UpdateMovimentacao(
                 int.Parse(movimentacaoId),
-                int.Parse(combustivelId),
                 decimal.Parse(quantidade),
                 tipoOperacao,
+                decimal.Parse(valor),
                 int.Parse(lojaId),
-                int.Parse(fornecedorId)
+                int.Parse(funcionarioId)
             );
         }
 

@@ -12,6 +12,7 @@ namespace Controller
 {
     public class Loja
     {
+        public string lojaId { get; set; }
         public static Model.Loja CadastraLoja(
             string Nome,
             string Endereco,

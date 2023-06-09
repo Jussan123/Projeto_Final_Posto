@@ -11,15 +11,19 @@ namespace Controller
 {
     public class Fornecedor
     {
+        public string fornecedorId { get; set; }
+        public string movimentacaoId { get; set; }
         public static Model.Fornecedor CadastraFornecedor(
             string nome,
             string contato,
-            string endereco)
+            string endereco,
+            string movimentacaoId)
             {
                 Model.Fornecedor fornecedor = new Model.Fornecedor(
                     nome,
                     contato,
-                    endereco
+                    endereco,
+                    int.Parse(movimentacaoId)
                 );
                 return fornecedor;
             }
@@ -28,12 +32,13 @@ namespace Controller
             string fornecedorId,
             string nome,
             string contato,
-            string endereco)
+            string endereco,
+            string movimentacaoId)
         {
             try
             {
                 Model.Fornecedor.BuscaFornecedorPorId(int.Parse(fornecedorId));
-                return Model.Fornecedor.UpdateFornecedor(int.Parse(fornecedorId), nome, contato, endereco);
+                return Model.Fornecedor.UpdateFornecedor(int.Parse(fornecedorId), nome, contato, endereco, int.Parse(movimentacaoId));
             } catch (Exception) {
                 throw new Exception("Fornecedor não encontrado");
             }
