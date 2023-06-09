@@ -9,7 +9,7 @@ using Model;
 
 namespace Controller
 {
-    public class combustivel
+    public class Combustivel
     {
         public string combustivelId { get; set; }
         public string precoCompra { get; set; }

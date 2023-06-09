@@ -8,7 +8,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.CadCombustivelForm
+namespace View.Formulario.CombustivelForm
 {
     public partial class CadCombustivel : Form
     {
@@ -16,8 +16,16 @@ namespace View.Fomulario.CadCombustivelForm
         //private Label nomeLabel; 
         //private Label limiteMinimoLabel; 
         private Label nomeCombustivelLabel; // ERICH - NOME COMBUSTIVEL
+        private Label siglaLabel; // Jussan - SIGLA COMBUSTIVEL
+        private Label descricaoLabel; // Jussan - DESCRIÇÃO COMBUSTIVEL
+        private Label precoCompraLabel; // Jussan - PREÇO DE COMPRA COMBUSTIVEL
+        private Label precoVendaLabel; // Jussan - PREÇO DE VENDA COMBUSTIVEL
         private TextBox idTextBox;
         private TextBox nomeTextBox;
+        private TextBox siglaTextBox;
+        private TextBox descricaoTextBox;
+        private TextBox precoCompraTextBox;
+        private TextBox precoVendaTextBox;
         //private TextBox limiteMinimoTextBox;
         private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
@@ -86,6 +94,58 @@ namespace View.Fomulario.CadCombustivelForm
             nomeCombustivelTextBox.Location = new Point(100, 60);
             nomeCombustivelTextBox.Size = new Size(160, 30 );
             this.Controls.Add(nomeCombustivelTextBox);
+
+            //Configurações de rótulo Sigla do Combustivel
+            siglaLabel = new Label();
+            siglaLabel.Text = "Sigla Combustivel: ";
+            siglaLabel.Location = new Point(20, 90);
+            siglaLabel.Size = new Size(80, 20);
+            this.Controls.Add(siglaLabel);
+
+            //Configurando o Campo de texto Sigla do Combustivel
+            siglaTextBox = new TextBox();
+            siglaTextBox.Location = new Point(100, 90);
+            siglaTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(siglaTextBox);
+
+            //Configurações de rótulo Descrição do Combustivel
+            descricaoLabel = new Label();
+            descricaoLabel.Text = "Descrição Combustivel: ";
+            descricaoLabel.Location = new Point(20, 120);
+            descricaoLabel.Size = new Size(80, 20);
+            this.Controls.Add(descricaoLabel);
+
+            //Configurando o Campo de texto Descrição do Combustivel
+            descricaoTextBox = new TextBox();
+            descricaoTextBox.Location = new Point(100, 120);
+            descricaoTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(descricaoTextBox);
+
+            //Configurações de rótulo Preço de Compra do Combustivel
+            precoCompraLabel = new Label();
+            precoCompraLabel.Text = "Preço de Compra Combustivel: ";
+            precoCompraLabel.Location = new Point(20, 150);
+            precoCompraLabel.Size = new Size(80, 20);
+            this.Controls.Add(precoCompraLabel);
+
+            //Configurando o Campo de texto Preço de Compra do Combustivel
+            precoCompraTextBox = new TextBox();
+            precoCompraTextBox.Location = new Point(100, 150);
+            precoCompraTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(precoCompraTextBox);
+
+            //Configurações de rótulo Preço de Venda do Combustivel
+            precoVendaLabel = new Label();
+            precoVendaLabel.Text = "Preço de Venda Combustivel: ";
+            precoVendaLabel.Location = new Point(20, 180);
+            precoVendaLabel.Size = new Size(80, 20);
+            this.Controls.Add(precoVendaLabel);
+
+            //Configurando o Campo de texto Preço de Venda do Combustivel
+            precoVendaTextBox = new TextBox();
+            precoVendaTextBox.Location = new Point(100, 180);
+            precoVendaTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(precoVendaTextBox);
 
             //Configurações do botao gravar
             gravarButton = new Button();

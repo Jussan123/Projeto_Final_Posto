@@ -5,22 +5,20 @@
  * Versão: 1.0
  */
 
-using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace View.Fomulario.CadBombaForm
+namespace View.Formulario.bombaForm
 {
     public partial class CadBomba : Form
     {
-        private Label tipoCombustivelIdLabel;
+        private Label combustivelIdLabel;
         private Label limiteMaximoLabel;
         private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
-        private TextBox tipoCombustivelIdTextBox;
+        private Label movimentacaoIdLabel;
+        private Label lojaIdLabel;
+        private TextBox combustivelIdTextBox;
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private TextBox movimentacaoIdTextBox;
+        private TextBox lojaIdTextBox;
         private Button gravarButton;
         private Button sairButton;
         public CadBomba()
@@ -37,17 +35,17 @@ namespace View.Fomulario.CadBombaForm
             this.MaximizeBox = false;
 
             //Configurações do id
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 30);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(tipoCombustivelIdLabel);
+            combustivelIdLabel = new Label();
+            combustivelIdLabel.Text = "ID Combústivel: ";
+            combustivelIdLabel.Location = new Point(20, 30);
+            combustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelIdLabel);
 
             //Configurações do campo texto de id
-            tipoCombustivelIdTextBox = new TextBox();
-            tipoCombustivelIdTextBox.Location = new Point(100, 30);
-            tipoCombustivelIdTextBox.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdTextBox);
+            combustivelIdTextBox = new TextBox();
+            combustivelIdTextBox.Location = new Point(100, 30);
+            combustivelIdTextBox.Size = new Size(150, 20);
+            this.Controls.Add(combustivelIdTextBox);
 
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
@@ -75,18 +73,31 @@ namespace View.Fomulario.CadBombaForm
             limiteMinimoTextBox.Size = new Size(160, 30 );
             this.Controls.Add(limiteMinimoTextBox);
 
-            //Configurações de rótulo Nome do Combustivel
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustivel: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            //Configurações de rótulo Movimentação
+            movimentacaoIdLabel = new Label();
+            movimentacaoIdLabel.Text = "Movimentação: ";
+            movimentacaoIdLabel.Location = new Point(20, 60);
+            movimentacaoIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(movimentacaoIdLabel);
 
-            //Configurando o Campo de texto Nome do Combustivel
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 60);
-            nomeCombustivelTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurando o Campo de texto movimentação
+            movimentacaoIdTextBox = new TextBox();
+            movimentacaoIdTextBox.Location = new Point(100, 60);
+            movimentacaoIdTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(movimentacaoIdTextBox);
+
+            //Configurações de rótulo identificação da loja
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja: ";
+            lojaIdLabel.Location = new Point(20, 60);
+            lojaIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(lojaIdLabel);
+
+            //Configurando o Campo de texto identificação da loja
+            lojaIdTextBox = new TextBox();
+            lojaIdTextBox.Location = new Point(100, 60);
+            lojaIdTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(lojaIdTextBox);
 
             //Configurações do botao gravar
             gravarButton = new Button();
@@ -104,16 +115,18 @@ namespace View.Fomulario.CadBombaForm
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
         }
-         private void gravarButton_Click(object sender, EventArgs e)
+        private void gravarButton_Click(object sender, EventArgs e)
         {
             try
             {
                 Controller.Bomba bomba = new Controller.Bomba();//Instanciando a classe bomba
-                bomba.tipoCombustivelId = tipoCombustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
-                if (bomba.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
+                bomba.combustivelId = combustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
+                if (bomba.combustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Bomba.CadastrarBomba(bomba.tipoCombustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.nomeCombustivel);//Chamando o método CadastrarBomba da classe Bomba
+                bomba.movimentacaoId = movimentacaoIdTextBox.Text;//Atribuindo o valor do campo movimentacaoId ao atributo movimentacaoId
+                bomba.lojaId = lojaIdTextBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
+                Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -133,25 +146,30 @@ namespace View.Fomulario.CadBombaForm
 
         public void LimpaTela()
         {
-            tipoCombustivelIdTextBox.Text = "";
+            combustivelIdTextBox.Text = "";
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            movimentacaoIdTextBox.Text = "";
+            lojaIdTextBox.Text = "";
         }
     }
+
+// ---------------------------- Edição da Bomba ----------------------------
 
     public class FormEditaBomba : Form
     {
         private Label bombaIdLabel;
-        private Label tipoCombustivelIdLabel;
+        private Label combustivelIdLabel;
         private Label limiteMaximoLabel;
         private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
+        private Label movimentacaoIdLabel;
+        private Label lojaIdLabel;
         private ComboBox bombaIdCb;
-        private ComboBox tipoCombustivelIdCb;
+        private ComboBox combustivelIdCb;
+        private ComboBox movimentacaoIdCb;
+        private ComboBox lojaIdCb;
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
         private Button sairButton;
 
@@ -175,8 +193,8 @@ namespace View.Fomulario.CadBombaForm
             bombaIdCb = new ComboBox();
             bombaIdCb.Location = new Point(100, 30);
             bombaIdCb.Size = new Size(150, 20);
-            List<Model.Bomba> listaBombas = new  List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            List<Controller.Bomba> listaBombas = new  List<Controller.Bomba>();
+            foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
                 bombaIdCb.Items.Add(bomba);
             }
@@ -186,25 +204,25 @@ namespace View.Fomulario.CadBombaForm
             this.Controls.Add(bombaIdCb);
 
             //Configurações do tipoCombustivelId
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 60);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            List<Model.TipoCombustivel> listaTipoCombustivel = new  List<Model.TipoCombustivel>();
-            foreach (Model.TipoCombustivel tipoCombustivel in Model.TipoCombustivel.BuscaTipoCombustivel())
+            combustivelIdLabel = new Label();
+            combustivelIdLabel.Text = "ID Combústivel: ";
+            combustivelIdLabel.Location = new Point(20, 60);
+            combustivelIdLabel.Size = new Size(80, 20);
+            List<Controller.Combustivel> listaTipoCombustivel = new  List<Controller.Combustivel>();
+            foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
-                tipoCombustivelIdCb.Items.Add(tipoCombustivel);
+                combustivelIdCb.Items.Add(combustivel);
             }
-            tipoCombustivelIdCb.DisplayMember = "nomeCombustivel";
-            tipoCombustivelIdCb.ValueMember = "Id";
-            tipoCombustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(tipoCombustivelIdLabel);
+            combustivelIdCb.DisplayMember = "nome";
+            combustivelIdCb.ValueMember = "Id";
+            combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(combustivelIdLabel);
 
             //Configurações do campo texto de tipoCombustivelId
-            tipoCombustivelIdCb = new ComboBox();
-            tipoCombustivelIdCb.Location = new Point(100, 60);
-            tipoCombustivelIdCb.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdCb);
+            combustivelIdCb = new ComboBox();
+            combustivelIdCb.Location = new Point(100, 60);
+            combustivelIdCb.Size = new Size(150, 20);
+            this.Controls.Add(combustivelIdCb);
 
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
@@ -233,17 +251,17 @@ namespace View.Fomulario.CadBombaForm
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Nome do Combustível
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustível: ";
-            nomeCombustivelLabel.Location = new Point(20, 150);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            movimentacaoIdLabel = new Label();
+            movimentacaoIdLabel.Text = "Nome Combustível: ";
+            movimentacaoIdLabel.Location = new Point(20, 150);
+            movimentacaoIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(movimentacaoIdLabel);
 
             //Configurando o Campo de texto Nome do Combustível
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 150);
-            nomeCombustivelTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeCombustivelTextBox);
+            movimentacaoIdCb = new ComboBox();
+            movimentacaoIdCb.Location = new Point(100, 150);
+            movimentacaoIdCb.Size = new Size(150, 20);
+            this.Controls.Add(movimentacaoIdCb);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -282,13 +300,14 @@ namespace View.Fomulario.CadBombaForm
                     return;
                 }
                 bomba.bombaId = bombaSelecionada.bombaId.ToString();
-                bomba.tipoCombustivelId = tipoCombustivelIdCb.Text;
+                bomba.combustivelId = combustivelIdCb.Text;
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;
-                bomba.nomeCombustivel = nomeCombustivelTextBox.Text;
+                bomba.movimentacaoId = movimentacaoIdCb.Text;
+                bomba.lojaId = lojaIdCb.Text;
 
                 Controller.Bomba controllerBomba = new Controller.Bomba();
-                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.tipoCombustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.nomeCombustivel);
+                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
                 MessageBox.Show("Bomba alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -299,12 +318,15 @@ namespace View.Fomulario.CadBombaForm
         public void LimpaTela()
         {
             bombaIdCb.Text = "";
-            tipoCombustivelIdCb.Text = "";
+            combustivelIdCb.Text = "";
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            movimentacaoIdCb.Text = "";
+            lojaIdCb.Text = "";
         }
     }
+
+//--------------------------------------------------------------
 
     public class FormExcluiBomba : Form
     {
@@ -330,8 +352,8 @@ namespace View.Fomulario.CadBombaForm
             bombaIdCb = new ComboBox();
             bombaIdCb.Location = new Point(100, 30);
             bombaIdCb.Size = new Size(150, 20);
-            List<Model.Bomba> listaBombas = new  List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            List<Controller.Bomba> listaBombas = new  List<Controller.Bomba>();
+            foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
                 bombaIdCb.Items.Add(bomba);
             }
@@ -378,7 +400,7 @@ namespace View.Fomulario.CadBombaForm
                 }
                 bomba.bombaId = bombaSelecionada.bombaId.ToString();
 
-                bomba.DeletaBomba(bomba.bombaId);
+                Controller.Bomba.DeletaBomba(bombaIdCb.Text);
                 MessageBox.Show("Bomba excluída com sucesso!");
             } catch (Exception ex)
             {

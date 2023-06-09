@@ -4,20 +4,9 @@
  * Data: 22/05/2023
  * Versão: 1.0
  */
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using View.Fomulario.BombaForm;
-//using CadBombaForm;
 
 
-namespace View.Formulario.ListBombaForm
+namespace View.Formulario.bombaForm
 {
     public partial class ListBombaForm : Form
     {
@@ -88,12 +77,14 @@ namespace View.Formulario.ListBombaForm
             bombaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             bombaDataGridView.Columns.Add("bombaId", "Bomba");
-            bombaDataGridView.Columns.Add("nomeCombustivel", "Nome Combustível");
+            bombaDataGridView.Columns.Add("nome", "Nome Combustível");
             bombaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
             bombaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
+            bombaDataGridView.Columns.Add("movimentacaoId", "Movimentação");
+            bombaDataGridView.Columns.Add("lojaId", "Loja");
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nomeCombustivel, bomba.limiteMaximo, bomba.limiteMinimo);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
             }
             //configura o modo de redimensionamento das linhas e colunas
             bombaDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -196,10 +187,10 @@ namespace View.Formulario.ListBombaForm
 
         public void ListaBomba()
         {
-            dataGridView.Rows.Clear();
+            bombaDataGridView.Rows.Clear();
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                dataGridView.Rows.Add(bomba.bombaId, bomba.nomeCombustivel, bomba.limiteMaximo, bomba.limiteMinimo);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
             }
         }
     }

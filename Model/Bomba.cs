@@ -69,10 +69,21 @@ namespace Model
 
         //------------------- CRUD -------------------//
 
+        public string nome { get; set; }
         public static List<Bomba> BuscaBomba()
         {
             DataBase db = new DataBase();
-            List<Bomba> bombas = (from u in db.Bombas select u).ToList();
+            List<Bomba> bombas = (from u in db.Bombas
+                                  join  c in db.Combustiveis
+                                    on u.combustivelId equals c.combustivelId
+                                  select new Bomba {
+                                    bombaId = u.bombaId,
+                                    nome = c.nome,
+                                    limiteMaximo = u.limiteMaximo,
+                                    limiteMinimo = u.limiteMinimo,
+                                    movimentacaoId = u.movimentacaoId,
+                                    lojaId = u.lojaId 
+                                    }).ToList();
             return bombas;
         }
 
