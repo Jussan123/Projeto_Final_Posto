@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using ListBomba;
+using View.Formulario;
 
 
 namespace View
@@ -26,7 +26,7 @@ namespace View
 
             //Sub-menus do menu "Sistema"
             ToolStripMenuItem produtosMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            produtosMenuItem.Click += new EventHandler(ProdutoMenuItem_Click);
+            produtosMenuItem.Click += new EventHandler(ProdutosMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(produtosMenuItem);
 
             ToolStripMenuItem alxMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"

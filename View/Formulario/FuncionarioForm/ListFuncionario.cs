@@ -14,11 +14,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using View.Fomulario.Cad.FuncionarioForm;
 //using CadFuncionarioForm;
 
 
-namespace View.Formulario.List.FuncionarioForm
+namespace View.Formulario.FuncionarioForm
 {
     public partial class ListFuncionarioForm : Form
     {

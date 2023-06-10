@@ -9,7 +9,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.Cad.FuncionarioForm
+namespace View.Fomulario.FuncionarioForm
 {
     public partial class CadFuncionario : Form
     {

@@ -8,7 +8,7 @@
 
 namespace View.Formulario.bombaForm
 {
-    public partial class ListBombaForm : Form
+    public partial class ListBomba : Form
     {
         private Button novoButton;
         private Button alterarButton;
@@ -17,7 +17,7 @@ namespace View.Formulario.bombaForm
         private Button sairButton;
         private DataGridView bombaDataGridView;
 
-        public ListBombaForm()
+        public ListBomba()
         {
             InitializeComponent();
         }
