@@ -14,6 +14,9 @@ namespace Controller
         public string combustivelId { get; set; }
         public string precoCompra { get; set; }
         public string precoVenda { get; set; }
+        public string nome { get; set; }
+        public string sigla { get; set; }
+        public string descricao { get; set; }
 
             public static Model.Combustivel CadastraCombustivel(
                 string nome,

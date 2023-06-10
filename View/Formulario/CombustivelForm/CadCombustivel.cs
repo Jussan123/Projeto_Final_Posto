@@ -7,12 +7,13 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Controller;
 
 namespace View.Formulario.CombustivelForm
 {
     public partial class CadCombustivel : Form
     {
-        private Label idLabel; // ERICH - ID COMBUSTIVEL
+        private Label combustivelIdLabel; // ERICH - ID COMBUSTIVEL
         //private Label nomeLabel; 
         //private Label limiteMinimoLabel; 
         private Label nomeCombustivelLabel; // ERICH - NOME COMBUSTIVEL
@@ -26,7 +27,6 @@ namespace View.Formulario.CombustivelForm
         private TextBox descricaoTextBox;
         private TextBox precoCompraTextBox;
         private TextBox precoVendaTextBox;
-        //private TextBox limiteMinimoTextBox;
         private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
         private Button sairButton;
@@ -43,44 +43,11 @@ namespace View.Formulario.CombustivelForm
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurações do id
-            idLabel = new Label();
-            idLabel.Text = "ID Combústivel: ";
-            idLabel.Location = new Point(20, 30);
-            idLabel.Size = new Size(80, 20);
-            this.Controls.Add(idLabel);
-
-            //Configurações do campo texto de id
-            idTextBox = new TextBox();
-            idTextBox.Location = new Point(100, 30);
-            idTextBox.Size = new Size(150, 20);
-            this.Controls.Add(idTextBox);
-
-            //Configurações de rótulo Capacidade Máxima
-            //nomeLabel = new Label();
-            //nomeLabel.Text = "Cap. Máxima: ";
-            //nomeLabel.Location = new Point(20, 60);
-            //nomeLabel.Size = new Size(80, 20);
-            //this.Controls.Add(nomeLabel);
-            
             //Configurando o Campo de texto Capacidade Máxima
             nomeTextBox = new TextBox();
             nomeTextBox.Location = new Point(100, 60);
             nomeTextBox.Size = new Size(150, 20);
             this.Controls.Add(nomeTextBox);
-
-            //Configurações de rótulo Capacidade Miníma
-            //limiteMinimoLabel = new Label();
-            //limiteMinimoLabel.Text = "Cap. Miníma: ";
-            //limiteMinimoLabel.Location = new Point(20, 60);
-            //limiteMinimoLabel.Size = new Size(80, 20);
-            //this.Controls.Add(limiteMinimoLabel);
-
-            //Configurando o Campo de texto Capacidade Miníma
-            //limiteMinimoTextBox = new TextBox();
-            //limiteMinimoTextBox.Location = new Point(100, 60);
-            //limiteMinimoTextBox.Size = new Size(160, 30 );
-            //this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Nome do Combustivel
             nomeCombustivelLabel = new Label();
@@ -168,11 +135,12 @@ namespace View.Formulario.CombustivelForm
             try
             {
                 Controller.Combustivel combustivel = new Controller.Combustivel();//Instanciando a classe combustivel
-                combustivel.id = idTextBox.Text;//Atribuindo o valor do campo id ao atributo id
-                if (combustivel.id == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                combustivel.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome ao atributo nome
-                //combustivel.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Combustivel.CadastrarCombustivel(combustivel.id, combustivel.nome, combustivel.limiteMinimo, combustivel.nomeCombustivel);//Chamando o método Cadastrarcombustivel da classe combustivel
+                combustivel.nome = nomeCombustivelTextBox.Text;//Atribuindo o valor do campo nomeCombustivelTextBox ao atributo nome da classe combustivel
+                combustivel.sigla = siglaTextBox.Text;//Atribuindo o valor do campo siglaTextBox ao atributo sigla da classe combustivel
+                combustivel.descricao = descricaoTextBox.Text;//Atribuindo o valor do campo descricaoTextBox ao atributo descricao da classe combustivel
+                combustivel.precoCompra = precoCompraTextBox.Text;//Atribuindo o valor do campo precoCompraTextBox ao atributo precoCompra da classe combustivel
+                combustivel.precoVenda = precoVendaTextBox.Text;//Atribuindo o valor do campo precoVendaTextBox ao atributo precoVenda da classe combustivel
+                Controller.Combustivel.CadastraCombustivel(combustivel.nome, combustivel.sigla, combustivel.descricao, combustivel.precoCompra, combustivel.precoVenda);//Chamando o método Cadastrarcombustivel da classe combustivel
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -192,25 +160,30 @@ namespace View.Formulario.CombustivelForm
 
         public void LimpaTela()
         {
-            idTextBox.Text = "";
-            nomeTextBox.Text = "";
-            //limiteMinimoTextBox.Text = "";
             nomeCombustivelTextBox.Text = "";
+            siglaTextBox.Text = "";
+            descricaoTextBox.Text = "";
+            precoCompraTextBox.Text = "";
+            precoVendaTextBox.Text = "";
         }
     }
 
+//---------------------Formulário de Edição de Combustivel-----------------
+
     public class FormEditaCombustivel : Form
     {
-        private Label combustivelIdLabel;
-        private Label idLabel;
-        //private Label nomeLabel;
-        //private Label limiteMinimoLabel;
+        private Label combustivelcombustivelIdLabel;
         private Label nomeCombustivelLabel;
+        private Label siglaLabel;
+        private Label descricaoLabel;
+        private Label precoCompraLabel;
+        private Label precoVendaLabel;
         private ComboBox combustivelIdCb;
-        private ComboBox idCb;
         private TextBox nomeTextBox;
-        //private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private TextBox siglaTextBox;
+        private TextBox descricaoTextBox;
+        private TextBox precoCompraTextBox;
+        private TextBox precoVendaTextBox;
         private Button gravarButton;
         private Button sairButton;
 
@@ -224,85 +197,90 @@ namespace View.Formulario.CombustivelForm
             this.MaximizeBox = false;
 
             //Configurações do id
-            combustivelIdLabel = new Label();
-            combustivelIdLabel.Text = "ID combustivel: ";
-            combustivelIdLabel.Location = new Point(20, 30);
-            combustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(combustivelIdLabel);
+            combustivelcombustivelIdLabel = new Label();
+            combustivelcombustivelIdLabel.Text = "ID combustivel: ";
+            combustivelcombustivelIdLabel.Location = new Point(20, 30);
+            combustivelcombustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelcombustivelIdLabel);
 
             //Configurações do campo texto de id
             combustivelIdCb = new ComboBox();
             combustivelIdCb.Location = new Point(100, 30);
             combustivelIdCb.Size = new Size(150, 20);
-            List<Model.Combustivel> listaCombustiveis = new  List<Model.Combustivel>();
-            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
+            List<Controller.Combustivel> listaCombustiveis = new  List<Controller.Combustivel>();
+            foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
-                CombustivelIdCb.Items.Add(combustivel);
+                combustivelIdCb.Items.Add(combustivel);
             }
             combustivelIdCb.DisplayMember = "Id";
-            combustivelIdCb.ValueMember = "Id";
+            combustivelIdCb.ValueMember = "combustivelId";
             combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdCb);
 
-            //Configurações do id
-            idLabel = new Label();
-            idLabel.Text = "ID Combústivel: ";
-            idLabel.Location = new Point(20, 60);
-            idLabel.Size = new Size(80, 20);
-            List<Model.TipoCombustivel> listaTipoCombustivel = new  List<Model.TipoCombustivel>();
-            foreach (Model.TipoCombustivel tipoCombustivel in Model.TipoCombustivel.BuscaTipoCombustivel())
-            {
-                idCb.Items.Add(tipoCombustivel);
-            }
-            idCb.DisplayMember = "nomeCombustivel";
-            idCb.ValueMember = "Id";
-            idCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(idLabel);
-
-            //Configurações do campo texto de id
-            idCb = new ComboBox();
-            idCb.Location = new Point(100, 60);
-            idCb.Size = new Size(150, 20);
-            this.Controls.Add(idCb);
-
-            //Configurações de rótulo Capacidade Máxima
-            //nomeLabel = new Label();
-            //nomeLabel.Text = "Cap. Máxima: ";
-            //nomeLabel.Location = new Point(20, 90);
-            //nomeLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeLabel);
-
-            //Configurando o Campo de texto Capacidade Máxima
-            nomeTextBox = new TextBox();
-            nomeTextBox.Location = new Point(100, 90);
-            nomeTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeTextBox);
-
-            //Configurações de rótulo Capacidade Mínima
-            //limiteMinimoLabel = new Label();
-            //limiteMinimoLabel.Text = "Cap. Mínima: ";
-            //limiteMinimoLabel.Location = new Point(20, 120);
-            //limiteMinimoLabel.Size = new Size(80, 20);
-            //this.Controls.Add(limiteMinimoLabel);
-
-            //Configurando o Campo de texto Capacidade Mínima
-            //limiteMinimoTextBox = new TextBox();
-            //limiteMinimoTextBox.Location = new Point(100, 120);
-            //limiteMinimoTextBox.Size = new Size(150, 20);
-            //this.Controls.Add(limiteMinimoTextBox);
-
-            //Configurações de rótulo Nome do Combustível
+            //Configurações do campo texto de nome
             nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustível: ";
-            nomeCombustivelLabel.Location = new Point(20, 150);
+            nomeCombustivelLabel.Text = "Nome: ";
+            nomeCombustivelLabel.Location = new Point(20, 60);
             nomeCombustivelLabel.Size = new Size(80, 20);
             this.Controls.Add(nomeCombustivelLabel);
 
-            //Configurando o Campo de texto Nome do Combustível
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 150);
-            nomeCombustivelTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurações do campo texto de nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 60);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
+
+            //Configurações do campo texto de sigla
+            siglaLabel = new Label();
+            siglaLabel.Text = "Sigla: ";
+            siglaLabel.Location = new Point(20, 90);
+            siglaLabel.Size = new Size(80, 20);
+            this.Controls.Add(siglaLabel);
+
+            //Configurações do campo texto de sigla
+            siglaTextBox = new TextBox();
+            siglaTextBox.Location = new Point(100, 90);
+            siglaTextBox.Size = new Size(150, 20);
+            this.Controls.Add(siglaTextBox);
+
+            //Configurações do campo texto de descrição
+            descricaoLabel = new Label();
+            descricaoLabel.Text = "Descrição: ";
+            descricaoLabel.Location = new Point(20, 120);
+            descricaoLabel.Size = new Size(80, 20);
+            this.Controls.Add(descricaoLabel);
+
+            //Configurações do campo texto de descrição
+            descricaoTextBox = new TextBox();
+            descricaoTextBox.Location = new Point(100, 120);
+            descricaoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(descricaoTextBox);
+
+            //Configurações do campo texto de preço de compra
+            precoCompraLabel = new Label();
+            precoCompraLabel.Text = "Preço de compra: ";
+            precoCompraLabel.Location = new Point(20, 150);
+            precoCompraLabel.Size = new Size(80, 20);
+            this.Controls.Add(precoCompraLabel);
+
+            //Configurações do campo texto de preço de compra
+            precoCompraTextBox = new TextBox();
+            precoCompraTextBox.Location = new Point(100, 150);
+            precoCompraTextBox.Size = new Size(150, 20);
+            this.Controls.Add(precoCompraTextBox);
+
+            //Configurações do campo texto de preço de venda
+            precoVendaLabel = new Label();
+            precoVendaLabel.Text = "Preço de venda: ";
+            precoVendaLabel.Location = new Point(20, 180);
+            precoVendaLabel.Size = new Size(80, 20);
+            this.Controls.Add(precoVendaLabel);
+
+            //Configurações do campo texto de preço de venda
+            precoVendaTextBox = new TextBox();
+            precoVendaTextBox.Location = new Point(100, 180);
+            precoVendaTextBox.Size = new Size(150, 20);
+            this.Controls.Add(precoVendaTextBox);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -334,20 +312,15 @@ namespace View.Formulario.CombustivelForm
             try
             {
                 Controller.Combustivel combustivel = new Controller.Combustivel();
-                var combustivelSelecionada = (Controller.Combustivel) combustivelIdCb.SelectedItem;
-                if (combustivelSelecionada == null)
-                {
-                    MessageBox.Show("Selecione uma combustivel");
-                    return;
-                }
-                combustivel.combustivelId = combustivelSelecionada.combustivelId.ToString();
-                combustivel.id = idCb.Text;
+                
                 combustivel.nome = nomeTextBox.Text;
-                //combustivel.limiteMinimo = limiteMinimoTextBox.Text;
-                combustivel.nomeCombustivel = nomeCombustivelTextBox.Text;
-
+                combustivel.sigla = siglaTextBox.Text;
+                combustivel.descricao = descricaoTextBox.Text;
+                combustivel.precoCompra = precoCompraTextBox.Text;
+                combustivel.precoVenda = precoVendaTextBox.Text;
+                
                 Controller.Combustivel controllerCombustivel = new Controller.Combustivel();
-                Controller.Combustivel.AlterarCombustivel(combustivel.combustivelId, combustivel.id, combustivel.nome, combustivel.limiteMinimo, combustivel.nomeCombustivel);
+                Controller.Combustivel.CadastraCombustivel(nomeTextBox.Text, siglaTextBox.Text, descricaoTextBox.Text, precoCompraTextBox.Text, precoVendaTextBox.Text);
                 MessageBox.Show("combustivel alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -357,17 +330,19 @@ namespace View.Formulario.CombustivelForm
         
         public void LimpaTela()
         {
-            combustivelIdCb.Text = "";
-            idCb.Text = "";
             nomeTextBox.Text = "";
-            //limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            siglaTextBox.Text = "";
+            descricaoTextBox.Text = "";
+            precoCompraTextBox.Text = "";
+            precoVendaTextBox.Text = "";
         }
     }
 
+//--------------------------------------------------------------
+
     public class FormExcluiCombustivel : Form
     {
-        private Label combustivelIdLabel;
+        private Label combustivelcombustivelIdLabel;
         private ComboBox combustivelIdCb;
         private Button excluirButton;
         private Button sairButton;
@@ -379,11 +354,11 @@ namespace View.Formulario.CombustivelForm
             this.StartPosition = FormStartPosition.CenterScreen;
 
             //Configurações do rótulo combustivelId
-            combustivelIdLabel = new Label();
-            combustivelIdLabel.Text = "ID combustivel: ";
-            combustivelIdLabel.Location = new Point(20, 30);
-            combustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(combustivelIdLabel);
+            combustivelcombustivelIdLabel = new Label();
+            combustivelcombustivelIdLabel.Text = "ID combustivel: ";
+            combustivelcombustivelIdLabel.Location = new Point(20, 30);
+            combustivelcombustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelcombustivelIdLabel);
 
             //Configurações do campo texto de combustivelId
             combustivelIdCb = new ComboBox();
@@ -437,7 +412,7 @@ namespace View.Formulario.CombustivelForm
                 }
                 combustivel.combustivelId = combustivelSelecionada.combustivelId.ToString();
 
-                combustivel.DeletaCombustivel(combustivel.combustivelId);
+                Controller.Combustivel.ExcluiCombustivel(combustivel.combustivelId);
                 MessageBox.Show("combustivel excluída com sucesso!");
             } catch (Exception ex)
             {
@@ -486,8 +461,8 @@ namespace View.Fomulario.CadCombustivel
 {
     public partial class CadCombustivel : Form
     {
-        private Label idLabel;
-        private Label tcombidLabel;
+        private Label combustivelIdLabel;
+        private Label tcombcombustivelIdLabel;
         private Label tcombLabel;
         private Label qtdecombLabel;
         private Label precombLabel;
@@ -512,12 +487,12 @@ namespace View.Fomulario.CadCombustivel
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurações do ID - idLabel
-            idLabel = new Label();
-            idLabel.Text = "ID: ";
-            idLabel.Location = new Point(20, 30);
-            idLabel.Size = new Size(80, 20);
-            this.Controls.Add(idLabel);
+            //Configurações do ID - combustivelIdLabel
+            combustivelIdLabel = new Label();
+            combustivelIdLabel.Text = "ID: ";
+            combustivelIdLabel.Location = new Point(20, 30);
+            combustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(combustivelIdLabel);
 
             //Configurações do campo texto de ID - idTextBox
             idTextBox = new TextBox();
@@ -526,12 +501,12 @@ namespace View.Fomulario.CadCombustivel
             this.Controls.Add(idTextBox);
 
 
-            //Configurações do Tipo Combustivel ID - tcombidLabel
-            tcombidLabel = new Label();
-            tcombidLabel.Text = "Tipo ID: ";
-            tcombidLabel.Location = new Point(20, 30);
-            tcombidLabel.Size = new Size(80, 20);
-            this.Controls.Add(tcombidLabel);
+            //Configurações do Tipo Combustivel ID - tcombcombustivelIdLabel
+            tcombcombustivelIdLabel = new Label();
+            tcombcombustivelIdLabel.Text = "Tipo ID: ";
+            tcombcombustivelIdLabel.Location = new Point(20, 30);
+            tcombcombustivelIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(tcombcombustivelIdLabel);
 
             //Configurações do campo texto de Tipo Combustivel ID - tcombidTextBox
             tcombidTextBox = new TextBox();

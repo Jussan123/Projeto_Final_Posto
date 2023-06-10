@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace View.Fomulario.ListCombustivel
+namespace View.Formulario.CombustivelForm
 {
     public partial class ListCombustivelForm : Form
     {
@@ -99,34 +99,48 @@ namespace View.Fomulario.ListCombustivel
             idColumn.ReadOnly = true;
             combustivelDataGridView.Columns.Add(idColumn);
 
-            DataGridViewTextBoxColumn precoColumn = new DataGridViewTextBoxColumn();
-            precoColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            precoColumn.HeaderText = "Nome Combustível";
-            precoColumn.Width = 70;
-            precoColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(precoColumn);
-
-            DataGridViewTextBoxColumn quantidadeColumn = new DataGridViewTextBoxColumn();
-            quantidadeColumn.DataPropertyName = "Cap_Max";
-            quantidadeColumn.HeaderText = "Capacidade Maxima";
-            quantidadeColumn.Width = 80;
-            quantidadeColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(quantidadeColumn);
-
             DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Cap_Min";
-            nomeColumn.HeaderText = "Capacidade Minima";
-            nomeColumn.Width = 90;
+            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
+            nomeColumn.HeaderText = "Nome Combustível";
+            nomeColumn.Width = 70;
             nomeColumn.ReadOnly = true;
             combustivelDataGridView.Columns.Add(nomeColumn);
+
+            DataGridViewTextBoxColumn siglaColumn = new DataGridViewTextBoxColumn();
+            siglaColumn.DataPropertyName = "Cap_Max";
+            siglaColumn.HeaderText = "Capacidade Maxima";
+            siglaColumn.Width = 80;
+            siglaColumn.ReadOnly = true;
+            combustivelDataGridView.Columns.Add(siglaColumn);
+
+            DataGridViewTextBoxColumn descricaoColumn = new DataGridViewTextBoxColumn();
+            descricaoColumn.DataPropertyName = "Cap_Min";
+            descricaoColumn.HeaderText = "Capacidade Minima";
+            descricaoColumn.Width = 90;
+            descricaoColumn.ReadOnly = true;
+            combustivelDataGridView.Columns.Add(descricaoColumn);
+
+            DataGridViewTextBoxColumn precoCompraColumn = new DataGridViewTextBoxColumn();
+            precoCompraColumn.DataPropertyName = "Preco_Compra";
+            precoCompraColumn.HeaderText = "Preço de Compra";
+            precoCompraColumn.Width = 90;
+            precoCompraColumn.ReadOnly = true;
+            combustivelDataGridView.Columns.Add(precoCompraColumn);
+
+            DataGridViewTextBoxColumn precoVendaColumn = new DataGridViewTextBoxColumn();
+            precoVendaColumn.DataPropertyName = "Preco_Venda";
+            precoVendaColumn.HeaderText = "Preço de Venda";
+            precoVendaColumn.Width = 90;
+            precoVendaColumn.ReadOnly = true;
+            combustivelDataGridView.Columns.Add(precoVendaColumn);
 
             this.Controls.Add(combustivelDataGridView);
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            FrmNovoAlx alx = new FrmNovoAlx();
-            alx.Show();
+            AbrirForm(new CadCombustivel());
+            this.ListaCombustivel();
             //throw new NotImplementedException();
         }
 
@@ -154,5 +168,19 @@ namespace View.Fomulario.ListCombustivel
                 //Application.Exit();
             }
         }
+
+        public void AbrirForm(Form form)
+        {
+            form.ShowDialog();
+        }
+
+        private void ListaCombustivel()
+        {
+            combustivelDataGridView.Rows.Clear();
+            foreach (var combustivel in Controller.Combustivel.ListaCombustivel())
+            {
+                combustivelDataGridView.Rows.Add(combustivel.combustivelId, combustivel.nome, combustivel.sigla, combustivel.descricao, combustivel.precoCompra, combustivel.precoVenda);
+            }
+        }            
     }
 }
