@@ -18,7 +18,7 @@ using View.Fomulario.FornecedorForm;
 //using CadFornecedorForm;
 
 
-namespace View.Formulario.List.ForneceedorForm
+namespace View.Formulario.ForneceedorForm
 {
     public partial class ListFornecedorForm : Form
     {
@@ -89,12 +89,13 @@ namespace View.Formulario.List.ForneceedorForm
             fornecedorDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             fornecedorDataGridView.Columns.Add("fornecedorId", "fornecedor");
-            fornecedorDataGridView.Columns.Add("nomeCombustivel", "Nome Combustível");
-            fornecedorDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
-            fornecedorDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
-            foreach (var fornecedor in Controller.Fornecedor.ListarFornecedors())
+            fornecedorDataGridView.Columns.Add("nome", "Nome Fornecedor");
+            fornecedorDataGridView.Columns.Add("contato", "Contato");
+            fornecedorDataGridView.Columns.Add("endereco", "Endereço");
+            fornecedorDataGridView.Columns.Add("movimentacaoId", "Movimentacao");
+            foreach (var fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nomeCombustivel, fornecedor.limiteMaximo, fornecedor.limiteMinimo);
+                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
             }
             //configura o modo de redimensionamento das linhas e colunas
             fornecedorDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -197,10 +198,10 @@ namespace View.Formulario.List.ForneceedorForm
 
         public void ListaFornecedor()
         {
-            dataGridView.Rows.Clear();
-            foreach (var fornecedor in Controller.Fornecedor.ListarFornecedors())
+            fornecedorDataGridView.Rows.Clear();
+            foreach (var fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                dataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nomeCombustivel, fornecedor.limiteMaximo, fornecedor.limiteMinimo);
+                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
             }
         }
     }

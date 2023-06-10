@@ -13,6 +13,9 @@ namespace Controller
     {
         public string fornecedorId { get; set; }
         public string movimentacaoId { get; set; }
+        public string nome { get; set; }
+        public string contato { get; set; }
+        public string endereco { get; set; }
         public static Model.Fornecedor CadastraFornecedor(
             string nome,
             string contato,

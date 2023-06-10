@@ -9,18 +9,20 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.Cad.FornecedorForm
+namespace View.Fomulario.FornecedorForm
 {
     public partial class CadFornecedor : Form
     {
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
-        private TextBox tipoCombustivelIdTextBox;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private Label fornecedorIdLabel;
+        private Label nomeLabel;
+        private Label contatoLabel;
+        private Label enderecoLabel;
+        private Label movimentacaoIdLabel;
+        private TextBox nomeTextBox;
+        private TextBox contatoTextBox;
+        private TextBox enderecoTextBox;
+        private ComboBox movimentacaoIdCb;
+        private ComboBox fornecedorIdComboBox;
         private Button gravarButton;
         private Button sairButton;
         public CadFornecedor()
@@ -37,56 +39,57 @@ namespace View.Fomulario.Cad.FornecedorForm
             this.MaximizeBox = false;
 
             //Configurações do id
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 30);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(tipoCombustivelIdLabel);
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 30);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
             //Configurações do campo texto de id
-            tipoCombustivelIdTextBox = new TextBox();
-            tipoCombustivelIdTextBox.Location = new Point(100, 30);
-            tipoCombustivelIdTextBox.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdTextBox);
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 30);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
             //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 60);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
+            contatoLabel = new Label();
+            contatoLabel.Text = "Contato: ";
+            contatoLabel.Location = new Point(20, 60);
+            contatoLabel.Size = new Size(80, 20);
+            this.Controls.Add(contatoLabel);
             
             //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 60);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
+            contatoTextBox = new TextBox();
+            contatoTextBox.Location = new Point(100, 60);
+            contatoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(contatoTextBox);
 
             //Configurações de rótulo Capacidade Miníma
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Miníma: ";
-            limiteMinimoLabel.Location = new Point(20, 60);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
+            enderecoLabel = new Label();
+            enderecoLabel.Text = "Endereço: ";
+            enderecoLabel.Location = new Point(20, 60);
+            enderecoLabel.Size = new Size(80, 20);
+            this.Controls.Add(enderecoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 60);
-            limiteMinimoTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(limiteMinimoTextBox);
+            enderecoTextBox = new TextBox();
+            enderecoTextBox.Location = new Point(100, 60);
+            enderecoTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(enderecoTextBox);
 
             //Configurações de rótulo Nome do Combustivel
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustivel: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            movimentacaoIdLabel = new Label();
+            movimentacaoIdLabel.Text = "movimentação: ";
+            movimentacaoIdLabel.Location = new Point(20, 60);
+            movimentacaoIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(movimentacaoIdLabel);
 
             //Configurando o Campo de texto Nome do Combustivel
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 60);
-            nomeCombustivelTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(nomeCombustivelTextBox);
+            movimentacaoIdCb = new ComboBox();
+            movimentacaoIdCb.Location = new Point(100, 60);
+            movimentacaoIdCb.Size = new Size(160, 30 );
+            this.Controls.Add(movimentacaoIdCb);
+
 
             //Configurações do botao gravar
             gravarButton = new Button();
@@ -108,12 +111,14 @@ namespace View.Fomulario.Cad.FornecedorForm
         {
             try
             {
-                Controller.Fornecedor fornecedor = new Controller.Fornecedor();//Instanciando a classe fornecedor
-                fornecedor.tipoCombustivelId = tipoCombustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
-                if (fornecedor.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                fornecedor.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
-                fornecedor.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Fornecedor.CadastrarFornecedor(fornecedor.tipoCombustivelId, fornecedor.limiteMaximo, fornecedor.limiteMinimo, fornecedor.nomeCombustivel);//Chamando o método Cadastrarfornecedor da classe fornecedor
+                Controller.Fornecedor fornecedor = new Controller.Fornecedor();
+                fornecedor.nome = nomeTextBox.Text;
+                fornecedor.contato = contatoTextBox.Text;
+                fornecedor.endereco = enderecoTextBox.Text;
+                fornecedor.movimentacaoId = movimentacaoIdCb.Text;
+
+                Controller.Fornecedor.CadastraFornecedor(fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
+                MessageBox.Show("Fornecedor cadastrado com sucesso!");
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -133,25 +138,27 @@ namespace View.Fomulario.Cad.FornecedorForm
 
         public void LimpaTela()
         {
-            tipoCombustivelIdTextBox.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            contatoTextBox.Text = "";
+            enderecoTextBox.Text = "";
+            movimentacaoIdCb.Text = "";
         }
     }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public class FormEditaFornecedor : Form
     {
         private Label fornecedorIdLabel;
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
+        private Label nomeLabel;
+        private Label contatoLabel;
+        private Label enderecoLabel;
+        private Label movimentacaoIdLabel;
         private ComboBox fornecedorIdCb;
-        private ComboBox tipoCombustivelIdCb;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private ComboBox movimentacaoIdCb;
+        private TextBox contatoTextBox;
+        private TextBox enderecoTextBox;
+        private TextBox nomeTextBox;
         private Button gravarButton;
         private Button sairButton;
 
@@ -175,75 +182,75 @@ namespace View.Fomulario.Cad.FornecedorForm
             fornecedorIdCb = new ComboBox();
             fornecedorIdCb.Location = new Point(100, 30);
             fornecedorIdCb.Size = new Size(150, 20);
-            List<Model.Fornecedor> listaFornecedors = new  List<Model.Fornecedor>();
-            foreach (Model.ornecedor fornecedor in Model.Fornecedor.BuscaFornecedor())
+            List<Controller.Fornecedor> listaFornecedors = new  List<Controller.Fornecedor>();
+            foreach (Model.Fornecedor fornecedor in Model.Fornecedor.BuscaFornecedor())
             {
                 fornecedorIdCb.Items.Add(fornecedor);
             }
-            fornecedorIdCb.DisplayMember = "Id";
-            fornecedorIdCb.ValueMember = "Id";
+            fornecedorIdCb.DisplayMember = "nome";
+            fornecedorIdCb.ValueMember = "fornecedorId";
             fornecedorIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(fornecedorIdCb);
 
-            //Configurações do tipoCombustivelId
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 60);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            List<Model.TipoCombustivel> listaTipoCombustivel = new  List<Model.TipoCombustivel>();
-            foreach (Model.TipoCombustivel tipoCombustivel in Model.TipoCombustivel.BuscaTipoCombustivel())
+            //Configurações de rótulo Nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 60);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
+
+            //Configurando o Campo de texto Nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 60);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
+
+            //Configurações de rótulo Contato
+            contatoLabel = new Label();
+            contatoLabel.Text = "Contato: ";
+            contatoLabel.Location = new Point(20, 90);
+            contatoLabel.Size = new Size(80, 20);
+            this.Controls.Add(contatoLabel);
+
+            //Configurando o Campo de texto Contato
+            contatoTextBox = new TextBox();
+            contatoTextBox.Location = new Point(100, 90);
+            contatoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(contatoTextBox);
+
+            //Configurações de rótulo Endereço
+            enderecoLabel = new Label();
+            enderecoLabel.Text = "Endereço: ";
+            enderecoLabel.Location = new Point(20, 120);
+            enderecoLabel.Size = new Size(80, 20);
+            this.Controls.Add(enderecoLabel);
+
+            //Configurando o Campo de texto Endereço
+            enderecoTextBox = new TextBox();
+            enderecoTextBox.Location = new Point(100, 120);
+            enderecoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(enderecoTextBox);
+
+            //Configurações de rótulo Movimentação
+            movimentacaoIdLabel = new Label();
+            movimentacaoIdLabel.Text = "Movimentação: ";
+            movimentacaoIdLabel.Location = new Point(20, 150);
+            movimentacaoIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(movimentacaoIdLabel);
+
+            //Configurando o Campo de texto Movimentação
+            movimentacaoIdCb = new ComboBox();
+            movimentacaoIdCb.Location = new Point(100, 150);
+            movimentacaoIdCb.Size = new Size(150, 20);
+            List<Controller.Movimentacao> listaMovimentacaos = new  List<Controller.Movimentacao>();
+            foreach (Model.Movimentacao movimentacao in Model.Movimentacao.BuscaMovimentacao())
             {
-                tipoCombustivelIdCb.Items.Add(tipoCombustivel);
+                movimentacaoIdCb.Items.Add(movimentacao);
             }
-            tipoCombustivelIdCb.DisplayMember = "nomeCombustivel";
-            tipoCombustivelIdCb.ValueMember = "Id";
-            tipoCombustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(tipoCombustivelIdLabel);
-
-            //Configurações do campo texto de tipoCombustivelId
-            tipoCombustivelIdCb = new ComboBox();
-            tipoCombustivelIdCb.Location = new Point(100, 60);
-            tipoCombustivelIdCb.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdCb);
-
-            //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 90);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
-
-            //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 90);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
-
-            //Configurações de rótulo Capacidade Mínima
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Mínima: ";
-            limiteMinimoLabel.Location = new Point(20, 120);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
-
-            //Configurando o Campo de texto Capacidade Mínima
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 120);
-            limiteMinimoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMinimoTextBox);
-
-            //Configurações de rótulo Nome do Combustível
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustível: ";
-            nomeCombustivelLabel.Location = new Point(20, 150);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
-
-            //Configurando o Campo de texto Nome do Combustível
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 150);
-            nomeCombustivelTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeCombustivelTextBox);
+            movimentacaoIdCb.DisplayMember = "nome";
+            movimentacaoIdCb.ValueMember = "movimentacaoId";
+            movimentacaoIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(movimentacaoIdCb);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -282,13 +289,18 @@ namespace View.Fomulario.Cad.FornecedorForm
                     return;
                 }
                 fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
-                fornecedor.tipoCombustivelId = tipoCombustivelIdCb.Text;
-                fornecedor.limiteMaximo = limiteMaximoTextBox.Text;
-                fornecedor.limiteMinimo = limiteMinimoTextBox.Text;
-                fornecedor.nomeCombustivel = nomeCombustivelTextBox.Text;
+                fornecedor.nome = nomeTextBox.Text;
+                fornecedor.contato = contatoTextBox.Text;
+                fornecedor.endereco = enderecoTextBox.Text;
+                var movimentacaoSelecionada = (Controller.Movimentacao) movimentacaoIdCb.SelectedItem;
+                if (movimentacaoSelecionada == null)
+                {
+                    MessageBox.Show("Selecione uma movimentacao");
+                    return;
+                }
+                fornecedor.movimentacaoId = movimentacaoSelecionada.movimentacaoId.ToString();
 
-                Controller.Fornecedor controllerFornecedor = new Controller.Fornecedor();
-                Controller.Fornecedor.AlterarFornecedor(fornecedor.fornecedorId, fornecedor.tipoCombustivelId, fornecedor.limiteMaximo, fornecedor.limiteMinimo, fornecedor.nomeCombustivel);
+                Controller.Fornecedor.AlteraFornecedor(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
                 MessageBox.Show("fornecedor alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -298,13 +310,15 @@ namespace View.Fomulario.Cad.FornecedorForm
         
         public void LimpaTela()
         {
-            fornecedorIdCb.Text = "";
-            tipoCombustivelIdCb.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            contatoTextBox.Text = "";
+            enderecoTextBox.Text = "";
+            movimentacaoIdCb.Text = "";
         }
     }
+
+//------------------ Formulário de exclusão de fornecedor ---------
+
 
     public class FormExcluiFornecedor : Form
     {
@@ -336,7 +350,7 @@ namespace View.Fomulario.Cad.FornecedorForm
                 fornecedorIdCb.Items.Add(fornecedor);
             }
             fornecedorIdCb.DisplayMember = "Id";
-            fornecedorIdCb.ValueMember = "Id";
+            fornecedorIdCb.ValueMember = "fornecedorId";
             fornecedorIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(fornecedorIdCb);
 
@@ -378,7 +392,7 @@ namespace View.Fomulario.Cad.FornecedorForm
                 }
                 fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
 
-                fornecedor.DeletaFornecedor(fornecedor.fornecedorId);
+                Controller.Fornecedor.ExcluiFornecedor(fornecedor.fornecedorId);
                 MessageBox.Show("fornecedor excluída com sucesso!");
             } catch (Exception ex)
             {
