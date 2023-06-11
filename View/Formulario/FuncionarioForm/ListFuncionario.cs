@@ -88,12 +88,14 @@ namespace View.Formulario.FuncionarioForm
             funcionarioDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             funcionarioDataGridView.Columns.Add("funcionarioId", "funcionario");
-            funcionarioDataGridView.Columns.Add("nomeCombustivel", "Nome Combustível");
-            funcionarioDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
-            funcionarioDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
-            foreach (var funcionario in Controller.Funcionario.ListarFuncionarios())
+            funcionarioDataGridView.Columns.Add("nome", "Nome");
+            funcionarioDataGridView.Columns.Add("senha", "Senha");
+            funcionarioDataGridView.Columns.Add("funcao", "Função");
+            funcionarioDataGridView.Columns.Add("lojaId", "Loja");
+            funcionarioDataGridView.Columns.Add("email", "Email");
+            foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nomeCombustivel, funcionario.limiteMaximo, funcionario.limiteMinimo);
+                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
             }
             //configura o modo de redimensionamento das linhas e colunas
             funcionarioDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -196,10 +198,10 @@ namespace View.Formulario.FuncionarioForm
 
         public void ListaFuncionario()
         {
-            dataGridView.Rows.Clear();
-            foreach (var funcionario in Controller.Funcionario.ListarFuncionarios())
+            funcionarioDataGridView.Rows.Clear();
+            foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                dataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nomeCombustivel, funcionario.limiteMaximo, funcionario.limiteMinimo);
+                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
             }
         }
     }

@@ -127,6 +127,7 @@ namespace View.Formulario.bombaForm
                 bomba.movimentacaoId = movimentacaoIdTextBox.Text;//Atribuindo o valor do campo movimentacaoId ao atributo movimentacaoId
                 bomba.lojaId = lojaIdTextBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
                 Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
+                MessageBox.Show("Bomba cadastrada com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção

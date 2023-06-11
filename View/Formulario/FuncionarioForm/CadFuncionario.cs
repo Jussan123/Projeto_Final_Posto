@@ -9,18 +9,21 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.FuncionarioForm
+namespace View.Formulario.FuncionarioForm
 {
     public partial class CadFuncionario : Form
     {
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
-        private TextBox tipoCombustivelIdTextBox;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private Label funcionarioIdLabel;
+        private Label nomeLabel;
+        private Label senhaLabel;
+        private Label funcaoLabel;
+        private Label lojaIdLabel;
+        private Label emailLabel;
+        private TextBox nomeTextBox;
+        private TextBox senhaTextBox;
+        private TextBox funcaoTextBox;
+        private TextBox emailTextBox;
+        private ComboBox lojaIdCb;
         private Button gravarButton;
         private Button sairButton;
         public CadFuncionario()
@@ -36,57 +39,70 @@ namespace View.Fomulario.FuncionarioForm
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurações do id
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 30);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(tipoCombustivelIdLabel);
+            //Configurações do Nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome do Funcionário: ";
+            nomeLabel.Location = new Point(20, 30);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
-            //Configurações do campo texto de id
-            tipoCombustivelIdTextBox = new TextBox();
-            tipoCombustivelIdTextBox.Location = new Point(100, 30);
-            tipoCombustivelIdTextBox.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdTextBox);
+            //Configurações do campo texto do Nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 30);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
-            //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 60);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
-            
-            //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 60);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
+            //Configurações do senha
+            senhaLabel = new Label();
+            senhaLabel.Text = "Senha: ";
+            senhaLabel.Location = new Point(20, 60);
+            senhaLabel.Size = new Size(80, 20);
+            this.Controls.Add(senhaLabel);
 
-            //Configurações de rótulo Capacidade Miníma
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Miníma: ";
-            limiteMinimoLabel.Location = new Point(20, 60);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
+            //Configurações do campo texto do senha
+            senhaTextBox = new TextBox();
+            senhaTextBox.Location = new Point(100, 60);
+            senhaTextBox.Size = new Size(150, 20);
+            this.Controls.Add(senhaTextBox);
 
-            //Configurando o Campo de texto Capacidade Miníma
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 60);
-            limiteMinimoTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(limiteMinimoTextBox);
+            //Configurações do funcao
+            funcaoLabel = new Label();
+            funcaoLabel.Text = "Função: ";
+            funcaoLabel.Location = new Point(20, 90);
+            funcaoLabel.Size = new Size(80, 20);
+            this.Controls.Add(funcaoLabel);
 
-            //Configurações de rótulo Nome do Combustivel
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustivel: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            //Configurações do campo texto do funcao
+            funcaoTextBox = new TextBox();
+            funcaoTextBox.Location = new Point(100, 90);
+            funcaoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(funcaoTextBox);
 
-            //Configurando o Campo de texto Nome do Combustivel
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 60);
-            nomeCombustivelTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurações do lojaId
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja: ";
+            lojaIdLabel.Location = new Point(20, 120);
+            lojaIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(lojaIdLabel);
+
+            //Configurações do campo texto do lojaId
+            lojaIdCb = new ComboBox();
+            lojaIdCb.Location = new Point(100, 120);
+            lojaIdCb.Size = new Size(150, 20);
+            this.Controls.Add(lojaIdCb);
+
+            //Configurações do email
+            emailLabel = new Label();
+            emailLabel.Text = "Email: ";
+            emailLabel.Location = new Point(20, 150);
+            emailLabel.Size = new Size(80, 20);
+            this.Controls.Add(emailLabel);
+
+            //Configurações do campo texto do email
+            emailTextBox = new TextBox();
+            emailTextBox.Location = new Point(100, 150);
+            emailTextBox.Size = new Size(150, 20);
+            this.Controls.Add(emailTextBox);
 
             //Configurações do botao gravar
             gravarButton = new Button();
@@ -109,11 +125,13 @@ namespace View.Fomulario.FuncionarioForm
             try
             {
                 Controller.Funcionario funcionario = new Controller.Funcionario();//Instanciando a classe funcionario
-                funcionario.tipoCombustivelId = tipoCombustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
-                if (funcionario.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                funcionario.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
-                funcionario.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Funcionario.CadastrarFuncionario(funcionario.tipoCombustivelId, funcionario.limiteMaximo, funcionario.limiteMinimo, funcionario.nomeCombustivel);//Chamando o método Cadastrarfuncionario da classe funcionario
+                funcionario.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome para a propriedade nome
+                funcionario.senha = senhaTextBox.Text;//Atribuindo o valor do campo senha para a propriedade senha
+                funcionario.funcao = funcaoTextBox.Text;//Atribuindo o valor do campo funcao para a propriedade funcao
+                funcionario.lojaId = lojaIdCb.Text;//Atribuindo o valor do campo lojaId para a propriedade lojaId
+                funcionario.email = emailTextBox.Text;//Atribuindo o valor do campo email para a propriedade email
+                Controller.Funcionario.CadastraFuncionario(funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);//Chamando o método CadastraFuncionario e passando os valores como parâmetro
+                MessageBox.Show("Funcionário cadastrado com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -133,25 +151,30 @@ namespace View.Fomulario.FuncionarioForm
 
         public void LimpaTela()
         {
-            tipoCombustivelIdTextBox.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            senhaTextBox.Text = "";
+            funcaoTextBox.Text = "";
+            lojaIdCb.Text = "";
+            emailTextBox.Text = "";
         }
     }
+
+//------------------------------------------------------------
 
     public class FormEditaFuncionario : Form
     {
         private Label funcionarioIdLabel;
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
+        private Label nomeLabel;
+        private Label senhaLabel;
+        private Label funcaoLabel;
+        private Label lojaIdLabel;
+        private Label emailLabel;
+        private TextBox nomeTextBox;
+        private TextBox senhaTextBox;
+        private TextBox funcaoTextBox;
+        private TextBox emailTextBox;
         private ComboBox funcionarioIdCb;
-        private ComboBox tipoCombustivelIdCb;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private ComboBox lojaIdCb;
         private Button gravarButton;
         private Button sairButton;
 
@@ -175,75 +198,88 @@ namespace View.Fomulario.FuncionarioForm
             funcionarioIdCb = new ComboBox();
             funcionarioIdCb.Location = new Point(100, 30);
             funcionarioIdCb.Size = new Size(150, 20);
-            List<Model.Funcionario> listaFuncionarios = new  List<Model.Funcionario>();
+            List<Controller.Funcionario> listaFuncionarios = new  List<Controller.Funcionario>();
             foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
             {
                 funcionarioIdCb.Items.Add(funcionario);
             }
-            funcionarioIdCb.DisplayMember = "Id";
-            funcionarioIdCb.ValueMember = "Id";
+            funcionarioIdCb.DisplayMember = "nome";
+            funcionarioIdCb.ValueMember = "funcionarioId";
             funcionarioIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(funcionarioIdCb);
 
-            //Configurações do tipoCombustivelId
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 60);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            List<Model.TipoCombustivel> listaTipoCombustivel = new  List<Model.TipoCombustivel>();
-            foreach (Model.TipoCombustivel tipoCombustivel in Model.TipoCombustivel.BuscaTipoCombustivel())
+            //Configurações da lojaId
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja: ";
+            lojaIdLabel.Location = new Point(20, 60);
+            lojaIdLabel.Size = new Size(80, 20);
+            List<Controller.Loja> listaLoja = new  List<Controller.Loja>();
+            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
             {
-                tipoCombustivelIdCb.Items.Add(tipoCombustivel);
+                lojaIdCb.Items.Add(listaLoja);
             }
-            tipoCombustivelIdCb.DisplayMember = "nomeCombustivel";
-            tipoCombustivelIdCb.ValueMember = "Id";
-            tipoCombustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(tipoCombustivelIdLabel);
+            lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
+            lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(lojaIdLabel);
 
             //Configurações do campo texto de tipoCombustivelId
-            tipoCombustivelIdCb = new ComboBox();
-            tipoCombustivelIdCb.Location = new Point(100, 60);
-            tipoCombustivelIdCb.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdCb);
+            lojaIdCb = new ComboBox();
+            lojaIdCb.Location = new Point(100, 60);
+            lojaIdCb.Size = new Size(150, 20);
+            this.Controls.Add(lojaIdCb);
 
-            //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 90);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
+            //Configurações de rótulo do campo nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 90);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
-            //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 90);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
+            //Configurações do campo texto de nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 90);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
-            //Configurações de rótulo Capacidade Mínima
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Mínima: ";
-            limiteMinimoLabel.Location = new Point(20, 120);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
+            //Configurações de rótulo do campo senha
+            senhaLabel = new Label();
+            senhaLabel.Text = "Senha: ";
+            senhaLabel.Location = new Point(20, 120);
+            senhaLabel.Size = new Size(80, 20);
+            this.Controls.Add(senhaLabel);
 
-            //Configurando o Campo de texto Capacidade Mínima
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 120);
-            limiteMinimoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMinimoTextBox);
+            //Configurações do campo texto de senha
+            senhaTextBox = new TextBox();
+            senhaTextBox.Location = new Point(100, 120);
+            senhaTextBox.Size = new Size(150, 20);
+            this.Controls.Add(senhaTextBox);
 
-            //Configurações de rótulo Nome do Combustível
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustível: ";
-            nomeCombustivelLabel.Location = new Point(20, 150);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            //Configurações de rótulo do campo funcao
+            funcaoLabel = new Label();
+            funcaoLabel.Text = "Função: ";
+            funcaoLabel.Location = new Point(20, 150);
+            funcaoLabel.Size = new Size(80, 20);
+            this.Controls.Add(funcaoLabel);
 
-            //Configurando o Campo de texto Nome do Combustível
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 150);
-            nomeCombustivelTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurações do campo texto de funcao
+            funcaoTextBox = new TextBox();
+            funcaoTextBox.Location = new Point(100, 150);
+            funcaoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(funcaoTextBox);
+
+            //Configurações de rótulo do campo email
+            emailLabel = new Label();
+            emailLabel.Text = "Email: ";
+            emailLabel.Location = new Point(20, 180);
+            emailLabel.Size = new Size(80, 20);
+            this.Controls.Add(emailLabel);
+
+            //Configurações do campo texto de email
+            emailTextBox = new TextBox();
+            emailTextBox.Location = new Point(100, 180);
+            emailTextBox.Size = new Size(150, 20);
+            this.Controls.Add(emailTextBox);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -251,7 +287,7 @@ namespace View.Fomulario.FuncionarioForm
             gravarButton.Location = new Point(20, 180);
             gravarButton.Size = new Size(80, 20);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
-                SalvaFuncionario();
+                salvaFuncionario();
                 LimpaTela();
             };
             this.Controls.Add(gravarButton);
@@ -270,7 +306,7 @@ namespace View.Fomulario.FuncionarioForm
             InitializeComponent();
         }
 
-        public void Salvafuncionario()
+        public void salvaFuncionario()
         {
             try
             {
@@ -278,18 +314,17 @@ namespace View.Fomulario.FuncionarioForm
                 var funcionarioSelecionada = (Controller.Funcionario) funcionarioIdCb.SelectedItem;
                 if (funcionarioSelecionada == null)
                 {
-                    MessageBox.Show("Selecione uma funcionario");
+                    MessageBox.Show("Selecione um funcionario");
                     return;
                 }
                 funcionario.funcionarioId = funcionarioSelecionada.funcionarioId.ToString();
-                funcionario.tipoCombustivelId = tipoCombustivelIdCb.Text;
-                funcionario.limiteMaximo = limiteMaximoTextBox.Text;
-                funcionario.limiteMinimo = limiteMinimoTextBox.Text;
-                funcionario.nomeCombustivel = nomeCombustivelTextBox.Text;
+                funcionario.nome = nomeTextBox.Text;
+                funcionario.senha = senhaTextBox.Text;
+                funcionario.funcao = funcaoTextBox.Text;
+                funcionario.email = emailTextBox.Text;
 
-                Controller.Funcionario controllerFuncionario = new Controller.Funcionario();
-                Controller.Funcionario.AlterarFuncionario(funcionario.funcionarioId, funcionario.tipoCombustivelId, funcionario.limiteMaximo, funcionario.limiteMinimo, funcionario.nomeCombustivel);
-                MessageBox.Show("funcionario alterada com sucesso!");
+                Controller.Funcionario.AlteraFuncionario(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
+                MessageBox.Show("funcionario alterado com sucesso!");
             } catch (Exception ex)
             {
                 MessageBox.Show("Erro ao alterar funcionario: " + ex.Message);
@@ -298,13 +333,14 @@ namespace View.Fomulario.FuncionarioForm
         
         public void LimpaTela()
         {
-            funcionarioIdCb.Text = "";
-            tipoCombustivelIdCb.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            senhaTextBox.Text = "";
+            funcaoTextBox.Text = "";
+            emailTextBox.Text = "";
         }
     }
+
+
 
     public class FormExcluiFuncionario : Form
     {
@@ -330,13 +366,13 @@ namespace View.Fomulario.FuncionarioForm
             funcionarioIdCb = new ComboBox();
             funcionarioIdCb.Location = new Point(100, 30);
             funcionarioIdCb.Size = new Size(150, 20);
-            List<Model.Funcionario> listaFuncionarios = new  List<Model.Funcionario>();
+            List<Controller.Funcionario> listaFuncionarios = new  List<Controller.Funcionario>();
             foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
             {
                 funcionarioIdCb.Items.Add(funcionario);
             }
-            funcionarioIdCb.DisplayMember = "Id";
-            funcionarioIdCb.ValueMember = "Id";
+            funcionarioIdCb.DisplayMember = "nome";
+            funcionarioIdCb.ValueMember = "funcionarioId";
             funcionarioIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(funcionarioIdCb);
 
@@ -378,7 +414,7 @@ namespace View.Fomulario.FuncionarioForm
                 }
                 funcionario.funcionarioId = funcionarioSelecionada.funcionarioId.ToString();
 
-                funcionario.DeletaFuncionario(funcionario.funcionarioId);
+                Controller.Funcionario.ExcluiFuncionario(funcionario.funcionarioId);
                 MessageBox.Show("funcionario excluída com sucesso!");
             } catch (Exception ex)
             {
