@@ -26,16 +26,16 @@ namespace View
 
             //Sub-menus do menu "Sistema"
             ToolStripMenuItem produtosMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            produtosMenuItem.Click += new EventHandler(ProdutosMenuItem_Click);
+            ////produtosMenuItem.Click += new EventHandler(ProdutosMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(produtosMenuItem);
 
             ToolStripMenuItem alxMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
-            alxMenuItem.Click += new EventHandler(AlxMenuItem_Click);
+            ////alxMenuItem.Click += new EventHandler(AlxMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(alxMenuItem);
 
             sistemaMenuItem.DropDownItems.Add(new ToolStripSeparator()); //Separador
 
-            sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
+            ////sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(sistemaMenuItem);
 
@@ -43,24 +43,24 @@ namespace View
 
             //Sub-menus do menu "Cadastro"
             ToolStripMenuItem bobasMenuItem = new ToolStripMenuItem("Bobas");
-            bobasMenuItem.Click += new EventHandler(BobasMenuItem_Click);
+            ////bobasMenuItem.Click += new EventHandler(BobasMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(bobasMenuItem);
 
             ToolStripMenuItem combustiveisMenuItem = new ToolStripMenuItem("Combustíveis");
-            combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
+            ////combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(combustiveisMenuItem);
 
             ToolStripMenuItem tipoCombustiveisMenuItem = new ToolStripMenuItem("Tipo Combustíveis");
-            tipoCombustiveisMenuItem.Click += new EventHandler(TipoCombustiveisMenuItem_Click);
+            ////tipoCombustiveisMenuItem.Click += new EventHandler(TipoCombustiveisMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(tipoCombustiveisMenuItem);
 
             ToolStripMenuItem fornecedorMenuItem = new ToolStripMenuItem("Fornecedor");
-            fornecedorMenuItem.Click += new EventHandler(FornecedorMenuItem_Click);
+            ////fornecedorMenuItem.Click += new EventHandler(FornecedorMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(fornecedorMenuItem);
 
             cadastroMenuItem.DropDownItems.Add(new ToolStripSeparator()); // Separador
 
-            cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
+            ////cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(cadastroMenuItem);
 
@@ -68,7 +68,7 @@ namespace View
 
             //Sub-menus do menu "Movimentações"
             ToolStripMenuItem fluxosMenuItem = new ToolStripMenuItem("Fluxos");
-            fluxosMenuItem.Click += new EventHandler(FluxosMenuItem_Click);
+            ////fluxosMenuItem.Click += new EventHandler(FluxosMenuItem_Click);
             movimentacoesMenuItem.DropDownItems.Add(fluxosMenuItem);
 
             menuStrip.Items.Add(movimentacoesMenuItem);
@@ -77,7 +77,7 @@ namespace View
 
             //Sub-menus do menu "Ajuda"
             ToolStripMenuItem sobreMenuItem = new ToolStripMenuItem("Sobre");
-            sobreMenuItem.Click += new EventHandler(SobreMenuItem_Click);
+            ////obreMenuItem.Click += new EventHandler(SobreMenuItem_Click);
             ajudaMenuItem.DropDownItems.Add(sobreMenuItem);
 
             menuStrip.Items.Add(ajudaMenuItem);

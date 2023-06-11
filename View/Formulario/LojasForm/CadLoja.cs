@@ -14,14 +14,14 @@ namespace View.Fomulario.CadLojaForm
 {
     public partial class CadLoja : Form
     {
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
-        private TextBox tipoCombustivelIdTextBox;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private Label nomeLabel;
+        private Label enderecoLabel;
+        private Label telefoneLabel;
+        private Label emailLabel;
+        private TextBox nomeTextBox;
+        private TextBox enderecoTextBox;
+        private TextBox telefoneTextBox;
+        private TextBox emailTextBox;
         private Button gravarButton;
         private Button sairButton;
         public CadLoja()
@@ -37,57 +37,57 @@ namespace View.Fomulario.CadLojaForm
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurações do id
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 30);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(tipoCombustivelIdLabel);
+            //Configurações do rótulo Nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome Loja: ";
+            nomeLabel.Location = new Point(20, 30);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
-            //Configurações do campo texto de id
-            tipoCombustivelIdTextBox = new TextBox();
-            tipoCombustivelIdTextBox.Location = new Point(100, 30);
-            tipoCombustivelIdTextBox.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdTextBox);
+            //Configurações do campo texto de Nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 30);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
-            //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 60);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
-            
-            //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 60);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
+            //Configurações do rótulo Endereço
+            enderecoLabel = new Label();
+            enderecoLabel.Text = "Endereço: ";
+            enderecoLabel.Location = new Point(20, 60);
+            enderecoLabel.Size = new Size(80, 20);
+            this.Controls.Add(enderecoLabel);
 
-            //Configurações de rótulo Capacidade Miníma
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Miníma: ";
-            limiteMinimoLabel.Location = new Point(20, 60);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
+            //Configurações do campo texto de Endereço
+            enderecoTextBox = new TextBox();
+            enderecoTextBox.Location = new Point(100, 60);
+            enderecoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(enderecoTextBox);
 
-            //Configurando o Campo de texto Capacidade Miníma
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 60);
-            limiteMinimoTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(limiteMinimoTextBox);
+            //Configurações do rótulo Telefone
+            telefoneLabel = new Label();
+            telefoneLabel.Text = "Telefone: ";
+            telefoneLabel.Location = new Point(20, 90);
+            telefoneLabel.Size = new Size(80, 20);
+            this.Controls.Add(telefoneLabel);
 
-            //Configurações de rótulo Nome do Combustivel
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustivel: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            //Configurações do campo texto de Telefone
+            telefoneTextBox = new TextBox();
+            telefoneTextBox.Location = new Point(100, 90);
+            telefoneTextBox.Size = new Size(150, 20);
+            this.Controls.Add(telefoneTextBox);
 
-            //Configurando o Campo de texto Nome do Combustivel
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 60);
-            nomeCombustivelTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurações do rótulo Email
+            emailLabel = new Label();
+            emailLabel.Text = "Email: ";
+            emailLabel.Location = new Point(20, 120);
+            emailLabel.Size = new Size(80, 20);
+            this.Controls.Add(emailLabel);
+
+            //Configurações do campo texto de Email
+            emailTextBox = new TextBox();
+            emailTextBox.Location = new Point(100, 120);
+            emailTextBox.Size = new Size(150, 20);
+            this.Controls.Add(emailTextBox);
 
             //Configurações do botao gravar
             gravarButton = new Button();
@@ -110,11 +110,12 @@ namespace View.Fomulario.CadLojaForm
             try
             {
                 Controller.Loja loja = new Controller.Loja();//Instanciando a classe loja
-                loja.tipoCombustivelId = tipoCombustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
-                if (loja.tipoCombustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
-                loja.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
-                loja.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                Controller.Loja.CadastrarLoja(loja.tipoCombustivelId, loja.limiteMaximo, loja.limiteMinimo, loja.nomeCombustivel);//Chamando o método Cadastrarloja da classe loja
+                loja.nome = nomeTextBox.Text;//Atribuindo o valor do campo texto Nome para a propriedade Nome
+                loja.endereco = enderecoTextBox.Text;//Atribuindo o valor do campo texto Endereco para a propriedade Endereco
+                loja.telefone = telefoneTextBox.Text;//Atribuindo o valor do campo texto Telefone para a propriedade Telefone
+                loja.email = emailTextBox.Text;//Atribuindo o valor do campo texto Email para a propriedade Email
+                Controller.Loja.CadastraLoja(loja.nome, loja.endereco, loja.telefone, loja.email);//Chamando o método CadastraLoja da classe Loja
+                MessageBox.Show("Loja cadastrada com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
@@ -134,25 +135,27 @@ namespace View.Fomulario.CadLojaForm
 
         public void LimpaTela()
         {
-            tipoCombustivelIdTextBox.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            enderecoTextBox.Text = "";
+            telefoneTextBox.Text = "";
+            emailTextBox.Text = "";
         }
     }
+
+//----------------------    Formulário de edição de loja   ----------------------//
 
     public class FormEditaLoja : Form
     {
         private Label lojaIdLabel;
-        private Label tipoCombustivelIdLabel;
-        private Label limiteMaximoLabel;
-        private Label limiteMinimoLabel;
-        private Label nomeCombustivelLabel;
+        private Label nomeLabel;
+        private Label enderecoLabel;
+        private Label telefoneLabel;
+        private Label emailLabel;
         private ComboBox lojaIdCb;
-        private ComboBox tipoCombustivelIdCb;
-        private TextBox limiteMaximoTextBox;
-        private TextBox limiteMinimoTextBox;
-        private TextBox nomeCombustivelTextBox;
+        private TextBox nomeTextBox;
+        private TextBox enderecoTextBox;
+        private TextBox telefoneTextBox;
+        private TextBox emailTextBox;
         private Button gravarButton;
         private Button sairButton;
 
@@ -176,75 +179,67 @@ namespace View.Fomulario.CadLojaForm
             lojaIdCb = new ComboBox();
             lojaIdCb.Location = new Point(100, 30);
             lojaIdCb.Size = new Size(150, 20);
-            List<Model.Loja> listaLojas = new  List<Model.Loja>();
+            List<Controller.Loja> listaLojas = new  List<Controller.Loja>();
             foreach (Model.Loja loja in Model.Loja.BuscaLoja())
             {
                 lojaIdCb.Items.Add(loja);
             }
-            lojaIdCb.DisplayMember = "Id";
-            lojaIdCb.ValueMember = "Id";
+            lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
             lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
-            //Configurações do tipoCombustivelId
-            tipoCombustivelIdLabel = new Label();
-            tipoCombustivelIdLabel.Text = "ID Combústivel: ";
-            tipoCombustivelIdLabel.Location = new Point(20, 60);
-            tipoCombustivelIdLabel.Size = new Size(80, 20);
-            List<Model.TipoCombustivel> listaTipoCombustivel = new  List<Model.TipoCombustivel>();
-            foreach (Model.TipoCombustivel tipoCombustivel in Model.TipoCombustivel.BuscaTipoCombustivel())
-            {
-                tipoCombustivelIdCb.Items.Add(tipoCombustivel);
-            }
-            tipoCombustivelIdCb.DisplayMember = "nomeCombustivel";
-            tipoCombustivelIdCb.ValueMember = "Id";
-            tipoCombustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(tipoCombustivelIdLabel);
+            //Configurações do rótulo Nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 60);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
-            //Configurações do campo texto de tipoCombustivelId
-            tipoCombustivelIdCb = new ComboBox();
-            tipoCombustivelIdCb.Location = new Point(100, 60);
-            tipoCombustivelIdCb.Size = new Size(150, 20);
-            this.Controls.Add(tipoCombustivelIdCb);
+            //Configurações do campo texto de Nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 60);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
-            //Configurações de rótulo Capacidade Máxima
-            limiteMaximoLabel = new Label();
-            limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 90);
-            limiteMaximoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMaximoLabel);
+            //Configurações do rótulo Endereço
+            enderecoLabel = new Label();
+            enderecoLabel.Text = "Endereço: ";
+            enderecoLabel.Location = new Point(20, 90);
+            enderecoLabel.Size = new Size(80, 20);
+            this.Controls.Add(enderecoLabel);
 
-            //Configurando o Campo de texto Capacidade Máxima
-            limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 90);
-            limiteMaximoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMaximoTextBox);
+            //Configurações do campo texto de Endereço
+            enderecoTextBox = new TextBox();
+            enderecoTextBox.Location = new Point(100, 90);
+            enderecoTextBox.Size = new Size(150, 20);
+            this.Controls.Add(enderecoTextBox);
 
-            //Configurações de rótulo Capacidade Mínima
-            limiteMinimoLabel = new Label();
-            limiteMinimoLabel.Text = "Cap. Mínima: ";
-            limiteMinimoLabel.Location = new Point(20, 120);
-            limiteMinimoLabel.Size = new Size(80, 20);
-            this.Controls.Add(limiteMinimoLabel);
+            //Configurações do rótulo Telefone
+            telefoneLabel = new Label();
+            telefoneLabel.Text = "Telefone: ";
+            telefoneLabel.Location = new Point(20, 120);
+            telefoneLabel.Size = new Size(80, 20);
+            this.Controls.Add(telefoneLabel);
 
-            //Configurando o Campo de texto Capacidade Mínima
-            limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 120);
-            limiteMinimoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(limiteMinimoTextBox);
+            //Configurações do campo texto de Telefone
+            telefoneTextBox = new TextBox();
+            telefoneTextBox.Location = new Point(100, 120);
+            telefoneTextBox.Size = new Size(150, 20);
+            this.Controls.Add(telefoneTextBox);
 
-            //Configurações de rótulo Nome do Combustível
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustível: ";
-            nomeCombustivelLabel.Location = new Point(20, 150);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            //Configurações do rótulo Email
+            emailLabel = new Label();
+            emailLabel.Text = "Email: ";
+            emailLabel.Location = new Point(20, 150);
+            emailLabel.Size = new Size(80, 20);
+            this.Controls.Add(emailLabel);
 
-            //Configurando o Campo de texto Nome do Combustível
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 150);
-            nomeCombustivelTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeCombustivelTextBox);
+            //Configurações do campo texto de Email
+            emailTextBox = new TextBox();
+            emailTextBox.Location = new Point(100, 150);
+            emailTextBox.Size = new Size(150, 20);
+            this.Controls.Add(emailTextBox);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -276,20 +271,19 @@ namespace View.Fomulario.CadLojaForm
             try
             {
                 Controller.Loja loja = new Controller.Loja();
-                var lojaSelecionada = (Controller.Loja) lojaIdCb.SelectedItem;
-                if (lojaSelecionada == null)
+                var lojaId = (Controller.Loja) lojaIdCb.SelectedItem;
+                if (lojaId == null)
                 {
-                    MessageBox.Show("Selecione uma loja");
+                    MessageBox.Show("Selecione uma loja!");
                     return;
                 }
-                loja.lojaId = lojaSelecionada.lojaId.ToString();
-                loja.tipoCombustivelId = tipoCombustivelIdCb.Text;
-                loja.limiteMaximo = limiteMaximoTextBox.Text;
-                loja.limiteMinimo = limiteMinimoTextBox.Text;
-                loja.nomeCombustivel = nomeCombustivelTextBox.Text;
+                loja.lojaId = lojaId.lojaId;
+                loja.nome = nomeTextBox.Text;
+                loja.endereco = enderecoTextBox.Text;
+                loja.telefone = telefoneTextBox.Text;
+                loja.email = emailTextBox.Text;
 
-                Controller.Loja controllerLoja = new Controller.Loja();
-                Controller.Loja.AlterarLoja(loja.lojaId, loja.tipoCombustivelId, loja.limiteMaximo, loja.limiteMinimo, loja.nomeCombustivel);
+                Controller.Loja.AlteraLoja(loja.lojaId, loja.nome, loja.endereco, loja.telefone, loja.email);
                 MessageBox.Show("loja alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -299,14 +293,15 @@ namespace View.Fomulario.CadLojaForm
         
         public void LimpaTela()
         {
-            lojaIdCb.Text = "";
-            tipoCombustivelIdCb.Text = "";
-            limiteMaximoTextBox.Text = "";
-            limiteMinimoTextBox.Text = "";
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
+            enderecoTextBox.Text = "";
+            telefoneTextBox.Text = "";
+            emailTextBox.Text = "";
         }
     }
 
+
+// -------------- Formulário de exclusão de loja --------------//
     public class FormExcluiLoja : Form
     {
         private Label lojaIdLabel;
@@ -336,8 +331,8 @@ namespace View.Fomulario.CadLojaForm
             {
                 lojaIdCb.Items.Add(loja);
             }
-            lojaIdCb.DisplayMember = "Id";
-            lojaIdCb.ValueMember = "Id";
+            lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
             lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
@@ -379,7 +374,7 @@ namespace View.Fomulario.CadLojaForm
                 }
                 loja.lojaId = lojaSelecionada.lojaId.ToString();
 
-                loja.DeletaLoja(loja.lojaId);
+                Controller.Loja.ExcluiLoja(loja.lojaId);
                 MessageBox.Show("loja excluída com sucesso!");
             } catch (Exception ex)
             {

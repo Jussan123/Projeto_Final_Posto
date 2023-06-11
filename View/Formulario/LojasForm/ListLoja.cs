@@ -89,12 +89,13 @@ namespace View.Formulario.ListLojaForm
             lojaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             lojaDataGridView.Columns.Add("lojaId", "loja");
-            lojaDataGridView.Columns.Add("nomeCombustivel", "Nome Combustível");
-            lojaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
-            lojaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
-            foreach (var loja in Controller.loja.Listarlojas())
+            lojaDataGridView.Columns.Add("nome", "Nome Loja");
+            lojaDataGridView.Columns.Add("endereco", "Endereço");
+            lojaDataGridView.Columns.Add("telefone", "Telefone");
+            lojaDataGridView.Columns.Add("email", "Email");
+            foreach (var loja in Controller.Loja.ListaLojas())
             {
-                lojaDataGridView.Rows.Add(loja.lojaId, loja.nomeCombustivel, loja.limiteMaximo, loja.limiteMinimo);
+                lojaDataGridView.Rows.Add(loja.lojaId, loja.nome, loja.endereco, loja.telefone, loja.email);
             }
             //configura o modo de redimensionamento das linhas e colunas
             lojaDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -197,10 +198,10 @@ namespace View.Formulario.ListLojaForm
 
         public void ListaLoja()
         {
-            dataGridView.Rows.Clear();
-            foreach (var loja in Controller.loja.Listarlojas())
+            lojaDataGridView.Rows.Clear();
+            foreach (var loja in Controller.Loja.ListaLojas())
             {
-                dataGridView.Rows.Add(loja.lojaId, loja.nomeCombustivel, loja.limiteMaximo, loja.limiteMinimo);
+                lojaDataGridView.Rows.Add(loja.lojaId, loja.nome, loja.endereco, loja.telefone, loja.email);
             }
         }
     }
