@@ -28,10 +28,29 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
+            //Configurações da janela do formulário 
+            //this.ClientSize = new System.Drawing.Size(800, 600); //Fixa o tamanho desejado para o formulario
+            this.Text = ":: Sys[GAS] - Gestão e controle de combustíveis ::";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = true;
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+        /*
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(800, 450);
+        this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         this.Text = "Form1";
+        this.MaximizeBox = false;
+        this.MaximizeBox = true;
+        //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        //this.Location = new System.Drawing.Point((Screen.PrimaryScreen.Bounds.Width - this.Width) / 2, (Screen.PrimaryScreen.Bounds.Height - this.Height) / 2);
+        */
     }
 
     #endregion

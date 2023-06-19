@@ -24,7 +24,7 @@
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(300, 150);
             this.Text = "Login";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -68,10 +68,12 @@
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(110, 100);
+            sairButton.Location = new Point(210, 100);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             this.Controls.Add(sairButton);
+            // Manipulador de evento para a tecla "ESC"
+            this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
 
         private void EntrarButton_Click(object sender, EventArgs e)
@@ -97,6 +99,14 @@
         private void SairButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         public void LimpaTela()

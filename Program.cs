@@ -101,14 +101,14 @@ namespace View
 
         private void LoginMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Enter Login");
+            //MessageBox.Show("Enter Login");
             View.Formulario.Login.Login login = new View.Formulario.Login.Login();
             login.ShowDialog();
         }
 
         private void FuncionarioMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Enter Funcionário");
+            //MessageBox.Show("Enter Funcionário");
             View.Formulario.FuncionarioForm.ListFuncionarioForm funcionario = new View.Formulario.FuncionarioForm.ListFuncionarioForm();
             funcionario.ShowDialog();
         }
