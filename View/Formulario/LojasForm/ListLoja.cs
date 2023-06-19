@@ -110,7 +110,7 @@ namespace View.Formulario.ListLojaForm
             this.Controls.Add(lojaDataGridView);
 
 
-/* DataGridView montado pelo Erich
+            /* DataGridView montado pelo Erich
             //Configurações do grid de lojas
             lojaDataGridView = new DataGridView();
             lojaDataGridView.Location = new Point(20, 40);
