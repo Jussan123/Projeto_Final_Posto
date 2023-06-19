@@ -137,15 +137,13 @@ namespace View
         private void FluxosMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Enter Fluxos");
-            //View.Formulario.FluxoForm.ListFluxoForm fluxo = new View.Formulario.FluxoForm.ListFluxoForm();
-            //fluxo.ShowDialog();
+
         }
 
         private void SobreMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Enter Sobre");
-            //View.Formulario.SobreForm sobre = new View.Formulario.SobreForm();
-            //sobre.ShowDialog();
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -29,9 +29,10 @@ namespace Controller
             try{
                 CriptografaSenha(senha);
                 if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao cadastrar funcionário, email já cadastrado");
                 Model.Funcionario funcionario = new Model.Funcionario(
                     nome,
-                    senha,
+                    CriptografaSenha(senha),
                     funcao,
                     int.Parse(lojaId),
                     email
@@ -55,10 +56,11 @@ namespace Controller
                 CriptografaSenha(senha);
                 if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
                 if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao alterar funcionário, email já cadastrado");
                 return Model.Funcionario.UpdateFuncionario(
                     int.Parse(funcionarioId),
                     nome,
-                    senha,
+                    CriptografaSenha(senha),
                     funcao,
                     int.Parse(lojaId),
                     email
@@ -114,9 +116,8 @@ namespace Controller
             try
             {
                 Model.Funcionario funcionario = Model.Funcionario.BuscaFuncionarioPorEmail(email);
-                CriptografaSenha(senha);
                 if (funcionario == null) throw new System.Exception("Erro ao logar, funcionário não encontrado");
-                if (funcionario.senha != senha) throw new System.Exception("Erro ao logar, senha incorreta");
+                if (funcionario.senha != CriptografaSenha(senha)) throw new System.Exception("Erro ao logar, senha incorreta");
                 return true;
             } catch (System.Exception) {
                 throw new System.Exception("Erro ao logar");
