@@ -5,9 +5,9 @@
  * Versão: 1.0
  */
 
- namespace View.Fomulario.Login 
+ namespace View.Formulario.Login
  {
-    public partial class Login : Form
+    internal class Login : Form
     {
         private Label loginLabel;
         private Label senhaLabel;

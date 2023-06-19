@@ -25,42 +25,38 @@ namespace View
             ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
 
             //Sub-menus do menu "Sistema"
-            ToolStripMenuItem produtosMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            ////produtosMenuItem.Click += new EventHandler(ProdutosMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(produtosMenuItem);
+            ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
+            loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
+            sistemaMenuItem.DropDownItems.Add(loginMenuItem);
 
-            ToolStripMenuItem alxMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
-            ////alxMenuItem.Click += new EventHandler(AlxMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(alxMenuItem);
+            ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
+            funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
+            sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
 
             sistemaMenuItem.DropDownItems.Add(new ToolStripSeparator()); //Separador
 
-            ////sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
+            sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(sistemaMenuItem);
 
             ToolStripMenuItem cadastroMenuItem = new ToolStripMenuItem("Cadastro");
 
             //Sub-menus do menu "Cadastro"
-            ToolStripMenuItem bobasMenuItem = new ToolStripMenuItem("Bobas");
-            ////bobasMenuItem.Click += new EventHandler(BobasMenuItem_Click);
-            cadastroMenuItem.DropDownItems.Add(bobasMenuItem);
+            ToolStripMenuItem bombasMenuItem = new ToolStripMenuItem("Bombas");
+            bombasMenuItem.Click += new EventHandler(BombasMenuItem_Click);
+            cadastroMenuItem.DropDownItems.Add(bombasMenuItem);
 
             ToolStripMenuItem combustiveisMenuItem = new ToolStripMenuItem("Combustíveis");
-            ////combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
+            combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(combustiveisMenuItem);
 
-            ToolStripMenuItem tipoCombustiveisMenuItem = new ToolStripMenuItem("Tipo Combustíveis");
-            ////tipoCombustiveisMenuItem.Click += new EventHandler(TipoCombustiveisMenuItem_Click);
-            cadastroMenuItem.DropDownItems.Add(tipoCombustiveisMenuItem);
-
             ToolStripMenuItem fornecedorMenuItem = new ToolStripMenuItem("Fornecedor");
-            ////fornecedorMenuItem.Click += new EventHandler(FornecedorMenuItem_Click);
+            fornecedorMenuItem.Click += new EventHandler(FornecedorMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(fornecedorMenuItem);
 
             cadastroMenuItem.DropDownItems.Add(new ToolStripSeparator()); // Separador
 
-            ////cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
+            cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(cadastroMenuItem);
 
@@ -68,7 +64,7 @@ namespace View
 
             //Sub-menus do menu "Movimentações"
             ToolStripMenuItem fluxosMenuItem = new ToolStripMenuItem("Fluxos");
-            ////fluxosMenuItem.Click += new EventHandler(FluxosMenuItem_Click);
+            fluxosMenuItem.Click += new EventHandler(FluxosMenuItem_Click);
             movimentacoesMenuItem.DropDownItems.Add(fluxosMenuItem);
 
             menuStrip.Items.Add(movimentacoesMenuItem);
@@ -77,7 +73,7 @@ namespace View
 
             //Sub-menus do menu "Ajuda"
             ToolStripMenuItem sobreMenuItem = new ToolStripMenuItem("Sobre");
-            ////obreMenuItem.Click += new EventHandler(SobreMenuItem_Click);
+            sobreMenuItem.Click += new EventHandler(SobreMenuItem_Click);
             ajudaMenuItem.DropDownItems.Add(sobreMenuItem);
 
             menuStrip.Items.Add(ajudaMenuItem);
@@ -89,7 +85,7 @@ namespace View
             statusStrip.Dock = DockStyle.Bottom;
 
             ToolStripStatusLabel infoLabel = new ToolStripStatusLabel();
-            infoLabel.Text = ".gitignore .jussan";
+            infoLabel.Text = "Desenvolvido por: JEL Tech Company";
             statusStrip.Items.Add(infoLabel);
 
             dateTimeLabel = new ToolStripStatusLabel(); //Cria a instância para a data e hora
@@ -97,6 +93,68 @@ namespace View
 
             this.Controls.Add(statusStrip);
         }
+
+        private void SairMenuItem_Click(object? sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void LoginMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Login");
+            View.Formulario.Login.Login login = new View.Formulario.Login.Login();
+            login.ShowDialog();
+        }
+
+        private void FuncionarioMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Funcionário");
+            View.Formulario.FuncionarioForm.ListFuncionarioForm funcionario = new View.Formulario.FuncionarioForm.ListFuncionarioForm();
+            funcionario.ShowDialog();
+        }
+
+        private void BombasMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Bombas");
+            View.Formulario.bombaForm.ListBomba bomba = new View.Formulario.bombaForm.ListBomba();
+            bomba.ShowDialog();
+        }
+
+        private void CombustiveisMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Combustíveis");
+            View.Formulario.CombustivelForm.ListCombustivelForm combustivel = new View.Formulario.CombustivelForm.ListCombustivelForm();
+            combustivel.ShowDialog();
+        }
+
+        private void FornecedorMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Fornecedor");
+            View.Formulario.FornecedorForm.ListFornecedorForm fornecedor = new View.Formulario.FornecedorForm.ListFornecedorForm();
+            fornecedor.ShowDialog();
+        }
+
+        private void FluxosMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Fluxos");
+            //View.Formulario.FluxoForm.ListFluxoForm fluxo = new View.Formulario.FluxoForm.ListFluxoForm();
+            //fluxo.ShowDialog();
+        }
+
+        private void SobreMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Enter Sobre");
+            //View.Formulario.SobreForm sobre = new View.Formulario.SobreForm();
+            //sobre.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
+        }
+        
+
+
 
         static class Program
         {

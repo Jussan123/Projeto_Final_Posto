@@ -14,11 +14,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using View.Fomulario.FornecedorForm;
+using View.Formulario.FornecedorForm;
 //using CadFornecedorForm;
 
 
-namespace View.Formulario.ForneceedorForm
+namespace View.Formulario.FornecedorForm
 {
     public partial class ListFornecedorForm : Form
     {
