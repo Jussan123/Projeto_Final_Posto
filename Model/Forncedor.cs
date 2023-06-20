@@ -64,7 +64,7 @@ namespace Model
         }
 
         //------------------- CRUD -------------------//
-
+       
         public static List<Fornecedor> BuscaFornecedor()
         {
             DataBase db = new DataBase();

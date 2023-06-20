@@ -12,12 +12,12 @@ namespace View.Formulario.bombaForm
         private Label combustivelIdLabel;
         private Label limiteMaximoLabel;
         private Label limiteMinimoLabel;
-        private Label movimentacaoIdLabel;
+        private Label volumeLabel;
         private Label lojaIdLabel;
         private TextBox combustivelIdTextBox;
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
-        private TextBox movimentacaoIdTextBox;
+        private TextBox volumeTextBox;
         private TextBox lojaIdTextBox;
         private Button gravarButton;
         private Button sairButton;
@@ -74,17 +74,17 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Movimentação
-            movimentacaoIdLabel = new Label();
-            movimentacaoIdLabel.Text = "Movimentação: ";
-            movimentacaoIdLabel.Location = new Point(20, 60);
-            movimentacaoIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(movimentacaoIdLabel);
+            volumeLabel = new Label();
+            volumeLabel.Text = "Volume: ";
+            volumeLabel.Location = new Point(20, 60);
+            volumeLabel.Size = new Size(80, 20);
+            this.Controls.Add(volumeLabel);
 
             //Configurando o Campo de texto movimentação
-            movimentacaoIdTextBox = new TextBox();
-            movimentacaoIdTextBox.Location = new Point(100, 60);
-            movimentacaoIdTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(movimentacaoIdTextBox);
+            volumeTextBox = new TextBox();
+            volumeTextBox.Location = new Point(100, 60);
+            volumeTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(volumeTextBox);
 
             //Configurações de rótulo identificação da loja
             lojaIdLabel = new Label();
@@ -124,9 +124,9 @@ namespace View.Formulario.bombaForm
                 if (bomba.combustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
-                bomba.movimentacaoId = movimentacaoIdTextBox.Text;//Atribuindo o valor do campo movimentacaoId ao atributo movimentacaoId
+                bomba.volume = volumeTextBox.Text;//Atribuindo o valor do campo volume ao atributo volume
                 bomba.lojaId = lojaIdTextBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
-                Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
+                Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
                 MessageBox.Show("Bomba cadastrada com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
             }
@@ -150,7 +150,7 @@ namespace View.Formulario.bombaForm
             combustivelIdTextBox.Text = "";
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
-            movimentacaoIdTextBox.Text = "";
+            volumeTextBox.Text = "";
             lojaIdTextBox.Text = "";
         }
     }
@@ -163,11 +163,11 @@ namespace View.Formulario.bombaForm
         private Label combustivelIdLabel;
         private Label limiteMaximoLabel;
         private Label limiteMinimoLabel;
-        private Label movimentacaoIdLabel;
+        private Label volumeLabel;
         private Label lojaIdLabel;
         private ComboBox bombaIdCb;
         private ComboBox combustivelIdCb;
-        private ComboBox movimentacaoIdCb;
+        private ComboBox volumeCb;
         private ComboBox lojaIdCb;
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
@@ -252,17 +252,17 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Nome do Combustível
-            movimentacaoIdLabel = new Label();
-            movimentacaoIdLabel.Text = "Nome Combustível: ";
-            movimentacaoIdLabel.Location = new Point(20, 150);
-            movimentacaoIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(movimentacaoIdLabel);
+            volumeLabel = new Label();
+            volumeLabel.Text = "Nome Combustível: ";
+            volumeLabel.Location = new Point(20, 150);
+            volumeLabel.Size = new Size(80, 20);
+            this.Controls.Add(volumeLabel);
 
             //Configurando o Campo de texto Nome do Combustível
-            movimentacaoIdCb = new ComboBox();
-            movimentacaoIdCb.Location = new Point(100, 150);
-            movimentacaoIdCb.Size = new Size(150, 20);
-            this.Controls.Add(movimentacaoIdCb);
+            volumeCb = new ComboBox();
+            volumeCb.Location = new Point(100, 150);
+            volumeCb.Size = new Size(150, 20);
+            this.Controls.Add(volumeCb);
 
             //Configurações do botão Gravar
             gravarButton = new Button();
@@ -304,11 +304,11 @@ namespace View.Formulario.bombaForm
                 bomba.combustivelId = combustivelIdCb.Text;
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;
-                bomba.movimentacaoId = movimentacaoIdCb.Text;
+                bomba.volume = volumeCb.Text;
                 bomba.lojaId = lojaIdCb.Text;
 
                 Controller.Bomba controllerBomba = new Controller.Bomba();
-                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
+                Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);
                 MessageBox.Show("Bomba alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -322,7 +322,7 @@ namespace View.Formulario.bombaForm
             combustivelIdCb.Text = "";
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
-            movimentacaoIdCb.Text = "";
+            volumeCb.Text = "";
             lojaIdCb.Text = "";
         }
     }

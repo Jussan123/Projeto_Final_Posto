@@ -213,20 +213,20 @@ namespace View.Formulario.FuncionarioForm
             lojaIdLabel.Text = "Loja: ";
             lojaIdLabel.Location = new Point(20, 60);
             lojaIdLabel.Size = new Size(80, 20);
-            List<Controller.Loja> listaLoja = new  List<Controller.Loja>();
-            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
-            {
-                lojaIdCb.Items.Add(listaLoja);
-            }
-            lojaIdCb.DisplayMember = "nome";
-            lojaIdCb.ValueMember = "lojaId";
-            lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdLabel);
 
             //Configurações do campo texto de tipoCombustivelId
             lojaIdCb = new ComboBox();
             lojaIdCb.Location = new Point(100, 60);
             lojaIdCb.Size = new Size(150, 20);
+            List<Model.Loja> listaLojas = new List<Model.Loja>();
+            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
+            {
+                lojaIdCb.Items.Add(loja);
+            }
+            lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
+            lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
             //Configurações de rótulo do campo nome
@@ -284,7 +284,7 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 180);
+            gravarButton.Location = new Point(20, 220);
             gravarButton.Size = new Size(80, 20);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 salvaFuncionario();
@@ -295,7 +295,7 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 180);
+            sairButton.Location = new Point(100, 220);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             this.Controls.Add(sairButton);
@@ -317,11 +317,18 @@ namespace View.Formulario.FuncionarioForm
                     MessageBox.Show("Selecione um funcionario");
                     return;
                 }
+                var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
+                if (lojaSelecionada == null)
+                {
+                    MessageBox.Show("Selecione uma loja");
+                    return;
+                }
                 funcionario.funcionarioId = funcionarioSelecionada.funcionarioId.ToString();
                 funcionario.nome = nomeTextBox.Text;
                 funcionario.senha = senhaTextBox.Text;
                 funcionario.funcao = funcaoTextBox.Text;
                 funcionario.email = emailTextBox.Text;
+                funcionario.lojaId = lojaSelecionada.lojaId.ToString();
 
                 Controller.Funcionario.AlteraFuncionario(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
                 MessageBox.Show("funcionario alterado com sucesso!");

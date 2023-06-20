@@ -130,8 +130,8 @@ namespace View
         private void FornecedorMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Enter Fornecedor");
-            View.Formulario.FornecedorForm.ListFornecedorForm fornecedor = new View.Formulario.FornecedorForm.ListFornecedorForm();
-            fornecedor.ShowDialog();
+            //View.Formulario.FornecedorForm.ListFornecedorForm fornecedor = new View.Formulario.FornecedorForm.ListFornecedorForm();
+            //fornecedor.ShowDialog();
         }
 
         private void FluxosMenuItem_Click(object sender, EventArgs e)

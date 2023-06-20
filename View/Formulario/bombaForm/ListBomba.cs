@@ -80,11 +80,11 @@ namespace View.Formulario.bombaForm
             bombaDataGridView.Columns.Add("nome", "Nome Combustível");
             bombaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
             bombaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
-            bombaDataGridView.Columns.Add("movimentacaoId", "Movimentação");
+            bombaDataGridView.Columns.Add("volume", "Volume");
             bombaDataGridView.Columns.Add("lojaId", "Loja");
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);
             }
             //configura o modo de redimensionamento das linhas e colunas
             bombaDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -190,7 +190,7 @@ namespace View.Formulario.bombaForm
             bombaDataGridView.Rows.Clear();
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);
             }
         }
     }
