@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VFNb2eVhAEHvRA51FvFSkaSnLaN8Q8T0E8GZ/a8DlAhoBf9OPPZ9KES7jvy/7Ageo0Utlsl5faRvnb0o0Y/eaQ==",
+  "dgSpecHash": "zRD4BeTzoHpTnZZTglTJ24I8fyBQ9JGhR2g0AyQJqnnX8IGjBVyfGqGOOa/i+l+WMvViadvxnS/cpllv5xTA/g==",
   "success": true,
-  "projectFilePath": "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
+  "projectFilePath": "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jussan.silva\\.nuget\\packages\\awssdk.core\\3.7.106.42\\awssdk.core.3.7.106.42.nupkg.sha512",
     "C:\\Users\\jussan.silva\\.nuget\\packages\\awssdk.rds\\3.7.118.8\\awssdk.rds.3.7.118.8.nupkg.sha512",

@@ -111,7 +111,7 @@ namespace Controller
             }
         }
 
-        private static bool Logar(string email, string senha)
+        public static bool Logar(string email, string senha)
         {
             try
             {

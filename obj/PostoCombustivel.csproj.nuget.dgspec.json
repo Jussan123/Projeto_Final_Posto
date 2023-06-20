@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj": {}
+    "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj": {}
   },
   "projects": {
-    "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj": {
+    "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
+        "projectUniqueName": "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
         "projectName": "PostoCombustivel",
-        "projectPath": "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
+        "projectPath": "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\PostoCombustivel.csproj",
         "packagesPath": "C:\\Users\\jussan.silva\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\obj\\",
+        "outputPath": "C:\\Users\\jussan.silva\\OneDrive - SENAC-SC\\3º Semestre\\ProgramacaoDesktop\\Projeto_Final_Posto-1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
