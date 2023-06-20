@@ -91,8 +91,7 @@ namespace View.Formulario.Login
             Controller.Funcionario funcionario = new Controller.Funcionario();
             funcionario.email = loginTextBox.Text;
             funcionario.senha = senhaTextBox.Text;
-            Controller.Funcionario.Equals(funcionario.email, funcionario.senha);
-            if (Controller.Funcionario.Equals(funcionario.email, funcionario.senha))
+            if (Controller.Funcionario.Logar(funcionario.email, funcionario.senha))
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
@@ -101,7 +100,7 @@ namespace View.Formulario.Login
             }
             else
             {
-                //MessageBox.Show("Login ou senha incorretos!");
+                MessageBox.Show("Login ou senha incorretos!");
                 LimpaTela();
             }
         }
@@ -122,5 +121,10 @@ namespace View.Formulario.Login
             loginTextBox.Text = "";
             senhaTextBox.Text = "";
         }
+
+        public void AbrirForm(Form form){
+            form.ShowDialog();
+        }
+
     }
 }
