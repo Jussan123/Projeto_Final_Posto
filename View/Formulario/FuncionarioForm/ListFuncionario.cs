@@ -164,8 +164,8 @@ namespace View.Formulario.FuncionarioForm
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormEditaFuncionario());
-            this.ListaFuncionario();
+            AbrirForm(new View.Formulario.FuncionarioForm.FormEditaFuncionario());
+            
             //Adicionar Ação/código para alterar uma funcionario selecionada
         }
 
