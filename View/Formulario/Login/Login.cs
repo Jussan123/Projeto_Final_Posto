@@ -24,23 +24,23 @@
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300, 150);
+            this.ClientSize = new System.Drawing.Size(300, 140);
             this.Text = "Login";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            // Configurações do label de login
+            // Configurações do label de E-mail
             loginLabel = new Label();
-            loginLabel.Text = "Login";
-            loginLabel.Location = new Point(20, 20);
+            loginLabel.Text = "E-mail:";
+            loginLabel.Location = new Point(10, 25);
             loginLabel.AutoSize = true;
             this.Controls.Add(loginLabel);
 
             // Configurações do label de senha
             senhaLabel = new Label();
-            senhaLabel.Text = "Senha";
-            senhaLabel.Location = new Point(20, 60);
+            senhaLabel.Text = "Senha:";
+            senhaLabel.Location = new Point(10, 55);
             senhaLabel.AutoSize = true;
             this.Controls.Add(senhaLabel);
 
@@ -52,7 +52,7 @@
 
             // Configurações do textbox de senha
             senhaTextBox = new TextBox();
-            senhaTextBox.Location = new Point(80, 60);
+            senhaTextBox.Location = new Point(80, 50);
             senhaTextBox.Size = new Size(200, 20);
             senhaTextBox.PasswordChar = '*';
             this.Controls.Add(senhaTextBox);
@@ -60,7 +60,7 @@
             // Configurações do botão de entrar
             entrarButton = new Button();
             entrarButton.Text = "Entrar";
-            entrarButton.Location = new Point(20, 100);
+            entrarButton.Location = new Point(130, 100);
             entrarButton.Size = new Size(80, 30);
             entrarButton.Click += new EventHandler(EntrarButton_Click);
             this.Controls.Add(entrarButton);
@@ -91,7 +91,7 @@
             }
             else
             {
-                MessageBox.Show("Login ou senha incorretos!");
+                //MessageBox.Show("Login ou senha incorretos!");
                 LimpaTela();
             }
         }
