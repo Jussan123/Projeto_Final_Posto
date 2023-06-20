@@ -65,15 +65,15 @@ namespace Banco
                 entity.HasOne(e => e.funcionario)
                 .WithMany()
                 .HasForeignKey(e => e.funcionarioId);
+                entity.HasOne(e => e.bomba)
+                .WithMany()
+                .HasForeignKey(e => e.bombaId);
             });
 
             modelBuilder.Entity<Bomba>(entity =>
             {
                 entity.HasKey(e => e.bombaId);//chave primária
                 // relacionar bomba com tipo de combustivel / Movimentacao
-                entity.HasOne(e => e.movimentacao)
-                .WithMany()
-                .HasForeignKey(e => e.movimentacaoId);
                 entity.HasOne(e => e.combustivel)
                 .WithMany()
                 .HasForeignKey(e => e.combustivelId);

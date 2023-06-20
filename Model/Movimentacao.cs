@@ -23,12 +23,14 @@ namespace Model
         public Loja loja { get; set; }
         public int funcionarioId { get; set; }
         public Funcionario funcionario { get; set; }
+        public int bombaId { get; set; }
+        public Bomba bomba { get; set; }
 
         public Movimentacao()
         {
         }
 
-        public Movimentacao(decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId)
+        public Movimentacao(decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId)
         {
             this.quantidade = quantidade;
             this.tipoOperacao = tipoOperacao;
@@ -36,6 +38,7 @@ namespace Model
             this.valor = valor;
             this.lojaId = lojaId;
             this.funcionarioId = funcionarioId;
+            this.bombaId = bombaId;
 
             DataBase db = new DataBase();
             db.Movimentacoes.Add(this);
@@ -67,7 +70,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.movimentacaoId + " Quantidade: " + this.quantidade + " Tipo de Operação: " + this.tipoOperacao + " Data e Hora: " + this.dataHora + " Valor: " + this.valor + " Loja: " + this.lojaId + " Funcionário: " + this.funcionarioId + "\n" ;
+            return "Id: " + this.movimentacaoId + " Quantidade: " + this.quantidade + " Tipo de Operação: " + this.tipoOperacao + " Data e Hora: " + this.dataHora + " Valor: " + this.valor + " Loja: " + this.lojaId + " Funcionário: " + this.funcionarioId + " Bomba: " + this.bombaId +"\n" ;
         }
 
         //------------------- CRUD -------------------//
@@ -85,7 +88,7 @@ namespace Model
             return db.Movimentacoes.Find(movimentacaoId);
         }
 
-        public static Movimentacao UpdateMovimentacao(int movimentacaoId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId)
+        public static Movimentacao UpdateMovimentacao(int movimentacaoId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId)
         {
             DataBase db = new DataBase();
             Movimentacao movimentacao = db.Movimentacoes.Find(movimentacaoId);
@@ -96,6 +99,7 @@ namespace Model
             movimentacao.valor = valor;
             movimentacao.lojaId = lojaId;
             movimentacao.funcionarioId = funcionarioId;
+            movimentacao.bombaId = bombaId;
             db.SaveChanges();
             return movimentacao;
         }

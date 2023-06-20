@@ -19,8 +19,7 @@ namespace Model
         public virtual Combustivel combustivel { get; set; }
         public decimal limiteMaximo { get; set; }
         public decimal limiteMinimo { get; set; }
-        public int movimentacaoId { get; set; }
-        public Movimentacao movimentacao { get; set; }
+        public decimal volume { get; set; }
         public int lojaId { get; set; }
         public Loja loja { get; set; }
 
@@ -28,12 +27,12 @@ namespace Model
         {
         }
 
-        public Bomba(int combustivelId, decimal limiteMaximo, decimal limiteMinimo, int movimentacaoId, int lojaId)
+        public Bomba(int combustivelId, decimal limiteMaximo, decimal limiteMinimo, decimal volume, int lojaId)
         {
             this.combustivelId = combustivelId;
             this.limiteMaximo = limiteMaximo;
             this.limiteMinimo = limiteMinimo;
-            this.movimentacaoId = movimentacaoId;
+            this.volume = volume;
             this.lojaId = lojaId;
 
             DataBase db = new DataBase();
@@ -66,7 +65,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.bombaId + " - Id Tipo Combustivel: " + this.combustivelId + " - Limite Máximo: " + this.limiteMaximo + " - Limite Mínimo: " + this.limiteMinimo + " - Combustivel: " + this.combustivelId + " - Loja: " + this.lojaId + "\n" ;
+            return "Id: " + this.bombaId + " - Limite Máximo: " + this.limiteMaximo + " - Limite Mínimo: " + this.limiteMinimo + " - Volume: " + this.volume + " - Combustivel: " + this.combustivelId + " - Loja: " + this.lojaId + "\n" ;
         }
 
         //------------------- CRUD -------------------//
@@ -83,15 +82,31 @@ namespace Model
             return bomba;
         }
 
-        public static Bomba UpdateBomba(int bombaId, int combustivelId, decimal limiteMaximo, decimal limiteMinimo, int movimentacaoId, int lojaId)
+        public static decimal BuscaVolumeBombaPorId(int bombaId)
+        {
+            DataBase db = new DataBase();
+            decimal volume = (from Bomba in db.Bombas where Bomba.bombaId == bombaId select Bomba.volume).FirstOrDefault(); 
+            return volume;
+        }
+
+        public static Bomba UpdateBomba(int bombaId, int combustivelId, decimal limiteMaximo, decimal limiteMinimo, decimal volume, int lojaId)
         {
             DataBase db = new DataBase();
             Bomba bomba = db.Bombas.Find(bombaId);
             bomba.combustivelId = combustivelId;
             bomba.limiteMaximo = limiteMaximo;
             bomba.limiteMinimo = limiteMinimo;
-            bomba.movimentacaoId = movimentacaoId;
+            bomba.volume = volume;
             bomba.lojaId = lojaId;
+            db.SaveChanges();
+            return bomba;
+        }
+
+        public static Bomba UpdateBombaMovimentacao(int bombaId, decimal volume)
+        {
+            DataBase db = new DataBase();
+            Bomba bomba = db.Bombas.Find(bombaId);
+            bomba.volume = volume;
             db.SaveChanges();
             return bomba;
         }

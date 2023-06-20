@@ -79,6 +79,13 @@ namespace Model
             return combustivel;
         }
 
+        public static (decimal precoCompra, decimal precoVenda) BuscaPrecoCombustivel(int combustivelId)
+        {
+            DataBase db = new DataBase();
+            Combustivel combustivel = db.Combustiveis.Find(combustivelId);
+            return (combustivel.precoVenda, combustivel.precoCompra);
+        }
+
         public static Combustivel UpdateCombustivel(int combustivelId, string nome, string sigla, string descricao, decimal precoCompra, decimal precoVenda)
         {
             DataBase db = new DataBase();

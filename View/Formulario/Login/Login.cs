@@ -90,6 +90,8 @@ namespace View.Formulario.Login
         {
             Controller.Funcionario funcionario = new Controller.Funcionario();
             funcionario.email = loginTextBox.Text;
+            Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email);
+            if (funcionario.email == null || funcionario.email == "") throw new Exception("E-mail não cadastrado! Login Incorreto!");
             funcionario.senha = senhaTextBox.Text;
             if (Controller.Funcionario.Logar(funcionario.email, funcionario.senha))
             {
@@ -100,7 +102,7 @@ namespace View.Formulario.Login
             }
             else
             {
-                MessageBox.Show("Login ou senha incorretos!");
+                MessageBox.Show("Senha incorreta!");
                 LimpaTela();
             }
         }

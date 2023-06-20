@@ -92,6 +92,16 @@ namespace Controller
             }
         }
 
+        public static Model.Funcionario BuscaFuncionarioPorEmail(string email)
+        {
+            try
+            {
+                return Model.Funcionario.BuscaFuncionarioPorEmail(email);
+            } catch (Exception) {
+                throw new Exception("Erro ao buscar funcionário");
+            }
+        }
+
         public static Model.Funcionario BuscaFuncionarioPorFuncao(string funcao)
         {
             try
