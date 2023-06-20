@@ -7,6 +7,8 @@
  */
 
 using Banco;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Model
 {
@@ -14,13 +16,13 @@ namespace Model
     {
         public int bombaId { get; set; }
         public int combustivelId { get; set; }
-        public Combustivel combustivel { get; set; }
+        public virtual Combustivel combustivel { get; set; }
         public decimal limiteMaximo { get; set; }
         public decimal limiteMinimo { get; set; }
-       public int movimentacaoId { get; set; }
-       public Movimentacao movimentacao { get; set; }
-       public int lojaId { get; set; }
-         public Loja loja { get; set; }
+        public int movimentacaoId { get; set; }
+        public Movimentacao movimentacao { get; set; }
+        public int lojaId { get; set; }
+        public Loja loja { get; set; }
 
         public Bomba()
         {
@@ -68,23 +70,10 @@ namespace Model
         }
 
         //------------------- CRUD -------------------//
-
-        public string nome { get; set; }
-        public static List<Bomba> BuscaBomba()
+        public static IEnumerable<Bomba> BuscaBomba()
         {
             DataBase db = new DataBase();
-            List<Bomba> bombas = (from u in db.Bombas
-                                  join  c in db.Combustiveis
-                                    on u.combustivelId equals c.combustivelId
-                                  select new Bomba {
-                                    bombaId = u.bombaId,
-                                    nome = c.nome,
-                                    limiteMaximo = u.limiteMaximo,
-                                    limiteMinimo = u.limiteMinimo,
-                                    movimentacaoId = u.movimentacaoId,
-                                    lojaId = u.lojaId 
-                                    }).ToList();
-            return bombas;
+            return db.Bombas.Include(b => b.combustivel).Include(b => b.loja);
         }
 
         public static Bomba BuscaBombaPorId(int bombaId)

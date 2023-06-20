@@ -113,5 +113,10 @@
             loginTextBox.Text = "";
             senhaTextBox.Text = "";
         }
+
+        public void AbrirForm(Form form){
+            form.ShowDialog();
+        }
+
     }
  }

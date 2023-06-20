@@ -7,6 +7,7 @@
  */
 
 using Model;
+using System.Linq;
 
 namespace Controller
 {
@@ -95,7 +96,7 @@ namespace Controller
             }
         }
 
-        public static List<Model.Bomba> ListarBombas()
+        public static IEnumerable<Model.Bomba> ListarBombas()
         {
             return Model.Bomba.BuscaBomba();
         }

@@ -84,7 +84,7 @@ namespace View.Formulario.bombaForm
             bombaDataGridView.Columns.Add("lojaId", "Loja");
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
             }
             //configura o modo de redimensionamento das linhas e colunas
             bombaDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -190,7 +190,7 @@ namespace View.Formulario.bombaForm
             bombaDataGridView.Rows.Clear();
             foreach (var bomba in Controller.Bomba.ListarBombas())
             {
-                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
+                bombaDataGridView.Rows.Add(bomba.bombaId, bomba.combustivel.nome, bomba.limiteMaximo, bomba.limiteMinimo, bomba.movimentacaoId, bomba.lojaId);
             }
         }
     }
