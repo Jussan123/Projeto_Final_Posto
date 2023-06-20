@@ -81,8 +81,7 @@
             Controller.Funcionario funcionario = new Controller.Funcionario();
             funcionario.email = loginTextBox.Text;
             funcionario.senha = senhaTextBox.Text;
-            Controller.Funcionario.Equals(funcionario.email, funcionario.senha);
-            if (Controller.Funcionario.Equals(funcionario.email, funcionario.senha))
+            if (Controller.Funcionario.Logar(funcionario.email, funcionario.senha))
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
@@ -91,7 +90,7 @@
             }
             else
             {
-                //MessageBox.Show("Login ou senha incorretos!");
+                MessageBox.Show("Login ou senha incorretos!");
                 LimpaTela();
             }
         }
