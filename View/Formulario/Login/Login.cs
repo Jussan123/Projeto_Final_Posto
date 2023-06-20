@@ -24,12 +24,12 @@ namespace View.Formulario.Login
         private void InitializeComponent()
         {
             // Configurações do PictureBox
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = Image.FromFile(@"C:\\img\\login_img.png");
-            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox.Location = new Point(0, 0);
-            pictureBox.Size = new Size(270, 74);
-            this.Controls.Add(pictureBox);
+            //PictureBox pictureBox = new PictureBox();
+            //pictureBox.Image = Image.FromFile(@"C:\\img\\login_img.png");
+            //pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            //pictureBox.Location = new Point(0, 0);
+            //pictureBox.Size = new Size(270, 74);
+            //this.Controls.Add(pictureBox);
             
 
             // Configurações da janela do formulário

@@ -27,6 +27,7 @@ namespace Controller
             string email)
         {
             try{
+                ValidaSenha(senha);
                 CriptografaSenha(senha);
                 if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
                 if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao cadastrar funcionário, email já cadastrado");
@@ -53,6 +54,7 @@ namespace Controller
         {
             try
             {
+                ValidaSenha(senha);
                 CriptografaSenha(senha);
                 if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
                 if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
@@ -125,7 +127,20 @@ namespace Controller
             }
         }
 
-
+        private static string ValidaSenha(string senha)//Método para validar a senha do funcionário
+        {
+            try
+            {
+                if (senha.Length < 8) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 8 caracteres");//Verifica se a senha tem no mínimo 8 caracteres
+                if (!senha.Any(char.IsUpper)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra maiúscula");//Verifica se a senha tem no mínimo 1 letra maiúscula
+                if (!senha.Any(char.IsLower)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra minúscula");//Verifica se a senha tem no mínimo 1 letra minúscula
+                if (!senha.Any(char.IsDigit)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 número");//Verifica se a senha tem no mínimo 1 número
+                if (!senha.Any(char.IsSymbol)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 caractere especial");//Verifica se a senha tem no mínimo 1 caractere especial
+                return senha;
+            } catch (Exception) {
+                throw new Exception("Erro ao cadastrar funcionário, Verifique se a senha atende aos requisitos mínimos");
+            }
+        }
 
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
