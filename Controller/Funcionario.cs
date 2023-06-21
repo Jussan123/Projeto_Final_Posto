@@ -45,27 +45,27 @@ namespace Controller
         }
 
         public static Model.Funcionario AlteraFuncionario(
-            string funcionarioId, 
+            int funcionarioId, 
             string nome,
             string senha, 
             string funcao, 
-            string lojaId, 
+            int lojaId, 
             string email)
         {
             try
             {
                 ValidaSenha(senha);
                 CriptografaSenha(senha);
-                if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
-                if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorId(funcionarioId) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
+                if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
                 if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao alterar funcionário, email já cadastrado");
                 Model.Funcionario funcionario = new Model.Funcionario();
                 return Model.Funcionario.UpdateFuncionario(
-                    int.Parse(funcionarioId),
+                    funcionarioId,
                     nome,
                     CriptografaSenha(senha),
                     funcao,
-                    int.Parse(lojaId),
+                    lojaId,
                     email
                 );
             } catch (Exception) {

@@ -198,13 +198,13 @@ namespace View.Formulario.FuncionarioForm
             funcionarioIdCb = new ComboBox();
             funcionarioIdCb.Location = new Point(100, 30);
             funcionarioIdCb.Size = new Size(150, 20);
-            List<Controller.Funcionario> listaFuncionarios = new  List<Controller.Funcionario>();
-            foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
+            List<Model.Funcionario> listaFuncionarios = new  List<Model.Funcionario>();
+            foreach (Model.Funcionario funcionario in Controller.Funcionario.ListaFuncionario())
             {
                 funcionarioIdCb.Items.Add(funcionario);
             }
-            funcionarioIdCb.DisplayMember = "nome";
             funcionarioIdCb.ValueMember = "funcionarioId";
+            funcionarioIdCb.DisplayMember = "nome";
             funcionarioIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(funcionarioIdCb);
 
@@ -220,12 +220,12 @@ namespace View.Formulario.FuncionarioForm
             lojaIdCb.Location = new Point(100, 60);
             lojaIdCb.Size = new Size(150, 20);
             List<Model.Loja> listaLojas = new List<Model.Loja>();
-            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas())
             {
                 lojaIdCb.Items.Add(loja);
             }
-            lojaIdCb.DisplayMember = "nome";
             lojaIdCb.ValueMember = "lojaId";
+            lojaIdCb.DisplayMember = "nome";
             lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
@@ -307,37 +307,51 @@ namespace View.Formulario.FuncionarioForm
         }
 
         public void salvaFuncionario()
+{
+    try
+    {
+        Model.Funcionario funcionario = new Model.Funcionario();
+        var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
+        if (funcionarioSelecionado == null)
         {
-            try
-            {
-                Controller.Funcionario funcionario = new Controller.Funcionario();
-                var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
-                if (funcionarioSelecionado == null)
-                {
-                    MessageBox.Show("Selecione um funcionario");
-                    return;
-                }
-                var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
-                if (lojaSelecionada == null)
-                {
-                    MessageBox.Show("Selecione uma loja");
-                    return;
-                }
-                funcionario.funcionarioId = funcionarioSelecionado.funcionarioId.ToString();
-                funcionario.nome = nomeTextBox.Text;
-                funcionario.senha = senhaTextBox.Text;
-                funcionario.funcao = funcaoTextBox.Text;
-                funcionario.email = emailTextBox.Text;
-                funcionario.lojaId = lojaSelecionada.lojaId.ToString();
-                Controller.Funcionario funcionarioController = new Controller.Funcionario();
-
-                Controller.Funcionario.AlteraFuncionario(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
-                MessageBox.Show("funcionario alterado com sucesso!");
-            } catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao alterar funcionario: " + ex.Message);
-            }
+            MessageBox.Show("Selecione um funcionário");
+            return;
         }
+        var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
+        if (lojaSelecionada == null)
+        {
+            MessageBox.Show("Selecione uma loja");
+            return;
+        }
+
+        funcionario.funcionarioId = funcionarioSelecionado.funcionarioId;
+        if (funcionario.funcionarioId == 0) throw new Exception("Funcionário não encontrado" + funcionario.funcionarioId);
+        funcionario.nome = nomeTextBox.Text;
+        if (funcionario.nome == null) throw new Exception("Nome não encontrado" + funcionario.nome);
+        funcionario.senha = senhaTextBox.Text;
+        if (funcionario.senha == null) throw new Exception("Senha não encontrada" + funcionario.senha);
+        funcionario.funcao = funcaoTextBox.Text;
+        if (funcionario.funcao == null) throw new Exception("Função não encontrada" + funcionario.funcao);
+        funcionario.email = emailTextBox.Text;
+        if (funcionario.email == null) throw new Exception("Email não encontrado" + funcionario.email);
+        funcionario.lojaId = lojaSelecionada.lojaId;
+        if (funcionario.lojaId == 0) throw new Exception("Loja não encontrada" + funcionario.lojaId);
+        Controller.Funcionario funcionarioController = new Controller.Funcionario();
+        Controller.Funcionario.AlteraFuncionario(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
+        MessageBox.Show("Funcionário alterado com sucesso!");
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Erro ao alterar funcionário: " + ex.Message
+                        + "FuncionarioId: " + funcionarioIdCb.SelectedItem
+                        + " / Nome: " + nomeTextBox.Text
+                        + " / Senha: " + senhaTextBox.Text
+                        + " / Função: " + funcaoTextBox.Text
+                        + " / Email: " + emailTextBox.Text
+                        + " / LojaId: " + lojaIdCb.SelectedItem);
+    }
+}
+
         
         public void LimpaTela()
         {

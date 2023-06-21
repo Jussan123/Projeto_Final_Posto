@@ -1,0 +1,29 @@
+# Arquivos de compilação
+bin/
+obj/
+
+# Arquivos de dependência
+*.dll
+*.exe
+*.pdb
+*.dll.config
+
+# Arquivos gerados pelo Visual Studio
+*.user
+*.userprefs
+*.suo
+*.cache
+*.sln.docstates
+
+# Pasta de pacotes NuGet
+packages/
+
+# Arquivos do Resharper
+_ReSharper*/
+
+# Arquivos do Test Explorer
+TestResults/
+
+# Logs
+*.log
+*.txt
