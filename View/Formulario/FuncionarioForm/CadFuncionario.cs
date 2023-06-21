@@ -107,7 +107,7 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 100);
+            gravarButton.Location = new Point(70, 180);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -115,7 +115,7 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 100);
+            sairButton.Location = new Point(160, 180);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
@@ -311,8 +311,8 @@ namespace View.Formulario.FuncionarioForm
             try
             {
                 Controller.Funcionario funcionario = new Controller.Funcionario();
-                var funcionarioSelecionada = (Controller.Funcionario) funcionarioIdCb.SelectedItem;
-                if (funcionarioSelecionada == null)
+                var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
+                if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione um funcionario");
                     return;
@@ -323,12 +323,13 @@ namespace View.Formulario.FuncionarioForm
                     MessageBox.Show("Selecione uma loja");
                     return;
                 }
-                funcionario.funcionarioId = funcionarioSelecionada.funcionarioId.ToString();
+                funcionario.funcionarioId = funcionarioSelecionado.funcionarioId.ToString();
                 funcionario.nome = nomeTextBox.Text;
                 funcionario.senha = senhaTextBox.Text;
                 funcionario.funcao = funcaoTextBox.Text;
                 funcionario.email = emailTextBox.Text;
                 funcionario.lojaId = lojaSelecionada.lojaId.ToString();
+                Controller.Funcionario funcionarioController = new Controller.Funcionario();
 
                 Controller.Funcionario.AlteraFuncionario(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
                 MessageBox.Show("funcionario alterado com sucesso!");
@@ -413,13 +414,13 @@ namespace View.Formulario.FuncionarioForm
             try
             {
                 Controller.Funcionario funcionario = new Controller.Funcionario();
-                var funcionarioSelecionada = (Controller.Funcionario) funcionarioIdCb.SelectedItem;
-                if (funcionarioSelecionada == null)
+                var funcionarioSelecionado = (Controller.Funcionario) funcionarioIdCb.SelectedItem;
+                if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione uma funcionario");
                     return;
                 }
-                funcionario.funcionarioId = funcionarioSelecionada.funcionarioId.ToString();
+                funcionario.funcionarioId = funcionarioSelecionado.funcionarioId.ToString();
 
                 Controller.Funcionario.ExcluiFuncionario(funcionario.funcionarioId);
                 MessageBox.Show("funcionario excluída com sucesso!");

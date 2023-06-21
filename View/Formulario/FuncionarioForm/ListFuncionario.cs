@@ -67,7 +67,7 @@ namespace View.Formulario.FuncionarioForm
 
             //Configurações do botão de cancelar
             refreshButton = new Button();
-            refreshButton.Text = "Cancelar";
+            refreshButton.Text = "Refresh";
             refreshButton.Location = new Point(290, 340);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
@@ -164,9 +164,7 @@ namespace View.Formulario.FuncionarioForm
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new View.Formulario.FuncionarioForm.FormEditaFuncionario());
-            this.ShowDialog();
-            
+            AbrirForm(new View.Formulario.FuncionarioForm.FormEditaFuncionario());           
             //Adicionar Ação/código para alterar uma funcionario selecionada
         }
 

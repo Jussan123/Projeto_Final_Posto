@@ -18,7 +18,9 @@ namespace Controller
         public string sigla { get; set; }
         public string descricao { get; set; }
 
-            public static Model.Combustivel CadastraCombustivel(
+        
+
+        public static Model.Combustivel CadastraCombustivel(
                 string nome,
                 string sigla,
                 string descricao,

@@ -51,7 +51,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações de rótulo Nome do Combustivel
             nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome Combustivel: ";
+            nomeCombustivelLabel.Text = "Nome: ";
             nomeCombustivelLabel.Location = new Point(20, 60);
             nomeCombustivelLabel.Size = new Size(80, 20);
             this.Controls.Add(nomeCombustivelLabel);
@@ -64,7 +64,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações de rótulo Sigla do Combustivel
             siglaLabel = new Label();
-            siglaLabel.Text = "Sigla Combustivel: ";
+            siglaLabel.Text = "Sigla: ";
             siglaLabel.Location = new Point(20, 90);
             siglaLabel.Size = new Size(80, 20);
             this.Controls.Add(siglaLabel);
@@ -77,7 +77,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações de rótulo Descrição do Combustivel
             descricaoLabel = new Label();
-            descricaoLabel.Text = "Descrição Combustivel: ";
+            descricaoLabel.Text = "Descrição: ";
             descricaoLabel.Location = new Point(20, 120);
             descricaoLabel.Size = new Size(80, 20);
             this.Controls.Add(descricaoLabel);
@@ -90,7 +90,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações de rótulo Preço de Compra do Combustivel
             precoCompraLabel = new Label();
-            precoCompraLabel.Text = "Preço de Compra Combustivel: ";
+            precoCompraLabel.Text = "Preço Compra: ";
             precoCompraLabel.Location = new Point(20, 150);
             precoCompraLabel.Size = new Size(80, 20);
             this.Controls.Add(precoCompraLabel);
@@ -103,7 +103,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações de rótulo Preço de Venda do Combustivel
             precoVendaLabel = new Label();
-            precoVendaLabel.Text = "Preço de Venda Combustivel: ";
+            precoVendaLabel.Text = "Preço Venda: ";
             precoVendaLabel.Location = new Point(20, 180);
             precoVendaLabel.Size = new Size(80, 20);
             this.Controls.Add(precoVendaLabel);
@@ -117,7 +117,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 100);
+            gravarButton.Location = new Point(70, 210);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -125,7 +125,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 100);
+            sairButton.Location = new Point(160, 210);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);

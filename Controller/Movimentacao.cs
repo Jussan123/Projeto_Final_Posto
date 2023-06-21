@@ -117,5 +117,7 @@ namespace Controller
             if (Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)) == null) throw new System.Exception("Erro ao deletar movimentação, movimentação não encontrada");
             Model.Movimentacao.DeleteMovimentacao(int.Parse(movimentacaoId));
         }
+
+        
     }
 }
