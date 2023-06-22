@@ -35,17 +35,17 @@ namespace View.Formulario.bombaForm
             this.MaximizeBox = false;
 
             //Configurações do id
-            combustivelIdLabel = new Label();
-            combustivelIdLabel.Text = "Combústivel: ";
-            combustivelIdLabel.Location = new Point(20, 30);
-            combustivelIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(combustivelIdLabel);
-
-            //Configurações do campo texto de id
-            combustivelIdTextBox = new TextBox();
-            combustivelIdTextBox.Location = new Point(100, 30);
-            combustivelIdTextBox.Size = new Size(150, 20);
-            this.Controls.Add(combustivelIdTextBox);
+            //combustivelIdLabel = new Label();
+            //combustivelIdLabel.Text = "Combústivel: ";
+            //combustivelIdLabel.Location = new Point(20, 30);
+            //combustivelIdLabel.Size = new Size(80, 20);
+            //this.Controls.Add(combustivelIdLabel);
+//
+            ////Configurações do campo texto de id
+            //combustivelIdTextBox = new TextBox();
+            //combustivelIdTextBox.Location = new Point(100, 30);
+            //combustivelIdTextBox.Size = new Size(150, 20);
+            //this.Controls.Add(combustivelIdTextBox);
 
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
@@ -199,8 +199,8 @@ namespace View.Formulario.bombaForm
             {
                 bombaIdCb.Items.Add(bomba);
             }
-            bombaIdCb.DisplayMember = "Id";
-            bombaIdCb.ValueMember = "Id";
+            bombaIdCb.DisplayMember = "bombaId";
+            bombaIdCb.ValueMember = "bombaId";
             bombaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(bombaIdCb);
 
@@ -214,8 +214,8 @@ namespace View.Formulario.bombaForm
             {
                 combustivelIdCb.Items.Add(combustivel);
             }
+            combustivelIdCb.ValueMember = "combustivelId";
             combustivelIdCb.DisplayMember = "nome";
-            combustivelIdCb.ValueMember = "Id";
             combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdLabel);
 

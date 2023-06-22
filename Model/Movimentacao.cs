@@ -13,8 +13,8 @@ namespace Model
     public class Movimentacao
     {
         public int movimentacaoId { get; set; }
-       // public int combustivelId { get; set; }
-        //public Combustivel Combustivel { get; set; }
+        public int combustivelId { get; set; }
+        public Combustivel Combustivel { get; set; }
         public decimal quantidade { get; set; }
         public string tipoOperacao { get; set; }
         public DateTime dataHora { get; set; }

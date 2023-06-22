@@ -212,8 +212,8 @@ namespace View.Formulario.CombustivelForm
             {
                 combustivelIdCb.Items.Add(combustivel);
             }
-            combustivelIdCb.DisplayMember = "Id";
             combustivelIdCb.ValueMember = "combustivelId";
+            combustivelIdCb.DisplayMember = "nome";
             combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdCb);
 
@@ -258,7 +258,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações do campo texto de preço de compra
             precoCompraLabel = new Label();
-            precoCompraLabel.Text = "Preço de compra: ";
+            precoCompraLabel.Text = "Preço compra: ";
             precoCompraLabel.Location = new Point(20, 150);
             precoCompraLabel.Size = new Size(80, 20);
             this.Controls.Add(precoCompraLabel);
@@ -271,7 +271,7 @@ namespace View.Formulario.CombustivelForm
 
             //Configurações do campo texto de preço de venda
             precoVendaLabel = new Label();
-            precoVendaLabel.Text = "Preço de venda: ";
+            precoVendaLabel.Text = "Preço venda: ";
             precoVendaLabel.Location = new Point(20, 180);
             precoVendaLabel.Size = new Size(80, 20);
             this.Controls.Add(precoVendaLabel);
@@ -285,7 +285,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 180);
+            gravarButton.Location = new Point(20, 210);
             gravarButton.Size = new Size(80, 20);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 SalvaCombustivel();
@@ -296,7 +296,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 180);
+            sairButton.Location = new Point(100, 210);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             this.Controls.Add(sairButton);

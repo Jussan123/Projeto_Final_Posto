@@ -14,11 +14,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using View.Fomulario.CadLojaForm;
 //using CadLojaForm;
 
 
-namespace View.Formulario.ListLojaForm
+namespace View.Formulario.LojasForm
 {
     public partial class ListLojaForm : Form
     {
@@ -157,28 +156,25 @@ namespace View.Formulario.ListLojaForm
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new CadLoja());
-            this.ListaLoja();
+            AbrirForm(new View.Formulario.LojasForm.CadLoja());
             //throw new NotImplementedException();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormEditaLoja());
-            this.ListaLoja();
+            AbrirForm(new View.Formulario.LojasForm.FormEditaLoja());
             //Adicionar Ação/código para alterar uma loja selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormExcluiLoja());
-            this.ListaLoja();
+            AbrirForm(new View.Formulario.LojasForm.FormExcluiLoja());
             //Adicionar Ação/código para excluir uma loja selecionada
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            this.ListaLoja();
+            InitializeComponent();
             //Adicionar Ação/código para cancelar a operação atual
         }
 

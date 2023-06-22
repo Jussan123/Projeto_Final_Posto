@@ -10,7 +10,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace View.Fomulario.CadLojaForm
+namespace View.Formulario.LojasForm
 {
     public partial class CadLoja : Form
     {

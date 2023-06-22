@@ -146,28 +146,25 @@ namespace View.Formulario.bombaForm
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new CadBomba());
-            this.ListaBomba();
+            AbrirForm(new View.Formulario.bombaForm.CadBomba());
             //throw new NotImplementedException();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormEditaBomba());
-            this.ListaBomba();
+            AbrirForm(new View.Formulario.bombaForm.FormEditaBomba());
             //Adicionar Ação/código para alterar uma bomba selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormExcluiBomba());
-            this.ListaBomba();
+            AbrirForm(new View.Formulario.bombaForm.FormExcluiBomba());
             //Adicionar Ação/código para excluir uma bomba selecionada
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            this.ListaBomba();
+            InitializeComponent();
             //Adicionar Ação/código para cancelar a operação atual
         }
 

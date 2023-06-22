@@ -164,21 +164,19 @@ namespace View.Formulario.FornecedorForm
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormEditaFornecedor());
-            this.ListaFornecedor();
+            AbrirForm(new View.Formulario.FornecedorForm.FormEditaFornecedor());
             //Adicionar Ação/código para alterar uma fornecedor selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new FormExcluiFornecedor());
-            this.ListaFornecedor();
+            AbrirForm(new View.Formulario.FornecedorForm.FormExcluiFornecedor());
             //Adicionar Ação/código para excluir uma fornecedor selecionada
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            this.ListaFornecedor();
+            InitializeComponent();
             //Adicionar Ação/código para cancelar a operação atual
         }
 

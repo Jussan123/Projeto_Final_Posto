@@ -146,16 +146,19 @@ namespace View.Formulario.CombustivelForm
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
+            AbrirForm(new View.Formulario.CombustivelForm.FormEditaCombustivel());
             //Adicionar Ação/código para alterar uma combustivel selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
+            AbrirForm(new View.Formulario.CombustivelForm.FormExcluiCombustivel());
             //Adicionar Ação/código para excluir uma combustivel selecionada
         }
 
         private void CancelarButton_Click(object sender, EventArgs e)
         {
+            InitializeComponent();
             //Adicionar Ação/código para cancelar a operação atual
         }
 
