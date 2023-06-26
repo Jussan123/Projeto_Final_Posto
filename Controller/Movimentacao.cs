@@ -13,10 +13,12 @@ namespace Controller
     public class Movimentacao
     {
         public string movimentacaoId { get; set; }
+        public string tipoOperacao { get; set; }
         public string combustivelId { get; set; }
         public string quantidade { get; set; }
         public string lojaId { get; set; }
         public string funcionarioId { get; set; }
+        public string bombaId { get; set; }
 
         public static Model.Movimentacao CadastraMovimentacao(
             int combustivelId,

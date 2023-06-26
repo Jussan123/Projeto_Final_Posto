@@ -311,20 +311,24 @@ namespace View.Formulario.FuncionarioForm
             try
             {
                 Controller.Funcionario funcionario = new Controller.Funcionario();
-                var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
+                var funcionarioSelecionado = ((Model.Funcionario)funcionarioIdCb.SelectedItem).funcionarioId.ToString();
+                //var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
                 //MessageBox.Show(funcionarioSelecionado.funcionarioId.ToString());
+                
+
                 if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione um funcionário");
                     return;
                 }
-                var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
+                var lojaSelecionada = ((Model.Loja)lojaIdCb.SelectedItem).lojaId.ToString();
+                //var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
                 if (lojaSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma loja");
                     return;
                 }
-                funcionario.funcionarioId = funcionarioSelecionado.funcionarioId.ToString();
+                funcionario.funcionarioId = funcionarioSelecionado.ToString();
                 if (funcionario.funcionarioId == null) throw new Exception("Funcionário não encontrado" + funcionario.funcionarioId);
                 funcionario.nome = nomeTextBox.Text;
                 if (funcionario.nome == null) throw new Exception("Nome não encontrado" + funcionario.nome);
@@ -334,7 +338,7 @@ namespace View.Formulario.FuncionarioForm
                 if (funcionario.funcao == null) throw new Exception("Função não encontrada" + funcionario.funcao);
                 funcionario.email = emailTextBox.Text;
                 if (funcionario.email == null) throw new Exception("Email não encontrado" + funcionario.email);
-                funcionario.lojaId = lojaSelecionada.lojaId.ToString();
+                funcionario.lojaId = lojaSelecionada.ToString();
                 if (funcionario.lojaId == null) throw new Exception("Loja não encontrada" + funcionario.lojaId);
                 //Controller.Funcionario funcionarioController = new Controller.Funcionario();
                 Controller.Funcionario.AlteraFuncionario(Convert.ToInt32(funcionario.funcionarioId), funcionario.nome, funcionario.senha, funcionario.funcao, Convert.ToInt32(funcionario.lojaId), funcionario.email);
