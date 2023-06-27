@@ -9,6 +9,7 @@ using Model;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace Controller
 {
     public class Funcionario
@@ -23,24 +24,23 @@ namespace Controller
             string nome,
             string senha,
             string funcao,
-            string lojaId,
+            int lojaId,
             string email)
         {
             try{
                 ValidaSenha(senha);
-                CriptografaSenha(senha);
-                if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
+                if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
                 if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao cadastrar funcionário, email já cadastrado");
                 Model.Funcionario funcionario = new Model.Funcionario(
                     nome,
                     CriptografaSenha(senha),
                     funcao,
-                    int.Parse(lojaId),
+                    lojaId,
                     email
                 );
                 return funcionario;
-            } catch (Exception) {
-                throw new Exception("Erro ao cadastrar funcionário");
+            } catch (Exception e) {
+                throw new Exception($"Erro ao cadastrar funcionário. {e.Message}");
             }
         }
 
@@ -55,7 +55,7 @@ namespace Controller
             try
             {
                 ValidaSenha(senha);
-                CriptografaSenha(senha);
+                ValidaEmail(email);
                 if (Model.Funcionario.BuscaFuncionarioPorId(funcionarioId) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
                 if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
                 if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao alterar funcionário, email já cadastrado");
@@ -68,8 +68,8 @@ namespace Controller
                     lojaId,
                     email
                 );
-            } catch (Exception) {
-                throw new Exception("Erro ao alterar funcionário");
+            } catch (Exception e) {
+                throw new Exception($"Erro ao alterar funcionário {e.Message}");
             }
         }
 
@@ -129,50 +129,33 @@ namespace Controller
             try
             {
                 Model.Funcionario funcionario = Model.Funcionario.BuscaFuncionarioPorEmail(email);
-                if (funcionario == null) throw new System.Exception("Erro ao logar, funcionário não encontrado");
-                if (funcionario.senha != CriptografaSenha(senha)) throw new System.Exception("Erro ao logar, senha incorreta");
+                if (funcionario == null) throw new Exception("Erro ao logar, funcionário não encontrado");
+                if (BCrypt.Net.BCrypt.Verify(senha, funcionario.senha)) throw new Exception("Erro ao logar, senha incorreta");
                 return true;
-            } catch (System.Exception) {
-                throw new System.Exception("Erro ao logar");
-                return false;
+            } catch (Exception) {
+                throw new Exception("Erro ao logar");
             }
         }
 
-        private static string ValidaSenha(string senha)//Método para validar a senha do funcionário
+        private static void ValidaSenha(string senha)//Método para validar a senha do funcionário
         {
-            try
-            {
-                if (senha.Length < 8) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 8 caracteres");//Verifica se a senha tem no mínimo 8 caracteres
-                if (!senha.Any(char.IsUpper)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra maiúscula");//Verifica se a senha tem no mínimo 1 letra maiúscula
-                if (!senha.Any(char.IsLower)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra minúscula");//Verifica se a senha tem no mínimo 1 letra minúscula
-                if (!senha.Any(char.IsDigit)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 número");//Verifica se a senha tem no mínimo 1 número
-                if (!senha.Any(char.IsSymbol)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 caractere especial");//Verifica se a senha tem no mínimo 1 caractere especial
-                return senha;
-            } catch (Exception) {
-                throw new Exception("Erro ao cadastrar funcionário, Verifique se a senha atende aos requisitos mínimos");
-            }
+            if (senha.Length < 8) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 8 caracteres");//Verifica se a senha tem no mínimo 8 caracteres
+            if (!senha.Any(char.IsUpper)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra maiúscula");//Verifica se a senha tem no mínimo 1 letra maiúscula
+            if (!senha.Any(char.IsLower)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra minúscula");//Verifica se a senha tem no mínimo 1 letra minúscula
+            if (!senha.Any(char.IsDigit)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 número");//Verifica se a senha tem no mínimo 1 número
+            if (!(senha.Any(char.IsSymbol) || senha.Any(char.IsPunctuation))) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 caractere especial");//Verifica se a senha tem no mínimo 1 caractere especial
+        }
+
+        private static void ValidaEmail(string email)
+        {
+            if (!email.Contains("@")) throw new Exception("Erro ao cadastrar funcionário, email inválido");//Verifica se o email contém @
+            if (!email.Contains(".")) throw new Exception("Erro ao cadastrar funcionário, email inválido");//Verifica se o email contém .
         }
 
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
-            try
-            {
-                using (SHA256 sha256 = SHA256.Create())//Cria um objeto SHA256(Secure Hash Algorithm 256 bits) para criptografar a senha do funcionário
-                // SHA256 refere-se a um algoritmo de hash criptográfico que calcula o hash de 256 bits de uma entrada arbitrária
-                {
-                    byte[] bytes = Encoding.UTF8.GetBytes(senha);// Converte a senha em bytes
-                    byte[] hash = sha256.ComputeHash(bytes);// Calcula o hash dos bytes
 
-                    StringBuilder builder = new StringBuilder();// Cria um objeto StringBuilder para armazenar o hash
-                    for (int i = 0; i < hash.Length; i++)// Percorre o hash
-                    {
-                        builder.Append(hash[i].ToString("X2"));// Converte o hash em hexadecimal e adiciona ao objeto StringBuilder
-                    }
-                    return builder.ToString();// Retorna o hash criptografado
-                }
-            } catch (Exception) {
-                throw new Exception("Erro ao criptografar senha");// Caso ocorra algum erro, retorna uma mensagem de erroMemoria
-            }
+            return BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt(12));
         }
     }
 }

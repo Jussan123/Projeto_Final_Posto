@@ -22,7 +22,7 @@ namespace View.Formulario.CombustivelForm
         private Button novoButton;
         private Button alterarButton;
         private Button excluirButton;
-        private Button cancelarButton;
+        private Button refreshButton;
         private Button sairButton;
         private DataGridView combustivelDataGridView;
 
@@ -64,13 +64,13 @@ namespace View.Formulario.CombustivelForm
             excluirButton.Click += new EventHandler(ExcluirButton_Click);
             this.Controls.Add(excluirButton);
 
-            //Configurações do botão de cancelar
-            cancelarButton = new Button();
-            cancelarButton.Text = "Cancelar";
-            cancelarButton.Location = new Point(290, 340);
-            cancelarButton.Size = new Size(80, 30);
-            cancelarButton.Click += new EventHandler(CancelarButton_Click);
-            this.Controls.Add(cancelarButton);
+            //Configurações do botão de refresh
+            refreshButton = new Button();
+            refreshButton.Text = "Refresh";
+            refreshButton.Location = new Point(290, 340);
+            refreshButton.Size = new Size(80, 30);
+            refreshButton.Click += new EventHandler(RefreshButton_Click);
+            this.Controls.Add(refreshButton);
 
             //Configurações do botão de sair
             sairButton = new Button();
@@ -156,10 +156,10 @@ namespace View.Formulario.CombustivelForm
             //Adicionar Ação/código para excluir uma combustivel selecionada
         }
 
-        private void CancelarButton_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            //Adicionar Ação/código para cancelar a operação atual
+            this.ListaCombustivel();
+            //Adicionar Ação/código para refresh a operação atual
         }
 
         private void SairButton_Click(object sender, EventArgs e)
