@@ -5,7 +5,7 @@
  * Versão: 1.0
  */
 
- using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -33,61 +33,54 @@ namespace View.Formulario.FuncionarioForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(300, 220);
             this.Text = "Cadastro de funcionarios";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurações do Nome
-            nomeLabel = new Label();
-            nomeLabel.Text = "Nome do Funcionário: ";
-            nomeLabel.Location = new Point(20, 30);
-            nomeLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeLabel);
-
             //Configurações do campo texto do Nome
             nomeTextBox = new TextBox();
-            nomeTextBox.Location = new Point(100, 30);
+            nomeTextBox.Location = new Point(60, 30);
             nomeTextBox.Size = new Size(150, 20);
             this.Controls.Add(nomeTextBox);
 
-            //Configurações do senha
-            senhaLabel = new Label();
-            senhaLabel.Text = "Senha: ";
-            senhaLabel.Location = new Point(20, 60);
-            senhaLabel.Size = new Size(80, 20);
-            this.Controls.Add(senhaLabel);
+            //Configurações do Nome
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome:";
+            nomeLabel.Location = new Point(16, 35);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
             //Configurações do campo texto do senha
             senhaTextBox = new TextBox();
-            senhaTextBox.Location = new Point(100, 60);
+            senhaTextBox.Location = new Point(60, 60);
             senhaTextBox.Size = new Size(150, 20);
             this.Controls.Add(senhaTextBox);
 
-            //Configurações do funcao
-            funcaoLabel = new Label();
-            funcaoLabel.Text = "Função: ";
-            funcaoLabel.Location = new Point(20, 90);
-            funcaoLabel.Size = new Size(80, 20);
-            this.Controls.Add(funcaoLabel);
+            //Configurações do senha
+            senhaLabel = new Label();
+            senhaLabel.Text = "Senha:";
+            senhaLabel.Location = new Point(16, 65);
+            senhaLabel.Size = new Size(80, 20);
+            this.Controls.Add(senhaLabel);
 
             //Configurações do campo texto do funcao
             funcaoTextBox = new TextBox();
-            funcaoTextBox.Location = new Point(100, 90);
+            funcaoTextBox.Location = new Point(60, 90);
             funcaoTextBox.Size = new Size(150, 20);
             this.Controls.Add(funcaoTextBox);
 
-            //Configurações do lojaId
-            lojaIdLabel = new Label();
-            lojaIdLabel.Text = "Loja: ";
-            lojaIdLabel.Location = new Point(20, 120);
-            lojaIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(lojaIdLabel);
+            //Configurações do funcao
+            funcaoLabel = new Label();
+            funcaoLabel.Text = "Função:";
+            funcaoLabel.Location = new Point(10, 95);
+            funcaoLabel.Size = new Size(80, 20);
+            this.Controls.Add(funcaoLabel);
 
             //Configurações do campo texto do lojaId
             lojaIdCb = new ComboBox();
-            lojaIdCb.Location = new Point(100, 120);
+            lojaIdCb.Location = new Point(60, 120);
             lojaIdCb.Size = new Size(150, 20);
             List<Model.Loja> listaLoja = new List<Model.Loja>();
             foreach (Model.Loja loja in Controller.Loja.ListaLojas())
@@ -99,23 +92,30 @@ namespace View.Formulario.FuncionarioForm
             lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
-            //Configurações do email
-            emailLabel = new Label();
-            emailLabel.Text = "Email: ";
-            emailLabel.Location = new Point(20, 150);
-            emailLabel.Size = new Size(80, 20);
-            this.Controls.Add(emailLabel);
+            //Configurações do lojaId
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja:";
+            lojaIdLabel.Location = new Point(25, 125);
+            lojaIdLabel.Size = new Size(80, 20);
+            this.Controls.Add(lojaIdLabel);
 
             //Configurações do campo texto do email
             emailTextBox = new TextBox();
-            emailTextBox.Location = new Point(100, 150);
+            emailTextBox.Location = new Point(60, 150);
             emailTextBox.Size = new Size(150, 20);
             this.Controls.Add(emailTextBox);
+
+            //Configurações do email
+            emailLabel = new Label();
+            emailLabel.Text = "Email:";
+            emailLabel.Location = new Point(19, 155);
+            emailLabel.Size = new Size(80, 20);
+            this.Controls.Add(emailLabel);
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 180);
+            gravarButton.Location = new Point(40, 180);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -123,12 +123,13 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 180);
+            sairButton.Location = new Point(120, 180);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
+
         }
-         private void gravarButton_Click(object sender, EventArgs e)
+        private void gravarButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -198,7 +199,7 @@ namespace View.Formulario.FuncionarioForm
         public void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(300, 400);
             this.Text = "Edição de funcionario";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -215,7 +216,7 @@ namespace View.Formulario.FuncionarioForm
             funcionarioIdCb = new ComboBox();
             funcionarioIdCb.Location = new Point(100, 30);
             funcionarioIdCb.Size = new Size(150, 20);
-            List<Model.Funcionario> listaFuncionarios = new  List<Model.Funcionario>();
+            List<Model.Funcionario> listaFuncionarios = new List<Model.Funcionario>();
             foreach (Model.Funcionario funcionario in Controller.Funcionario.ListaFuncionario())
             {
                 funcionarioIdCb.Items.Add(funcionario);
@@ -303,7 +304,8 @@ namespace View.Formulario.FuncionarioForm
             gravarButton.Text = "Gravar";
             gravarButton.Location = new Point(20, 220);
             gravarButton.Size = new Size(80, 20);
-            gravarButton.Click += (ScrollBarRenderer, e) =>{
+            gravarButton.Click += (ScrollBarRenderer, e) =>
+            {
                 salvaFuncionario();
                 LimpaTela();
             };
@@ -317,7 +319,7 @@ namespace View.Formulario.FuncionarioForm
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             this.Controls.Add(sairButton);
         }
-        
+
         public FormEditaFuncionario()
         {
             InitializeComponent();
@@ -331,7 +333,7 @@ namespace View.Formulario.FuncionarioForm
                 var funcionarioSelecionado = ((Model.Funcionario)funcionarioIdCb.SelectedItem).funcionarioId.ToString();
                 //var funcionarioSelecionado = (Model.Funcionario) funcionarioIdCb.SelectedItem;
                 //MessageBox.Show(funcionarioSelecionado.funcionarioId.ToString());
-                
+
 
                 if (funcionarioSelecionado == null)
                 {
@@ -366,7 +368,7 @@ namespace View.Formulario.FuncionarioForm
                 MessageBox.Show("Erro ao alterar funcionário: " + ex.Message);
             }
         }
-        
+
         public void LimpaTela()
         {
             nomeTextBox.Text = "";
@@ -402,7 +404,7 @@ namespace View.Formulario.FuncionarioForm
             funcionarioIdCb = new ComboBox();
             funcionarioIdCb.Location = new Point(100, 30);
             funcionarioIdCb.Size = new Size(150, 20);
-            List<Controller.Funcionario> listaFuncionarios = new  List<Controller.Funcionario>();
+            List<Controller.Funcionario> listaFuncionarios = new List<Controller.Funcionario>();
             foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
             {
                 funcionarioIdCb.Items.Add(funcionario);
@@ -417,7 +419,8 @@ namespace View.Formulario.FuncionarioForm
             excluirButton.Text = "Excluir";
             excluirButton.Location = new Point(20, 60);
             excluirButton.Size = new Size(80, 20);
-            excluirButton.Click += (ScrollBarRenderer, e) =>{
+            excluirButton.Click += (ScrollBarRenderer, e) =>
+            {
                 ExcluiFuncionario();
                 LimpaTela();
             };
@@ -442,7 +445,7 @@ namespace View.Formulario.FuncionarioForm
             try
             {
                 Controller.Funcionario funcionario = new Controller.Funcionario();
-                var funcionarioSelecionado = (Controller.Funcionario) funcionarioIdCb.SelectedItem;
+                var funcionarioSelecionado = (Controller.Funcionario)funcionarioIdCb.SelectedItem;
                 if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione uma funcionario");
@@ -452,7 +455,8 @@ namespace View.Formulario.FuncionarioForm
 
                 Controller.Funcionario.ExcluiFuncionario(funcionario.funcionarioId);
                 MessageBox.Show("funcionario excluída com sucesso!");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao excluir funcionario: " + ex.Message);
             }

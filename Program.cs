@@ -151,9 +151,6 @@ namespace View
             dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
         }
         
-
-
-
         static class Program
         {
             [STAThread]

@@ -1,3 +1,8 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
 # Arquivos de compilação
 bin/
 obj/
