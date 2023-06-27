@@ -130,7 +130,7 @@ namespace View.Formulario.FuncionarioForm
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            this.ListaFuncionario();
+            ListaFuncionario();
             //Adicionar Ação/código para cancelar a operação atual
         }
 
