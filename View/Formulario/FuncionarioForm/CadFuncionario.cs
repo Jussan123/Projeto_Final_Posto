@@ -82,6 +82,14 @@ namespace View.Formulario.FuncionarioForm
             lojaIdCb = new ComboBox();
             lojaIdCb.Location = new Point(60, 120);
             lojaIdCb.Size = new Size(150, 20);
+            List<Model.Loja> listaLoja = new List<Model.Loja>();
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas())
+            {
+                lojaIdCb.Items.Add(loja);
+            }
+            lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
+            lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
             //Configurações do lojaId
@@ -137,17 +145,26 @@ namespace View.Formulario.FuncionarioForm
                 funcionario.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome para a propriedade nome
                 funcionario.senha = senhaTextBox.Text;//Atribuindo o valor do campo senha para a propriedade senha
                 funcionario.funcao = funcaoTextBox.Text;//Atribuindo o valor do campo funcao para a propriedade funcao
-                funcionario.lojaId = lojaIdCb.Text;//Atribuindo o valor do campo lojaId para a propriedade lojaId
+                 var lojaSelecionada = ((Model.Loja)lojaIdCb.SelectedItem).lojaId.ToString();
+                //var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
+                if (lojaSelecionada == null)
+                {
+                    MessageBox.Show("Selecione uma loja");
+                    return;
+                }
+                funcionario.lojaId = lojaSelecionada.ToString();
+                if (funcionario.lojaId == null) throw new Exception("Loja não encontrada" + funcionario.lojaId);
                 funcionario.email = emailTextBox.Text;//Atribuindo o valor do campo email para a propriedade email
-                Controller.Funcionario.CadastraFuncionario(funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);//Chamando o método CadastraFuncionario e passando os valores como parâmetro
+                Controller.Funcionario.CadastraFuncionario(funcionario.nome, funcionario.senha, funcionario.funcao, Convert.ToInt32(funcionario.lojaId), funcionario.email);//Chamando o método CadastraFuncionario e passando os valores como parâmetro
                 MessageBox.Show("Funcionário cadastrado com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
             }
             catch (Exception ex)//Tratamento de exceção
             {
-                MessageBox.Show(ex.Message);//Exibindo mensagem de erro
+                MessageBox.Show("Erro ao Cadastrar funcionário: " + ex.Message);
             }
         }
+
         private void sairButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Você realmente deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -168,7 +185,7 @@ namespace View.Formulario.FuncionarioForm
         }
     }
 
-    //------------------------------------------------------------
+//----------------------- Formulário de Edição de Funcionário -------------------------------------
 
     public class FormEditaFuncionario : Form
     {
@@ -233,8 +250,8 @@ namespace View.Formulario.FuncionarioForm
             {
                 lojaIdCb.Items.Add(loja);
             }
-            lojaIdCb.ValueMember = "lojaId";
             lojaIdCb.DisplayMember = "nome";
+            lojaIdCb.ValueMember = "lojaId";
             lojaIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdCb);
 
@@ -356,13 +373,7 @@ namespace View.Formulario.FuncionarioForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao alterar funcionário: " + ex.Message
-                                + "\n FuncionarioId: " + funcionarioIdCb.SelectedItem.ToString()
-                                + "\n  / Nome: " + nomeTextBox.Text
-                                + "\n  / Senha: " + senhaTextBox.Text
-                                + "\n  / Função: " + funcaoTextBox.Text
-                                + "\n  / Email: " + emailTextBox.Text
-                                + "\n  / LojaId: " + lojaIdCb.SelectedItem.ToString());
+                MessageBox.Show("Erro ao alterar funcionário: " + ex.Message);
             }
         }
 

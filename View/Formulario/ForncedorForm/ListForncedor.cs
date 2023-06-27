@@ -176,7 +176,7 @@ namespace View.Formulario.FornecedorForm
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            this.ListaFornecedor();
             //Adicionar Ação/código para cancelar a operação atual
         }
 

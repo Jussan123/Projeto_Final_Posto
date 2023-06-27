@@ -89,7 +89,7 @@ namespace View.Formulario.FuncionarioForm
             //Configura as colunas do grid
             funcionarioDataGridView.Columns.Add("funcionarioId", "funcionario");
             funcionarioDataGridView.Columns.Add("nome", "Nome");
-            funcionarioDataGridView.Columns.Add("senha", "Senha");
+            //funcionarioDataGridView.Columns.Add("senha", "Senha");
             funcionarioDataGridView.Columns.Add("funcao", "Função");
             funcionarioDataGridView.Columns.Add("lojaId", "Loja");
             funcionarioDataGridView.Columns.Add("email", "Email");
@@ -108,57 +108,11 @@ namespace View.Formulario.FuncionarioForm
             //configura a altura das linhas do grid
             funcionarioDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(funcionarioDataGridView);
-
-
-/* DataGridView montado pelo Erich
-            //Configurações do grid de funcionarios
-            funcionarioDataGridView = new DataGridView();
-            funcionarioDataGridView.Location = new Point(20, 40);
-            funcionarioDataGridView.Size = new Size(440, 280);
-            funcionarioDataGridView.AllowUserToAddRows = false;
-            funcionarioDataGridView.AllowUserToDeleteRows = false;
-            funcionarioDataGridView.ReadOnly = true;
-            funcionarioDataGridView.MultiSelect = false;
-            funcionarioDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            funcionarioDataGridView.AutoGenerateColumns = false;
-
-            //Configuração das colunas do grid
-            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "funcionario";//Lembrar que a exibição é o ID 
-            idColumn.HeaderText = "funcionario";
-            idColumn.Width = 50;
-            idColumn.ReadOnly = true;
-            funcionarioDataGridView.Columns.Add(idColumn);
-
-            DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            nomeColumn.HeaderText = "Nome Combustível";
-            nomeColumn.Width = 70;
-            nomeColumn.ReadOnly = true;
-            funcionarioDataGridView.Columns.Add(nomeColumn);
-
-            DataGridViewTextBoxColumn capmaxColumn = new DataGridViewTextBoxColumn();
-            capmaxColumn.DataPropertyName = "Cap_Max";
-            capmaxColumn.HeaderText = "Capacidade Maxima";
-            capmaxColumn.Width = 80;
-            capmaxColumn.ReadOnly = true;
-            funcionarioDataGridView.Columns.Add(capmaxColumn);
-
-            DataGridViewTextBoxColumn capminColumn = new DataGridViewTextBoxColumn();
-            capminColumn.DataPropertyName = "Cap_Min";
-            capminColumn.HeaderText = "Capacidade Minima";
-            capminColumn.Width = 90;
-            capminColumn.ReadOnly = true;
-            funcionarioDataGridView.Columns.Add(capminColumn);
-            this.Controls.Add(funcionarioDataGridView);
-*/
-
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new CadFuncionario());
-            this.ListaFuncionario();
             //throw new NotImplementedException();
         }
 
@@ -171,13 +125,12 @@ namespace View.Formulario.FuncionarioForm
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new FormExcluiFuncionario());
-            this.ListaFuncionario();
             //Adicionar Ação/código para excluir uma funcionario selecionada
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            this.ListaFuncionario();
             //Adicionar Ação/código para cancelar a operação atual
         }
 
@@ -200,7 +153,7 @@ namespace View.Formulario.FuncionarioForm
             funcionarioDataGridView.Rows.Clear();
             foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
+                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
             }
         }
     }

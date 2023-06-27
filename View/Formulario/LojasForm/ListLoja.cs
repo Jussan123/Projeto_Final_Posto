@@ -107,51 +107,6 @@ namespace View.Formulario.LojasForm
             //configura a altura das linhas do grid
             lojaDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(lojaDataGridView);
-
-
-            /* DataGridView montado pelo Erich
-            //Configurações do grid de lojas
-            lojaDataGridView = new DataGridView();
-            lojaDataGridView.Location = new Point(20, 40);
-            lojaDataGridView.Size = new Size(440, 280);
-            lojaDataGridView.AllowUserToAddRows = false;
-            lojaDataGridView.AllowUserToDeleteRows = false;
-            lojaDataGridView.ReadOnly = true;
-            lojaDataGridView.MultiSelect = false;
-            lojaDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            lojaDataGridView.AutoGenerateColumns = false;
-
-            //Configuração das colunas do grid
-            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "loja";//Lembrar que a exibição é o ID 
-            idColumn.HeaderText = "loja";
-            idColumn.Width = 50;
-            idColumn.ReadOnly = true;
-            lojaDataGridView.Columns.Add(idColumn);
-
-            DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            nomeColumn.HeaderText = "Nome Combustível";
-            nomeColumn.Width = 70;
-            nomeColumn.ReadOnly = true;
-            lojaDataGridView.Columns.Add(nomeColumn);
-
-            DataGridViewTextBoxColumn capmaxColumn = new DataGridViewTextBoxColumn();
-            capmaxColumn.DataPropertyName = "Cap_Max";
-            capmaxColumn.HeaderText = "Capacidade Maxima";
-            capmaxColumn.Width = 80;
-            capmaxColumn.ReadOnly = true;
-            lojaDataGridView.Columns.Add(capmaxColumn);
-
-            DataGridViewTextBoxColumn capminColumn = new DataGridViewTextBoxColumn();
-            capminColumn.DataPropertyName = "Cap_Min";
-            capminColumn.HeaderText = "Capacidade Minima";
-            capminColumn.Width = 90;
-            capminColumn.ReadOnly = true;
-            lojaDataGridView.Columns.Add(capminColumn);
-            this.Controls.Add(lojaDataGridView);
-*/
-
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -174,7 +129,7 @@ namespace View.Formulario.LojasForm
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            this.ListaLoja();
             //Adicionar Ação/código para cancelar a operação atual
         }
 

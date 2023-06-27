@@ -97,51 +97,6 @@ namespace View.Formulario.bombaForm
             //configura a altura das linhas do grid
             bombaDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(bombaDataGridView);
-
-
-/* DataGridView montado pelo Erich
-            //Configurações do grid de Bombas
-            bombaDataGridView = new DataGridView();
-            bombaDataGridView.Location = new Point(20, 40);
-            bombaDataGridView.Size = new Size(440, 280);
-            bombaDataGridView.AllowUserToAddRows = false;
-            bombaDataGridView.AllowUserToDeleteRows = false;
-            bombaDataGridView.ReadOnly = true;
-            bombaDataGridView.MultiSelect = false;
-            bombaDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            bombaDataGridView.AutoGenerateColumns = false;
-
-            //Configuração das colunas do grid
-            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "Bomba";//Lembrar que a exibição é o ID 
-            idColumn.HeaderText = "Bomba";
-            idColumn.Width = 50;
-            idColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(idColumn);
-
-            DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            nomeColumn.HeaderText = "Nome Combustível";
-            nomeColumn.Width = 70;
-            nomeColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(nomeColumn);
-
-            DataGridViewTextBoxColumn capmaxColumn = new DataGridViewTextBoxColumn();
-            capmaxColumn.DataPropertyName = "Cap_Max";
-            capmaxColumn.HeaderText = "Capacidade Maxima";
-            capmaxColumn.Width = 80;
-            capmaxColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(capmaxColumn);
-
-            DataGridViewTextBoxColumn capminColumn = new DataGridViewTextBoxColumn();
-            capminColumn.DataPropertyName = "Cap_Min";
-            capminColumn.HeaderText = "Capacidade Minima";
-            capminColumn.Width = 90;
-            capminColumn.ReadOnly = true;
-            bombaDataGridView.Columns.Add(capminColumn);
-            this.Controls.Add(bombaDataGridView);
-*/
-
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -164,7 +119,7 @@ namespace View.Formulario.bombaForm
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            this.ListaBomba();
             //Adicionar Ação/código para cancelar a operação atual
         }
 
