@@ -495,7 +495,7 @@
     }
 
 //----------------------- Formulário de exclusão de movimentação ---------------------------
-    public class excluiMovimentacao : Form
+    public class FormExcluiMovimentacao : Form
     {
         private Label movimentacaoIdLabel;
         private ComboBox movimentacaoIdComboBox;
@@ -551,7 +551,7 @@
             this.Controls.Add(sairButton);
         }
 
-        public excluiMovimentacao()
+        public FormExcluiMovimentacao()
         {
             InitializeComponent();
         }
