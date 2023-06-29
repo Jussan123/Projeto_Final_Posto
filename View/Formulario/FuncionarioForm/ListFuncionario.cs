@@ -70,7 +70,7 @@ namespace View.Formulario.FuncionarioForm
             refreshButton.Text = "Refresh";
             refreshButton.Location = new Point(290, 340);
             refreshButton.Size = new Size(80, 30);
-            refreshButton.Click += new EventHandler(RefreshButton_Click);
+            refreshButton.Click += (sender, e) => this.ListaFuncionario();
             this.Controls.Add(refreshButton);
 
             //Configurações do botão de sair
@@ -95,7 +95,7 @@ namespace View.Formulario.FuncionarioForm
             funcionarioDataGridView.Columns.Add("email", "Email");
             foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.senha, funcionario.funcao, funcionario.lojaId, funcionario.email);
+                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
             }
             //configura o modo de redimensionamento das linhas e colunas
             funcionarioDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -118,7 +118,7 @@ namespace View.Formulario.FuncionarioForm
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new View.Formulario.FuncionarioForm.FormEditaFuncionario());           
+            AbrirForm(new FormEditaFuncionario());           
             //Adicionar Ação/código para alterar uma funcionario selecionada
         }
 
@@ -128,11 +128,11 @@ namespace View.Formulario.FuncionarioForm
             //Adicionar Ação/código para excluir uma funcionario selecionada
         }
 
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            ListaFuncionario();
-            //Adicionar Ação/código para cancelar a operação atual
-        }
+        //private void RefreshButton_Click(object sender, EventArgs e)
+        //{
+        //    this.ListaFuncionario();
+        //    //Adicionar Ação/código para cancelar a operação atual
+        //}
 
         private void SairButton_Click(object sender, EventArgs e)
         {

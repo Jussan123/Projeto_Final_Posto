@@ -23,13 +23,14 @@ namespace View.Formulario.Login
 
         private void InitializeComponent()
         {
-            // Configurações do PictureBox
-            //PictureBox pictureBox = new PictureBox();
-            //pictureBox.Image = Image.FromFile(@"C:\\img\\login_img.png");
-            //pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-            //pictureBox.Location = new Point(0, 0);
-            //pictureBox.Size = new Size(270, 74);
-            //this.Controls.Add(pictureBox);
+            //Configurações do PictureBox
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = Image.FromFile(@"imagens\login1_img.png");
+            //@"C:\\img\\login_img.png"
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Size = new Size(270, 74);
+            this.Controls.Add(pictureBox);
             
 
             // Configurações da janela do formulário
@@ -97,8 +98,8 @@ namespace View.Formulario.Login
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                View.Formulario.bombaForm.ListBomba listBomba = new View.Formulario.bombaForm.ListBomba();
-                listBomba.ShowDialog();
+                View.Formulario.MovimentacaoForm.ListMovimentacao movimentacao = new View.Formulario.MovimentacaoForm.ListMovimentacao();
+                movimentacao.ShowDialog();
             }
             else
             {
