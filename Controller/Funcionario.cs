@@ -9,56 +9,67 @@ using Model;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace Controller
 {
     public class Funcionario
     {
+        public string funcionarioId { get; set; }
+        public string lojaId { get; set; }
+        public string nome { get; set; }
+        public string senha { get; set; }
+        public string funcao { get; set; }
+        public string email { get; set; }
         public static Model.Funcionario CadastraFuncionario(
             string nome,
             string senha,
             string funcao,
-            string lojaId,
+            int lojaId,
             string email)
         {
             try{
-                CriptografaSenha(senha);
-                if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
+                ValidaSenha(senha);
+                if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao cadastrar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao cadastrar funcionário, email já cadastrado");
                 Model.Funcionario funcionario = new Model.Funcionario(
                     nome,
-                    senha,
+                    CriptografaSenha(senha),
                     funcao,
-                    int.Parse(lojaId),
+                    lojaId,
                     email
                 );
                 return funcionario;
-            } catch (Exception) {
-                throw new Exception("Erro ao cadastrar funcionário");
+            } catch (Exception e) {
+                throw new Exception($"Erro ao cadastrar funcionário. {e.Message}");
             }
         }
 
         public static Model.Funcionario AlteraFuncionario(
-            string funcionarioId, 
+            int funcionarioId, 
             string nome,
             string senha, 
             string funcao, 
-            string lojaId, 
+            int lojaId, 
             string email)
         {
             try
             {
-                CriptografaSenha(senha);
-                if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
-                if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
+                ValidaSenha(senha);
+                ValidaEmail(email);
+                if (Model.Funcionario.BuscaFuncionarioPorId(funcionarioId) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
+                if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao alterar funcionário, email já cadastrado");
+                Model.Funcionario funcionario = new Model.Funcionario();
                 return Model.Funcionario.UpdateFuncionario(
-                    int.Parse(funcionarioId),
+                    funcionarioId,
                     nome,
-                    senha,
+                    CriptografaSenha(senha),
                     funcao,
-                    int.Parse(lojaId),
+                    lojaId,
                     email
                 );
-            } catch (Exception) {
-                throw new Exception("Erro ao alterar funcionário");
+            } catch (Exception e) {
+                throw new Exception($"Erro ao alterar funcionário {e.Message}");
             }
         }
 
@@ -82,6 +93,26 @@ namespace Controller
             }
         }
 
+        public static Model.Funcionario BuscaFuncionarioPorEmail(string email)
+        {
+            try
+            {
+                return Model.Funcionario.BuscaFuncionarioPorEmail(email);
+            } catch (Exception) {
+                throw new Exception("Erro ao buscar funcionário");
+            }
+        }
+
+        public static Model.Funcionario BuscaFuncionarioPorFuncao(string funcao)
+        {
+            try
+            {
+                return Model.Funcionario.BuscaFuncionarioPorFuncao(funcao);
+            } catch (Exception) {
+                throw new Exception("Erro ao buscar funcionário");
+            }
+        }
+
         public static void ExcluiFuncionario(string funcionarioId)
         {
             try
@@ -93,26 +124,38 @@ namespace Controller
             }
         }
 
-        private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
+        public static bool Logar(string email, string senha)
         {
             try
             {
-                using (SHA256 sha256 = SHA256.Create())//Cria um objeto SHA256(Secure Hash Algorithm 256 bits) para criptografar a senha do funcionário
-                // SHA256 refere-se a um algoritmo de hash criptográfico que calcula o hash de 256 bits de uma entrada arbitrária
-                {
-                    byte[] bytes = Encoding.UTF8.GetBytes(senha);// Converte a senha em bytes
-                    byte[] hash = sha256.ComputeHash(bytes);// Calcula o hash dos bytes
-
-                    StringBuilder builder = new StringBuilder();// Cria um objeto StringBuilder para armazenar o hash
-                    for (int i = 0; i < hash.Length; i++)// Percorre o hash
-                    {
-                        builder.Append(hash[i].ToString("X2"));// Converte o hash em hexadecimal e adiciona ao objeto StringBuilder
-                    }
-                    return builder.ToString();// Retorna o hash criptografado
-                }
+                Model.Funcionario funcionario = Model.Funcionario.BuscaFuncionarioPorEmail(email);
+                if (funcionario == null) throw new Exception("Erro ao logar, funcionário não encontrado");
+                if (BCrypt.Net.BCrypt.Verify(senha, funcionario.senha)) throw new Exception("Erro ao logar, senha incorreta");
+                return true;
             } catch (Exception) {
-                throw new Exception("Erro ao criptografar senha");// Caso ocorra algum erro, retorna uma mensagem de erroMemoria
+                throw new Exception("Erro ao logar");
             }
+        }
+
+        private static void ValidaSenha(string senha)//Método para validar a senha do funcionário
+        {
+            if (senha.Length < 8) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 8 caracteres");//Verifica se a senha tem no mínimo 8 caracteres
+            if (!senha.Any(char.IsUpper)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra maiúscula");//Verifica se a senha tem no mínimo 1 letra maiúscula
+            if (!senha.Any(char.IsLower)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 letra minúscula");//Verifica se a senha tem no mínimo 1 letra minúscula
+            if (!senha.Any(char.IsDigit)) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 número");//Verifica se a senha tem no mínimo 1 número
+            if (!(senha.Any(char.IsSymbol) || senha.Any(char.IsPunctuation))) throw new Exception("Erro ao cadastrar funcionário, senha deve conter no mínimo 1 caractere especial");//Verifica se a senha tem no mínimo 1 caractere especial
+        }
+
+        private static void ValidaEmail(string email)
+        {
+            if (!email.Contains("@")) throw new Exception("Erro ao cadastrar funcionário, email inválido");//Verifica se o email contém @
+            if (!email.Contains(".")) throw new Exception("Erro ao cadastrar funcionário, email inválido");//Verifica se o email contém .
+        }
+
+        private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
+        {
+
+            return BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt(12));
         }
     }
 }

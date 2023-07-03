@@ -7,29 +7,35 @@
  */
 
 using Model;
+using System.Linq;
 
 namespace Controller
 {
     public class Bomba
     {
+        public string combustivelId { get; set; }
+        public string limiteMaximo { get; set; }
+        public string limiteMinimo { get; set; } 
+        public string lojaId { get; set; }
+        public string bombaId { get; set; }
+        public string volume { get; set; }
+
         public static Model.Bomba CadastrarBomba( // Cadastra uma bomba
-            string TipoCombustivelId, 
-            string LimiteMaximo, 
-            string LimiteMinimo, 
-            string MovimentacaoId)
+            string combustivelId, 
+            string limiteMaximo, 
+            string limiteMinimo,
+            string volume,
+            string lojaId) 
         {
-            int tipoCombustivelIdConvert = 0;
-            decimal limiteMaximoConvert = 0;
-            decimal limiteMinimoConvert = 0;
-            int movimentacaoIdConvert = 0;
             try
             {
-                tipoCombustivelIdConvert = int.Parse(TipoCombustivelId);// identifica o tipo de combustivel
-                limiteMaximoConvert = decimal.Parse(LimiteMaximo);// insere o limite maximo
-                limiteMinimoConvert = decimal.Parse(LimiteMinimo);// insere o limite minimo
-                movimentacaoIdConvert = int.Parse(MovimentacaoId);// identifica a movimentação
+                int combustivelIdConvert = int.Parse(combustivelId);// identifica o tipo de combustivel
+                decimal limiteMaximoConvert = decimal.Parse(limiteMaximo);// insere o limite maximo
+                decimal limiteMinimoConvert = decimal.Parse(limiteMinimo);// insere o limite minimo
+                decimal volumeConvert = decimal.Parse(volume);// insere o volume
+                int lojaIdConvert = int.Parse(lojaId);// identifica a loja
 
-                Model.Bomba bomba = new Model.Bomba(tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, movimentacaoIdConvert);// Cria uma bomba
+                Model.Bomba bomba = new Model.Bomba(combustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, volumeConvert, lojaIdConvert);// Cria uma bomba
                 return bomba;
             }
             catch (FormatException ex)// Erro de formato
@@ -47,12 +53,12 @@ namespace Controller
         }
 
 
-        public static Model.Bomba BuscaBombaPorId(string BombaId)
+        public static Model.Bomba BuscaBombaPorId(string bombaId)
         {
             int bombaIdConvert = 0;
             try
             {
-                bombaIdConvert = int.Parse(BombaId);
+                bombaIdConvert = int.Parse(bombaId);
             } catch (System.Exception)
             {
                 throw new System.Exception("Bomba inválida");
@@ -61,23 +67,19 @@ namespace Controller
             return bomba;
         }
 
-        public static Model.Bomba AlterarBomba(string bombaId, string TipoCombustivelId, string LimiteMaximo, string LimiteMinimo, string MovimentacaoId)
+        public static Model.Bomba AlterarBomba(string bombaId, string combustivelId, string limiteMaximo, string limiteMinimo, string volume, string lojaId)
         {
-            int bombaIdConvert = 0;
-            int tipoCombustivelIdConvert = 0;
-            decimal limiteMaximoConvert = 0;
-            decimal limiteMinimoConvert = 0;
-            int movimentacaoIdConvert = 0;
             try
             {
-                bombaIdConvert = int.Parse(bombaId);
-                tipoCombustivelIdConvert = int.Parse(TipoCombustivelId);
-                limiteMaximoConvert = decimal.Parse(LimiteMaximo);
-                limiteMinimoConvert = decimal.Parse(LimiteMinimo);
-                movimentacaoIdConvert = int.Parse(MovimentacaoId);
+                int bombaIdConvert = int.Parse(bombaId);
+                int combustivelIdConvert = int.Parse(combustivelId);
+                decimal limiteMaximoConvert = decimal.Parse(limiteMaximo);
+                decimal limiteMinimoConvert = decimal.Parse(limiteMinimo);
+                decimal volumeConvert = decimal.Parse(volume);
+                int lojaIdConvert = int.Parse(lojaId);
 
                 Model.Bomba.BuscaBombaPorId(bombaIdConvert);
-                return Model.Bomba.UpdateBomba(bombaIdConvert, tipoCombustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, movimentacaoIdConvert);
+                return Model.Bomba.UpdateBomba(bombaIdConvert, combustivelIdConvert, limiteMaximoConvert, limiteMinimoConvert, volumeConvert, lojaIdConvert);
 
             }
             catch (FormatException ex)
@@ -94,7 +96,7 @@ namespace Controller
             }
         }
 
-        public static List<Model.Bomba> ListarBombas()
+        public static IEnumerable<Model.Bomba> ListarBombas()
         {
             return Model.Bomba.BuscaBomba();
         }
@@ -110,11 +112,12 @@ namespace Controller
             }
         }
 
-        public static void DeletaBomba(int bombaId)
+        public static void DeletaBomba(string bombaId)
         {
             try
             {
-                Model.Bomba.DeletaBomba(bombaId);
+                int bombaIdConvert = int.Parse(bombaId);
+                Model.Bomba.DeletaBomba(bombaIdConvert);
             } catch (System.Exception)
             {
                 throw new System.Exception("Bomba inválida");

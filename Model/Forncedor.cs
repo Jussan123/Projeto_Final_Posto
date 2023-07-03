@@ -57,11 +57,11 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.fornecedorId + " - nome: " + this.nome + " - contato: " + this.contato + " - Endereço: " + this.endereco + "\n";
+            return "Id: " + this.fornecedorId + " - nome: " + this.nome + " - contato: " + this.contato + " - Endereço: " + this.endereco +  "\n";
         }
 
         //------------------- CRUD -------------------//
-
+       
         public static List<Fornecedor> BuscaFornecedor()
         {
             DataBase db = new DataBase();

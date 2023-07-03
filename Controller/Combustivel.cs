@@ -9,19 +9,32 @@ using Model;
 
 namespace Controller
 {
-    public class combustivel
+    public class Combustivel
     {
-            public static Model.Combustivel CadastraCombustivel(
-                string TipoCombustivelId,
-                string QuantidadeEstoque,
-                string Preco)
+        public string combustivelId { get; set; }
+        public string precoCompra { get; set; }
+        public string precoVenda { get; set; }
+        public string nome { get; set; }
+        public string sigla { get; set; }
+        public string descricao { get; set; }
+
+        
+
+        public static Model.Combustivel CadastraCombustivel(
+                string nome,
+                string sigla,
+                string descricao,
+                string precoCompra,
+                string precoVenda)
             {
                 try
                 {
                     Model.Combustivel combustivel = new Model.Combustivel(
-                        int.Parse(TipoCombustivelId),
-                        decimal.Parse(QuantidadeEstoque),
-                        decimal.Parse(Preco)
+                        nome,
+                        sigla,
+                        descricao,
+                        decimal.Parse(precoCompra),
+                        decimal.Parse(precoVenda)
                     );
                     return combustivel;
                 }
@@ -40,19 +53,23 @@ namespace Controller
             }
 
             public static Model.Combustivel AlteraCombustivel(
-                string CombustivelId,
-                string TipoCombustivelId,
-                string QuantidadeEstoque,
-                string Preco)
+                string combustivelId,
+                string nome,
+                string sigla,
+                string descricao,
+                string precoCompra,
+                string precoVenda)
             {
                 try
                 {
-                    Model.Combustivel.BuscaCombustivelPorId(int.Parse(CombustivelId));
+                    Model.Combustivel.BuscaCombustivelPorId(int.Parse(combustivelId));
                     return Model.Combustivel.UpdateCombustivel(
-                        int.Parse(CombustivelId),
-                        int.Parse(TipoCombustivelId),
-                        decimal.Parse(QuantidadeEstoque),
-                        decimal.Parse(Preco)
+                        int.Parse(combustivelId),
+                        nome,
+                        sigla,
+                        descricao,
+                        decimal.Parse(precoCompra),
+                        decimal.Parse(precoVenda)
                     );
                 }
                 catch (FormatException ex)
@@ -74,11 +91,11 @@ namespace Controller
                 return Model.Combustivel.BuscaCombustivel();
             }
 
-            public static Model.Combustivel BuscaCombustivelPorId(string CombustivelId)
+            public static Model.Combustivel BuscaCombustivelPorId(string combustivelId)
             {
                 try
                 {
-                    return Model.Combustivel.BuscaCombustivelPorId(int.Parse(CombustivelId));
+                    return Model.Combustivel.BuscaCombustivelPorId(int.Parse(combustivelId));
                 }
                 catch (Exception ex)
                 {

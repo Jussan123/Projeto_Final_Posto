@@ -80,6 +80,18 @@ namespace Model
             return db.Funcionarios.Find(funcionarioId);
         }
 
+        public static Funcionario BuscaFuncionarioPorEmail(string email)
+        {
+            DataBase db = new DataBase();
+            return db.Funcionarios.Where(x => x.email == email).FirstOrDefault();
+        }
+
+        public static Funcionario BuscaFuncionarioPorFuncao(string funcao)
+        {
+            DataBase db = new DataBase();
+            return db.Funcionarios.Where(x => x.funcao == funcao).FirstOrDefault();
+        }
+        
         public static Funcionario UpdateFuncionario(int funcionarioId, string nome, string senha, string funcao, int lojaId, string email)
         {
             DataBase db = new DataBase();

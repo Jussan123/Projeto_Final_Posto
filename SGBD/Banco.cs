@@ -19,7 +19,6 @@ namespace Banco
         // criação das tabelas no banco de dados pelo Entity Framework
         public DbSet<Loja> Lojas { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<TipoCombustivel> TiposCombustivel { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Combustivel> Combustiveis { get; set; }
         public DbSet<Movimentacao> Movimentacoes { get; set; }
@@ -38,11 +37,6 @@ namespace Banco
                 entity.HasKey(e => e.fornecedorId);//chave primária
             });
 
-            modelBuilder.Entity<TipoCombustivel>(entity =>
-            {
-                entity.HasKey(e => e.tipoCombustivelId);//chave primária
-            });
-
             modelBuilder.Entity<Funcionario>(entity =>
             {
                 entity.HasKey(e => e.funcionarioId);//chave primária
@@ -56,36 +50,36 @@ namespace Banco
             {
                 entity.HasKey(e => e.combustivelId);//chave primária
                 // relacionar combustivel com o tipo de combustivel
-                entity.HasOne(e => e.tipoCombustivel)
-                .WithMany()
-                .HasForeignKey(e => e.tipocombustivelId);
             });
 
             modelBuilder.Entity<Movimentacao>(entity =>
             {
                 entity.HasKey(e => e.movimentacaoId);//chave primária
                 // relacionar entrada/saida com o combustivel / Fornecedor / Loja
-                entity.HasOne(e => e.Combustivel)//relacionamento com a tabela combustivel
-                .WithMany()//configurar um relacionamento de "muitos para um" ou "muitos para muitos" entre entidades.
-                .HasForeignKey(e => e.combustivelId);//chave estrangeira
-                entity.HasOne(e => e.Fornecedor)
-                .WithMany()
-                .HasForeignKey(e => e.fornecedorId);
-                entity.HasOne(e => e.Loja)
+                entity.HasOne(e => e.loja)
                 .WithMany()
                 .HasForeignKey(e => e.lojaId);
+                entity.HasOne(e => e.funcionario)
+                .WithMany()
+                .HasForeignKey(e => e.funcionarioId);
+                entity.HasOne(e => e.bomba)
+                .WithMany()
+                .HasForeignKey(e => e.bombaId);
+                entity.HasOne(e => e.fornecedor)
+                .WithMany()
+                .HasForeignKey(e => e.fornecedorId);
             });
 
             modelBuilder.Entity<Bomba>(entity =>
             {
                 entity.HasKey(e => e.bombaId);//chave primária
                 // relacionar bomba com tipo de combustivel / Movimentacao
-                entity.HasOne(e => e.TipoCombustivel)
+                entity.HasOne(e => e.combustivel)
                 .WithMany()
-                .HasForeignKey(e => e.tipoCombustivelId);
-                entity.HasOne(e => e.Movimentacao)
+                .HasForeignKey(e => e.combustivelId);
+                entity.HasOne(e => e.loja)
                 .WithMany()
-                .HasForeignKey(e => e.movimentacaoId);
+                .HasForeignKey(e => e.lojaId);
             });
         }
 
