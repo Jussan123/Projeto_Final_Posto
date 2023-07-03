@@ -28,7 +28,7 @@ namespace View
             ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
             loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(loginMenuItem);
-/*
+
             ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
             funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
@@ -68,7 +68,7 @@ namespace View
             movimentacoesMenuItem.DropDownItems.Add(fluxosMenuItem);
 
             menuStrip.Items.Add(movimentacoesMenuItem);
-*/
+
             ToolStripMenuItem ajudaMenuItem = new ToolStripMenuItem("Ajuda");
 
             //Sub-menus do menu "Ajuda"
@@ -105,7 +105,7 @@ namespace View
             View.Formulario.Login.Login login = new View.Formulario.Login.Login();
             login.ShowDialog();
         }
-/*
+
         private void FuncionarioMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Enter Funcionário");
@@ -138,7 +138,7 @@ namespace View
         {
             View.Formulario.MovimentacaoForm.ListMovimentacao movimentacao = new View.Formulario.MovimentacaoForm.ListMovimentacao();
             movimentacao.ShowDialog();
-        } */
+        } 
 
         private void SobreMenuItem_Click(object sender, EventArgs e)
         {
