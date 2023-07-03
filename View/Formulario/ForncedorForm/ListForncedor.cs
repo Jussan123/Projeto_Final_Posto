@@ -92,10 +92,9 @@ namespace View.Formulario.FornecedorForm
             fornecedorDataGridView.Columns.Add("nome", "Nome Fornecedor");
             fornecedorDataGridView.Columns.Add("contato", "Contato");
             fornecedorDataGridView.Columns.Add("endereco", "Endereço");
-            fornecedorDataGridView.Columns.Add("movimentacaoId", "Movimentacao");
             foreach (var fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
+                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco);
             }
             //configura o modo de redimensionamento das linhas e colunas
             fornecedorDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -108,51 +107,6 @@ namespace View.Formulario.FornecedorForm
             //configura a altura das linhas do grid
             fornecedorDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(fornecedorDataGridView);
-
-
-/* DataGridView montado pelo Erich
-            //Configurações do grid de fornecedors
-            fornecedorDataGridView = new DataGridView();
-            fornecedorDataGridView.Location = new Point(20, 40);
-            fornecedorDataGridView.Size = new Size(440, 280);
-            fornecedorDataGridView.AllowUserToAddRows = false;
-            fornecedorDataGridView.AllowUserToDeleteRows = false;
-            fornecedorDataGridView.ReadOnly = true;
-            fornecedorDataGridView.MultiSelect = false;
-            fornecedorDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            fornecedorDataGridView.AutoGenerateColumns = false;
-
-            //Configuração das colunas do grid
-            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "fornecedor";//Lembrar que a exibição é o ID 
-            idColumn.HeaderText = "fornecedor";
-            idColumn.Width = 50;
-            idColumn.ReadOnly = true;
-            fornecedorDataGridView.Columns.Add(idColumn);
-
-            DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            nomeColumn.HeaderText = "Nome Combustível";
-            nomeColumn.Width = 70;
-            nomeColumn.ReadOnly = true;
-            fornecedorDataGridView.Columns.Add(nomeColumn);
-
-            DataGridViewTextBoxColumn capmaxColumn = new DataGridViewTextBoxColumn();
-            capmaxColumn.DataPropertyName = "Cap_Max";
-            capmaxColumn.HeaderText = "Capacidade Maxima";
-            capmaxColumn.Width = 80;
-            capmaxColumn.ReadOnly = true;
-            fornecedorDataGridView.Columns.Add(capmaxColumn);
-
-            DataGridViewTextBoxColumn capminColumn = new DataGridViewTextBoxColumn();
-            capminColumn.DataPropertyName = "Cap_Min";
-            capminColumn.HeaderText = "Capacidade Minima";
-            capminColumn.Width = 90;
-            capminColumn.ReadOnly = true;
-            fornecedorDataGridView.Columns.Add(capminColumn);
-            this.Controls.Add(fornecedorDataGridView);
-*/
-
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -199,7 +153,7 @@ namespace View.Formulario.FornecedorForm
             fornecedorDataGridView.Rows.Clear();
             foreach (var fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
+                fornecedorDataGridView.Rows.Add(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco);
             }
         }
     }
