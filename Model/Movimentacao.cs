@@ -25,13 +25,16 @@ namespace Model
         public Funcionario funcionario { get; set; }
         public int bombaId { get; set; }
         public Bomba bomba { get; set; }
+        public int fornecedorId { get; set; }
+        public Fornecedor fornecedor { get; set; }
 
         public Movimentacao()
         {
         }
 
-        public Movimentacao(decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId)
+        public Movimentacao(int combustivelId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId, int fornecedorId)
         {
+            this.combustivelId = combustivelId;
             this.quantidade = quantidade;
             this.tipoOperacao = tipoOperacao;
             this.dataHora = DateTime.Now;
@@ -39,6 +42,7 @@ namespace Model
             this.lojaId = lojaId;
             this.funcionarioId = funcionarioId;
             this.bombaId = bombaId;
+            this.fornecedorId = fornecedorId;
 
             DataBase db = new DataBase();
             db.Movimentacoes.Add(this);
@@ -70,7 +74,7 @@ namespace Model
 
         public override string ToString()
         {
-            return "Id: " + this.movimentacaoId + " Quantidade: " + this.quantidade + " Tipo de Operação: " + this.tipoOperacao + " Data e Hora: " + this.dataHora + " Valor: " + this.valor + " Loja: " + this.lojaId + " Funcionário: " + this.funcionarioId + " Bomba: " + this.bombaId +"\n" ;
+            return "Id: " + this.movimentacaoId + " Quantidade: " + this.quantidade + " Tipo de Operação: " + this.tipoOperacao + " Data e Hora: " + this.dataHora + " Valor: " + this.valor + " Loja: " + this.lojaId + " Funcionário: " + this.funcionarioId + " Bomba: " + this.bombaId + " Combustivel: " + this.combustivelId + " Fornecedor: " + this.fornecedorId + " \n" ;
         }
 
         //------------------- CRUD -------------------//
@@ -88,11 +92,19 @@ namespace Model
             return db.Movimentacoes.Find(movimentacaoId);
         }
 
-        public static Movimentacao UpdateMovimentacao(int movimentacaoId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId)
+        public static Movimentacao BuscaTipoOperacaoPorId(int movimentacaoId)
+        {
+            DataBase db = new DataBase();
+            Movimentacao tipoOperacao = (from u in db.Movimentacoes where u.movimentacaoId == movimentacaoId select u).FirstOrDefault();
+            // Retorna o tipo de operação se for entrada ou saída
+            return tipoOperacao;
+        }
+
+        public static Movimentacao UpdateMovimentacao(int movimentacaoId, int combustivelId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId, int fornecedorId)
         {
             DataBase db = new DataBase();
             Movimentacao movimentacao = db.Movimentacoes.Find(movimentacaoId);
-            //movimentacao.combustivelId = combustivelId;
+            movimentacao.combustivelId = combustivelId;
             movimentacao.quantidade = quantidade;
             movimentacao.tipoOperacao = tipoOperacao;
             movimentacao.dataHora = DateTime.Now;
@@ -100,6 +112,7 @@ namespace Model
             movimentacao.lojaId = lojaId;
             movimentacao.funcionarioId = funcionarioId;
             movimentacao.bombaId = bombaId;
+            movimentacao.fornecedorId = fornecedorId;
             db.SaveChanges();
             return movimentacao;
         }

@@ -98,8 +98,8 @@ namespace View.Formulario.Login
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                View.Formulario.MovimentacaoForm.ListMovimentacao movimentacao = new View.Formulario.MovimentacaoForm.ListMovimentacao();
-                movimentacao.ShowDialog();
+                View.InicioForm inicio = new View.InicioForm();
+                inicio.ShowDialog();
             }
             else
             {

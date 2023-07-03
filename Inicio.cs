@@ -3,14 +3,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using View.Formulario;
 
-
 namespace View
 {
-    public partial class ProgramForm : Form
+    public partial class InicioForm : Form
     {
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora
 
-        public ProgramForm()
+        public InicioForm()
         {
             InitializeComponent();
         }
@@ -25,10 +24,7 @@ namespace View
             ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
 
             //Sub-menus do menu "Sistema"
-            ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(loginMenuItem);
-/*
+
             ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
             funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
@@ -68,7 +64,7 @@ namespace View
             movimentacoesMenuItem.DropDownItems.Add(fluxosMenuItem);
 
             menuStrip.Items.Add(movimentacoesMenuItem);
-*/
+
             ToolStripMenuItem ajudaMenuItem = new ToolStripMenuItem("Ajuda");
 
             //Sub-menus do menu "Ajuda"
@@ -105,7 +101,7 @@ namespace View
             View.Formulario.Login.Login login = new View.Formulario.Login.Login();
             login.ShowDialog();
         }
-/*
+
         private void FuncionarioMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Enter Funcionário");
@@ -138,7 +134,7 @@ namespace View
         {
             View.Formulario.MovimentacaoForm.ListMovimentacao movimentacao = new View.Formulario.MovimentacaoForm.ListMovimentacao();
             movimentacao.ShowDialog();
-        } */
+        }
 
         private void SobreMenuItem_Click(object sender, EventArgs e)
         {
@@ -151,15 +147,16 @@ namespace View
             dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
         }
         
-        static class Program
+        static class Inicio
         {
-            [STAThread]
-            static void Main()
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new ProgramForm());
-            }
+          //  [STAThread]
+           // static void Main()
+            //{
+            //    Application.EnableVisualStyles();
+            //    Application.SetCompatibleTextRenderingDefault(false);
+            //    Application.Run(new InicioForm());
+           // }
         }
     }
 }
+
