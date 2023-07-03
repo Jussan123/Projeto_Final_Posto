@@ -128,11 +128,10 @@ namespace View.Formulario.FuncionarioForm
             //Adicionar Ação/código para excluir uma funcionario selecionada
         }
 
-        //private void RefreshButton_Click(object sender, EventArgs e)
-        //{
-        //    this.ListaFuncionario();
-        //    //Adicionar Ação/código para cancelar a operação atual
-        //}
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            this.ListaFuncionario();
+        }
 
         private void SairButton_Click(object sender, EventArgs e)
         {
