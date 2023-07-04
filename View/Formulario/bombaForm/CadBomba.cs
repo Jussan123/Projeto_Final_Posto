@@ -28,7 +28,7 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(270,200);
             this.Text = "Cadastro de Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -47,62 +47,64 @@ namespace View.Formulario.bombaForm
             //combustivelIdTextBox.Size = new Size(150, 20);
             //this.Controls.Add(combustivelIdTextBox);
 
+            //Configurações de rótulo identificação da loja
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja:";
+            lojaIdLabel.Location = new Point(66, 10);
+            lojaIdLabel.Size = new Size(32, 20);
+            this.Controls.Add(lojaIdLabel);
+
+            //Configurando o Campo de texto identificação da loja
+            lojaIdTextBox = new TextBox();
+            lojaIdTextBox.Location = new Point(100, 10);
+            lojaIdTextBox.Size = new Size(150, 20 );
+            this.Controls.Add(lojaIdTextBox);
+
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
             limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 60);
+            limiteMaximoLabel.Location = new Point(20, 40);
             limiteMaximoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMaximoLabel);
             
             //Configurando o Campo de texto Capacidade Máxima
             limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 60);
+            limiteMaximoTextBox.Location = new Point(100, 40);
             limiteMaximoTextBox.Size = new Size(150, 20);
             this.Controls.Add(limiteMaximoTextBox);
 
             //Configurações de rótulo Capacidade Miníma
             limiteMinimoLabel = new Label();
             limiteMinimoLabel.Text = "Cap. Miníma: ";
-            limiteMinimoLabel.Location = new Point(20, 90);
+            limiteMinimoLabel.Location = new Point(20, 70);
             limiteMinimoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMinimoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
             limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 90);
+            limiteMinimoTextBox.Location = new Point(100, 70);
             limiteMinimoTextBox.Size = new Size(150, 20 );
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Movimentação
             volumeLabel = new Label();
-            volumeLabel.Text = "Volume: ";
-            volumeLabel.Location = new Point(20, 120);
-            volumeLabel.Size = new Size(80, 20);
+            volumeLabel.Text = "Volume:";
+            volumeLabel.Location = new Point(48, 100);
+            volumeLabel.Size = new Size(50, 20);
             this.Controls.Add(volumeLabel);
 
             //Configurando o Campo de texto movimentação
             volumeTextBox = new TextBox();
-            volumeTextBox.Location = new Point(100, 120);
+            volumeTextBox.Location = new Point(100, 100);
             volumeTextBox.Size = new Size(150, 20 );
             this.Controls.Add(volumeTextBox);
 
-            //Configurações de rótulo identificação da loja
-            lojaIdLabel = new Label();
-            lojaIdLabel.Text = "Loja: ";
-            lojaIdLabel.Location = new Point(20, 150);
-            lojaIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(lojaIdLabel);
-
-            //Configurando o Campo de texto identificação da loja
-            lojaIdTextBox = new TextBox();
-            lojaIdTextBox.Location = new Point(100, 150);
-            lojaIdTextBox.Size = new Size(150, 20 );
-            this.Controls.Add(lojaIdTextBox);
+            
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 180);
+            gravarButton.Location = new Point(80, 130);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -110,7 +112,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 180);
+            sairButton.Location = new Point(170, 130);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
