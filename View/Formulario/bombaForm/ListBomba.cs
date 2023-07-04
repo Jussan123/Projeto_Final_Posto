@@ -24,7 +24,7 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(480, 380);
             this.Text = "Listar Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -72,7 +72,7 @@ namespace View.Formulario.bombaForm
 
             //Configurações do grid de Bombas
             //Data Grid View Jussan
-            DataGridView bombaDataGridView = new DataGridView();
+            bombaDataGridView = new DataGridView();
             bombaDataGridView.Location = new Point(20, 40);
             bombaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid

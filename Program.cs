@@ -115,7 +115,7 @@ namespace View
 
         private void BombasMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Enter Bombas");
+            //MessageBox.Show("Enter Bombas");
             View.Formulario.bombaForm.ListBomba bomba = new View.Formulario.bombaForm.ListBomba();
             bomba.ShowDialog();
         }
