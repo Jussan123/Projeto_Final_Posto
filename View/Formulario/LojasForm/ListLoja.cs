@@ -83,7 +83,7 @@ namespace View.Formulario.LojasForm
 
             //Configurações do grid de lojas
             //Data Grid View Jussan
-            DataGridView lojaDataGridView = new DataGridView();
+            lojaDataGridView = new DataGridView();
             lojaDataGridView.Location = new Point(20, 40);
             lojaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid

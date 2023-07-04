@@ -66,6 +66,7 @@
             tipoOperacaoComboBox.Size = new Size(150, 20);
             string [] tipoOperacao = {"Entrada", "Saida"};
             tipoOperacaoComboBox.Items.AddRange(tipoOperacao);
+            tipoOperacaoComboBox.TextChanged += new EventHandler(TipoOperacaoComboBox_TextChanged);
             this.Controls.Add(tipoOperacaoComboBox);
 
             // Configurações do label de lojaId
@@ -260,6 +261,19 @@
             bombaIdComboBox.Text = "";
             combustivelIdComboBox.Text = "";
             fornecedorIdComboBox.Text = "";
+        }
+
+        private void TipoOperacaoComboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (tipoOperacaoComboBox.Text == "Entrada")
+            {
+                fornecedorIdComboBox.Enabled = true;
+            }
+            else
+            {
+                fornecedorIdComboBox.Enabled = false;
+            }
+            fornecedorIdComboBox.Refresh();
         }
 
     }
