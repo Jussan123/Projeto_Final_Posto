@@ -84,7 +84,7 @@ namespace View.Formulario.FornecedorForm
 
             //Configurações do grid de fornecedors
             //Data Grid View Jussan
-            DataGridView fornecedorDataGridView = new DataGridView();
+            fornecedorDataGridView = new DataGridView();
             fornecedorDataGridView.Location = new Point(20, 40);
             fornecedorDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
