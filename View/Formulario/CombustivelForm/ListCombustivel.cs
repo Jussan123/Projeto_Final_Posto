@@ -33,29 +33,31 @@ namespace View.Formulario.CombustivelForm
 
         private void InitializeComponent()
         {
-            // Configurações da janela do formulário
+
+
+            //Configurações da janela do formulário
             this.ClientSize = new System.Drawing.Size(500, 400);
             this.Text = "Listar Combustiveis";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            // Configurações do botão de novo 
+            //Configurações do botão de novo 
             novoButton = new Button();
             novoButton.Text = "Novo";
             novoButton.Location = new Point(20, 340);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
             this.Controls.Add(novoButton);
-
-            // Configurações do botão de alterar 
+           
+            //Configurações do botão de alterar 
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
             alterarButton.Location = new Point(110, 340);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
             this.Controls.Add(alterarButton);
-
+           
             //Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
@@ -79,6 +81,13 @@ namespace View.Formulario.CombustivelForm
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = Color.Gray;
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
 
             //Configurações do grid de combustivels
             combustivelDataGridView = new DataGridView();
@@ -184,6 +193,6 @@ namespace View.Formulario.CombustivelForm
             {
                 combustivelDataGridView.Rows.Add(combustivel.combustivelId, combustivel.nome, combustivel.sigla, combustivel.descricao, combustivel.precoCompra, combustivel.precoVenda);
             }
-        }            
+        }
     }
 }
