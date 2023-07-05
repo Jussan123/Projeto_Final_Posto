@@ -35,9 +35,6 @@ namespace Banco
             modelBuilder.Entity<Fornecedor>(entity =>
             {
                 entity.HasKey(e => e.fornecedorId);//chave primária
-                entity.HasOne(e => e.movimentacao)
-                .WithMany()
-                .HasForeignKey(e => e.movimentacaoId);
             });
 
             modelBuilder.Entity<Funcionario>(entity =>
@@ -68,6 +65,9 @@ namespace Banco
                 entity.HasOne(e => e.bomba)
                 .WithMany()
                 .HasForeignKey(e => e.bombaId);
+                entity.HasOne(e => e.fornecedor)
+                .WithMany()
+                .HasForeignKey(e => e.fornecedorId);
             });
 
             modelBuilder.Entity<Bomba>(entity =>

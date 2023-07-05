@@ -18,7 +18,7 @@ namespace View.Formulario.bombaForm
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
         private TextBox volumeTextBox;
-        private TextBox lojaIdTextBox;
+        private ComboBox lojaIdComboBox;
         private Button gravarButton;
         private Button sairButton;
         public CadBomba()
@@ -28,7 +28,7 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(270,200);
             this.Text = "Cadastro de Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -47,62 +47,72 @@ namespace View.Formulario.bombaForm
             //combustivelIdTextBox.Size = new Size(150, 20);
             //this.Controls.Add(combustivelIdTextBox);
 
+            //Configurações de rótulo identificação da loja
+            lojaIdLabel = new Label();
+            lojaIdLabel.Text = "Loja:";
+            lojaIdLabel.Location = new Point(66, 10);
+            lojaIdLabel.Size = new Size(32, 20);
+            this.Controls.Add(lojaIdLabel);
+
+            //Configurando o Campo de texto identificação da loja
+            lojaIdComboBox = new ComboBox();
+            lojaIdComboBox.Location = new Point(100, 10);
+            lojaIdComboBox.Size = new Size(150, 20 );
+            List<Controller.Loja> lojas = new List<Controller.Loja>();
+            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
+            {
+                lojaIdComboBox.Items.Add(loja);
+            }
+            lojaIdComboBox.DisplayMember = "nome";
+            lojaIdComboBox.ValueMember = "id";
+            lojaIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(lojaIdComboBox);
+
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
             limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 60);
+            limiteMaximoLabel.Location = new Point(20, 40);
             limiteMaximoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMaximoLabel);
             
             //Configurando o Campo de texto Capacidade Máxima
             limiteMaximoTextBox = new TextBox();
-            limiteMaximoTextBox.Location = new Point(100, 60);
+            limiteMaximoTextBox.Location = new Point(100, 40);
             limiteMaximoTextBox.Size = new Size(150, 20);
             this.Controls.Add(limiteMaximoTextBox);
 
             //Configurações de rótulo Capacidade Miníma
             limiteMinimoLabel = new Label();
             limiteMinimoLabel.Text = "Cap. Miníma: ";
-            limiteMinimoLabel.Location = new Point(20, 90);
+            limiteMinimoLabel.Location = new Point(20, 70);
             limiteMinimoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMinimoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
             limiteMinimoTextBox = new TextBox();
-            limiteMinimoTextBox.Location = new Point(100, 90);
+            limiteMinimoTextBox.Location = new Point(100, 70);
             limiteMinimoTextBox.Size = new Size(150, 20 );
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Movimentação
             volumeLabel = new Label();
-            volumeLabel.Text = "Volume: ";
-            volumeLabel.Location = new Point(20, 120);
-            volumeLabel.Size = new Size(80, 20);
+            volumeLabel.Text = "Volume:";
+            volumeLabel.Location = new Point(48, 100);
+            volumeLabel.Size = new Size(50, 20);
             this.Controls.Add(volumeLabel);
 
             //Configurando o Campo de texto movimentação
             volumeTextBox = new TextBox();
-            volumeTextBox.Location = new Point(100, 120);
+            volumeTextBox.Location = new Point(100, 100);
             volumeTextBox.Size = new Size(150, 20 );
             this.Controls.Add(volumeTextBox);
 
-            //Configurações de rótulo identificação da loja
-            lojaIdLabel = new Label();
-            lojaIdLabel.Text = "Loja: ";
-            lojaIdLabel.Location = new Point(20, 150);
-            lojaIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(lojaIdLabel);
-
-            //Configurando o Campo de texto identificação da loja
-            lojaIdTextBox = new TextBox();
-            lojaIdTextBox.Location = new Point(100, 150);
-            lojaIdTextBox.Size = new Size(150, 20 );
-            this.Controls.Add(lojaIdTextBox);
+            
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 180);
+            gravarButton.Location = new Point(80, 130);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -110,7 +120,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 180);
+            sairButton.Location = new Point(170, 130);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
@@ -125,7 +135,7 @@ namespace View.Formulario.bombaForm
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
                 bomba.volume = volumeTextBox.Text;//Atribuindo o valor do campo volume ao atributo volume
-                bomba.lojaId = lojaIdTextBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
+                bomba.lojaId = lojaIdComboBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
                 Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
                 MessageBox.Show("Bomba cadastrada com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
@@ -151,7 +161,7 @@ namespace View.Formulario.bombaForm
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
             volumeTextBox.Text = "";
-            lojaIdTextBox.Text = "";
+            lojaIdComboBox.Text = "";
         }
     }
 

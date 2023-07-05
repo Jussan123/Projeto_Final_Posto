@@ -114,7 +114,7 @@ namespace View.Formulario.FuncionarioForm
             
             //Configurações do PictureBox
             PictureBox pictureBox = new PictureBox();
-            pictureBox.Image = Image.FromFile(@"imagens\\login_img.png");
+            pictureBox.Image = Image.FromFile(@"imagens\\login1_img.png");
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox.Location = new Point(0, 0);
             pictureBox.Size = new Size(270, 74);

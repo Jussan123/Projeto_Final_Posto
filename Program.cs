@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using View.Formulario;
 
+using Model;
+
 
 namespace View
 {
@@ -28,7 +30,7 @@ namespace View
             ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
             loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(loginMenuItem);
-/*
+
             ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
             funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
             sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
@@ -68,15 +70,21 @@ namespace View
             movimentacoesMenuItem.DropDownItems.Add(fluxosMenuItem);
 
             menuStrip.Items.Add(movimentacoesMenuItem);
-*/
+
             ToolStripMenuItem ajudaMenuItem = new ToolStripMenuItem("Ajuda");
 
             //Sub-menus do menu "Ajuda"
             ToolStripMenuItem sobreMenuItem = new ToolStripMenuItem("Sobre");
             sobreMenuItem.Click += new EventHandler(SobreMenuItem_Click);
             ajudaMenuItem.DropDownItems.Add(sobreMenuItem);
-
+/* ------- configuração para não apresentar o menu ajuda para o usuário comum
+            if(admin)
+            {
+                menuStrip.Items.Add(ajudaMenuItem);
+            }
+*/
             menuStrip.Items.Add(ajudaMenuItem);
+
 
             this.Controls.Add(menuStrip);
 
@@ -105,7 +113,7 @@ namespace View
             View.Formulario.Login.Login login = new View.Formulario.Login.Login();
             login.ShowDialog();
         }
-/*
+
         private void FuncionarioMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Enter Funcionário");
@@ -115,7 +123,7 @@ namespace View
 
         private void BombasMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Enter Bombas");
+            //MessageBox.Show("Enter Bombas");
             View.Formulario.bombaForm.ListBomba bomba = new View.Formulario.bombaForm.ListBomba();
             bomba.ShowDialog();
         }
@@ -138,7 +146,7 @@ namespace View
         {
             View.Formulario.MovimentacaoForm.ListMovimentacao movimentacao = new View.Formulario.MovimentacaoForm.ListMovimentacao();
             movimentacao.ShowDialog();
-        } */
+        } 
 
         private void SobreMenuItem_Click(object sender, EventArgs e)
         {
@@ -158,7 +166,7 @@ namespace View
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new ProgramForm());
+                Application.Run(new View.Formulario.Login.Login());
             }
         }
     }

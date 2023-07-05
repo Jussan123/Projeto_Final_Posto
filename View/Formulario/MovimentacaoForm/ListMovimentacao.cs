@@ -86,6 +86,7 @@ namespace View.Formulario.MovimentacaoForm
             movimentacaoDataGridView.Columns[6].Name = "LojaId";
             movimentacaoDataGridView.Columns[7].Name = "FuncionarioId";
             movimentacaoDataGridView.Columns[8].Name = "BombaId";
+            movimentacaoDataGridView.Columns[9].Name = "FornecedorId";
             foreach (var movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
                 movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId, 
@@ -96,7 +97,8 @@ namespace View.Formulario.MovimentacaoForm
                                                     movimentacao.valor,
                                                     movimentacao.lojaId, 
                                                     movimentacao.funcionarioId, 
-                                                    movimentacao.bombaId);
+                                                    movimentacao.bombaId,
+                                                    movimentacao.fornecedorId);
             }
             //configura o modo de redimensionamento das linhas e colunas
             movimentacaoDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -153,7 +155,8 @@ namespace View.Formulario.MovimentacaoForm
                                                     movimentacao.valor,
                                                     movimentacao.lojaId, 
                                                     movimentacao.funcionarioId, 
-                                                    movimentacao.bombaId);
+                                                    movimentacao.bombaId,
+                                                    movimentacao.fornecedorId);
             }
         }
 

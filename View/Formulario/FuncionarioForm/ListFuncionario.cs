@@ -41,6 +41,34 @@ namespace View.Formulario.FuncionarioForm
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
+            //Configurações do grid de funcionarios
+            //Data Grid View Jussan
+            funcionarioDataGridView = new DataGridView();
+            funcionarioDataGridView.Location = new Point(20, 40);
+            funcionarioDataGridView.Size = new Size(440, 280);
+            //Configura as colunas do grid
+            funcionarioDataGridView.Columns.Add("funcionarioId", "funcionario");
+            funcionarioDataGridView.Columns.Add("nome", "Nome");
+            //funcionarioDataGridView.Columns.Add("senha", "Senha");
+            funcionarioDataGridView.Columns.Add("funcao", "Função");
+            funcionarioDataGridView.Columns.Add("lojaId", "Loja");
+            funcionarioDataGridView.Columns.Add("email", "Email");
+            foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
+            {
+                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
+            }
+            //configura o modo de redimensionamento das linhas e colunas
+            funcionarioDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //configura a cor das linhas alternadas
+            funcionarioDataGridView.RowsDefaultCellStyle.BackColor = Color.White;
+            funcionarioDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Aquamarine;
+            //configura a fonte e o tamanho do texto
+            funcionarioDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
+            funcionarioDataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+            //configura a altura das linhas do grid
+            funcionarioDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            this.Controls.Add(funcionarioDataGridView);
+
             // Configurações do botão de novo 
             novoButton = new Button();
             novoButton.Text = "Novo";
@@ -80,34 +108,6 @@ namespace View.Formulario.FuncionarioForm
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             this.Controls.Add(sairButton);
-
-            //Configurações do grid de funcionarios
-            //Data Grid View Jussan
-            DataGridView funcionarioDataGridView = new DataGridView();
-            funcionarioDataGridView.Location = new Point(20, 40);
-            funcionarioDataGridView.Size = new Size(440, 280);
-            //Configura as colunas do grid
-            funcionarioDataGridView.Columns.Add("funcionarioId", "funcionario");
-            funcionarioDataGridView.Columns.Add("nome", "Nome");
-            //funcionarioDataGridView.Columns.Add("senha", "Senha");
-            funcionarioDataGridView.Columns.Add("funcao", "Função");
-            funcionarioDataGridView.Columns.Add("lojaId", "Loja");
-            funcionarioDataGridView.Columns.Add("email", "Email");
-            foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
-            {
-                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
-            }
-            //configura o modo de redimensionamento das linhas e colunas
-            funcionarioDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //configura a cor das linhas alternadas
-            funcionarioDataGridView.RowsDefaultCellStyle.BackColor = Color.White;
-            funcionarioDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Aquamarine;
-            //configura a fonte e o tamanho do texto
-            funcionarioDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
-            funcionarioDataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-            //configura a altura das linhas do grid
-            funcionarioDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            this.Controls.Add(funcionarioDataGridView);
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -131,7 +131,6 @@ namespace View.Formulario.FuncionarioForm
         //private void RefreshButton_Click(object sender, EventArgs e)
         //{
         //    this.ListaFuncionario();
-        //    //Adicionar Ação/código para cancelar a operação atual
         //}
 
         private void SairButton_Click(object sender, EventArgs e)
@@ -150,10 +149,10 @@ namespace View.Formulario.FuncionarioForm
 
         public void ListaFuncionario()
         {
-            funcionarioDataGridView.Rows.Clear();
+            this.funcionarioDataGridView.Rows.Clear();
             foreach (var funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
+                this.funcionarioDataGridView.Rows.Add(funcionario.funcionarioId, funcionario.nome, funcionario.funcao, funcionario.lojaId, funcionario.email);
             }
         }
     }

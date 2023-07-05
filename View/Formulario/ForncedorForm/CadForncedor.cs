@@ -17,11 +17,9 @@ namespace View.Formulario.FornecedorForm
         private Label nomeLabel;
         private Label contatoLabel;
         private Label enderecoLabel;
-        private Label movimentacaoIdLabel;
         private TextBox nomeTextBox;
         private TextBox contatoTextBox;
         private TextBox enderecoTextBox;
-        private ComboBox movimentacaoIdCb;
         private ComboBox fornecedorIdComboBox;
         private Button gravarButton;
         private Button sairButton;
@@ -67,34 +65,20 @@ namespace View.Formulario.FornecedorForm
             //Configurações de rótulo Capacidade Miníma
             enderecoLabel = new Label();
             enderecoLabel.Text = "Endereço: ";
-            enderecoLabel.Location = new Point(20, 60);
+            enderecoLabel.Location = new Point(20, 90);
             enderecoLabel.Size = new Size(80, 20);
             this.Controls.Add(enderecoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
             enderecoTextBox = new TextBox();
-            enderecoTextBox.Location = new Point(100, 60);
-            enderecoTextBox.Size = new Size(160, 30 );
+            enderecoTextBox.Location = new Point(100, 90);
+            enderecoTextBox.Size = new Size(150, 30 );
             this.Controls.Add(enderecoTextBox);
-
-            //Configurações de rótulo Nome do Combustivel
-            movimentacaoIdLabel = new Label();
-            movimentacaoIdLabel.Text = "movimentação: ";
-            movimentacaoIdLabel.Location = new Point(20, 60);
-            movimentacaoIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(movimentacaoIdLabel);
-
-            //Configurando o Campo de texto Nome do Combustivel
-            movimentacaoIdCb = new ComboBox();
-            movimentacaoIdCb.Location = new Point(100, 60);
-            movimentacaoIdCb.Size = new Size(160, 30 );
-            this.Controls.Add(movimentacaoIdCb);
-
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 100);
+            gravarButton.Location = new Point(70, 120);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -102,7 +86,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 100);
+            sairButton.Location = new Point(160, 120);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
@@ -115,9 +99,8 @@ namespace View.Formulario.FornecedorForm
                 fornecedor.nome = nomeTextBox.Text;
                 fornecedor.contato = contatoTextBox.Text;
                 fornecedor.endereco = enderecoTextBox.Text;
-                fornecedor.movimentacaoId = movimentacaoIdCb.Text;
 
-                Controller.Fornecedor.CadastraFornecedor(fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
+                Controller.Fornecedor.CadastraFornecedor(fornecedor.nome, fornecedor.contato, fornecedor.endereco);
                 MessageBox.Show("Fornecedor cadastrado com sucesso!");
                 LimpaTela();//Chamando o método LimpaTela
             }
@@ -141,7 +124,6 @@ namespace View.Formulario.FornecedorForm
             nomeTextBox.Text = "";
             contatoTextBox.Text = "";
             enderecoTextBox.Text = "";
-            movimentacaoIdCb.Text = "";
         }
     }
 
@@ -153,9 +135,7 @@ namespace View.Formulario.FornecedorForm
         private Label nomeLabel;
         private Label contatoLabel;
         private Label enderecoLabel;
-        private Label movimentacaoIdLabel;
         private ComboBox fornecedorIdCb;
-        private ComboBox movimentacaoIdCb;
         private TextBox contatoTextBox;
         private TextBox enderecoTextBox;
         private TextBox nomeTextBox;
@@ -231,27 +211,6 @@ namespace View.Formulario.FornecedorForm
             enderecoTextBox.Size = new Size(150, 20);
             this.Controls.Add(enderecoTextBox);
 
-            //Configurações de rótulo Movimentação
-            movimentacaoIdLabel = new Label();
-            movimentacaoIdLabel.Text = "Movimentação: ";
-            movimentacaoIdLabel.Location = new Point(20, 150);
-            movimentacaoIdLabel.Size = new Size(80, 20);
-            this.Controls.Add(movimentacaoIdLabel);
-
-            //Configurando o Campo de texto Movimentação
-            movimentacaoIdCb = new ComboBox();
-            movimentacaoIdCb.Location = new Point(100, 150);
-            movimentacaoIdCb.Size = new Size(150, 20);
-            List<Controller.Movimentacao> listaMovimentacaos = new  List<Controller.Movimentacao>();
-            foreach (Model.Movimentacao movimentacao in Model.Movimentacao.BuscaMovimentacao())
-            {
-                movimentacaoIdCb.Items.Add(movimentacao);
-            }
-            movimentacaoIdCb.DisplayMember = "nome";
-            movimentacaoIdCb.ValueMember = "movimentacaoId";
-            movimentacaoIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.Controls.Add(movimentacaoIdCb);
-
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
@@ -292,15 +251,9 @@ namespace View.Formulario.FornecedorForm
                 fornecedor.nome = nomeTextBox.Text;
                 fornecedor.contato = contatoTextBox.Text;
                 fornecedor.endereco = enderecoTextBox.Text;
-                var movimentacaoSelecionada = (Controller.Movimentacao) movimentacaoIdCb.SelectedItem;
-                if (movimentacaoSelecionada == null)
-                {
-                    MessageBox.Show("Selecione uma movimentacao");
-                    return;
-                }
-                fornecedor.movimentacaoId = movimentacaoSelecionada.movimentacaoId.ToString();
+                
 
-                Controller.Fornecedor.AlteraFornecedor(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco, fornecedor.movimentacaoId);
+                Controller.Fornecedor.AlteraFornecedor(fornecedor.fornecedorId, fornecedor.nome, fornecedor.contato, fornecedor.endereco);
                 MessageBox.Show("fornecedor alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -313,8 +266,7 @@ namespace View.Formulario.FornecedorForm
             nomeTextBox.Text = "";
             contatoTextBox.Text = "";
             enderecoTextBox.Text = "";
-            movimentacaoIdCb.Text = "";
-        }
+         }
     }
 
 //------------------ Formulário de exclusão de fornecedor ---------

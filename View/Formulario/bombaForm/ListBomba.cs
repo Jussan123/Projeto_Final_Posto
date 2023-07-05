@@ -24,7 +24,7 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(480, 380);
             this.Text = "Listar Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -72,14 +72,13 @@ namespace View.Formulario.bombaForm
 
             //Configurações do grid de Bombas
             //Data Grid View Jussan
-            DataGridView bombaDataGridView = new DataGridView();
-            bombaDataGridView.Location = new Point(20, 40);
+            bombaDataGridView = new DataGridView(); bombaDataGridView.Location = new Point(20, 40);
             bombaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             bombaDataGridView.Columns.Add("bombaId", "Bomba");
-            bombaDataGridView.Columns.Add("nome", "Nome Combustível");
-            bombaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
-            bombaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
+            bombaDataGridView.Columns.Add("nome", "Nome");
+            bombaDataGridView.Columns.Add("limiteMaximo", "Máx");
+            bombaDataGridView.Columns.Add("limiteMinimo", "Mín");
             bombaDataGridView.Columns.Add("volume", "Volume");
             bombaDataGridView.Columns.Add("lojaId", "Loja");
             foreach (var bomba in Controller.Bomba.ListarBombas())
@@ -102,25 +101,21 @@ namespace View.Formulario.bombaForm
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.CadBomba());
-            //throw new NotImplementedException();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormEditaBomba());
-            //Adicionar Ação/código para alterar uma bomba selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormExcluiBomba());
-            //Adicionar Ação/código para excluir uma bomba selecionada
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             this.ListaBomba();
-            //Adicionar Ação/código para cancelar a operação atual
         }
 
         private void SairButton_Click(object sender, EventArgs e)
@@ -129,7 +124,6 @@ namespace View.Formulario.bombaForm
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                //Application.Exit();
             }
         }
 

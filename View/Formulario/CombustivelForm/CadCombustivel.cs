@@ -14,9 +14,7 @@ namespace View.Formulario.CombustivelForm
     public partial class CadCombustivel : Form
     {
         private Label combustivelIdLabel; // ERICH - ID COMBUSTIVEL
-        //private Label nomeLabel; 
-        //private Label limiteMinimoLabel; 
-        private Label nomeCombustivelLabel; // ERICH - NOME COMBUSTIVEL
+        private Label nomeLabel; // ERICH - NOME COMBUSTIVEL
         private Label siglaLabel; // Jussan - SIGLA COMBUSTIVEL
         private Label descricaoLabel; // Jussan - DESCRIÇÃO COMBUSTIVEL
         private Label precoCompraLabel; // Jussan - PREÇO DE COMPRA COMBUSTIVEL
@@ -27,7 +25,6 @@ namespace View.Formulario.CombustivelForm
         private TextBox descricaoTextBox;
         private TextBox precoCompraTextBox;
         private TextBox precoVendaTextBox;
-        private TextBox nomeCombustivelTextBox;
         private Button gravarButton;
         private Button sairButton;
         public CadCombustivel()
@@ -43,24 +40,18 @@ namespace View.Formulario.CombustivelForm
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
-            //Configurando o Campo de texto Capacidade Máxima
-            nomeTextBox = new TextBox();
-            nomeTextBox.Location = new Point(100, 60);
-            nomeTextBox.Size = new Size(150, 20);
-            this.Controls.Add(nomeTextBox);
-
             //Configurações de rótulo Nome do Combustivel
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 60);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
             //Configurando o Campo de texto Nome do Combustivel
-            nomeCombustivelTextBox = new TextBox();
-            nomeCombustivelTextBox.Location = new Point(100, 60);
-            nomeCombustivelTextBox.Size = new Size(160, 30 );
-            this.Controls.Add(nomeCombustivelTextBox);
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(100, 60);
+            nomeTextBox.Size = new Size(160, 30 );
+            this.Controls.Add(nomeTextBox);
 
             //Configurações de rótulo Sigla do Combustivel
             siglaLabel = new Label();
@@ -135,7 +126,7 @@ namespace View.Formulario.CombustivelForm
             try
             {
                 Controller.Combustivel combustivel = new Controller.Combustivel();//Instanciando a classe combustivel
-                combustivel.nome = nomeCombustivelTextBox.Text;//Atribuindo o valor do campo nomeCombustivelTextBox ao atributo nome da classe combustivel
+                combustivel.nome = nomeTextBox.Text;//Atribuindo o valor do campo nomeCombustivelTextBox ao atributo nome da classe combustivel
                 combustivel.sigla = siglaTextBox.Text;//Atribuindo o valor do campo siglaTextBox ao atributo sigla da classe combustivel
                 combustivel.descricao = descricaoTextBox.Text;//Atribuindo o valor do campo descricaoTextBox ao atributo descricao da classe combustivel
                 combustivel.precoCompra = precoCompraTextBox.Text;//Atribuindo o valor do campo precoCompraTextBox ao atributo precoCompra da classe combustivel
@@ -160,7 +151,7 @@ namespace View.Formulario.CombustivelForm
 
         public void LimpaTela()
         {
-            nomeCombustivelTextBox.Text = "";
+            nomeTextBox.Text = "";
             siglaTextBox.Text = "";
             descricaoTextBox.Text = "";
             precoCompraTextBox.Text = "";
@@ -173,7 +164,7 @@ namespace View.Formulario.CombustivelForm
     public class FormEditaCombustivel : Form
     {
         private Label combustivelcombustivelIdLabel;
-        private Label nomeCombustivelLabel;
+        private Label nomeLabel;
         private Label siglaLabel;
         private Label descricaoLabel;
         private Label precoCompraLabel;
@@ -218,11 +209,11 @@ namespace View.Formulario.CombustivelForm
             this.Controls.Add(combustivelIdCb);
 
             //Configurações do campo texto de nome
-            nomeCombustivelLabel = new Label();
-            nomeCombustivelLabel.Text = "Nome: ";
-            nomeCombustivelLabel.Location = new Point(20, 60);
-            nomeCombustivelLabel.Size = new Size(80, 20);
-            this.Controls.Add(nomeCombustivelLabel);
+            nomeLabel = new Label();
+            nomeLabel.Text = "Nome: ";
+            nomeLabel.Location = new Point(20, 60);
+            nomeLabel.Size = new Size(80, 20);
+            this.Controls.Add(nomeLabel);
 
             //Configurações do campo texto de nome
             nomeTextBox = new TextBox();

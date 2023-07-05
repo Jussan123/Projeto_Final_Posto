@@ -11,7 +11,7 @@ namespace View.Formulario.Login
     {
         private Label loginLabel;
         private Label senhaLabel;
-        private TextBox loginTextBox;
+        private TextBox loginTextBox; // usar esse
         private TextBox senhaTextBox;
         private Button entrarButton;
         private Button sairButton;
@@ -98,8 +98,7 @@ namespace View.Formulario.Login
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                View.InicioForm inicio = new View.InicioForm();
-                inicio.ShowDialog();
+                AbrirForm(new View.ProgramForm());
             }
             else
             {
