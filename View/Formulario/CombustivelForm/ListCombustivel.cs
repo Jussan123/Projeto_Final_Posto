@@ -94,7 +94,6 @@ namespace View.Formulario.CombustivelForm
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
             panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
-            //panel.BackColor = Color.LightBlue;
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
 

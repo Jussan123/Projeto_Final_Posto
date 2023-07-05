@@ -126,7 +126,7 @@ namespace View
 
         private void CombustiveisMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Enter Combustíveis");
+            //MessageBox.Show("Enter Combustíveis");
             View.Formulario.CombustivelForm.ListCombustivelForm combustivel = new View.Formulario.CombustivelForm.ListCombustivelForm();
             combustivel.ShowDialog();
         }
