@@ -18,7 +18,7 @@ namespace View.Formulario.bombaForm
         private TextBox limiteMaximoTextBox;
         private TextBox limiteMinimoTextBox;
         private TextBox volumeTextBox;
-        private TextBox lojaIdTextBox;
+        private ComboBox lojaIdComboBox;
         private Button gravarButton;
         private Button sairButton;
         public CadBomba()
@@ -55,10 +55,19 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(lojaIdLabel);
 
             //Configurando o Campo de texto identificação da loja
-            lojaIdTextBox = new TextBox();
-            lojaIdTextBox.Location = new Point(100, 10);
-            lojaIdTextBox.Size = new Size(150, 20 );
-            this.Controls.Add(lojaIdTextBox);
+            lojaIdComboBox = new ComboBox ();
+            lojaIdComboBox.Location = new Point(100, 10);
+            lojaIdComboBox.Size = new Size(150, 20 );
+            
+            List<Controller.Loja> lojas = new List<Controller.Loja>();
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas()){
+            
+                    lojaIdComboBox.Items.Add(loja);
+            }
+            lojaIdComboBox.DisplayMember = "nome";
+            lojaIdComboBox.ValueMember = "lojaId";
+            lojaIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(lojaIdComboBox);
 
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
@@ -127,7 +136,7 @@ namespace View.Formulario.bombaForm
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
                 bomba.volume = volumeTextBox.Text;//Atribuindo o valor do campo volume ao atributo volume
-                bomba.lojaId = lojaIdTextBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
+                bomba.lojaId = lojaIdComboBox.Text;//Atribuindo o valor do campo lojaId ao atributo lojaId
                 Controller.Bomba.CadastrarBomba(bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);//Chamando o método CadastrarBomba da classe Bomba
                 MessageBox.Show("Bomba cadastrada com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
@@ -153,7 +162,7 @@ namespace View.Formulario.bombaForm
             limiteMaximoTextBox.Text = "";
             limiteMinimoTextBox.Text = "";
             volumeTextBox.Text = "";
-            lojaIdTextBox.Text = "";
+            lojaIdComboBox.Text = "";
         }
     }
 

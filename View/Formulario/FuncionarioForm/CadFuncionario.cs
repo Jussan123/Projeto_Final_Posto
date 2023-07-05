@@ -21,7 +21,7 @@ namespace View.Formulario.FuncionarioForm
         private Label emailLabel;
         private TextBox nomeTextBox;
         private TextBox senhaTextBox;
-        private TextBox funcaoTextBox;
+        private ComboBox funcaoComboBox;
         private TextBox emailTextBox;
         private ComboBox lojaIdCb;
         private Button gravarButton;
@@ -65,11 +65,19 @@ namespace View.Formulario.FuncionarioForm
             senhaLabel.Size = new Size(80, 20);
             this.Controls.Add(senhaLabel);
 
-            //Configurações do campo texto do funcao
+            /*Configurações do campo texto do funcao
             funcaoTextBox = new TextBox();
             funcaoTextBox.Location = new Point(60, 90);
             funcaoTextBox.Size = new Size(150, 20);
-            this.Controls.Add(funcaoTextBox);
+            this.Controls.Add(funcaoTextBox);*/
+
+            // Configurações do combobox de tipoOperacao
+            funcaoComboBox = new ComboBox();
+            funcaoComboBox.Location = new Point(100, 90);
+            funcaoComboBox.Size = new Size(150, 20);
+            string [] funcao = {"Admin", "User"};
+            funcaoComboBox.Items.AddRange(funcao);
+            this.Controls.Add(funcaoComboBox);
 
             //Configurações do funcao
             funcaoLabel = new Label();
@@ -144,7 +152,7 @@ namespace View.Formulario.FuncionarioForm
                 Controller.Funcionario funcionario = new Controller.Funcionario();//Instanciando a classe funcionario
                 funcionario.nome = nomeTextBox.Text;//Atribuindo o valor do campo nome para a propriedade nome
                 funcionario.senha = senhaTextBox.Text;//Atribuindo o valor do campo senha para a propriedade senha
-                funcionario.funcao = funcaoTextBox.Text;//Atribuindo o valor do campo funcao para a propriedade funcao
+                funcionario.funcao = funcaoComboBox.Text;//Atribuindo o valor do campo funcao para a propriedade funcao
                  var lojaSelecionada = ((Model.Loja)lojaIdCb.SelectedItem).lojaId.ToString();
                 //var lojaSelecionada = (Model.Loja) lojaIdCb.SelectedItem;
                 if (lojaSelecionada == null)
@@ -158,6 +166,7 @@ namespace View.Formulario.FuncionarioForm
                 Controller.Funcionario.CadastraFuncionario(funcionario.nome, funcionario.senha, funcionario.funcao, Convert.ToInt32(funcionario.lojaId), funcionario.email);//Chamando o método CadastraFuncionario e passando os valores como parâmetro
                 MessageBox.Show("Funcionário cadastrado com sucesso!");//Exibindo mensagem de sucesso
                 LimpaTela();//Chamando o método LimpaTela
+    
             }
             catch (Exception ex)//Tratamento de exceção
             {
@@ -179,10 +188,11 @@ namespace View.Formulario.FuncionarioForm
         {
             nomeTextBox.Text = "";
             senhaTextBox.Text = "";
-            funcaoTextBox.Text = "";
+            funcaoComboBox.Text = "";
             lojaIdCb.Text = "";
             emailTextBox.Text = "";
         }
+    
     }
 
 //----------------------- Formulário de Edição de Funcionário -------------------------------------
