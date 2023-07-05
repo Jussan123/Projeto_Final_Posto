@@ -13,6 +13,8 @@ namespace View
         public ProgramForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized; //Inicia o formulário em tela cheia "MAXIMIZADO"
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
         }
 
         private void InitializeComponent()
@@ -21,6 +23,7 @@ namespace View
             MenuStrip menuStrip = new MenuStrip();
             menuStrip.Location = new Point(0, 0);
             menuStrip.Size = new Size(300, 24);
+            
 
             ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
 
@@ -87,6 +90,7 @@ namespace View
             ToolStripStatusLabel infoLabel = new ToolStripStatusLabel();
             infoLabel.Text = "Desenvolvido por: JEL Tech Company";
             statusStrip.Items.Add(infoLabel);
+            infoLabel.BackColor = ColorTranslator.FromHtml("#F0F0F0");
 
             dateTimeLabel = new ToolStripStatusLabel(); //Cria a instância para a data e hora
             statusStrip.Items.Add(dateTimeLabel); //Adiciona o label à barra de status
