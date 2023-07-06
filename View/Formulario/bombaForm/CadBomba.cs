@@ -71,7 +71,7 @@ namespace View.Formulario.bombaForm
             //Configurações de rótulo Capacidade Máxima
             limiteMaximoLabel = new Label();
             limiteMaximoLabel.Text = "Cap. Máxima: ";
-            limiteMaximoLabel.Location = new Point(20, 40);
+            limiteMaximoLabel.Location = new Point(20, 60);
             limiteMaximoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMaximoLabel);
             

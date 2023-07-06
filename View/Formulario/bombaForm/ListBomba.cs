@@ -72,7 +72,8 @@ namespace View.Formulario.bombaForm
 
             //Configurações do grid de Bombas
             //Data Grid View Jussan
-            bombaDataGridView = new DataGridView(); bombaDataGridView.Location = new Point(20, 40);
+            bombaDataGridView = new DataGridView();
+            bombaDataGridView.Location = new Point(20, 40);
             bombaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             bombaDataGridView.Columns.Add("bombaId", "Bomba");
