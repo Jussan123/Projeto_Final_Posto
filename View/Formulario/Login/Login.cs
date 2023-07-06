@@ -5,31 +5,33 @@
  * Versão: 1.0
  */
 
+
+
 namespace View.Formulario.Login
 {
-    internal class Login : Form
+    public class Login : Form
     {
-        private Label loginLabel;
-        private Label senhaLabel;
-        private TextBox loginTextBox; // usar esse
-        private TextBox senhaTextBox;
-        private Button entrarButton;
-        private Button sairButton;
+        public Label loginLabel;
+        public Label senhaLabel;
+        public TextBox loginTextBox; // usar esse
+        public TextBox senhaTextBox;
+        public Button entrarButton;
+        public Button sairButton;
 
         public Login()
         {
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             //Configurações do PictureBox
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = Image.FromFile(@"imagens\login1_img.png");
             //@"C:\\img\\login_img.png"
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.Location = new Point(0, 0);
-            pictureBox.Size = new Size(270, 74);
+            pictureBox.Location = new Point(100, 0);
+            pictureBox.Size = new Size(90, 74);
             this.Controls.Add(pictureBox);
             
 
@@ -87,8 +89,10 @@ namespace View.Formulario.Login
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
 
-        private void EntrarButton_Click(object sender, EventArgs e)
+        private bool admin = false;
+        public void EntrarButton_Click(object sender, EventArgs e)
         {
+            
             Controller.Funcionario funcionario = new Controller.Funcionario();
             funcionario.email = loginTextBox.Text;
             Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email);
@@ -98,7 +102,14 @@ namespace View.Formulario.Login
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                AbrirForm(new View.ProgramForm());
+                funcionarioPorEmail(funcionario.email);
+                if (admin)
+                {
+                    AbrirForm(new View.ProgramForm());
+                } else {
+                    AbrirForm(new View.ProgramUserForm());
+                }
+                
             }
             else
             {
@@ -106,11 +117,11 @@ namespace View.Formulario.Login
                 LimpaTela();
             }
         }
-        private void SairButton_Click(object sender, EventArgs e)
+        public void SairButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void Form_KeyDown(object sender, KeyEventArgs e)
+        public void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -124,9 +135,17 @@ namespace View.Formulario.Login
             senhaTextBox.Text = "";
         }
 
+        public void funcionarioPorEmail(string email)
+        {
+            Model.Funcionario funcionario = Controller.Funcionario.BuscaFuncionarioPorEmail(email);
+            if (funcionario != null)
+            {
+                admin = funcionario.funcao.Equals("Admin");
+            }
+        }
+
         public void AbrirForm(Form form){
             form.ShowDialog();
         }
-
     }
 }

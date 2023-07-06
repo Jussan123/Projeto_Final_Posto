@@ -154,7 +154,6 @@ namespace Controller
 
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
-
             return BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt(12));
         }
     }

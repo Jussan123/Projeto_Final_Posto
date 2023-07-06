@@ -11,25 +11,7 @@ namespace View
 
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora
 
-        public void funcionarioPorEmail(string email)
-        {
-            Model.Funcionario funcionrios = new Model.Funcionario();
 
-            Model.Funcionario funcionario = Controller.Funcionario.BuscaFuncionarioPorEmail(email);
-
-            if (funcionario != null)
-            {
-                string isAdmin = funcionario.funcao;
-                if (isAdmin == "Admin")
-                {
-                    admin = true;
-                }
-                else
-                {
-                    admin = false;
-                }
-            }
-        }
 
         public InicioForm()
         {
@@ -173,7 +155,7 @@ namespace View
         {
           //  [STAThread]
            // static void Main()
-            //{
+            //{ 
             //    Application.EnableVisualStyles();
             //    Application.SetCompatibleTextRenderingDefault(false);
             //    Application.Run(new InicioForm());
