@@ -97,7 +97,7 @@ namespace View.Formulario.CombustivelForm
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
 
-            //Configurações do grid de combustivels
+            //Configurações do grid de combustivelss
             combustivelDataGridView = new DataGridView();
             combustivelDataGridView.Location = new Point(20, 40);
             combustivelDataGridView.Size = new Size(440, 280);
