@@ -60,7 +60,7 @@ namespace View.Formulario.bombaForm
 
             //Configurações do botão de cancelar
             refreshButton = new Button();
-            refreshButton.Text = "Cancelar";
+            refreshButton.Text = "Refresh";
             refreshButton.Location = new Point(290, 360);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
@@ -90,9 +90,9 @@ namespace View.Formulario.bombaForm
             bombaDataGridView.Size = new Size(440, 280);
             //Configura as colunas do grid
             bombaDataGridView.Columns.Add("bombaId", "Bomba");
-            bombaDataGridView.Columns.Add("nome", "Nome Combustível");
-            bombaDataGridView.Columns.Add("limiteMaximo", "Capacidade Máxima");
-            bombaDataGridView.Columns.Add("limiteMinimo", "Capacidade Mínima");
+            bombaDataGridView.Columns.Add("nome", "Nome");
+            bombaDataGridView.Columns.Add("limiteMaximo", "Máx");
+            bombaDataGridView.Columns.Add("limiteMinimo", "Mín");
             bombaDataGridView.Columns.Add("volume", "Volume");
             bombaDataGridView.Columns.Add("lojaId", "Loja");
             foreach (var bomba in Controller.Bomba.ListarBombas())
@@ -115,25 +115,25 @@ namespace View.Formulario.bombaForm
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.CadBomba());
-            //throw new NotImplementedException();
+            this.ListaBomba();
+
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormEditaBomba());
-            //Adicionar Ação/código para alterar uma bomba selecionada
+            this.ListaBomba();
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormExcluiBomba());
-            //Adicionar Ação/código para excluir uma bomba selecionada
+            this.ListaBomba();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             this.ListaBomba();
-            //Adicionar Ação/código para cancelar a operação atual
         }
 
         private void SairButton_Click(object sender, EventArgs e)
@@ -142,7 +142,6 @@ namespace View.Formulario.bombaForm
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                //Application.Exit();
             }
         }
 

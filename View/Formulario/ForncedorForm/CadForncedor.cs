@@ -65,20 +65,20 @@ namespace View.Formulario.FornecedorForm
             //Configurações de rótulo Capacidade Miníma
             enderecoLabel = new Label();
             enderecoLabel.Text = "Endereço: ";
-            enderecoLabel.Location = new Point(20, 60);
+            enderecoLabel.Location = new Point(20, 90);
             enderecoLabel.Size = new Size(80, 20);
             this.Controls.Add(enderecoLabel);
 
             //Configurando o Campo de texto Capacidade Miníma
             enderecoTextBox = new TextBox();
-            enderecoTextBox.Location = new Point(100, 60);
-            enderecoTextBox.Size = new Size(160, 30 );
+            enderecoTextBox.Location = new Point(100, 90);
+            enderecoTextBox.Size = new Size(150, 30 );
             this.Controls.Add(enderecoTextBox);
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 100);
+            gravarButton.Location = new Point(70, 120);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             this.Controls.Add(gravarButton);
@@ -86,7 +86,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 100);
+            sairButton.Location = new Point(160, 120);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             this.Controls.Add(sairButton);
@@ -241,13 +241,13 @@ namespace View.Formulario.FornecedorForm
             try
             {
                 Controller.Fornecedor fornecedor = new Controller.Fornecedor();
-                var fornecedorSelecionada = (Controller.Fornecedor) fornecedorIdCb.SelectedItem;
+                var fornecedorSelecionada = ((Model.Fornecedor)fornecedorIdCb.SelectedItem).fornecedorId.ToString();
                 if (fornecedorSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma fornecedor");
                     return;
                 }
-                fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
+                fornecedor.fornecedorId = fornecedorSelecionada.ToString();
                 fornecedor.nome = nomeTextBox.Text;
                 fornecedor.contato = contatoTextBox.Text;
                 fornecedor.endereco = enderecoTextBox.Text;
@@ -266,7 +266,7 @@ namespace View.Formulario.FornecedorForm
             nomeTextBox.Text = "";
             contatoTextBox.Text = "";
             enderecoTextBox.Text = "";
-         }
+        }
     }
 
 //------------------ Formulário de exclusão de fornecedor ---------
@@ -336,13 +336,13 @@ namespace View.Formulario.FornecedorForm
             try
             {
                 Controller.Fornecedor fornecedor = new Controller.Fornecedor();
-                var fornecedorSelecionada = (Controller.Fornecedor) fornecedorIdCb.SelectedItem;
+                var fornecedorSelecionada = ((Model.Fornecedor)fornecedorIdCb.SelectedItem).fornecedorId.ToString();
                 if (fornecedorSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma fornecedor");
                     return;
                 }
-                fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
+                fornecedor.fornecedorId = fornecedorSelecionada.ToString();
 
                 Controller.Fornecedor.ExcluiFornecedor(fornecedor.fornecedorId);
                 MessageBox.Show("fornecedor excluída com sucesso!");
