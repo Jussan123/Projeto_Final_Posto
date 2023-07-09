@@ -34,11 +34,18 @@ namespace View.Formulario.FuncionarioForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300, 220);
+            this.ClientSize = new System.Drawing.Size(300, 260);
             this.Text = "Cadastro de funcionarios";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+
+            //Configurações do campo texto do Nome
+            nomeTextBox = new TextBox();
+            nomeTextBox.Location = new Point(60, 30);
+            nomeTextBox.Size = new Size(150, 20);
+            this.Controls.Add(nomeTextBox);
 
             //Configurações do Nome
             nomeLabel = new Label();
@@ -119,18 +126,27 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(40, 180);
+            gravarButton.Location = new Point(110, 220);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(120, 180);
+            sairButton.Location = new Point(200, 220);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
 
         }
         private void gravarButton_Click(object sender, EventArgs e)

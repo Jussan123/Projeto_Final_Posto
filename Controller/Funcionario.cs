@@ -45,28 +45,27 @@ namespace Controller
         }
 
         public static Model.Funcionario AlteraFuncionario(
-            string funcionarioId, 
+            int funcionarioId, 
             string nome,
             string senha, 
             string funcao, 
-            string lojaId, 
+            int lojaId, 
             string email)
         {
             try
             {
                 ValidaSenha(senha);
                 ValidaEmail(email);
-
-                if (Model.Funcionario.BuscaFuncionarioPorId(int.Parse(funcionarioId)) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
-                if (Model.Loja.BuscaLojaId(int.Parse(lojaId)) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
+                if (Model.Funcionario.BuscaFuncionarioPorId(funcionarioId) == null) throw new Exception("Erro ao alterar funcionário, funcionário não encontrado");
+                if (Model.Loja.BuscaLojaId(lojaId) == null) throw new Exception("Erro ao alterar funcionário, loja não encontrada");
                 if (Model.Funcionario.BuscaFuncionarioPorEmail(email) != null) throw new Exception("Erro ao alterar funcionário, email já cadastrado");
                 Model.Funcionario funcionario = new Model.Funcionario();
                 return Model.Funcionario.UpdateFuncionario(
-                    int.Parse(funcionarioId),
+                    funcionarioId,
                     nome,
                     CriptografaSenha(senha),
                     funcao,
-                    int.Parse(lojaId),
+                    lojaId,
                     email
                 );
             } catch (Exception e) {
@@ -155,6 +154,7 @@ namespace Controller
 
         private static string CriptografaSenha(string senha)//Método para criptografar a senha do funcionário
         {
+
             return BCrypt.Net.BCrypt.HashPassword(senha, BCrypt.Net.BCrypt.GenerateSalt(12));
         }
     }
