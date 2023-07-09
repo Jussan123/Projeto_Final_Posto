@@ -73,7 +73,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão de cancelar
             refreshButton = new Button();
             refreshButton.Text = "Refresh";
-            refreshButton.Location = new Point(290, 340);
+            refreshButton.Location = new Point(290, 360);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
             refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
