@@ -4,34 +4,32 @@
  * Data: 11/06/2023
  * Versão: 1.0
  */
-using Model;
-
 
 namespace View.Formulario.Login
 {
-    public class Login : Form
+    internal class Login : Form
     {
-        public Label loginLabel;
-        public Label senhaLabel;
-        public TextBox loginTextBox; // usar esse
-        public TextBox senhaTextBox;
-        public Button entrarButton;
-        public Button sairButton;
+        private Label loginLabel;
+        private Label senhaLabel;
+        private TextBox loginTextBox;
+        private TextBox senhaTextBox;
+        private Button entrarButton;
+        private Button sairButton;
 
         public Login()
         {
             InitializeComponent();
         }
 
-        public void InitializeComponent()
+        private void InitializeComponent()
         {
             //Configurações do PictureBox
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = Image.FromFile(@"imagens\login1_img.png");
             //@"C:\\img\\login_img.png"
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.Location = new Point(100, 0);
-            pictureBox.Size = new Size(90, 74);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Size = new Size(270, 74);
             this.Controls.Add(pictureBox);
             
 
@@ -89,31 +87,19 @@ namespace View.Formulario.Login
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
 
-        private bool admin = false;
-        public void EntrarButton_Click(object sender, EventArgs e)
+        private void EntrarButton_Click(object sender, EventArgs e)
         {
-            
             Controller.Funcionario funcionario = new Controller.Funcionario();
             funcionario.email = loginTextBox.Text;
             Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email);
             if (funcionario.email == null || funcionario.email == "") throw new Exception("E-mail não cadastrado! Login Incorreto!");
             funcionario.senha = senhaTextBox.Text;
-            funcionarioPorEmail(funcionario.email);
-            funcionario.funcao = Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email).funcao;
-            funcionario.nome = Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email).nome;
-            
             if (Controller.Funcionario.Logar(funcionario.email, funcionario.senha))
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                if (admin)
-                {
-                    AbrirForm(new View.ProgramForm());
-                }
-                else
-                {
-                    AbrirForm(new View.ProgramUserForm());
-                }
+                View.InicioForm inicio = new View.InicioForm();
+                inicio.ShowDialog();
             }
             else
             {
@@ -121,11 +107,11 @@ namespace View.Formulario.Login
                 LimpaTela();
             }
         }
-        public void SairButton_Click(object sender, EventArgs e)
+        private void SairButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        public void Form_KeyDown(object sender, KeyEventArgs e)
+        private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -139,19 +125,9 @@ namespace View.Formulario.Login
             senhaTextBox.Text = "";
         }
 
-        public bool funcionarioPorEmail(string email)
-        {
-            Model.Funcionario funcionario = Controller.Funcionario.BuscaFuncionarioPorEmail(email);
-            funcionario.funcao = Controller.Funcionario.BuscaFuncionarioPorEmail(email).funcao;
-            if (funcionario != null)
-            {
-                admin = funcionario.funcao.Equals("Admin");
-            }
-            return admin;
-        }
-
         public void AbrirForm(Form form){
             form.ShowDialog();
         }
+
     }
 }

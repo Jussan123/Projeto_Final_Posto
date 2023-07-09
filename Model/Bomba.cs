@@ -89,7 +89,7 @@ namespace Model
             return volume;
         }
 
-        public static Bomba UpdateBomba(int bombaId, int combustivelId, decimal limiteMaximo, decimal limiteMinimo, decimal volume)
+        public static Bomba UpdateBomba(int bombaId, int combustivelId, decimal limiteMaximo, decimal limiteMinimo, decimal volume, int lojaId)
         {
             DataBase db = new DataBase();
             Bomba bomba = db.Bombas.Find(bombaId);
@@ -97,6 +97,7 @@ namespace Model
             bomba.limiteMaximo = limiteMaximo;
             bomba.limiteMinimo = limiteMinimo;
             bomba.volume = volume;
+            bomba.lojaId = lojaId;
             db.SaveChanges();
             return bomba;
         }

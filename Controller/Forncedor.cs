@@ -20,17 +20,12 @@ namespace Controller
             string contato,
             string endereco)
             {
-                try
-                {
                 Model.Fornecedor fornecedor = new Model.Fornecedor(
                     nome,
                     contato,
                     endereco
                 );
                 return fornecedor;
-                } catch (Exception e) {
-                    throw new Exception($"Erro ao cadastrar fornecedor. {e.Message}");
-                }
             }
 
         public static Model.Fornecedor AlteraFornecedor(

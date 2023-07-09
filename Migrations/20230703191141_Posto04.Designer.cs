@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PostoCombustivel.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20230708223427_Posto04")]
+    [Migration("20230703191141_Posto04")]
     partial class Posto04
     {
         /// <inheritdoc />
@@ -95,11 +95,16 @@ namespace PostoCombustivel.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("movimentacaoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("fornecedorId");
+
+                    b.HasIndex("movimentacaoId");
 
                     b.ToTable("Fornecedores");
                 });
@@ -181,6 +186,9 @@ namespace PostoCombustivel.Migrations
                     b.Property<int>("fornecedorId")
                         .HasColumnType("int");
 
+                    b.Property<int>("fornecedorId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("funcionarioId")
                         .HasColumnType("int");
 
@@ -203,7 +211,7 @@ namespace PostoCombustivel.Migrations
 
                     b.HasIndex("combustivelId");
 
-                    b.HasIndex("fornecedorId");
+                    b.HasIndex("fornecedorId1");
 
                     b.HasIndex("funcionarioId");
 
@@ -229,6 +237,17 @@ namespace PostoCombustivel.Migrations
                     b.Navigation("combustivel");
 
                     b.Navigation("loja");
+                });
+
+            modelBuilder.Entity("Model.Fornecedor", b =>
+                {
+                    b.HasOne("Model.Movimentacao", "movimentacao")
+                        .WithMany()
+                        .HasForeignKey("movimentacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("movimentacao");
                 });
 
             modelBuilder.Entity("Model.Funcionario", b =>
@@ -258,7 +277,7 @@ namespace PostoCombustivel.Migrations
 
                     b.HasOne("Model.Fornecedor", "fornecedor")
                         .WithMany()
-                        .HasForeignKey("fornecedorId")
+                        .HasForeignKey("fornecedorId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
