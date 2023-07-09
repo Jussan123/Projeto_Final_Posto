@@ -33,11 +33,12 @@ namespace View.Formulario.FuncionarioForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300, 220);
+            this.ClientSize = new System.Drawing.Size(300, 260);
             this.Text = "Cadastro de funcionarios";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
 
             //Configurações do campo texto do Nome
             nomeTextBox = new TextBox();
@@ -73,7 +74,7 @@ namespace View.Formulario.FuncionarioForm
 
             // Configurações do combobox de tipoOperacao
             funcaoComboBox = new ComboBox();
-            funcaoComboBox.Location = new Point(100, 90);
+            funcaoComboBox.Location = new Point(60, 90);
             funcaoComboBox.Size = new Size(150, 20);
             string [] funcao = {"Admin", "User"};
             funcaoComboBox.Items.AddRange(funcao);
@@ -120,29 +121,38 @@ namespace View.Formulario.FuncionarioForm
             emailLabel.Size = new Size(80, 20);
             this.Controls.Add(emailLabel);
             
-            //Configurações do PictureBox
+            /*//Configurações do PictureBox
             PictureBox pictureBox = new PictureBox();
             pictureBox.Image = Image.FromFile(@"imagens\\login1_img.png");
             pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox.Location = new Point(0, 0);
             pictureBox.Size = new Size(270, 74);
-            this.Controls.Add(pictureBox);
+            this.Controls.Add(pictureBox);*/
             
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(40, 180);
+            gravarButton.Location = new Point(110, 220);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(120, 180);
+            sairButton.Location = new Point(200, 220);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
 
         }
         private void gravarButton_Click(object sender, EventArgs e)

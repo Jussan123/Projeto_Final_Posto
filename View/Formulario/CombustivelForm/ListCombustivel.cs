@@ -89,7 +89,6 @@ namespace View.Formulario.CombustivelForm
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
             
-
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);

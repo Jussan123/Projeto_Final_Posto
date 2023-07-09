@@ -28,11 +28,12 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(270,200);
+            this.ClientSize = new System.Drawing.Size(300, 260);
             this.Text = "Cadastro de Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
 
             //Configurações do id
             //combustivelIdLabel = new Label();
@@ -40,7 +41,7 @@ namespace View.Formulario.bombaForm
             //combustivelIdLabel.Location = new Point(20, 30);
             //combustivelIdLabel.Size = new Size(80, 20);
             //this.Controls.Add(combustivelIdLabel);
-//
+            //
             ////Configurações do campo texto de id
             //combustivelIdTextBox = new TextBox();
             //combustivelIdTextBox.Location = new Point(100, 30);
@@ -55,14 +56,15 @@ namespace View.Formulario.bombaForm
             this.Controls.Add(lojaIdLabel);
 
             //Configurando o Campo de texto identificação da loja
-            lojaIdComboBox = new ComboBox ();
+            lojaIdComboBox = new ComboBox();
             lojaIdComboBox.Location = new Point(100, 10);
-            lojaIdComboBox.Size = new Size(150, 20 );
-            
+            lojaIdComboBox.Size = new Size(150, 20);
+
             List<Controller.Loja> lojas = new List<Controller.Loja>();
-            foreach (Model.Loja loja in Controller.Loja.ListaLojas()){
-            
-                    lojaIdComboBox.Items.Add(loja);
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas())
+            {
+
+                lojaIdComboBox.Items.Add(loja);
             }
             lojaIdComboBox.DisplayMember = "nome";
             lojaIdComboBox.ValueMember = "lojaId";
@@ -75,7 +77,7 @@ namespace View.Formulario.bombaForm
             limiteMaximoLabel.Location = new Point(20, 40);
             limiteMaximoLabel.Size = new Size(80, 20);
             this.Controls.Add(limiteMaximoLabel);
-            
+
             //Configurando o Campo de texto Capacidade Máxima
             limiteMaximoTextBox = new TextBox();
             limiteMaximoTextBox.Location = new Point(100, 40);
@@ -92,7 +94,7 @@ namespace View.Formulario.bombaForm
             //Configurando o Campo de texto Capacidade Miníma
             limiteMinimoTextBox = new TextBox();
             limiteMinimoTextBox.Location = new Point(100, 70);
-            limiteMinimoTextBox.Size = new Size(150, 20 );
+            limiteMinimoTextBox.Size = new Size(150, 20);
             this.Controls.Add(limiteMinimoTextBox);
 
             //Configurações de rótulo Movimentação
@@ -105,26 +107,35 @@ namespace View.Formulario.bombaForm
             //Configurando o Campo de texto movimentação
             volumeTextBox = new TextBox();
             volumeTextBox.Location = new Point(100, 100);
-            volumeTextBox.Size = new Size(150, 20 );
+            volumeTextBox.Size = new Size(150, 20);
             this.Controls.Add(volumeTextBox);
 
-            
+
 
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(80, 130);
+            gravarButton.Location = new Point(110, 220);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(170, 130);
+            sairButton.Location = new Point(200, 220);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
         private void gravarButton_Click(object sender, EventArgs e)
         {
@@ -132,7 +143,7 @@ namespace View.Formulario.bombaForm
             {
                 Controller.Bomba bomba = new Controller.Bomba();//Instanciando a classe bomba
                 bomba.combustivelId = combustivelIdTextBox.Text;//Atribuindo o valor do campo id ao atributo tipoCombustivelId
-                if (bomba.combustivelId == null)  throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
+                if (bomba.combustivelId == null) throw new Exception("O campo ID não pode ser vazio!");//Verificando se o campo id está vazio
                 bomba.limiteMaximo = limiteMaximoTextBox.Text;//Atribuindo o valor do campo limiteMaximo ao atributo limiteMaximo
                 bomba.limiteMinimo = limiteMinimoTextBox.Text;//Atribuindo o valor do campo limiteMinimo ao atributo limiteMinimo
                 bomba.volume = volumeTextBox.Text;//Atribuindo o valor do campo volume ao atributo volume
@@ -166,7 +177,7 @@ namespace View.Formulario.bombaForm
         }
     }
 
-// ---------------------------- Edição da Bomba ----------------------------
+    // ---------------------------- Edição da Bomba ----------------------------
 
     public class FormEditaBomba : Form
     {
@@ -188,7 +199,7 @@ namespace View.Formulario.bombaForm
         public void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(300, 400);
             this.Text = "Edição de Bomba";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -205,7 +216,7 @@ namespace View.Formulario.bombaForm
             bombaIdCb = new ComboBox();
             bombaIdCb.Location = new Point(100, 30);
             bombaIdCb.Size = new Size(150, 20);
-            List<Controller.Bomba> listaBombas = new  List<Controller.Bomba>();
+            List<Controller.Bomba> listaBombas = new List<Controller.Bomba>();
             foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
                 bombaIdCb.Items.Add(bomba);
@@ -220,7 +231,7 @@ namespace View.Formulario.bombaForm
             combustivelIdLabel.Text = "ID Combústivel: ";
             combustivelIdLabel.Location = new Point(20, 60);
             combustivelIdLabel.Size = new Size(80, 20);
-            List<Controller.Combustivel> listaTipoCombustivel = new  List<Controller.Combustivel>();
+            List<Controller.Combustivel> listaTipoCombustivel = new List<Controller.Combustivel>();
             foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
                 combustivelIdCb.Items.Add(combustivel);
@@ -280,7 +291,8 @@ namespace View.Formulario.bombaForm
             gravarButton.Text = "Gravar";
             gravarButton.Location = new Point(20, 180);
             gravarButton.Size = new Size(80, 20);
-            gravarButton.Click += (ScrollBarRenderer, e) =>{
+            gravarButton.Click += (ScrollBarRenderer, e) =>
+            {
                 SalvaBomba();
                 LimpaTela();
             };
@@ -294,7 +306,7 @@ namespace View.Formulario.bombaForm
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             this.Controls.Add(sairButton);
         }
-        
+
         public FormEditaBomba()
         {
             InitializeComponent();
@@ -305,7 +317,7 @@ namespace View.Formulario.bombaForm
             try
             {
                 Controller.Bomba bomba = new Controller.Bomba();
-                var bombaSelecionada = (Controller.Bomba) bombaIdCb.SelectedItem;
+                var bombaSelecionada = (Controller.Bomba)bombaIdCb.SelectedItem;
                 if (bombaSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma bomba");
@@ -321,12 +333,13 @@ namespace View.Formulario.bombaForm
                 Controller.Bomba controllerBomba = new Controller.Bomba();
                 Controller.Bomba.AlterarBomba(bomba.bombaId, bomba.combustivelId, bomba.limiteMaximo, bomba.limiteMinimo, bomba.volume, bomba.lojaId);
                 MessageBox.Show("Bomba alterada com sucesso!");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao alterar bomba: " + ex.Message);
             }
         }
-        
+
         public void LimpaTela()
         {
             bombaIdCb.Text = "";
@@ -338,7 +351,7 @@ namespace View.Formulario.bombaForm
         }
     }
 
-//--------------------------------------------------------------
+    //--------------------------------------------------------------
 
     public class FormExcluiBomba : Form
     {
@@ -364,7 +377,7 @@ namespace View.Formulario.bombaForm
             bombaIdCb = new ComboBox();
             bombaIdCb.Location = new Point(100, 30);
             bombaIdCb.Size = new Size(150, 20);
-            List<Controller.Bomba> listaBombas = new  List<Controller.Bomba>();
+            List<Controller.Bomba> listaBombas = new List<Controller.Bomba>();
             foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
                 bombaIdCb.Items.Add(bomba);
@@ -379,7 +392,8 @@ namespace View.Formulario.bombaForm
             excluirButton.Text = "Excluir";
             excluirButton.Location = new Point(20, 60);
             excluirButton.Size = new Size(80, 20);
-            excluirButton.Click += (ScrollBarRenderer, e) =>{
+            excluirButton.Click += (ScrollBarRenderer, e) =>
+            {
                 ExcluiBomba();
                 LimpaTela();
             };
@@ -404,7 +418,7 @@ namespace View.Formulario.bombaForm
             try
             {
                 Controller.Bomba bomba = new Controller.Bomba();
-                var bombaSelecionada = (Controller.Bomba) bombaIdCb.SelectedItem;
+                var bombaSelecionada = (Controller.Bomba)bombaIdCb.SelectedItem;
                 if (bombaSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma bomba");
@@ -414,7 +428,8 @@ namespace View.Formulario.bombaForm
 
                 Controller.Bomba.DeletaBomba(bombaIdCb.Text);
                 MessageBox.Show("Bomba excluída com sucesso!");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao excluir bomba: " + ex.Message);
             }
