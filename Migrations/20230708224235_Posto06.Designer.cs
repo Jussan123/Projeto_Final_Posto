@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PostoCombustivel.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20230703223647_PostoCombustivel05")]
-    partial class PostoCombustivel05
+    [Migration("20230708224235_Posto06")]
+    partial class Posto06
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

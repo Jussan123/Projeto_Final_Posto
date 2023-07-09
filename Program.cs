@@ -3,12 +3,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using View.Formulario;
 
+using Model;
+
 
 namespace View
 {
     public partial class ProgramForm : Form
     {
-        private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora
+        public MenuStrip menuStrip; 
+        private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora 
 
         public ProgramForm()
         {
@@ -19,14 +22,16 @@ namespace View
 
         private void InitializeComponent()
         {
+
             //Configurações do menu de navegação
             MenuStrip menuStrip = new MenuStrip();
+            menuStrip.Text = "Menu de navegação";
             menuStrip.Location = new Point(0, 0);
             menuStrip.Size = new Size(300, 24);
             
 
-            ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
 
+            ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
             //Sub-menus do menu "Sistema"
             ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
             loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
@@ -49,6 +54,7 @@ namespace View
             bombasMenuItem.Click += new EventHandler(BombasMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(bombasMenuItem);
 
+
             ToolStripMenuItem combustiveisMenuItem = new ToolStripMenuItem("Combustíveis");
             combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(combustiveisMenuItem);
@@ -62,7 +68,7 @@ namespace View
             cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(cadastroMenuItem);
-
+            
             ToolStripMenuItem movimentacoesMenuItem = new ToolStripMenuItem("Movimentações");
 
             //Sub-menus do menu "Movimentações"
@@ -80,6 +86,7 @@ namespace View
             ajudaMenuItem.DropDownItems.Add(sobreMenuItem);
 
             menuStrip.Items.Add(ajudaMenuItem);
+
 
             this.Controls.Add(menuStrip);
 
@@ -154,7 +161,6 @@ namespace View
         {
             dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
         }
-        
         static class Program
         {
             [STAThread]
@@ -162,7 +168,7 @@ namespace View
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new ProgramForm());
+                Application.Run(new View.Formulario.Login.Login());
             }
         }
     }
