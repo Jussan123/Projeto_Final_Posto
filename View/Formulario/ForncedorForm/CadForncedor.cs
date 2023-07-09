@@ -241,13 +241,13 @@ namespace View.Formulario.FornecedorForm
             try
             {
                 Controller.Fornecedor fornecedor = new Controller.Fornecedor();
-                var fornecedorSelecionada = (Controller.Fornecedor) fornecedorIdCb.SelectedItem;
+                var fornecedorSelecionada = ((Model.Fornecedor)fornecedorIdCb.SelectedItem).fornecedorId.ToString();
                 if (fornecedorSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma fornecedor");
                     return;
                 }
-                fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
+                fornecedor.fornecedorId = fornecedorSelecionada.ToString();
                 fornecedor.nome = nomeTextBox.Text;
                 fornecedor.contato = contatoTextBox.Text;
                 fornecedor.endereco = enderecoTextBox.Text;
@@ -266,7 +266,7 @@ namespace View.Formulario.FornecedorForm
             nomeTextBox.Text = "";
             contatoTextBox.Text = "";
             enderecoTextBox.Text = "";
-         }
+        }
     }
 
 //------------------ Formulário de exclusão de fornecedor ---------
@@ -336,13 +336,13 @@ namespace View.Formulario.FornecedorForm
             try
             {
                 Controller.Fornecedor fornecedor = new Controller.Fornecedor();
-                var fornecedorSelecionada = (Controller.Fornecedor) fornecedorIdCb.SelectedItem;
+                var fornecedorSelecionada = ((Model.Fornecedor)fornecedorIdCb.SelectedItem).fornecedorId.ToString();
                 if (fornecedorSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma fornecedor");
                     return;
                 }
-                fornecedor.fornecedorId = fornecedorSelecionada.fornecedorId.ToString();
+                fornecedor.fornecedorId = fornecedorSelecionada.ToString();
 
                 Controller.Fornecedor.ExcluiFornecedor(fornecedor.fornecedorId);
                 MessageBox.Show("fornecedor excluída com sucesso!");

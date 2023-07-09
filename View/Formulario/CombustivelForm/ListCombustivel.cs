@@ -84,56 +84,21 @@ namespace View.Formulario.CombustivelForm
             combustivelDataGridView = new DataGridView();
             combustivelDataGridView.Location = new Point(20, 40);
             combustivelDataGridView.Size = new Size(440, 280);
-            combustivelDataGridView.AllowUserToAddRows = false;
-            combustivelDataGridView.AllowUserToDeleteRows = false;
-            combustivelDataGridView.ReadOnly = true;
-            combustivelDataGridView.MultiSelect = false;
-            combustivelDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            combustivelDataGridView.AutoGenerateColumns = false;
-
-            //Configuração das colunas do grid
-            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "combustivel";//Lembrar que a exibição é nome + 
-            idColumn.HeaderText = "combustivel";
-            idColumn.Width = 50;
-            idColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(idColumn);
-
-            DataGridViewTextBoxColumn nomeColumn = new DataGridViewTextBoxColumn();
-            nomeColumn.DataPropertyName = "Nome Combustível"; //JUSSAN - Lembrar de preparar a controller para buscar o nome do combustível no tipo combustível
-            nomeColumn.HeaderText = "Nome Combustível";
-            nomeColumn.Width = 70;
-            nomeColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(nomeColumn);
-
-            DataGridViewTextBoxColumn siglaColumn = new DataGridViewTextBoxColumn();
-            siglaColumn.DataPropertyName = "Cap_Max";
-            siglaColumn.HeaderText = "Capacidade Maxima";
-            siglaColumn.Width = 80;
-            siglaColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(siglaColumn);
-
-            DataGridViewTextBoxColumn descricaoColumn = new DataGridViewTextBoxColumn();
-            descricaoColumn.DataPropertyName = "Cap_Min";
-            descricaoColumn.HeaderText = "Capacidade Minima";
-            descricaoColumn.Width = 90;
-            descricaoColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(descricaoColumn);
-
-            DataGridViewTextBoxColumn precoCompraColumn = new DataGridViewTextBoxColumn();
-            precoCompraColumn.DataPropertyName = "Preco_Compra";
-            precoCompraColumn.HeaderText = "Preço de Compra";
-            precoCompraColumn.Width = 90;
-            precoCompraColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(precoCompraColumn);
-
-            DataGridViewTextBoxColumn precoVendaColumn = new DataGridViewTextBoxColumn();
-            precoVendaColumn.DataPropertyName = "Preco_Venda";
-            precoVendaColumn.HeaderText = "Preço de Venda";
-            precoVendaColumn.Width = 90;
-            precoVendaColumn.ReadOnly = true;
-            combustivelDataGridView.Columns.Add(precoVendaColumn);
-
+            combustivelDataGridView.Columns.Add("combustivelId", "Id");
+            combustivelDataGridView.Columns.Add("Nome", "Nome");
+            combustivelDataGridView.Columns.Add("Sigla", "Sigla");
+            combustivelDataGridView.Columns.Add("Descricao", "Descrição");
+            combustivelDataGridView.Columns.Add("PrecoCompra", "Val. de Compra");
+            combustivelDataGridView.Columns.Add("PrecoVenda", "Val. de Venda");
+            foreach (var combustivel in Controller.Combustivel.ListaCombustivel())
+            {
+                combustivelDataGridView.Rows.Add(combustivel.combustivelId, combustivel.nome, combustivel.sigla, combustivel.descricao, combustivel.precoCompra, combustivel.precoVenda);
+            }
+            combustivelDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            combustivelDataGridView.RowsDefaultCellStyle.BackColor = Color.White;
+            combustivelDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Aquamarine;
+            combustivelDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
+            combustivelDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(combustivelDataGridView);
         }
 
@@ -147,12 +112,14 @@ namespace View.Formulario.CombustivelForm
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.CombustivelForm.FormEditaCombustivel());
+            this.ListaCombustivel();
             //Adicionar Ação/código para alterar uma combustivel selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.CombustivelForm.FormExcluiCombustivel());
+            this.ListaCombustivel();
             //Adicionar Ação/código para excluir uma combustivel selecionada
         }
 

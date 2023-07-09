@@ -304,6 +304,13 @@ namespace View.Formulario.CombustivelForm
             {
                 Controller.Combustivel combustivel = new Controller.Combustivel();
                 
+                var cumbustivelSelecionado = ((Model.Combustivel)combustivelIdCb.SelectedItem).combustivelId.ToString();
+                if (cumbustivelSelecionado == null)
+                {
+                    MessageBox.Show("Selecione um combustivel!");
+                    return;
+                }
+                combustivel.combustivelId = cumbustivelSelecionado.ToString();
                 combustivel.nome = nomeTextBox.Text;
                 combustivel.sigla = siglaTextBox.Text;
                 combustivel.descricao = descricaoTextBox.Text;
@@ -311,7 +318,7 @@ namespace View.Formulario.CombustivelForm
                 combustivel.precoVenda = precoVendaTextBox.Text;
                 
                 Controller.Combustivel controllerCombustivel = new Controller.Combustivel();
-                Controller.Combustivel.CadastraCombustivel(nomeTextBox.Text, siglaTextBox.Text, descricaoTextBox.Text, precoCompraTextBox.Text, precoVendaTextBox.Text);
+                Controller.Combustivel.AlteraCombustivel(combustivel.combustivelId, combustivel.nome, combustivel.sigla, combustivel.descricao, combustivel.precoCompra, combustivel.precoVenda);
                 MessageBox.Show("combustivel alterada com sucesso!");
             } catch (Exception ex)
             {
@@ -321,6 +328,7 @@ namespace View.Formulario.CombustivelForm
         
         public void LimpaTela()
         {
+            combustivelIdCb.Text = "";
             nomeTextBox.Text = "";
             siglaTextBox.Text = "";
             descricaoTextBox.Text = "";
@@ -360,8 +368,8 @@ namespace View.Formulario.CombustivelForm
             {
                 combustivelIdCb.Items.Add(combustivel);
             }
-            combustivelIdCb.DisplayMember = "Id";
-            combustivelIdCb.ValueMember = "Id";
+            combustivelIdCb.DisplayMember = "nome";
+            combustivelIdCb.ValueMember = "combustivelId";
             combustivelIdCb.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdCb);
 
@@ -395,13 +403,13 @@ namespace View.Formulario.CombustivelForm
             try
             {
                 Controller.Combustivel combustivel = new Controller.Combustivel();
-                var combustivelSelecionada = (Controller.Combustivel) combustivelIdCb.SelectedItem;
+                var combustivelSelecionada = ((Model.Combustivel)combustivelIdCb.SelectedItem).combustivelId.ToString();
                 if (combustivelSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma combustivel");
                     return;
                 }
-                combustivel.combustivelId = combustivelSelecionada.combustivelId.ToString();
+                combustivel.combustivelId = combustivelSelecionada.ToString();
 
                 Controller.Combustivel.ExcluiCombustivel(combustivel.combustivelId);
                 MessageBox.Show("combustivel excluída com sucesso!");

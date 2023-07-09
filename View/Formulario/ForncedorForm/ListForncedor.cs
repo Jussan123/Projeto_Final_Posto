@@ -68,7 +68,7 @@ namespace View.Formulario.FornecedorForm
 
             //Configurações do botão de cancelar
             refreshButton = new Button();
-            refreshButton.Text = "Cancelar";
+            refreshButton.Text = "Refresh";
             refreshButton.Location = new Point(290, 340);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
@@ -111,7 +111,7 @@ namespace View.Formulario.FornecedorForm
 
         private void NovoButton_Click(object sender, EventArgs e)
         {
-            AbrirForm(new CadFornecedor());
+            AbrirForm(new View.Formulario.FornecedorForm.CadFornecedor());
             this.ListaFornecedor();
             //throw new NotImplementedException();
         }
@@ -119,12 +119,14 @@ namespace View.Formulario.FornecedorForm
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.FornecedorForm.FormEditaFornecedor());
+            this.ListaFornecedor();
             //Adicionar Ação/código para alterar uma fornecedor selecionada
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.FornecedorForm.FormExcluiFornecedor());
+            this.ListaFornecedor();
             //Adicionar Ação/código para excluir uma fornecedor selecionada
         }
 

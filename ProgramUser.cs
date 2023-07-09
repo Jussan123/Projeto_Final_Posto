@@ -8,41 +8,21 @@ using Model;
 
 namespace View
 {
-    public partial class ProgramForm : Form
+    public partial class ProgramUserForm : Form
     {
-        public MenuStrip menuStrip; 
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora 
 
-        public ProgramForm()
+        public ProgramUserForm()
         {
             InitializeComponent();
         }
 
         private void InitializeComponent()
         {
-
             //Configurações do menu de navegação
             MenuStrip menuStrip = new MenuStrip();
-            menuStrip.Text = "Menu de navegação";
             menuStrip.Location = new Point(0, 0);
             menuStrip.Size = new Size(300, 24);
-
-
-            ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
-            //Sub-menus do menu "Sistema"
-            ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(loginMenuItem);
-
-            ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
-            funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
-
-            sistemaMenuItem.DropDownItems.Add(new ToolStripSeparator()); //Separador
-
-            sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
-
-            menuStrip.Items.Add(sistemaMenuItem);
 
             ToolStripMenuItem cadastroMenuItem = new ToolStripMenuItem("Cadastro");
 
@@ -65,7 +45,7 @@ namespace View
             cadastroMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
 
             menuStrip.Items.Add(cadastroMenuItem);
-            
+
             ToolStripMenuItem movimentacoesMenuItem = new ToolStripMenuItem("Movimentações");
 
             //Sub-menus do menu "Movimentações"
@@ -106,20 +86,6 @@ namespace View
             Application.Exit();
         }
 
-        private void LoginMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Enter Login");
-            View.Formulario.Login.Login login = new View.Formulario.Login.Login();
-            login.ShowDialog();
-        }
-
-        private void FuncionarioMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Enter Funcionário");
-            View.Formulario.FuncionarioForm.ListFuncionarioForm funcionario = new View.Formulario.FuncionarioForm.ListFuncionarioForm();
-            funcionario.ShowDialog();
-        }
-
         private void BombasMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Enter Bombas");
@@ -156,16 +122,6 @@ namespace View
         private void timer1_Tick(object sender, EventArgs e)
         {
             dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
-        }
-        static class Program
-        {
-            [STAThread]
-            static void Main()
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new View.Formulario.Login.Login());
-            }
         }
     }
 }

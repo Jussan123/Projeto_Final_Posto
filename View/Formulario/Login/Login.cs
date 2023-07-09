@@ -4,7 +4,7 @@
  * Data: 11/06/2023
  * Versão: 1.0
  */
-
+using Model;
 
 
 namespace View.Formulario.Login
@@ -98,18 +98,22 @@ namespace View.Formulario.Login
             Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email);
             if (funcionario.email == null || funcionario.email == "") throw new Exception("E-mail não cadastrado! Login Incorreto!");
             funcionario.senha = senhaTextBox.Text;
+            funcionarioPorEmail(funcionario.email);
+            funcionario.funcao = Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email).funcao;
+            funcionario.nome = Controller.Funcionario.BuscaFuncionarioPorEmail(funcionario.email).nome;
+            
             if (Controller.Funcionario.Logar(funcionario.email, funcionario.senha))
             {
                 MessageBox.Show("Login efetuado com sucesso!");
                 this.Hide();
-                funcionarioPorEmail(funcionario.email);
                 if (admin)
                 {
                     AbrirForm(new View.ProgramForm());
-                } else {
+                }
+                else
+                {
                     AbrirForm(new View.ProgramUserForm());
                 }
-                
             }
             else
             {
@@ -135,13 +139,15 @@ namespace View.Formulario.Login
             senhaTextBox.Text = "";
         }
 
-        public void funcionarioPorEmail(string email)
+        public bool funcionarioPorEmail(string email)
         {
             Model.Funcionario funcionario = Controller.Funcionario.BuscaFuncionarioPorEmail(email);
+            funcionario.funcao = Controller.Funcionario.BuscaFuncionarioPorEmail(email).funcao;
             if (funcionario != null)
             {
                 admin = funcionario.funcao.Equals("Admin");
             }
+            return admin;
         }
 
         public void AbrirForm(Form form){

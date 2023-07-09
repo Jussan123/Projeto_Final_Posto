@@ -75,18 +75,16 @@ namespace View.Formulario.MovimentacaoForm
             movimentacaoDataGridView.Location = new Point(20, 20);
             movimentacaoDataGridView.Size = new Size(760, 600);
             // Configura as colunas do DataGridView
-            movimentacaoDataGridView.ColumnCount = 9;
-            movimentacaoDataGridView.ColumnHeadersVisible = true;
-            movimentacaoDataGridView.Columns[0].Name = "Movimentacao";
-            movimentacaoDataGridView.Columns[1].Name = "CombustivelId";
-            movimentacaoDataGridView.Columns[2].Name = "Quantidade";
-            movimentacaoDataGridView.Columns[3].Name = "TipoOperacao";
-            movimentacaoDataGridView.Columns[4].Name = "DataHora";
-            movimentacaoDataGridView.Columns[5].Name = "Valor";
-            movimentacaoDataGridView.Columns[6].Name = "LojaId";
-            movimentacaoDataGridView.Columns[7].Name = "FuncionarioId";
-            movimentacaoDataGridView.Columns[8].Name = "BombaId";
-            movimentacaoDataGridView.Columns[9].Name = "FornecedorId";
+            movimentacaoDataGridView.Columns.Add("movimentacaoId", "ID");
+            movimentacaoDataGridView.Columns.Add("combustivelId", "Combustivel");
+            movimentacaoDataGridView.Columns.Add("quantidade", "Quantidade");
+            movimentacaoDataGridView.Columns.Add("tipoOperacao", "Tipo de operação");
+            movimentacaoDataGridView.Columns.Add("dataHora", "Data e hora");
+            movimentacaoDataGridView.Columns.Add("valor", "Valor");
+            movimentacaoDataGridView.Columns.Add("lojaId", "Loja");
+            movimentacaoDataGridView.Columns.Add("funcionarioId", "Funcionario");
+            movimentacaoDataGridView.Columns.Add("bombaId", "Bomba");
+            movimentacaoDataGridView.Columns.Add("fornecedorId", "Fornecedor");
             foreach (var movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
                 movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId, 
@@ -100,15 +98,11 @@ namespace View.Formulario.MovimentacaoForm
                                                     movimentacao.bombaId,
                                                     movimentacao.fornecedorId);
             }
-            //configura o modo de redimensionamento das linhas e colunas
             movimentacaoDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //configura a cor das linhas alternadas
             movimentacaoDataGridView.RowsDefaultCellStyle.BackColor = Color.White;
             movimentacaoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Aquamarine;
-            //configura a fonte e o tamanho do texto
             movimentacaoDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
             movimentacaoDataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
-            //configura a altura das linhas do grid
             movimentacaoDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             this.Controls.Add(movimentacaoDataGridView);        
         }

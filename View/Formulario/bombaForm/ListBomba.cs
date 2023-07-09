@@ -56,7 +56,7 @@ namespace View.Formulario.bombaForm
 
             //Configurações do botão de cancelar
             refreshButton = new Button();
-            refreshButton.Text = "Cancelar";
+            refreshButton.Text = "Refresh";
             refreshButton.Location = new Point(290, 340);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
@@ -102,16 +102,20 @@ namespace View.Formulario.bombaForm
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.CadBomba());
+            this.ListaBomba();
+
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormEditaBomba());
+            this.ListaBomba();
         }
 
         private void ExcluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new View.Formulario.bombaForm.FormExcluiBomba());
+            this.ListaBomba();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
