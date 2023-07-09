@@ -72,7 +72,7 @@ namespace View.Formulario.MovimentacaoForm
 
             // Configurações do DataGridView
             movimentacaoDataGridView = new DataGridView();
-            movimentacaoDataGridView.Location = new Point(20, 20);
+            movimentacaoDataGridView.Location = new Point(20, 40);
             movimentacaoDataGridView.Size = new Size(760, 600);
             // Configura as colunas do DataGridView
             movimentacaoDataGridView.Columns.Add("movimentacaoId", "ID");
@@ -110,20 +110,23 @@ namespace View.Formulario.MovimentacaoForm
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new CadMovimentacao());
+            this.ListaMovimentacao();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new FormEditaMovimentacao());
+            this.ListaMovimentacao();
         }
         private void excluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new FormExcluiMovimentacao());
+            this.ListaMovimentacao();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            ListaMovimentacao();
+            this.ListaMovimentacao();
         }
 
         private void SairButton_Click(object sender, EventArgs e)
