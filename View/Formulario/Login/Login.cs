@@ -35,11 +35,12 @@ namespace View.Formulario.Login
 
             // Configurações da janela do formulário
             //this.ClientSize = new System.Drawing.Size(270, 140);
-            this.ClientSize = new System.Drawing.Size(270, 185);
+            this.ClientSize = new System.Drawing.Size(270, 200);
             this.Text = "Login";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do label de E-mail
             loginLabel = new Label();
@@ -71,20 +72,29 @@ namespace View.Formulario.Login
             // Configurações do botão de entrar
             entrarButton = new Button();
             entrarButton.Text = "Entrar";
-            entrarButton.Location = new Point(100, 140);
+            entrarButton.Location = new Point(100, 160);
             entrarButton.Size = new Size(80, 30);
             entrarButton.Click += new EventHandler(EntrarButton_Click);
+            entrarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(entrarButton);
 
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(180, 140);
+            sairButton.Location = new Point(180, 160);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
             // Manipulador de evento para a tecla "ESC"
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
 
         private void EntrarButton_Click(object sender, EventArgs e)

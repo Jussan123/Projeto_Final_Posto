@@ -36,6 +36,7 @@ namespace View.Formulario.LojasForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo Nome
             nomeLabel = new Label();
@@ -95,6 +96,7 @@ namespace View.Formulario.LojasForm
             gravarButton.Location = new Point(70, 100);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
@@ -103,7 +105,15 @@ namespace View.Formulario.LojasForm
             sairButton.Location = new Point(160, 100);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
          private void gravarButton_Click(object sender, EventArgs e)
         {
@@ -167,6 +177,7 @@ namespace View.Formulario.LojasForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             lojaIdLabel = new Label();
@@ -250,6 +261,7 @@ namespace View.Formulario.LojasForm
                 SalvaLoja();
                 LimpaTela();
             };
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão Sair
@@ -258,6 +270,7 @@ namespace View.Formulario.LojasForm
             sairButton.Location = new Point(100, 180);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
         }
         
@@ -314,6 +327,7 @@ namespace View.Formulario.LojasForm
             this.Text = "Excluir loja";
             this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo lojaId
             lojaIdLabel = new Label();
@@ -345,6 +359,7 @@ namespace View.Formulario.LojasForm
                 ExcluiLoja();
                 LimpaTela();
             };
+            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             //Configurações do botão Sair
@@ -353,7 +368,15 @@ namespace View.Formulario.LojasForm
             sairButton.Location = new Point(100, 60);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
 
         public FormExcluiLoja()

@@ -3,16 +3,17 @@ using System.Drawing;
 using System.Windows.Forms;
 using View.Formulario;
 
+using Model;
+
 
 namespace View
 {
-    public partial class ProgramForm : Form
+    public partial class ProgramUserForm : Form
     {
-        public MenuStrip menuStrip;
         private PictureBox imagemBox;
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora 
 
-        public ProgramForm()
+        public ProgramUserForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
@@ -26,32 +27,15 @@ namespace View
             MenuStrip menuStrip = new MenuStrip();
             menuStrip.Location = new Point(0, 0);
             menuStrip.Size = new Size(300, 24);
-            
+
             //Configurações do pictureBox
             imagemBox = new PictureBox();
             imagemBox.SizeMode = PictureBoxSizeMode.Zoom;
             imagemBox.Dock = DockStyle.Fill;
             imagemBox.Image = Image.FromFile(@"imagens\Bomba.png");
             imagemBox.Location = new Point(0, 24);
-            imagemBox.Size = new Size(267, 400);
+            imagemBox.AutoSize = true;
             this.Controls.Add(imagemBox);
-
-            ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
-
-            //Sub-menus do menu "Sistema"
-            ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login"); //Renomeado para "Login"
-            loginMenuItem.Click += new EventHandler(LoginMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(loginMenuItem);
-
-            ToolStripMenuItem funcionarioMenuItem = new ToolStripMenuItem("Funcionários"); //Renomeado para "Funcionários"
-            funcionarioMenuItem.Click += new EventHandler(FuncionarioMenuItem_Click);
-            sistemaMenuItem.DropDownItems.Add(funcionarioMenuItem);
-
-            sistemaMenuItem.DropDownItems.Add(new ToolStripSeparator()); //Separador
-
-            sistemaMenuItem.DropDownItems.Add("Sair", null, SairMenuItem_Click);
-
-            menuStrip.Items.Add(sistemaMenuItem);
 
             ToolStripMenuItem cadastroMenuItem = new ToolStripMenuItem("Cadastro");
 
@@ -59,6 +43,7 @@ namespace View
             ToolStripMenuItem bombasMenuItem = new ToolStripMenuItem("Bombas");
             bombasMenuItem.Click += new EventHandler(BombasMenuItem_Click);
             cadastroMenuItem.DropDownItems.Add(bombasMenuItem);
+
 
             ToolStripMenuItem combustiveisMenuItem = new ToolStripMenuItem("Combustíveis");
             combustiveisMenuItem.Click += new EventHandler(CombustiveisMenuItem_Click);
@@ -92,6 +77,7 @@ namespace View
 
             menuStrip.Items.Add(ajudaMenuItem);
 
+
             this.Controls.Add(menuStrip);
 
             //Configurações da barra de status
@@ -101,7 +87,6 @@ namespace View
             ToolStripStatusLabel infoLabel = new ToolStripStatusLabel();
             infoLabel.Text = "Desenvolvido por: JEL Tech Company";
             statusStrip.Items.Add(infoLabel);
-            infoLabel.BackColor = ColorTranslator.FromHtml("#F0F0F0");
 
             dateTimeLabel = new ToolStripStatusLabel(); //Cria a instância para a data e hora
             statusStrip.Items.Add(dateTimeLabel); //Adiciona o label à barra de status
@@ -114,20 +99,6 @@ namespace View
             Application.Exit();
         }
 
-        private void LoginMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Enter Login");
-            View.Formulario.Login.Login login = new View.Formulario.Login.Login();
-            login.ShowDialog();
-        }
-
-        private void FuncionarioMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Enter Funcionário");
-            View.Formulario.FuncionarioForm.ListFuncionarioForm funcionario = new View.Formulario.FuncionarioForm.ListFuncionarioForm();
-            funcionario.ShowDialog();
-        }
-
         private void BombasMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Enter Bombas");
@@ -137,14 +108,14 @@ namespace View
 
         private void CombustiveisMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Enter Combustíveis");
+            MessageBox.Show("Enter Combustíveis");
             View.Formulario.CombustivelForm.ListCombustivelForm combustivel = new View.Formulario.CombustivelForm.ListCombustivelForm();
             combustivel.ShowDialog();
         }
 
         private void FornecedorMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Enter Fornecedor");
+            MessageBox.Show("Enter Fornecedor");
             View.Formulario.FornecedorForm.ListFornecedorForm fornecedor = new View.Formulario.FornecedorForm.ListFornecedorForm();
             fornecedor.ShowDialog();
         }
@@ -164,17 +135,6 @@ namespace View
         private void timer1_Tick(object sender, EventArgs e)
         {
             dateTimeLabel.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"); //Exibe a data e a hora atual
-        }
-        
-        static class Program
-        {
-            [STAThread]
-            static void Main()
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new View.Formulario.Login.Login());
-            }
         }
     }
 }
