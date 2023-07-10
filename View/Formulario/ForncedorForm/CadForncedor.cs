@@ -79,7 +79,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 120);
+            gravarButton.Location = new Point(80, 360);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -88,7 +88,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(160, 120);
+            sairButton.Location = new Point(170, 360);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -330,7 +330,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(80, 260);
+            excluirButton.Location = new Point(80, 220);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
                 ExcluiFornecedor();
@@ -342,7 +342,7 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(170, 260);
+            sairButton.Location = new Point(170, 220);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -351,7 +351,7 @@ namespace View.Formulario.FornecedorForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.BackColor = ColorTranslator.FromHtml("#E6773A");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
