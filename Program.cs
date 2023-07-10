@@ -10,12 +10,16 @@ namespace View
 {
     public partial class ProgramForm : Form
     {
-        public MenuStrip menuStrip; 
+        public MenuStrip menuStrip;
+        private PictureBox imagemBox;
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora 
 
         public ProgramForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.Text = "Sistema de Controle de Abastecimento de Combustível";
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
         }
 
         private void InitializeComponent()
@@ -26,7 +30,15 @@ namespace View
             menuStrip.Text = "Menu de navegação";
             menuStrip.Location = new Point(0, 0);
             menuStrip.Size = new Size(300, 24);
-
+            
+            //Configurações do pictureBox
+            imagemBox = new PictureBox();
+            imagemBox.SizeMode = PictureBoxSizeMode.Zoom;
+            imagemBox.Dock = DockStyle.Fill;
+            imagemBox.Image = Image.FromFile(@"imagens\Bomba.png");
+            imagemBox.Location = new Point(0, 24);
+            imagemBox.AutoSize = true;
+            this.Controls.Add(imagemBox);
 
             ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
             //Sub-menus do menu "Sistema"

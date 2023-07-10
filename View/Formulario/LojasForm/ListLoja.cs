@@ -44,7 +44,7 @@ namespace View.Formulario.LojasForm
             // Configurações do botão de novo 
             novoButton = new Button();
             novoButton.Text = "Novo";
-            novoButton.Location = new Point(20, 340);
+            novoButton.Location = new Point(20, 360);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
             this.Controls.Add(novoButton);
@@ -52,7 +52,7 @@ namespace View.Formulario.LojasForm
             // Configurações do botão de alterar 
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
-            alterarButton.Location = new Point(110, 340);
+            alterarButton.Location = new Point(110, 360);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
             this.Controls.Add(alterarButton);
@@ -60,7 +60,7 @@ namespace View.Formulario.LojasForm
             //Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(200, 340);
+            excluirButton.Location = new Point(200, 360);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(ExcluirButton_Click);
             this.Controls.Add(excluirButton);
@@ -68,7 +68,7 @@ namespace View.Formulario.LojasForm
             //Configurações do botão de cancelar
             refreshButton = new Button();
             refreshButton.Text = "Cancelar";
-            refreshButton.Location = new Point(290, 340);
+            refreshButton.Location = new Point(290, 360);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
             this.Controls.Add(refreshButton);
@@ -76,7 +76,7 @@ namespace View.Formulario.LojasForm
             //Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(380, 340);
+            sairButton.Location = new Point(380, 360);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             this.Controls.Add(sairButton);

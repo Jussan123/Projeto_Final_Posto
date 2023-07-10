@@ -39,6 +39,7 @@
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
 
             // Configurações do label de quantidade
             quantidadeLabel = new Label();
@@ -187,6 +188,7 @@
                 salvaMovimentacao();
                 LimpaTela();
             };
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             // Configurações do botão sair
@@ -195,7 +197,15 @@
             sairButton.Location = new Point(100, 270);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
 
         private void salvaMovimentacao()
@@ -309,6 +319,7 @@
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
 
             // Configurações do label de movimentacaoId
             movimentacaoIdLabel = new Label();
@@ -483,6 +494,7 @@
                 salvarMovimentacao();
                 LimpaTela();
             };
+            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             // Configurações do botão de sair
@@ -491,7 +503,15 @@
             sairButton.Location = new Point(100, 270);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (sender, e) => this.Close();
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
 
         public FormEditaMovimentacao()
@@ -588,6 +608,7 @@
             this.Text = "Excluir Movimentação";
             this.Size = new Size(300, 150);
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = ColorTranslator.FromHtml("#F7E0A3");
 
             // Configurações do label de movimentacaoId
             movimentacaoIdLabel = new Label();
@@ -620,6 +641,7 @@
                 excluirMovimentacao();
                 LimpaTela();
             };
+            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             // Configurações do botão de sair
@@ -628,7 +650,15 @@
             sairButton.Location = new Point(100, 60);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (sender, e) => this.Close();
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
         }
 
         public FormExcluiMovimentacao()

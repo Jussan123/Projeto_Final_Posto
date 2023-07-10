@@ -29,6 +29,7 @@ namespace View.Formulario.MovimentacaoForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
 
             // Configurações do botão de novo
             novoButton = new Button();
@@ -36,6 +37,7 @@ namespace View.Formulario.MovimentacaoForm
             novoButton.Location = new Point(20, 640);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
+            novoButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(novoButton);
 
             // Configurações do botão de alterar
@@ -44,6 +46,7 @@ namespace View.Formulario.MovimentacaoForm
             alterarButton.Location = new Point(110, 640);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
+            alterarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(alterarButton);
 
             // Configurações do botão de excluir
@@ -52,6 +55,7 @@ namespace View.Formulario.MovimentacaoForm
             excluirButton.Location = new Point(200, 640);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(excluirButton_Click);
+            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             // Configurações do botão de refresh
@@ -60,6 +64,7 @@ namespace View.Formulario.MovimentacaoForm
             refreshButton.Location = new Point(290, 640);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
+            refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(refreshButton);
 
             // Configurações do botão de sair
@@ -68,7 +73,15 @@ namespace View.Formulario.MovimentacaoForm
             sairButton.Location = new Point(380, 640);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
+            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
+
+            //Painel para os botões
+            Panel panel = new Panel();
+            panel.Size = new Size(100, 50);
+            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.Dock = DockStyle.Bottom;
+            this.Controls.Add(panel);
 
             // Configurações do DataGridView
             movimentacaoDataGridView = new DataGridView();
