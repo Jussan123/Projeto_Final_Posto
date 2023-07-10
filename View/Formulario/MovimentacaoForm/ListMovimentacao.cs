@@ -29,12 +29,12 @@ namespace View.Formulario.MovimentacaoForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do botão de novo
             novoButton = new Button();
             novoButton.Text = "Novo";
-            novoButton.Location = new Point(20, 640);
+            novoButton.Location = new Point(20, 660);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
             novoButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -43,7 +43,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de alterar
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
-            alterarButton.Location = new Point(110, 640);
+            alterarButton.Location = new Point(225, 660);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
             alterarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -52,7 +52,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(200, 640);
+            excluirButton.Location = new Point(370, 660);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(excluirButton_Click);
             excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -61,7 +61,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de refresh
             refreshButton = new Button();
             refreshButton.Text = "Refresh";
-            refreshButton.Location = new Point(290, 640);
+            refreshButton.Location = new Point(510, 660);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
             refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -70,7 +70,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(380, 640);
+            sairButton.Location = new Point(660, 660);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -79,7 +79,7 @@ namespace View.Formulario.MovimentacaoForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
 

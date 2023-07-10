@@ -18,7 +18,7 @@ namespace View
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.Text = "Sistema de Controle de Abastecimento de Combustível";
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
         }
 
         private void InitializeComponent()

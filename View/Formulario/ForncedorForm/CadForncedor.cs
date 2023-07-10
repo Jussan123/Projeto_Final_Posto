@@ -35,7 +35,7 @@ namespace View.Formulario.FornecedorForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             nomeLabel = new Label();
@@ -97,7 +97,7 @@ namespace View.Formulario.FornecedorForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
@@ -160,7 +160,7 @@ namespace View.Formulario.FornecedorForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             fornecedorIdLabel = new Label();
@@ -246,7 +246,7 @@ namespace View.Formulario.FornecedorForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
@@ -304,7 +304,7 @@ namespace View.Formulario.FornecedorForm
             this.Text = "Excluir fornecedor";
             this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo fornecedorId
             fornecedorIdLabel = new Label();
@@ -351,7 +351,7 @@ namespace View.Formulario.FornecedorForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }

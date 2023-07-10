@@ -39,7 +39,7 @@
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do label de quantidade
             quantidadeLabel = new Label();
@@ -81,10 +81,10 @@
             lojaIdComboBox = new ComboBox();
             lojaIdComboBox.Location = new Point(100, 120);
             lojaIdComboBox.Size = new Size(150, 20);
-            List<Model.Loja> lojas = new List<Model.Loja>();
-            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
+            List<Controller.Loja> lojas = new List<Controller.Loja>();
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas())
             {
-                lojas.Add(loja);
+                lojaIdComboBox.Items.Add(loja);
             }
             lojaIdComboBox.ValueMember = "lojaId";
             lojaIdComboBox.DisplayMember = "nome";
@@ -103,10 +103,10 @@
             funcionarioIdComboBox = new ComboBox();
             funcionarioIdComboBox.Location = new Point(100, 150);
             funcionarioIdComboBox.Size = new Size(150, 20);
-            List<Model.Funcionario> funcionarios = new List<Model.Funcionario>();
-            foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
+            List<Controller.Funcionario> funcionarios = new List<Controller.Funcionario>();
+            foreach (Model.Funcionario funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarios.Add(funcionario);
+                funcionarioIdComboBox.Items.Add(funcionario);
             }
             funcionarioIdComboBox.ValueMember = "funcionarioId";
             funcionarioIdComboBox.DisplayMember = "nome";
@@ -125,10 +125,10 @@
             bombaIdComboBox = new ComboBox();
             bombaIdComboBox.Location = new Point(100, 180);
             bombaIdComboBox.Size = new Size(150, 20);
-            List<Model.Bomba> bombas = new List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            List<Controller.Bomba> bombas = new List<Controller.Bomba>();
+            foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
-                bombas.Add(bomba);
+                bombaIdComboBox.Items.Add(bomba);
             }
             bombaIdComboBox.ValueMember = "bombaId";
             bombaIdComboBox.DisplayMember = "nome";
@@ -147,10 +147,10 @@
             combustivelIdComboBox = new ComboBox();
             combustivelIdComboBox.Location = new Point(100, 210);
             combustivelIdComboBox.Size = new Size(150, 20);
-            List<Model.Combustivel> combustiveis = new List<Model.Combustivel>();
-            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
+            List<Controller.Combustivel> combustiveis = new List<Controller.Combustivel>();
+            foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
-                combustiveis.Add(combustivel);
+                combustivelIdComboBox.Items.Add(combustivel);
             }
             combustivelIdComboBox.ValueMember = "combustivelId";
             combustivelIdComboBox.DisplayMember = "nome";
@@ -168,10 +168,10 @@
             fornecedorIdComboBox = new ComboBox();
             fornecedorIdComboBox.Location = new Point(100, 240);
             fornecedorIdComboBox.Size = new Size(150, 20);
-            List<Model.Fornecedor> fornecedores = new List<Model.Fornecedor>();
-            foreach (Model.Fornecedor fornecedor in Model.Fornecedor.BuscaFornecedor())
+            List<Controller.Fornecedor> fornecedores = new List<Controller.Fornecedor>();
+            foreach (Model.Fornecedor fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                fornecedores.Add(fornecedor);
+                fornecedorIdComboBox.Items.Add(fornecedor);
             }
             fornecedorIdComboBox.ValueMember = "fornecedorId";
             fornecedorIdComboBox.DisplayMember = "nome";
@@ -203,7 +203,7 @@
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
@@ -319,7 +319,7 @@
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do label de movimentacaoId
             movimentacaoIdLabel = new Label();
@@ -332,10 +332,10 @@
             ComboBox movimentacaoIdComboBox = new ComboBox();
             movimentacaoIdComboBox.Location = new Point(100, 30);
             movimentacaoIdComboBox.Size = new Size(150, 20);
-            List<Model.Movimentacao> movimentacoes = new List<Model.Movimentacao>();
-            foreach (Model.Movimentacao movimentacao in Model.Movimentacao.BuscaMovimentacao())
+            List<Controller.Movimentacao> movimentacoes = new List<Controller.Movimentacao>();
+            foreach (Model.Movimentacao movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
-                movimentacoes.Add(movimentacao);
+                movimentacaoIdComboBox.Items.Add(movimentacao);
             }
             movimentacaoIdComboBox.ValueMember = "movimentacaoId";
             movimentacaoIdComboBox.DisplayMember = "movimentacaoId";
@@ -383,10 +383,10 @@
             lojaIdComboBox = new ComboBox();
             lojaIdComboBox.Location = new Point(100, 120);
             lojaIdComboBox.Size = new Size(150, 20);
-            List<Model.Loja> lojas = new List<Model.Loja>();
-            foreach (Model.Loja loja in Model.Loja.BuscaLoja())
+            List<Controller.Loja> lojas = new List<Controller.Loja>();
+            foreach (Model.Loja loja in Controller.Loja.ListaLojas())
             {
-                lojas.Add(loja);
+                lojaIdComboBox.Items.Add(loja);
             }
             lojaIdComboBox.ValueMember = "lojaId";
             lojaIdComboBox.DisplayMember = "nome";
@@ -405,10 +405,10 @@
             funcionarioIdComboBox = new ComboBox();
             funcionarioIdComboBox.Location = new Point(100, 150);
             funcionarioIdComboBox.Size = new Size(150, 20);
-            List<Model.Funcionario> funcionarios = new List<Model.Funcionario>();
-            foreach (Model.Funcionario funcionario in Model.Funcionario.BuscaFuncionario())
+            List<Controller.Funcionario> funcionarios = new List<Controller.Funcionario>();
+            foreach (Model.Funcionario funcionario in Controller.Funcionario.ListaFuncionario())
             {
-                funcionarios.Add(funcionario);
+                funcionarioIdComboBox.Items.Add(funcionario);
             }
             funcionarioIdComboBox.ValueMember = "funcionarioId";
             funcionarioIdComboBox.DisplayMember = "nome";
@@ -427,10 +427,10 @@
             bombaIdComboBox = new ComboBox();
             bombaIdComboBox.Location = new Point(100, 180);
             bombaIdComboBox.Size = new Size(150, 20);
-            List<Model.Bomba> bombas = new List<Model.Bomba>();
-            foreach (Model.Bomba bomba in Model.Bomba.BuscaBomba())
+            List<Controller.Bomba> bombas = new List<Controller.Bomba>();
+            foreach (Model.Bomba bomba in Controller.Bomba.ListarBombas())
             {
-                bombas.Add(bomba);
+                bombaIdComboBox.Items.Add(bomba);
             }
             bombaIdComboBox.ValueMember = "bombaId";
             bombaIdComboBox.DisplayMember = "bombaId";
@@ -451,10 +451,10 @@
             combustivelIdComboBox.Location = new Point(100, 210);
             combustivelIdComboBox.Size = new Size(150, 20);
             combustivelIdComboBox.Visible = false;
-            List<Model.Combustivel> combustiveis = new List<Model.Combustivel>();
-            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
+            List<Controller.Combustivel> combustiveis = new List<Controller.Combustivel>();
+            foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
-                combustiveis.Add(combustivel);
+                combustivelIdComboBox.Items.Add(combustivel);
             }
             combustivelIdComboBox.ValueMember = "combustivelId";
             combustivelIdComboBox.DisplayMember = "nome";
@@ -475,10 +475,10 @@
             fornecedorIdComboBox.Location = new Point(100, 240);
             fornecedorIdComboBox.Size = new Size(150, 20);
             fornecedorIdComboBox.Visible = false;
-            List<Model.Fornecedor> fornecedores = new List<Model.Fornecedor>();
-            foreach (Model.Fornecedor fornecedor in Model.Fornecedor.BuscaFornecedor())
+            List<Controller.Fornecedor> fornecedores = new List<Controller.Fornecedor>();
+            foreach (Model.Fornecedor fornecedor in Controller.Fornecedor.BuscaFornecedores())
             {
-                fornecedores.Add(fornecedor);
+                fornecedorIdComboBox.Items.Add(fornecedor);
             }
             fornecedorIdComboBox.ValueMember = "fornecedorId";
             fornecedorIdComboBox.DisplayMember = "nome";
@@ -509,7 +509,7 @@
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
@@ -621,10 +621,10 @@
             movimentacaoIdComboBox = new ComboBox();
             movimentacaoIdComboBox.Location = new Point(100, 20);
             movimentacaoIdComboBox.Size = new Size(150, 20);
-            List<Model.Movimentacao> movimentacoes = new List<Model.Movimentacao>();
-            foreach (Model.Movimentacao movimentacao in Model.Movimentacao.BuscaMovimentacao())
+            List<Controller.Movimentacao> movimentacoes = new List<Controller.Movimentacao>();
+            foreach (Model.Movimentacao movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
-                movimentacoes.Add(movimentacao);
+                movimentacaoIdComboBox.Items.Add(movimentacao);
             }
             movimentacaoIdComboBox.ValueMember = "movimentacaoId";
             movimentacaoIdComboBox.DisplayMember = "movimentacaoId";
@@ -656,7 +656,7 @@
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }

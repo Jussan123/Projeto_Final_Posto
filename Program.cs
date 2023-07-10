@@ -19,7 +19,7 @@ namespace View
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.Text = "Sistema de Controle de Abastecimento de Combustível";
-            this.BackColor = ColorTranslator.FromHtml("#FFFDE8");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
         }
 
         private void InitializeComponent()
@@ -37,7 +37,7 @@ namespace View
             imagemBox.Dock = DockStyle.Fill;
             imagemBox.Image = Image.FromFile(@"imagens\Bomba.png");
             imagemBox.Location = new Point(0, 24);
-            imagemBox.AutoSize = true;
+            imagemBox.Size = new Size(267, 400);
             this.Controls.Add(imagemBox);
 
             ToolStripMenuItem sistemaMenuItem = new ToolStripMenuItem("Sistema");
