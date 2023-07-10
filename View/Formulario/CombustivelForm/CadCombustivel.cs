@@ -192,7 +192,7 @@ namespace View.Formulario.CombustivelForm
         public void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(300,300);
             this.Text = "Edição de combustivel";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -288,8 +288,8 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 210);
-            gravarButton.Size = new Size(80, 20);
+            gravarButton.Location = new Point(80, 260);
+            gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 SalvaCombustivel();
                 LimpaTela();
@@ -300,8 +300,8 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 210);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(170, 260);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
@@ -370,9 +370,9 @@ namespace View.Formulario.CombustivelForm
         private void InitializeComponent()
         {
             this.Text = "Excluir combustivel";
-            this.Size = new Size(200, 300);
+            this.Size = new Size(300, 250);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#E6773A");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo combustivelId
             combustivelcombustivelIdLabel = new Label();
@@ -398,8 +398,8 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(20, 170);
-            excluirButton.Size = new Size(80, 20);
+            excluirButton.Location = new Point(80, 170);
+            excluirButton.Size = new Size(80, 30);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
                 ExcluiCombustivel();
                 LimpaTela();
@@ -410,8 +410,8 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 170);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(170, 170);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
@@ -419,7 +419,7 @@ namespace View.Formulario.CombustivelForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.BackColor = ColorTranslator.FromHtml("#E6773A");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }

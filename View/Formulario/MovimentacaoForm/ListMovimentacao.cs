@@ -43,7 +43,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de alterar
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
-            alterarButton.Location = new Point(225, 660);
+            alterarButton.Location = new Point(180, 660);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
             alterarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -52,7 +52,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(370, 660);
+            excluirButton.Location = new Point(350, 660);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(excluirButton_Click);
             excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -61,7 +61,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de refresh
             refreshButton = new Button();
             refreshButton.Text = "Refresh";
-            refreshButton.Location = new Point(510, 660);
+            refreshButton.Location = new Point(520, 660);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
             refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -70,7 +70,7 @@ namespace View.Formulario.MovimentacaoForm
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(660, 660);
+            sairButton.Location = new Point(690, 660);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -123,20 +123,23 @@ namespace View.Formulario.MovimentacaoForm
         private void NovoButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new CadMovimentacao());
+            this.ListaMovimentacao();
         }
 
         private void AlterarButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new FormEditaMovimentacao());
+            this.ListaMovimentacao();
         }
         private void excluirButton_Click(object sender, EventArgs e)
         {
             AbrirForm(new FormExcluiMovimentacao());
+            this.ListaMovimentacao();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            ListaMovimentacao();
+            this.ListaMovimentacao();
         }
 
         private void SairButton_Click(object sender, EventArgs e)

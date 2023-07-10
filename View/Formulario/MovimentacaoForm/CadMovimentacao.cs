@@ -182,7 +182,7 @@
             // Configurações do botão gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 280);
+            gravarButton.Location = new Point(80, 300);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 salvaMovimentacao();
@@ -194,7 +194,7 @@
             // Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 280);
+            sairButton.Location = new Point(170, 300);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -313,7 +313,7 @@
         public void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new Size(300, 250);
+            this.ClientSize = new Size(300, 300);
             this.Text = "Edição de movimentação";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -328,7 +328,7 @@
             this.Controls.Add(movimentacaoIdLabel);
 
             // Configurações do combobox de movimentacaoId
-            ComboBox movimentacaoIdComboBox = new ComboBox();
+            movimentacaoIdComboBox = new ComboBox();
             movimentacaoIdComboBox.Location = new Point(100, 30);
             movimentacaoIdComboBox.Size = new Size(150, 20);
             List<Controller.Movimentacao> movimentacoes = new List<Controller.Movimentacao>();
@@ -365,9 +365,8 @@
             tipoOperacaoComboBox = new ComboBox();
             tipoOperacaoComboBox.Location = new Point(100, 90);
             tipoOperacaoComboBox.Size = new Size(150, 20);
-            tipoOperacaoComboBox.Items.Add("Entrada");
-            tipoOperacaoComboBox.Items.Add("Saída");
-            tipoOperacaoComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            string [] tipoOperacao = {"Entrada", "Saida"};
+            tipoOperacaoComboBox.Items.AddRange(tipoOperacao);
             this.Controls.Add(tipoOperacaoComboBox);
 
             // Configurações do label de lojaId
@@ -445,7 +444,6 @@
             combustivelIdComboBox = new ComboBox();
             combustivelIdComboBox.Location = new Point(100, 210);
             combustivelIdComboBox.Size = new Size(150, 20);
-            combustivelIdComboBox.Visible = false;
             List<Controller.Combustivel> combustiveis = new List<Controller.Combustivel>();
             foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
@@ -453,10 +451,8 @@
             }
             combustivelIdComboBox.ValueMember = "combustivelId";
             combustivelIdComboBox.DisplayMember = "nome";
-            combustivelIdComboBox.DataSource = combustiveis;
             combustivelIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdComboBox);
-
             /*// Configurações do Label FornecedorId
             fornecedorIdLabel = new Label();
             fornecedorIdLabel.Text = "Fornecedor";
@@ -484,7 +480,7 @@
             // Configurações do botão de gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 210);
+            gravarButton.Location = new Point(80, 260);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (sender, e) => {
                 salvarMovimentacao();
@@ -496,7 +492,7 @@
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 210);
+            sairButton.Location = new Point(170, 260);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += (sender, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -526,12 +522,6 @@
                     MessageBox.Show("Selecione a movimentação");
                     return;
                 }
-                var tipoOperacaoSelecionada = ((Model.Movimentacao) tipoOperacaoComboBox.SelectedItem).tipoOperacao.ToString();
-                if (tipoOperacaoSelecionada == null)
-                {
-                    MessageBox.Show("Selecione o tipo de operação");
-                    return;
-                }
                 var lojaSelecionada = ((Model.Loja) lojaIdComboBox.SelectedItem).lojaId.ToString();
                 if (lojaSelecionada == null)
                 {
@@ -557,7 +547,7 @@
                 }
                 
                 movimentacao.movimentacaoId = movimentacaoSelecionada.ToString();
-                movimentacao.tipoOperacao = tipoOperacaoSelecionada.ToString();
+                movimentacao.tipoOperacao = tipoOperacaoComboBox.Text;
                 movimentacao.quantidade = quantidadeTextBox.Text;
                 movimentacao.lojaId = lojaSelecionada.ToString();
                 movimentacao.funcionarioId = funcionarioSelecionado.ToString();
@@ -572,7 +562,13 @@
                 {
                     movimentacao.fornecedorId = "0";
                 }
-                Controller.Movimentacao.AlteraMovimentacao( movimentacao.movimentacaoId, movimentacao.combustivelId, movimentacao.quantidade, movimentacao.tipoOperacao, movimentacao.lojaId, movimentacao.funcionarioId, movimentacao.bombaId);
+                Controller.Movimentacao.AlteraMovimentacao( movimentacao.movimentacaoId, 
+                                                            movimentacao.combustivelId, 
+                                                            movimentacao.quantidade, 
+                                                            movimentacao.tipoOperacao, 
+                                                            movimentacao.lojaId, 
+                                                            movimentacao.funcionarioId, 
+                                                            movimentacao.bombaId);
             }
             catch (Exception ex)
             {

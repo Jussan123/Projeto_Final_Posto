@@ -28,7 +28,7 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(270,200);
+            this.ClientSize = new System.Drawing.Size(270, 220);
             this.Text = "Cadastro de Bombas";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -119,7 +119,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(80, 160);
+            gravarButton.Location = new Point(80, 180);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
             gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -128,7 +128,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(170, 160);
+            sairButton.Location = new Point(170, 180);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -136,7 +136,7 @@ namespace View.Formulario.bombaForm
 
             //Painel para os botões
             Panel panel = new Panel();
-            panel.Size = new Size(90, 50);
+            panel.Size = new Size(80, 50);
             panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
@@ -215,7 +215,7 @@ namespace View.Formulario.bombaForm
         public void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300,400);
+            this.ClientSize = new System.Drawing.Size(300,300);
             this.Text = "Edição de Bomba";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -306,8 +306,8 @@ namespace View.Formulario.bombaForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 180);
-            gravarButton.Size = new Size(80, 20);
+            gravarButton.Location = new Point(80, 260);
+            gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 SalvaBomba();
                 LimpaTela();
@@ -318,7 +318,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 180);
+            sairButton.Location = new Point(170, 260);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -392,9 +392,9 @@ namespace View.Formulario.bombaForm
         private void InitializeComponent()
         {
             this.Text = "Excluir Bomba";
-            this.Size = new Size(300, 300);
+            this.Size = new Size(300, 250);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#E6773A");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo bombaId
             bombaIdLabel = new Label();
@@ -420,7 +420,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão Excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(20, 60);
+            excluirButton.Location = new Point(80, 210);
             excluirButton.Size = new Size(80, 20);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
                 ExcluiBomba();
@@ -432,7 +432,7 @@ namespace View.Formulario.bombaForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 60);
+            sairButton.Location = new Point(170, 210);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -441,7 +441,7 @@ namespace View.Formulario.bombaForm
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.BackColor = ColorTranslator.FromHtml("#E6773A");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
