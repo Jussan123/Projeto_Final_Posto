@@ -34,7 +34,7 @@
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(500, 400);
+            this.ClientSize = new System.Drawing.Size(300, 330);
             this.Text = "Cadastro de Movimentação";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -131,7 +131,7 @@
                 bombaIdComboBox.Items.Add(bomba);
             }
             bombaIdComboBox.ValueMember = "bombaId";
-            bombaIdComboBox.DisplayMember = "nome";
+            bombaIdComboBox.DisplayMember = "bombaId";
 //            bombaIdComboBox.DataSource = bombas;
             bombaIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(bombaIdComboBox);
@@ -182,8 +182,8 @@
             // Configurações do botão gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 270);
-            gravarButton.Size = new Size(80, 20);
+            gravarButton.Location = new Point(20, 280);
+            gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 salvaMovimentacao();
                 LimpaTela();
@@ -194,8 +194,8 @@
             // Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 270);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(100, 280);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
@@ -212,54 +212,53 @@
         {
             try
             {
-                Model.Movimentacao movimentacao = new Model.Movimentacao();
-                var combustivelSelecionado = (Model.Combustivel)combustivelIdComboBox.SelectedItem;
+                Controller.Movimentacao movimentacao = new Controller.Movimentacao();
+                var combustivelSelecionado = ((Model.Combustivel)combustivelIdComboBox.SelectedItem).combustivelId.ToString();
                 if (combustivelSelecionado == null)
                 {
                     MessageBox.Show("Selecione um combustível");
                     return;  
                 }
-                var bombaSelecionada = (Model.Bomba)bombaIdComboBox.SelectedItem;
+                var bombaSelecionada = ((Model.Bomba)bombaIdComboBox.SelectedItem).bombaId.ToString();
                 if (bombaSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma bomba");
                     return;
                 }
-                var funcionarioSelecionado = (Model.Funcionario)funcionarioIdComboBox.SelectedItem;
+                var funcionarioSelecionado = ((Model.Funcionario)funcionarioIdComboBox.SelectedItem).funcionarioId.ToString();
                 if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione um funcionário");
                     return;
                 }
-                var lojaSelecionada = (Model.Loja)lojaIdComboBox.SelectedItem;
+                var lojaSelecionada = ((Model.Loja)lojaIdComboBox.SelectedItem).lojaId.ToString();
                 if (lojaSelecionada == null)
                 {
                     MessageBox.Show("Selecione uma loja");
                     return;
                 }
-                var fornecedorSelecionado = (Model.Fornecedor)fornecedorIdComboBox.SelectedItem;
-                movimentacao.combustivelId = combustivelSelecionado.combustivelId;
-                movimentacao.bombaId = bombaSelecionada.bombaId;
-                movimentacao.funcionarioId = funcionarioSelecionado.funcionarioId;
-                movimentacao.lojaId = lojaSelecionada.lojaId;
-                movimentacao.quantidade = Convert.ToDecimal(quantidadeTextBox.Text);
+                movimentacao.combustivelId = combustivelSelecionado.ToString();
+                movimentacao.bombaId = bombaSelecionada.ToString();
+                movimentacao.funcionarioId = funcionarioSelecionado.ToString();
+                movimentacao.lojaId = lojaSelecionada.ToString();
+                movimentacao.quantidade = quantidadeTextBox.Text;
                 movimentacao.tipoOperacao = tipoOperacaoComboBox.Text;
                 if (movimentacao.tipoOperacao == "Entrada")
                 {
-                    movimentacao.fornecedorId = fornecedorSelecionado.fornecedorId;
+                    var fornecedorSelecionado = ((Model.Fornecedor)fornecedorIdComboBox.SelectedItem).fornecedorId.ToString();
+                    movimentacao.fornecedorId = fornecedorSelecionado.ToString();
                 }
                 else
                 {
-                    movimentacao.fornecedorId = 0;
+                    movimentacao.fornecedorId = "0";
                 }
                 Controller.Movimentacao.CadastraMovimentacao(movimentacao.combustivelId, movimentacao.quantidade.ToString(), movimentacao.tipoOperacao, movimentacao.lojaId, movimentacao.funcionarioId, movimentacao.bombaId, movimentacao.fornecedorId);
                 MessageBox.Show("Movimentação cadastrada com sucesso!");
             } catch (Exception ex)
             {
+                MessageBox.Show(ex.StackTrace);
                 MessageBox.Show("Erro ao cadastrar movimentação: " + ex.Message);
             }
-
-
         }
 
         private void LimpaTela()
@@ -314,7 +313,7 @@
         public void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new Size(300, 400);
+            this.ClientSize = new Size(300, 250);
             this.Text = "Edição de movimentação";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -324,8 +323,8 @@
             // Configurações do label de movimentacaoId
             movimentacaoIdLabel = new Label();
             movimentacaoIdLabel.Text = "Movimentação";
-            movimentacaoIdLabel.Location = new Point(20, 30);
-            movimentacaoIdLabel.Size = new Size(80, 20);
+            movimentacaoIdLabel.Location = new Point(10, 30);
+            movimentacaoIdLabel.Size = new Size(90, 20);
             this.Controls.Add(movimentacaoIdLabel);
 
             // Configurações do combobox de movimentacaoId
@@ -339,14 +338,13 @@
             }
             movimentacaoIdComboBox.ValueMember = "movimentacaoId";
             movimentacaoIdComboBox.DisplayMember = "movimentacaoId";
-            movimentacaoIdComboBox.DataSource = movimentacoes;
             movimentacaoIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(movimentacaoIdComboBox);
 
             // Configurações do label de quantidade
             quantidadeLabel = new Label();
             quantidadeLabel.Text = "Quantidade";
-            quantidadeLabel.Location = new Point(20, 60);
+            quantidadeLabel.Location = new Point(10, 60);
             quantidadeLabel.Size = new Size(80, 20);
             this.Controls.Add(quantidadeLabel);
 
@@ -358,8 +356,8 @@
 
             // Configurações do label de tipoOperacao
             tipoOperacaoLabel = new Label();
-            tipoOperacaoLabel.Text = "Tipo de operação";
-            tipoOperacaoLabel.Location = new Point(20, 90);
+            tipoOperacaoLabel.Text = "Operação";
+            tipoOperacaoLabel.Location = new Point(10, 90);
             tipoOperacaoLabel.Size = new Size(80, 20);
             this.Controls.Add(tipoOperacaoLabel);
 
@@ -375,7 +373,7 @@
             // Configurações do label de lojaId
             lojaIdLabel = new Label();
             lojaIdLabel.Text = "Loja";
-            lojaIdLabel.Location = new Point(20, 120);
+            lojaIdLabel.Location = new Point(10, 120);
             lojaIdLabel.Size = new Size(80, 20);
             this.Controls.Add(lojaIdLabel);
 
@@ -390,14 +388,13 @@
             }
             lojaIdComboBox.ValueMember = "lojaId";
             lojaIdComboBox.DisplayMember = "nome";
-            lojaIdComboBox.DataSource = lojas;
             lojaIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(lojaIdComboBox);
 
             // Configurações do label de funcionarioId
             funcionarioIdLabel = new Label();
             funcionarioIdLabel.Text = "Funcionário";
-            funcionarioIdLabel.Location = new Point(20, 150);
+            funcionarioIdLabel.Location = new Point(10, 150);
             funcionarioIdLabel.Size = new Size(80, 20);
             this.Controls.Add(funcionarioIdLabel);
 
@@ -412,14 +409,13 @@
             }
             funcionarioIdComboBox.ValueMember = "funcionarioId";
             funcionarioIdComboBox.DisplayMember = "nome";
-            funcionarioIdComboBox.DataSource = funcionarios;
             funcionarioIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(funcionarioIdComboBox);
 
             // Configurações do label de bombaId
             bombaIdLabel = new Label();
             bombaIdLabel.Text = "Bomba";
-            bombaIdLabel.Location = new Point(20, 180);
+            bombaIdLabel.Location = new Point(10, 180);
             bombaIdLabel.Size = new Size(80, 20);
             this.Controls.Add(bombaIdLabel);
 
@@ -434,14 +430,13 @@
             }
             bombaIdComboBox.ValueMember = "bombaId";
             bombaIdComboBox.DisplayMember = "bombaId";
-            bombaIdComboBox.DataSource = bombas;
             bombaIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(bombaIdComboBox);
 
             // Configurações do label de combustivelId
             combustivelIdLabel = new Label();
             combustivelIdLabel.Text = "Combustível";
-            combustivelIdLabel.Location = new Point(20, 210);
+            combustivelIdLabel.Location = new Point(10, 210);
             combustivelIdLabel.Size = new Size(80, 20);
             combustivelIdLabel.Visible = false;
             this.Controls.Add(combustivelIdLabel);
@@ -462,10 +457,10 @@
             combustivelIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(combustivelIdComboBox);
 
-            // Configurações do Label FornecedorId
+            /*// Configurações do Label FornecedorId
             fornecedorIdLabel = new Label();
             fornecedorIdLabel.Text = "Fornecedor";
-            fornecedorIdLabel.Location = new Point(20, 240);
+            fornecedorIdLabel.Location = new Point(10, 240);
             fornecedorIdLabel.Size = new Size(80, 20);
             fornecedorIdLabel.Visible = false;
             this.Controls.Add(fornecedorIdLabel);
@@ -484,12 +479,13 @@
             fornecedorIdComboBox.DisplayMember = "nome";
             fornecedorIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(fornecedorIdComboBox);
+            */
 
             // Configurações do botão de gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 270);
-            gravarButton.Size = new Size(80, 20);
+            gravarButton.Location = new Point(20, 210);
+            gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (sender, e) => {
                 salvarMovimentacao();
                 LimpaTela();
@@ -500,15 +496,15 @@
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 270);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(100, 210);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (sender, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
 
             //Painel para os botões
             Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
+            panel.Size = new Size(90, 50);
             panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
@@ -524,61 +520,63 @@
             try
             {
                 Controller.Movimentacao movimentacao = new Controller.Movimentacao();
-                var movimentacaoSelecionada = (Controller.Movimentacao) movimentacaoIdComboBox.SelectedItem;
+                var movimentacaoSelecionada = ((Model.Movimentacao) movimentacaoIdComboBox.SelectedItem).movimentacaoId.ToString();
                 if (movimentacaoSelecionada == null)
                 {
                     MessageBox.Show("Selecione a movimentação");
                     return;
                 }
-                var tipoOperacaoSelecionada = (Controller.Movimentacao) tipoOperacaoComboBox.SelectedItem;
+                var tipoOperacaoSelecionada = ((Model.Movimentacao) tipoOperacaoComboBox.SelectedItem).tipoOperacao.ToString();
                 if (tipoOperacaoSelecionada == null)
                 {
                     MessageBox.Show("Selecione o tipo de operação");
                     return;
                 }
-                var lojaSelecionada = (Model.Loja) lojaIdComboBox.SelectedItem;
+                var lojaSelecionada = ((Model.Loja) lojaIdComboBox.SelectedItem).lojaId.ToString();
                 if (lojaSelecionada == null)
                 {
                     MessageBox.Show("Selecione a loja");
                     return;
                 }
-                var funcionarioSelecionado = (Model.Funcionario) funcionarioIdComboBox.SelectedItem;
+                var funcionarioSelecionado = ((Model.Funcionario) funcionarioIdComboBox.SelectedItem).funcionarioId.ToString();
                 if (funcionarioSelecionado == null)
                 {
                     MessageBox.Show("Selecione o funcionário");
                     return;
                 }
-                var bombaSelecionada = (Model.Bomba) bombaIdComboBox.SelectedItem;
+                var bombaSelecionada = ((Model.Bomba) bombaIdComboBox.SelectedItem).bombaId.ToString();
                 if (bombaSelecionada == null)
                 {
                     MessageBox.Show("Selecione a bomba");
                     return;                }
-                var combustivelSelecionado = (Model.Combustivel) combustivelIdComboBox.SelectedItem;
+                var combustivelSelecionado = ((Model.Combustivel) combustivelIdComboBox.SelectedItem).combustivelId.ToString();
                 if (combustivelSelecionado == null)
                 {
                     MessageBox.Show("Selecione o combustível");
                     return;
                 }
-                var fornecedorSelecionado = (Model.Fornecedor) fornecedorIdComboBox.SelectedItem;
-                movimentacao.movimentacaoId = movimentacaoSelecionada.movimentacaoId.ToString();
-                movimentacao.tipoOperacao = tipoOperacaoSelecionada.tipoOperacao;
+                
+                movimentacao.movimentacaoId = movimentacaoSelecionada.ToString();
+                movimentacao.tipoOperacao = tipoOperacaoSelecionada.ToString();
                 movimentacao.quantidade = quantidadeTextBox.Text;
-                movimentacao.lojaId = lojaSelecionada.lojaId.ToString();
-                movimentacao.funcionarioId = funcionarioSelecionado.funcionarioId.ToString();
-                movimentacao.bombaId = bombaSelecionada.bombaId.ToString();
-                movimentacao.combustivelId = combustivelSelecionado.combustivelId.ToString();
+                movimentacao.lojaId = lojaSelecionada.ToString();
+                movimentacao.funcionarioId = funcionarioSelecionado.ToString();
+                movimentacao.bombaId = bombaSelecionada.ToString();
+                movimentacao.combustivelId = combustivelSelecionado.ToString();
                 if (movimentacao.tipoOperacao == "Entrada")
                 {
-                    movimentacao.fornecedorId = fornecedorSelecionado.fornecedorId.ToString();
+                    var fornecedorSelecionado = (Model.Fornecedor) fornecedorIdComboBox.SelectedItem;
+                    movimentacao.fornecedorId = fornecedorSelecionado.ToString();
                 }
                 else
                 {
                     movimentacao.fornecedorId = "0";
                 }
-                Controller.Movimentacao.AlteraMovimentacao( movimentacao.movimentacaoId, movimentacao.combustivelId, movimentacao.quantidade, movimentacao.tipoOperacao, movimentacao.lojaId, movimentacao.funcionarioId, movimentacao.bombaId, movimentacao.fornecedorId);
+                Controller.Movimentacao.AlteraMovimentacao( movimentacao.movimentacaoId, movimentacao.combustivelId, movimentacao.quantidade, movimentacao.tipoOperacao, movimentacao.lojaId, movimentacao.funcionarioId, movimentacao.bombaId);
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.StackTrace);
                 MessageBox.Show("Erro ao salvar movimentação: " + ex.Message);
             }
         }
@@ -608,13 +606,13 @@
             this.Text = "Excluir Movimentação";
             this.Size = new Size(300, 150);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#F7E0A3");
+            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do label de movimentacaoId
             movimentacaoIdLabel = new Label();
             movimentacaoIdLabel.Text = "Movimentação";
-            movimentacaoIdLabel.Location = new Point(20, 20);
-            movimentacaoIdLabel.Size = new Size(80, 20);
+            movimentacaoIdLabel.Location = new Point(10, 20);
+            movimentacaoIdLabel.Size = new Size(90, 20);
             this.Controls.Add(movimentacaoIdLabel);
 
             // Configurações do combobox de movimentacaoId
@@ -628,15 +626,14 @@
             }
             movimentacaoIdComboBox.ValueMember = "movimentacaoId";
             movimentacaoIdComboBox.DisplayMember = "movimentacaoId";
-            movimentacaoIdComboBox.DataSource = movimentacoes;
             movimentacaoIdComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.Controls.Add(movimentacaoIdComboBox);
 
             // Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(20, 60);
-            excluirButton.Size = new Size(80, 20);
+            excluirButton.Location = new Point(80, 70);
+            excluirButton.Size = new Size(80, 30);
             excluirButton.Click += (sender, e) => {
                 excluirMovimentacao();
                 LimpaTela();
@@ -647,8 +644,8 @@
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 60);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(170, 70);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (sender, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
@@ -656,7 +653,7 @@
             //Painel para os botões
             Panel panel = new Panel();
             panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
+            panel.BackColor = ColorTranslator.FromHtml("#E6773A");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
         }
@@ -671,13 +668,13 @@
             try
             {
                 Controller.Movimentacao movimentacao = new Controller.Movimentacao();
-                var movimentacaoSelecionada = (Controller.Movimentacao) movimentacaoIdComboBox.SelectedItem;
+                var movimentacaoSelecionada = ((Model.Movimentacao)movimentacaoIdComboBox.SelectedItem).movimentacaoId.ToString();
                 if (movimentacaoSelecionada == null)
                 {
                     MessageBox.Show("Selecione a movimentação");
                     return;
                 }
-                movimentacao.movimentacaoId = movimentacaoSelecionada.movimentacaoId.ToString();
+                movimentacao.movimentacaoId = movimentacaoSelecionada.ToString();
                 Controller.Movimentacao.DeletaMovimentacao(movimentacao.movimentacaoId);
             }
             catch (Exception ex)

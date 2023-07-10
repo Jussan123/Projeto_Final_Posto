@@ -44,7 +44,7 @@ namespace View.Formulario.CombustivelForm
             // Configurações do botão de novo 
             novoButton = new Button();
             novoButton.Text = "Novo";
-            novoButton.Location = new Point(20, 340);
+            novoButton.Location = new Point(20, 355);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
             novoButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -53,7 +53,7 @@ namespace View.Formulario.CombustivelForm
             // Configurações do botão de alterar 
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
-            alterarButton.Location = new Point(110, 340);
+            alterarButton.Location = new Point(110, 355);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
             alterarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -62,7 +62,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(200, 340);
+            excluirButton.Location = new Point(200, 355);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(ExcluirButton_Click);
             excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -71,7 +71,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão de refresh
             refreshButton = new Button();
             refreshButton.Text = "Refresh";
-            refreshButton.Location = new Point(290, 340);
+            refreshButton.Location = new Point(290, 355);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
             refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
@@ -80,7 +80,7 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(380, 340);
+            sairButton.Location = new Point(380, 355);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");

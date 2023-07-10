@@ -47,7 +47,7 @@ namespace View.Formulario.bombaForm
             combustivelIdComboBox.Location = new Point(100, 40);
             combustivelIdComboBox.Size = new Size(150, 20);
             List<Controller.Combustivel> combustiveis = new List<Controller.Combustivel>();
-            foreach (Model.Combustivel combustivel in Model.Combustivel.BuscaCombustivel())
+            foreach (Model.Combustivel combustivel in Controller.Combustivel.ListaCombustivel())
             {
                 combustivelIdComboBox.Items.Add(combustivel);
             }
@@ -136,7 +136,7 @@ namespace View.Formulario.bombaForm
 
             //Painel para os botões
             Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
+            panel.Size = new Size(90, 50);
             panel.BackColor = ColorTranslator.FromHtml("#4056A1");
             panel.Dock = DockStyle.Bottom;
             this.Controls.Add(panel);
