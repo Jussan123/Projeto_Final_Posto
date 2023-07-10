@@ -225,8 +225,8 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(20, 180);
-            gravarButton.Size = new Size(80, 20);
+            gravarButton.Location = new Point(80, 360);
+            gravarButton.Size = new Size(80, 30);
             gravarButton.Click += (ScrollBarRenderer, e) =>{
                 SalvaFornecedor();
                 LimpaTela();
@@ -237,8 +237,8 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 180);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(170, 360);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
@@ -330,8 +330,8 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(20, 60);
-            excluirButton.Size = new Size(80, 20);
+            excluirButton.Location = new Point(80, 260);
+            excluirButton.Size = new Size(80, 30);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
                 ExcluiFornecedor();
                 LimpaTela();
@@ -342,8 +342,8 @@ namespace View.Formulario.FornecedorForm
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 60);
-            sairButton.Size = new Size(80, 20);
+            sairButton.Location = new Point(170, 260);
+            sairButton.Size = new Size(80, 30);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
             sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
