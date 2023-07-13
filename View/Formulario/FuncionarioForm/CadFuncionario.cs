@@ -34,49 +34,48 @@ namespace View.Formulario.FuncionarioForm
         private void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300, 260);
+            this.ClientSize = new System.Drawing.Size(300, 220);
             this.Text = "Cadastro de funcionarios";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do Nome
             nomeLabel = new Label();
             nomeLabel.Text = "Nome:";
-            nomeLabel.Location = new Point(16, 30);
+            nomeLabel.Location = new Point(16, 35);
             nomeLabel.Size = new Size(80, 20);
             this.Controls.Add(nomeLabel);
 
             //Configurações do campo texto do Nome
             nomeTextBox = new TextBox();
-            nomeTextBox.Location = new Point(82, 30);
+            nomeTextBox.Location = new Point(60, 30);
             nomeTextBox.Size = new Size(150, 20);
             this.Controls.Add(nomeTextBox);
 
             //Configurações do senha
             senhaLabel = new Label();
             senhaLabel.Text = "Senha:";
-            senhaLabel.Location = new Point(16, 60);
+            senhaLabel.Location = new Point(16, 65);
             senhaLabel.Size = new Size(80, 20);
             this.Controls.Add(senhaLabel);
 
             //Configurações do campo texto do senha
             senhaTextBox = new TextBox();
-            senhaTextBox.Location = new Point(82, 60);
+            senhaTextBox.Location = new Point(60, 60);
             senhaTextBox.Size = new Size(150, 20);
             this.Controls.Add(senhaTextBox);
 
             //Configurações do funcao
             funcaoLabel = new Label();
             funcaoLabel.Text = "Função:";
-            funcaoLabel.Location = new Point(10, 90);
+            funcaoLabel.Location = new Point(10, 95);
             funcaoLabel.Size = new Size(80, 20);
             this.Controls.Add(funcaoLabel);
 
             //Configurações do campo texto do funcao
             funcaoComboBox = new ComboBox();
-            funcaoComboBox.Location = new Point(82, 90);
+            funcaoComboBox.Location = new Point(60, 90);
             funcaoComboBox.Size = new Size(150, 20);
             string [] funcao = {"Admin", "User"};
             funcaoComboBox.Items.AddRange(funcao);
@@ -86,13 +85,13 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do lojaId
             lojaIdLabel = new Label();
             lojaIdLabel.Text = "Loja:";
-            lojaIdLabel.Location = new Point(25, 120);
+            lojaIdLabel.Location = new Point(25, 125);
             lojaIdLabel.Size = new Size(80, 20);
             this.Controls.Add(lojaIdLabel);
 
             //Configurações do campo texto do lojaId
             lojaIdCb = new ComboBox();
-            lojaIdCb.Location = new Point(82, 120);
+            lojaIdCb.Location = new Point(60, 120);
             lojaIdCb.Size = new Size(150, 20);
             List<Model.Loja> listaLoja = new List<Model.Loja>();
             foreach (Model.Loja loja in Controller.Loja.ListaLojas())
@@ -107,40 +106,32 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do email
             emailLabel = new Label();
             emailLabel.Text = "Email:";
-            emailLabel.Location = new Point(19, 150);
+            emailLabel.Location = new Point(19, 155);
             emailLabel.Size = new Size(80, 20);
             this.Controls.Add(emailLabel);
 
             //Configurações do campo texto do email
             emailTextBox = new TextBox();
-            emailTextBox.Location = new Point(82, 150);
+            emailTextBox.Location = new Point(60, 150);
             emailTextBox.Size = new Size(150, 20);
             this.Controls.Add(emailTextBox);
             
             //Configurações do botao gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(72, 180);
+            gravarButton.Location = new Point(40, 180);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(152, 180);
+            sairButton.Location = new Point(120, 180);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
 
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
         private void gravarButton_Click(object sender, EventArgs e)
         {
@@ -214,12 +205,11 @@ namespace View.Formulario.FuncionarioForm
         public void InitializeComponent()
         {
             //Configuração da janela do formulário
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(300, 400);
             this.Text = "Edição de funcionario";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             funcionarioIdLabel = new Label();
@@ -321,31 +311,22 @@ namespace View.Formulario.FuncionarioForm
             //Configurações do botão Gravar
             gravarButton = new Button();
             gravarButton.Text = "Gravar";
-            gravarButton.Location = new Point(70, 260);
+            gravarButton.Location = new Point(20, 220);
             gravarButton.Size = new Size(80, 20);
             gravarButton.Click += (ScrollBarRenderer, e) =>
             {
                 salvaFuncionario();
                 LimpaTela();
             };
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(150, 260);
+            sairButton.Location = new Point(100, 220);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
 
         public FormEditaFuncionario()
@@ -416,7 +397,6 @@ namespace View.Formulario.FuncionarioForm
             this.Text = "Excluir funcionario";
             this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo funcionarioId
             funcionarioIdLabel = new Label();
@@ -449,7 +429,6 @@ namespace View.Formulario.FuncionarioForm
                 ExcluiFuncionario();
                 LimpaTela();
             };
-            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             //Configurações do botão Sair
@@ -458,15 +437,7 @@ namespace View.Formulario.FuncionarioForm
             sairButton.Location = new Point(100, 60);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
 
         public FormExcluiFuncionario()

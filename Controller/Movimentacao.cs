@@ -22,32 +22,32 @@ namespace Controller
         public string fornecedorId { get; set; }
 
         public static Model.Movimentacao CadastraMovimentacao(
-            string combustivelId,
+            int combustivelId,
             string quantidade,
             string tipoOperacao,
-            string lojaId,
-            string funcionarioId,
-            string bombaId,
-            string fornecedorId
+            int lojaId,
+            int funcionarioId,
+            int bombaId,
+            int fornecedorId
         )
         {
             decimal valor;
-            if (Model.Loja.BuscaLojaId(Convert.ToInt32(lojaId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, loja não encontrada");
-            if (Model.Bomba.BuscaBombaPorId(Convert.ToInt32(bombaId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, bomba não encontrada");
-            if (Model.Funcionario.BuscaFuncionarioPorId(Convert.ToInt32(funcionarioId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
+            if (Model.Loja.BuscaLojaId(lojaId) == null) throw new System.Exception("Erro ao cadastrar movimentação, loja não encontrada");
+            if (Model.Bomba.BuscaBombaPorId(bombaId) == null) throw new System.Exception("Erro ao cadastrar movimentação, bomba não encontrada");
+            if (Model.Funcionario.BuscaFuncionarioPorId(funcionarioId) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
             if (tipoOperacao != "Entrada" && tipoOperacao != "Saida") throw new System.Exception("Erro ao cadastrar movimentação, tipo de operação inválido('Entrada' ou 'Saida')");
             if (decimal.Parse(quantidade) <= 0) throw new System.Exception("Erro ao cadastrar movimentação, quantidade inválida");
             try
             {
                 if (tipoOperacao == "Entrada")
                 {
-                    decimal precoCompra = Model.Combustivel.BuscaPrecoCombustivel(Convert.ToInt32(combustivelId)).precoCompra;
+                    decimal precoCompra = Model.Combustivel.BuscaPrecoCombustivel(combustivelId).precoCompra;
                     valor = decimal.Parse(quantidade) * precoCompra;
-                    if (Model.Fornecedor.BuscaFornecedorPorId(Convert.ToInt32(fornecedorId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
+                    if (Model.Fornecedor.BuscaFornecedorPorId(fornecedorId) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
                 } else {
-                    decimal precoVenda = Model.Combustivel.BuscaPrecoCombustivel(Convert.ToInt32(combustivelId)).precoVenda;
+                    decimal precoVenda = Model.Combustivel.BuscaPrecoCombustivel(combustivelId).precoVenda;
                     valor = decimal.Parse(quantidade) * precoVenda;
-                    fornecedorId = null;
+                    fornecedorId = 0;
                 }
             } catch (System.Exception e)
             {
@@ -55,25 +55,25 @@ namespace Controller
 
             }
             Model.Movimentacao movimentacao = new  Model.Movimentacao(
-                Convert.ToInt32(combustivelId),
+                combustivelId,
                 decimal.Parse(quantidade),
                 tipoOperacao,
                 valor,
-                Convert.ToInt32(lojaId),
-                Convert.ToInt32(funcionarioId),
-                Convert.ToInt32(bombaId),
-                Convert.ToInt32(fornecedorId)
+                lojaId,
+                funcionarioId,
+                bombaId,
+                fornecedorId
             );
             
             try
             {
                 if (tipoOperacao == "Entrada")
                 {
-                    decimal somaQuantidade = Model.Bomba.BuscaVolumeBombaPorId(Convert.ToInt32(bombaId)) + decimal.Parse(quantidade);
-                    Model.Bomba.UpdateBombaMovimentacao(Convert.ToInt32(bombaId), somaQuantidade);
+                    decimal somaQuantidade = Model.Bomba.BuscaVolumeBombaPorId(bombaId) + decimal.Parse(quantidade);
+                    Model.Bomba.UpdateBombaMovimentacao(bombaId, somaQuantidade);
                 } else {
-                    decimal subtracaoQuantidade = Model.Bomba.BuscaVolumeBombaPorId(Convert.ToInt32(bombaId)) - decimal.Parse(quantidade);
-                    Model.Bomba.UpdateBombaMovimentacao(Convert.ToInt32(bombaId), subtracaoQuantidade);
+                    decimal subtracaoQuantidade = Model.Bomba.BuscaVolumeBombaPorId(bombaId) - decimal.Parse(quantidade);
+                    Model.Bomba.UpdateBombaMovimentacao(bombaId, subtracaoQuantidade);
                 } 
             } catch (System.Exception e)
             {
@@ -100,7 +100,8 @@ namespace Controller
             string tipoOperacao,
             string lojaId,
             string funcionarioId,
-            string bombaId
+            string bombaId,
+            string fornecedorId
         )
         {
             decimal valor;
@@ -117,10 +118,11 @@ namespace Controller
                 {
                     decimal precoCompra = Model.Combustivel.BuscaPrecoCombustivel(int.Parse(combustivelId)).precoCompra;
                     valor = decimal.Parse(quantidade) * precoCompra;
-                    //if (Model.Fornecedor.BuscaFornecedorPorId(int.Parse(fornecedorId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
+                    if (Model.Fornecedor.BuscaFornecedorPorId(int.Parse(fornecedorId)) == null) throw new System.Exception("Erro ao cadastrar movimentação, fornecedor não encontrado");
                 } else {
                     decimal precoVenda = Model.Combustivel.BuscaPrecoCombustivel(int.Parse(combustivelId)).precoVenda;
                     valor = decimal.Parse(quantidade) * precoVenda;
+                    fornecedorId = "0";
                 }
             } catch (System.Exception e)
             {
@@ -135,12 +137,15 @@ namespace Controller
                 valor,
                 int.Parse(lojaId),
                 int.Parse(funcionarioId),
-                int.Parse(bombaId)
+                int.Parse(bombaId),
+                int.Parse(fornecedorId)
             );
         }
 
         public static void DeletaMovimentacao(string movimentacaoId)
         {
+            if (Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)) == null) throw new System.Exception("Erro ao deletar movimentação, movimentação não encontrada");
+            Model.Movimentacao.DeleteMovimentacao(int.Parse(movimentacaoId));
             // Comparar se a movimentação é de entrada ou saída
             // Se for entrada, subtrair o volume da bomba
             // Se for saída, somar o volume da bomba
@@ -152,8 +157,6 @@ namespace Controller
                 decimal somaQuantidade = Model.Bomba.BuscaVolumeBombaPorId(Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)).bombaId) + Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)).quantidade;
                 Model.Bomba.UpdateBombaMovimentacao(Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)).bombaId, somaQuantidade);
             }
-            if (Model.Movimentacao.BuscaMovimentacaoPorId(int.Parse(movimentacaoId)) == null) throw new System.Exception("Erro ao deletar movimentação, movimentação não encontrada");
-            Model.Movimentacao.DeleteMovimentacao(int.Parse(movimentacaoId));
         }
 
         

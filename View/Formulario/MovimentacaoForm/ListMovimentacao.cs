@@ -24,64 +24,51 @@ namespace View.Formulario.MovimentacaoForm
         private void InitializeComponent()
         {
             // Configurações da janela do formulário
-            this.ClientSize = new System.Drawing.Size(480, 400);
+            this.ClientSize = new System.Drawing.Size(800, 700);
             this.Text = "Listar movimentacoes";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             // Configurações do botão de novo
             novoButton = new Button();
             novoButton.Text = "Novo";
-            novoButton.Location = new Point(20, 660);
+            novoButton.Location = new Point(20, 640);
             novoButton.Size = new Size(80, 30);
             novoButton.Click += new EventHandler(NovoButton_Click);
-            novoButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(novoButton);
 
             // Configurações do botão de alterar
             alterarButton = new Button();
             alterarButton.Text = "Alterar";
-            alterarButton.Location = new Point(225, 660);
+            alterarButton.Location = new Point(110, 640);
             alterarButton.Size = new Size(80, 30);
             alterarButton.Click += new EventHandler(AlterarButton_Click);
-            alterarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(alterarButton);
 
             // Configurações do botão de excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(370, 660);
+            excluirButton.Location = new Point(200, 640);
             excluirButton.Size = new Size(80, 30);
             excluirButton.Click += new EventHandler(excluirButton_Click);
-            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             // Configurações do botão de refresh
             refreshButton = new Button();
             refreshButton.Text = "Refresh";
-            refreshButton.Location = new Point(510, 660);
+            refreshButton.Location = new Point(290, 640);
             refreshButton.Size = new Size(80, 30);
             refreshButton.Click += new EventHandler(RefreshButton_Click);
-            refreshButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(refreshButton);
 
             // Configurações do botão de sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(660, 660);
+            sairButton.Location = new Point(380, 640);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(SairButton_Click);
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
 
             // Configurações do DataGridView
             movimentacaoDataGridView = new DataGridView();
@@ -100,14 +87,14 @@ namespace View.Formulario.MovimentacaoForm
             movimentacaoDataGridView.Columns.Add("fornecedorId", "Fornecedor");
             foreach (var movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
-                movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId,
-                                                    movimentacao.combustivelId,
-                                                    movimentacao.quantidade,
-                                                    movimentacao.tipoOperacao,
-                                                    movimentacao.dataHora,
+                movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId, 
+                                                    movimentacao.combustivelId, 
+                                                    movimentacao.quantidade, 
+                                                    movimentacao.tipoOperacao, 
+                                                    movimentacao.dataHora, 
                                                     movimentacao.valor,
-                                                    movimentacao.lojaId,
-                                                    movimentacao.funcionarioId,
+                                                    movimentacao.lojaId, 
+                                                    movimentacao.funcionarioId, 
                                                     movimentacao.bombaId,
                                                     movimentacao.fornecedorId);
             }
@@ -117,7 +104,7 @@ namespace View.Formulario.MovimentacaoForm
             movimentacaoDataGridView.DefaultCellStyle.Font = new Font("TrebuchetMS", 10, FontStyle.Regular);
             movimentacaoDataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
             movimentacaoDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            this.Controls.Add(movimentacaoDataGridView);
+            this.Controls.Add(movimentacaoDataGridView);        
         }
 
         private void NovoButton_Click(object sender, EventArgs e)
@@ -157,14 +144,14 @@ namespace View.Formulario.MovimentacaoForm
             movimentacaoDataGridView.Rows.Clear();
             foreach (var movimentacao in Controller.Movimentacao.ListaMovimentacoes())
             {
-                movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId,
-                                                    movimentacao.combustivelId,
-                                                    movimentacao.quantidade,
-                                                    movimentacao.tipoOperacao,
-                                                    movimentacao.dataHora,
+                movimentacaoDataGridView.Rows.Add(movimentacao.movimentacaoId, 
+                                                    movimentacao.combustivelId, 
+                                                    movimentacao.quantidade, 
+                                                    movimentacao.tipoOperacao, 
+                                                    movimentacao.dataHora, 
                                                     movimentacao.valor,
-                                                    movimentacao.lojaId,
-                                                    movimentacao.funcionarioId,
+                                                    movimentacao.lojaId, 
+                                                    movimentacao.funcionarioId, 
                                                     movimentacao.bombaId,
                                                     movimentacao.fornecedorId);
             }

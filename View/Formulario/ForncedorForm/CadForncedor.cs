@@ -35,7 +35,6 @@ namespace View.Formulario.FornecedorForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             nomeLabel = new Label();
@@ -82,7 +81,6 @@ namespace View.Formulario.FornecedorForm
             gravarButton.Location = new Point(70, 120);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
@@ -91,15 +89,7 @@ namespace View.Formulario.FornecedorForm
             sairButton.Location = new Point(160, 120);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
          private void gravarButton_Click(object sender, EventArgs e)
         {
@@ -160,7 +150,6 @@ namespace View.Formulario.FornecedorForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             fornecedorIdLabel = new Label();
@@ -231,7 +220,6 @@ namespace View.Formulario.FornecedorForm
                 SalvaFornecedor();
                 LimpaTela();
             };
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão Sair
@@ -240,15 +228,7 @@ namespace View.Formulario.FornecedorForm
             sairButton.Location = new Point(100, 180);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
         
         public FormEditaFornecedor()
@@ -304,7 +284,6 @@ namespace View.Formulario.FornecedorForm
             this.Text = "Excluir fornecedor";
             this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do rótulo fornecedorId
             fornecedorIdLabel = new Label();
@@ -336,7 +315,6 @@ namespace View.Formulario.FornecedorForm
                 ExcluiFornecedor();
                 LimpaTela();
             };
-            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             //Configurações do botão Sair
@@ -345,15 +323,7 @@ namespace View.Formulario.FornecedorForm
             sairButton.Location = new Point(100, 60);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
 
         public FormExcluiFornecedor()

@@ -100,7 +100,7 @@ namespace Model
             return tipoOperacao;
         }
 
-        public static Movimentacao UpdateMovimentacao(int movimentacaoId, int combustivelId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId)
+        public static Movimentacao UpdateMovimentacao(int movimentacaoId, int combustivelId, decimal quantidade, string tipoOperacao, decimal valor, int lojaId, int funcionarioId, int bombaId, int fornecedorId)
         {
             DataBase db = new DataBase();
             Movimentacao movimentacao = db.Movimentacoes.Find(movimentacaoId);
@@ -112,7 +112,7 @@ namespace Model
             movimentacao.lojaId = lojaId;
             movimentacao.funcionarioId = funcionarioId;
             movimentacao.bombaId = bombaId;
-
+            movimentacao.fornecedorId = fornecedorId;
             db.SaveChanges();
             return movimentacao;
         }

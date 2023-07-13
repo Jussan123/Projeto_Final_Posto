@@ -7,7 +7,11 @@ namespace View
 {
     public partial class InicioForm : Form
     {
+        public bool admin {  get; set; }
+
         private ToolStripStatusLabel dateTimeLabel; //Adicionado o rótulo para exibir a data e a hora
+
+
 
         public InicioForm()
         {
@@ -151,7 +155,7 @@ namespace View
         {
           //  [STAThread]
            // static void Main()
-            //{
+            //{ 
             //    Application.EnableVisualStyles();
             //    Application.SetCompatibleTextRenderingDefault(false);
             //    Application.Run(new InicioForm());

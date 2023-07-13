@@ -39,8 +39,6 @@ namespace View.Formulario.CombustivelForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
-
 
             //Configurações de rótulo Nome do Combustivel
             nomeLabel = new Label();
@@ -113,7 +111,6 @@ namespace View.Formulario.CombustivelForm
             gravarButton.Location = new Point(70, 210);
             gravarButton.Size = new Size(80, 30);
             gravarButton.Click += new EventHandler(gravarButton_Click);
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão sair
@@ -122,15 +119,7 @@ namespace View.Formulario.CombustivelForm
             sairButton.Location = new Point(160, 210);
             sairButton.Size = new Size(80, 30);
             sairButton.Click += new EventHandler(sairButton_Click);
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
          private void gravarButton_Click(object sender, EventArgs e)
         {
@@ -197,7 +186,6 @@ namespace View.Formulario.CombustivelForm
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.BackColor = ColorTranslator.FromHtml("#CFCFCF");
 
             //Configurações do id
             combustivelcombustivelIdLabel = new Label();
@@ -294,7 +282,6 @@ namespace View.Formulario.CombustivelForm
                 SalvaCombustivel();
                 LimpaTela();
             };
-            gravarButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(gravarButton);
 
             //Configurações do botão Sair
@@ -303,15 +290,7 @@ namespace View.Formulario.CombustivelForm
             sairButton.Location = new Point(100, 210);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(90, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
         
         public FormEditaCombustivel()
@@ -370,9 +349,8 @@ namespace View.Formulario.CombustivelForm
         private void InitializeComponent()
         {
             this.Text = "Excluir combustivel";
-            this.Size = new Size(200, 300);
+            this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#E6773A");
 
             //Configurações do rótulo combustivelId
             combustivelcombustivelIdLabel = new Label();
@@ -398,30 +376,21 @@ namespace View.Formulario.CombustivelForm
             //Configurações do botão Excluir
             excluirButton = new Button();
             excluirButton.Text = "Excluir";
-            excluirButton.Location = new Point(20, 170);
+            excluirButton.Location = new Point(20, 60);
             excluirButton.Size = new Size(80, 20);
             excluirButton.Click += (ScrollBarRenderer, e) =>{
                 ExcluiCombustivel();
                 LimpaTela();
             };
-            excluirButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(excluirButton);
 
             //Configurações do botão Sair
             sairButton = new Button();
             sairButton.Text = "Sair";
-            sairButton.Location = new Point(100, 170);
+            sairButton.Location = new Point(100, 60);
             sairButton.Size = new Size(80, 20);
             sairButton.Click += (ScrollBarRenderer, e) => this.Close();
-            sairButton.BackColor = ColorTranslator.FromHtml("#FFFDE8");
             this.Controls.Add(sairButton);
-
-            //Painel para os botões
-            Panel panel = new Panel();
-            panel.Size = new Size(100, 50);
-            panel.BackColor = ColorTranslator.FromHtml("#4056A1");
-            panel.Dock = DockStyle.Bottom;
-            this.Controls.Add(panel);
         }
 
         public FormExcluiCombustivel()
